@@ -1,34 +1,78 @@
-window.Wine = Backbone.Model.extend({
+var urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/get-activities";
 
+// Activity List
+
+
+
+window.Activity = Backbone.Model.extend({
+    urlRoot: urlRoot, //"api/wines",
+    
+    defaults: {
+        id: null,
+        name: "",
+        grapes: "",
+        country: "USA",
+        region: "California",
+        year: "",
+        description: "",
+        picture: null
+    }
+});
+
+
+window.ActivityCollection = Backbone.Collection.extend({
+    model: Activity,
+    url: urlRoot
+});
+
+
+// Activity Card
+
+window.ActivityCard = Backbone.Model.extend({
+    // param id is added as /:id
+    urlRoot: "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/get-activity/id", //"api/wines",
+
+    defaults: {
+    }
+});
+
+
+
+
+
+
+
+
+
+
+window.Wine = Backbone.Model.extend({
     urlRoot: "api/wines",
 
-    initialize: function () {
+    initialize: function() {
         this.validators = {};
 
-        this.validators.name = function (value) {
+        this.validators.name = function(value) {
             return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a name"};
         };
 
-        this.validators.grapes = function (value) {
+        this.validators.grapes = function(value) {
             return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a grape variety"};
         };
 
-        this.validators.country = function (value) {
+        this.validators.country = function(value) {
             return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a country"};
         };
     },
-
-    validateItem: function (key) {
+    validateItem: function(key) {
         return (this.validators[key]) ? this.validators[key](this.get(key)) : {isValid: true};
     },
-
     // TODO: Implement Backbone's standard validate() method instead.
-    validateAll: function () {
+    validateAll: function() {
 
         var messages = {};
 
         for (var key in this.validators) {
-            if(this.validators.hasOwnProperty(key)) {
+            if (this.validators.hasOwnProperty(key)) {
                 var check = this.validators[key](this.get(key));
                 if (check.isValid === false) {
                     messages[key] = check.message;
@@ -38,7 +82,6 @@ window.Wine = Backbone.Model.extend({
 
         return _.size(messages) > 0 ? {isValid: false, messages: messages} : {isValid: true};
     },
-
     defaults: {
         id: null,
         name: "",
@@ -52,9 +95,7 @@ window.Wine = Backbone.Model.extend({
 });
 
 window.WineCollection = Backbone.Collection.extend({
-
     model: Wine,
-
-    url: "api/wines"
+    url: "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/backbone"//"api/wines"
 
 });
