@@ -8,3 +8,12 @@
 .taskRow{
     
 }
+
+.questionsContainer{
+    border-top: 1px solid #eee;
+    margin-top: 25px;
+}
+
+.question{
+    margin-top: 10px;
+}

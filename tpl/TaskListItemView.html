@@ -7,15 +7,14 @@
     <a href="#tasks/<%= __taskId %>"><div class="activityRow" id="name"><%= geoName %></div></a>
     <div class="name" id="description"><%= geoDescription %></div>
     
-    <% }  else { %>
-    <a href="#tasks/<%= __taskId %>"><div class="activityRow" id="name"><%= name %></div></a>
-    <div class="name" id="description"><%= description %></div>
+    
     
     <% } %>
     
-    
+    <div class="btn-toolbar">
+        <a class="btn" href="#tasks/<%= __taskId %>">Hacer</a>
     <button class="btn backButton" onclick="app.back()">Volver</button>
-
+    </div>
 </div>
 
 
