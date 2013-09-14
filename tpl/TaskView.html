@@ -1,0 +1,24 @@
+
+<div class="taskContainer">
+    
+    <div><h3>Tarea Actual</h3></div>
+    
+    
+    <a href="#tasks/<%= __taskId %>"><div class="activityRow" id="name"><%= geoName %></div></a>
+    <div class="name" id="description"><%= geoDescription %></div>
+    
+    <div><h4>Preguntas:</h4></div>
+    
+    <% for(var i in questionOpenGeo) { %>
+    
+    <div><%= questionOpenGeo[i].title %></div>
+    
+    
+    <% } %>
+    
+    
+    <button class="btn backButton" onclick="app.back()">Volver</button>
+
+</div>
+
+

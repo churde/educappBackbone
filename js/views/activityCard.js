@@ -1,22 +1,23 @@
-window.ActivityCardView = Backbone.View.extend({
+var ActivityCardView = Backbone.View.extend({
+    initialize: function() {
 
-    initialize: function () {
-        this.render();
+        this.listenTo(this.model, "change", this.render);
+
     },
+    render: function() {
 
-    render: function () {
-        $(this.el).html(this.template(this.model.toJSON()));
+        // it could be passed also as  this.template(this.model.toJson() )
+        $(this.el).html(this.template(this.model.attributes));
         return this;
     },
-
     events: {
-        "change"        : "change",
-        "click .save"   : "beforeSave",
-        "click .delete" : "deleteWine",
-        "drop #picture" : "dropHandler"
+        "change": "change",
+        "click .save": "beforeSave",
+        "click .delete": "deleteWine",
+        "drop #picture": "dropHandler"
     },
+    change: function(event) {
 
-    change: function (event) {
         // Remove any existing alert message
         utils.hideAlert();
 
@@ -34,8 +35,7 @@ window.ActivityCardView = Backbone.View.extend({
             utils.removeValidationError(target.id);
         }
     },
-
-    beforeSave: function () {
+    beforeSave: function() {
         var self = this;
         var check = this.model.validateAll();
         if (check.isValid === false) {
@@ -46,41 +46,38 @@ window.ActivityCardView = Backbone.View.extend({
         if (this.pictureFile) {
             this.model.set("picture", this.pictureFile.name);
             utils.uploadFile(this.pictureFile,
-                function () {
-                    self.saveWine();
-                }
+                    function() {
+                        self.saveWine();
+                    }
             );
         } else {
             this.saveWine();
         }
         return false;
     },
-
-    saveWine: function () {
+    saveWine: function() {
         var self = this;
         this.model.save(null, {
-            success: function (model) {
+            success: function(model) {
                 self.render();
                 app.navigate('wines/' + model.id, false);
                 utils.showAlert('Success!', 'Wine saved successfully', 'alert-success');
             },
-            error: function () {
+            error: function() {
                 utils.showAlert('Error', 'An error occurred while trying to delete this item', 'alert-error');
             }
         });
     },
-
-    deleteWine: function () {
+    deleteWine: function() {
         this.model.destroy({
-            success: function () {
+            success: function() {
                 alert('Wine deleted successfully');
                 window.history.back();
             }
         });
         return false;
     },
-
-    dropHandler: function (event) {
+    dropHandler: function(event) {
         event.stopPropagation();
         event.preventDefault();
         var e = event.originalEvent;
@@ -89,7 +86,7 @@ window.ActivityCardView = Backbone.View.extend({
 
         // Read the image file from the local file system and display it in the img tag
         var reader = new FileReader();
-        reader.onloadend = function () {
+        reader.onloadend = function() {
             $('#picture').attr('src', reader.result);
         };
         reader.readAsDataURL(this.pictureFile);

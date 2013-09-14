@@ -4,23 +4,17 @@ var urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/ge
 
 
 
-window.Activity = Backbone.Model.extend({
+var Activity = Backbone.Model.extend({
     urlRoot: urlRoot, //"api/wines",
+    idAttribute: '__activityId',
     
     defaults: {
-        id: null,
-        name: "",
-        grapes: "",
-        country: "USA",
-        region: "California",
-        year: "",
-        description: "",
-        picture: null
+        
     }
 });
 
 
-window.ActivityCollection = Backbone.Collection.extend({
+var ActivityCollection = Backbone.Collection.extend({
     model: Activity,
     url: urlRoot
 });
@@ -28,13 +22,44 @@ window.ActivityCollection = Backbone.Collection.extend({
 
 // Activity Card
 
-window.ActivityCard = Backbone.Model.extend({
-    // param id is added as /:id
-    urlRoot: "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/get-activity/id", //"api/wines",
+//var ActivityCard = Backbone.Model.extend({
+//    // param id is added as /:id
+//    urlRoot: "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/get-activity/id", //"api/wines",
+//    idAttribute: '__activityId',
+//
+//    defaults: {
+//        __activityId: "",
+//        description: ""
+//    }
+//});
 
+
+var Task = Backbone.Model.extend({
+    urlRoot: urlRoot, //"api/wines",
+    idAttribute: '__taskId',
+    
     defaults: {
+        
     }
 });
+
+
+var TaskCollection = Backbone.Collection.extend({
+    model: Task,
+    url: urlRoot
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
