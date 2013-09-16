@@ -87,16 +87,24 @@ var AppRouter = Backbone.Router.extend({
         this.activityCardView.model = this.activityModel;
 
         $("#content").html(this.activityCardView.render().el);
+        
+        con("en activityCard he metido en activityModel: ", this.activityModel)
 
     },
     taskList: function() {
 
         // get the tasks and add them as a collection to the taskListCollection
         var tasks = this.activityModel.get('tasks');
+        
+        
+        con("en taskList tengo activityModel: ", this.activityModel, " con tareas ", tasks)
+        
+        this.taskListCollection.reset();
         // Add the tasks to the collection
         this.taskListCollection.add(tasks);
 
         $("#content").html(app.taskListView.render().el);
+
 
 
 
