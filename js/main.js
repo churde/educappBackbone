@@ -1,14 +1,13 @@
 var AppRouter = Backbone.Router.extend({
     routes: {
         "": "activityList",
-        
         "activity": "activityList",
         "activity/card/:id": "activityCard",
         "tasks": "taskList",
-        "tasks/:id" : "task"
-        
-        
-        
+        "tasks/:id": "task"
+
+
+
 //        "wines/page/:page": "list",
 //        "wines/add": "addWine",
 //        "wines/:id": "wineDetails",
@@ -55,7 +54,7 @@ var AppRouter = Backbone.Router.extend({
 
         // Task Item View
         this.taskListItemView = new TaskListItemView({model: this.taskModel});
-        
+
         // Task View
         this.taskView = new TaskView({model: this.taskModel});
 
@@ -69,6 +68,10 @@ var AppRouter = Backbone.Router.extend({
             //the navigation doesn't create an extra history entry
             this.navigate('app/', {trigger: true, replace: true});
         }
+    },
+    refresh: function() {
+        this.activityList();
+        this.navigate('', true);
     },
     activityList: function() {
         this.activityListCollection.fetch(
@@ -84,7 +87,7 @@ var AppRouter = Backbone.Router.extend({
         this.activityCardView.model = this.activityModel;
 
         $("#content").html(this.activityCardView.render().el);
-        
+
     },
     taskList: function() {
 
@@ -92,11 +95,11 @@ var AppRouter = Backbone.Router.extend({
         var tasks = this.activityModel.get('tasks');
         // Add the tasks to the collection
         this.taskListCollection.add(tasks);
-        
+
         $("#content").html(app.taskListView.render().el);
-        
-        
-        
+
+
+
     },
     task: function(id) {
         // The change event in the model is triggered twice here: with .set('id', id) and then with .fetch
@@ -105,9 +108,7 @@ var AppRouter = Backbone.Router.extend({
         this.taskView.model = this.taskModel;
 
         $("#content").html(this.taskView.render().el);
-        
-        con("el modelo de task es ", this.taskView.model)
-        
+
     },
     ///////////////////
     ///////////////////
@@ -149,7 +150,7 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-utils.loadTemplate(['HeaderView', 
+utils.loadTemplate(['HeaderView',
 //    'WineView', 'WineListItemView', 'AboutView',
     'ActivityListItemView', 'ActivityCardView',
     'TaskListItemView', 'TaskView'], function() {

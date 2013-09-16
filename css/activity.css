@@ -1,10 +1,19 @@
-.activityContainer{
+/* Each activity in the activities List*/
+.activities .activityContainer, .activityCardContainer{
     
-    margin-top: 20px;
-    /*border: 1px solid blue;*/
-    padding: 10px;
+     
+    padding: 20px;
+    margin-top: 15px;
+    
+    background-color: yellowgreen;
+    
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;	
 }
 
 .activityRow{
-    
+   
 }
+
+

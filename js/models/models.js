@@ -1,4 +1,14 @@
-var urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/get-activities";
+var urlRoot;
+
+var isDev = false;
+
+if(isDev){
+    urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/get-activities";
+}
+else{
+    urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/pre/public/api/get-activities";
+}
+
 
 // Activity List
 

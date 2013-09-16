@@ -1,8 +1,13 @@
-.taskContainer{
+.tasks .taskContainer{
     
-    margin-top: 20px;
-    /*border: 1px solid blue;*/
-    padding: 10px;
+    padding: 20px;
+    margin-top: 15px;
+    
+    background-color: sandybrown;
+    
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 }
 
 .taskRow{

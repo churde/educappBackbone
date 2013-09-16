@@ -1,20 +1,17 @@
 
-<div class="taskContainer">
-    
-    
-    <% if (typeof(geoName) != "undefined") { %>
-    
-    <a href="#tasks/<%= __taskId %>"><div class="activityRow" id="name"><%= geoName %></div></a>
-    <div class="name" id="description"><%= geoDescription %></div>
-    
-    
-    
-    <% } %>
-    
-    <div class="btn-toolbar">
-        <a class="btn" href="#tasks/<%= __taskId %>">Hacer</a>
+
+
+<% if (typeof(geoName) != "undefined") { %>
+
+<a href="#tasks/<%= __taskId %>"><div class="name"><h3><%= geoName %></h3></div></a>
+<div class="description"><%= geoDescription %></div>
+
+
+<% } %>
+
+<div class="btn-toolbar">
+    <a class="btn" href="#tasks/<%= __taskId %>">Hacer</a>
     <button class="btn backButton" onclick="app.back()">Volver</button>
-    </div>
 </div>
 
 
