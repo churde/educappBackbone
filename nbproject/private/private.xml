@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/Applications/MAMP/htdocs/educapp/js/main.js</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/js/views/taskList.js</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/tpl/TaskListItemView.html</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/tpl/TaskView.html</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/tpl/ActivityCardView.html</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/css/activity.css</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/tpl/ActivityListItemView.html</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/css/task.css</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/js/models/models.js</file>
-    </open-files>
 </project-private>

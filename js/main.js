@@ -5,13 +5,8 @@ var AppRouter = Backbone.Router.extend({
         "activity/card/:id": "activityCard",
         "tasks": "taskList",
         "tasks/:id": "task"
-
-
-
-//        "wines/page/:page": "list",
-//        "wines/add": "addWine",
-//        "wines/:id": "wineDetails",
-//        "about": "about",
+        
+        
     },
     initialize: function() {
 

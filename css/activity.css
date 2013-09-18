@@ -1,5 +1,5 @@
 /* Each activity in the activities List*/
-.activities .activityContainer, .activityCardContainer{
+.activities .activityContainer{ /*, .activityCardContainer{ */
     
      
     padding: 20px;
