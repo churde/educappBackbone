@@ -13,6 +13,17 @@ function err(e) {
     con("Error " + e.message + " en la linea " + e.lineNumber + " del archivo " + e.fileName)
 }
 
+var misc = {
+    formatDate: function(_args){
+        var date = _args.date, format = _args.format;
+        
+        var oDate = new Date(date);
+        
+        return oDate.toString(format);
+                
+    }
+}
+
 
 window.utils = {
 

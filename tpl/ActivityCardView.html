@@ -40,14 +40,14 @@
                 <div class="col-xs-2 col-md-2 iconP" id="enableDateIcon"><span class="glyphicon glyphicon-calendar"></span></div>
                 <div class="col-xs-10 col-md-10" id="enableDateTitleAndText">
                     <div class="row titleP" id="enableDateTitle">Disponible desde el</div>
-                    <div class="row textP" id="enableDateText"><%= initTime %></div>
+                    <div class="row textP" id="enableDateText"><%= misc.formatDate({date:initTime, format: 'dd-MM-yyyy'}) %></div>
                 </div>
             </div>
             <div class="row" id="deliveryDateField">
                 <div class="col-xs-2 col-md-2 iconP" id="deliveryDateIcon"><span class="glyphicon glyphicon-envelope"></span></div>
                 <div class="col-xs-10 col-md-10" id="deliveryDateTitleAndText">
                     <div class="row titleP" id="deliveryDateTitle">Fecha de entrega antes del</div>
-                    <div class="row textP" id="deliveryDateText"><%= deliveryTime %></div>
+                    <div class="row textP" id="deliveryDateText"><%= misc.formatDate({date:deliveryTime, format: 'dd-MM-yyyy'}) %></div>
                 </div>
             </div>
             <div class="row" id="durationField">
