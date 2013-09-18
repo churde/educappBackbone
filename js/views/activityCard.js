@@ -60,7 +60,7 @@ var ActivityCardView = Backbone.View.extend({
         this.model.save(null, {
             success: function(model) {
                 self.render();
-                app.navigate('wines/' + model.id, false);
+                app.router.navigate('wines/' + model.id, false);
                 utils.showAlert('Success!', 'Wine saved successfully', 'alert-success');
             },
             error: function() {

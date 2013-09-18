@@ -19,3 +19,6 @@ a.plain:hover
 .brand{
     color: white!important;
 }
+body{
+    padding: 10px!important;
+}

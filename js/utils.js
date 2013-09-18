@@ -13,7 +13,7 @@ function err(e) {
     con("Error " + e.message + " en la linea " + e.lineNumber + " del archivo " + e.fileName)
 }
 
-var misc = {
+app.utils = {
     formatDate: function(_args){
         var date = _args.date, format = _args.format;
         

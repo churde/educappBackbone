@@ -1,10 +1,10 @@
 
 <div class="taskContainer">
     
-    <div><h3>Tarea Actual: <%= geoName %></h3></div>
+    <div><h3>Tarea Actual: <%= name %></h3></div>
     
     
-    <div class="name" id="description"><%= geoDescription %></div>
+    <div class="name" id="description"><%= description %></div>
     
     <div class="questionsContainer"><h4>Preguntas:</h4></div>
     
@@ -16,7 +16,7 @@
     <% } %>
     
     <div class="btn-toolbar">
-    <button class="btn backButton" onclick="app.back()">Volver</button>
+    <button class="btn backButton" onclick="app.router.back()">Volver</button>
     </div>
 </div>
 
