@@ -82,7 +82,7 @@ app.taskController = {
         var angle = this.currentHeading - this.currentAngle;
 
         var compassArrow = $(".compassArrow");
-
+//        compassArrow.rotate(angle);
         compassArrow.css('transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-ms-transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-webkit-transform', 'rotate(' + angle + 'deg)');
