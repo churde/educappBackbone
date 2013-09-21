@@ -4,7 +4,7 @@
 
         xmlns:gap   = "http://PhoneGap.com/ns/1.0"
 
-        id          = "es.uniovi.educapp"
+        id          = "org.coenraets.employeedirectory"
 
         versionCode = "10"
 
@@ -21,7 +21,7 @@
     </description>
 
 
-    <author href="http://uniovi.es" email="">
+    <author href="http://uniovi.es" email="ccoenraets@gmail.com">
 
         Gonzalo Gayol - Xurde Durán
 
