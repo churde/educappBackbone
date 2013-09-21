@@ -46,7 +46,7 @@ app.geolocation = {
         var dLat = (lat2 - lat1).toRad();  // Javascript functions in radians
         var dLon = (long2 - long1).toRad();
         
-        var angle = Math.atan2(-dLat, dLon);
+        var angle = Math.atan2(dLon, dLat);
         
         if (angle < 0) {
             angle += 2 * Math.PI;

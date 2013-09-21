@@ -39,19 +39,6 @@ app.taskController = {
                 frecuency: 10000
             }
         });
-        try {
-            navigator.camera.getPicture(
-                    function(data) {
-                        alert("success");
-                    },
-                    function(e) {
-                        alert("error");
-                    }
-            );
-        } catch (e) {
-            alert(e)
-        }
-
 
 
     },
