@@ -11,26 +11,24 @@
         version     = "1.1.0">
 
 
-    <name>Educapp Backbone</name>
+    <name>Employee Directory</name>
 
 
     <description>
 
-        Aplicación para la Universidad de Oviedo. Rehecha con Backbone
+        A simple employee directory application
 
     </description>
 
 
-    <author href="http://uniovi.es" email="ccoenraets@gmail.com">
+    <author href="http://coenraets.org" email="ccoenraets@gmail.com">
 
-        Gonzalo Gayol - Xurde Durán
+        Christophe Coenraets
 
     </author>
 
 
     <feature name="http://api.PhoneGap.com/1.0/camera"/>
-    
-    <feature name="http://api.PhoneGap.com/1.0/compass"/>
 
     <feature name="http://api.PhoneGap.com/1.0/contacts"/>
 
