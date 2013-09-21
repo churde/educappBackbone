@@ -20,7 +20,7 @@ app.geolocation = {
             navigator.compass.clearWatch(this.watchHeadingId);
             this.watchHeadingId = navigator.compass.watchHeading(_args.success, _args.error, _args.options);
         } catch (e) {
-            alert(e)
+            alert("error en compass" + e)
         }
     },
     calculateDistance: function(_args) {

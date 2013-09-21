@@ -26,19 +26,19 @@ app.taskController = {
             options: {}
         });
 
-//        app.geolocation.watchHeading({
-//            success: function(heading) {
-//
-//                app.taskController.updateHeading(heading);
-//            },
-//            error: function(e) {
-//                alert('code: ' + error.code + '\n' +
-//                        'message: ' + error.message + '\n');
-//            },
-//            options: {
-//                frecuency: 10000
-//            }
-//        });
+        app.geolocation.watchHeading({
+            success: function(heading) {
+
+                app.taskController.updateHeading(heading);
+            },
+            error: function(e) {
+                alert('code: ' + error.code + '\n' +
+                        'message: ' + error.message + '\n');
+            },
+            options: {
+                frecuency: 10000
+            }
+        });
         try {
             navigator.camera.getPicture(
                     function(data) {
