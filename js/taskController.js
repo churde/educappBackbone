@@ -90,10 +90,13 @@ app.taskController = {
     },
     updateRadar: function(_args) {
 
+        var angle = this.currentAngle - this.currentHeading;
+        
         var distanceIndicator = $(".distanceIndicator");
-        distanceIndicator.html(this.currentDistance + " metros");
+        distanceIndicator.html(this.currentDistance + ". Heading: " + this.currentHeading + ". <br>. Angle: "
+    + this.currentAngle);
 
-        var angle = this.currentHeading - this.currentAngle;
+        
 
         var compassArrow = $(".compassArrow");
 //        compassArrow.rotate(angle);
