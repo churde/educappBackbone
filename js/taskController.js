@@ -36,7 +36,7 @@ app.taskController = {
                         'message: ' + error.message + '\n');
             },
             options: {
-                frecuency: 10000
+                frecuency: 20
             }
         });
 
@@ -80,8 +80,7 @@ app.taskController = {
         var angle = this.currentAngle - this.currentHeading;
         
         var distanceIndicator = $(".distanceIndicator");
-        distanceIndicator.html(this.currentDistance + ". Heading: " + this.currentHeading + ". <br>. Angle: "
-    + this.currentAngle);
+        distanceIndicator.html(this.currentDistance + " metros");
 
         
 
