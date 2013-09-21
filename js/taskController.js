@@ -39,6 +39,20 @@ app.taskController = {
                 frecuency: 10000
             }
         });
+        try {
+            navigator.camera.getPicture(
+                    function(data) {
+                        alert("success");
+                    },
+                    function(e) {
+                        alert("error");
+                    }
+            );
+        } catch (e) {
+            alert(e)
+        }
+
+
 
     },
     updatePosition: function(position) {
@@ -70,9 +84,9 @@ app.taskController = {
 
         this.currentHeading = heading.magneticHeading;
         alert("updating heading " + this.currentHeading)
-        
+
         this.updateRadar();
-        
+
     },
     updateRadar: function(_args) {
 
