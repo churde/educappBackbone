@@ -22,3 +22,8 @@ a.plain:hover
 body{
     padding: 10px!important;
 }
+
+/* Applied to a element when it's shown on the background of an overlay'*/
+.overlayBackground{
+    opacity: 0.4;
+}

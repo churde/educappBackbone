@@ -1,22 +1,43 @@
 
 <div class="taskContainer">
-    
-    <div><h3>Tarea Actual: <%= name %></h3></div>
-    
-    
-    <div class="name" id="description"><%= description %></div>
-    
-    <div class="questionsContainer"><h4>Preguntas:</h4></div>
-    
-    <% for(var i in questionOpenGeo) { %>
-    
-    <div class="question"><%= questionOpenGeo[i].title %></div>
-    
-    
-    <% } %>
-    
-    <div class="btn-toolbar">
-    <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-info btn-lg" onclick="app.router.back()"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button></div>
+
+    <div class="taskMainContainer">
+
+        <div class="taskHeader">
+            Sigue las instrucciones del radar para llegar al lugar de la tarea
+        </div>
+
+        <div class="taskTitle">
+            TITULO
+        </div>
+
+        <div class="taskRadar">
+            <div class="compassArrow">
+                <img src="img/compassArrow.png">
+            </div>
+            <div class="distanceIndicator">140 m</div>
+            <div class="proximityText">Aun estás lejos</div>
+        </div>
+
+        <div class="btn-toolbar">
+            <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-info btn-lg" onclick="app.router.back()"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button></div>
+        </div>
+    </div>
+
+    <div class="questionsOverlay">
+        <div><h3>Tarea Actual: <%= name %></h3></div>
+
+
+        <div class="name" id="description"><%= description %></div>
+
+        <div class="questionsContainer"><h4>Preguntas:</h4></div>
+
+        <% for(var i in questionOpenGeo) { %>
+
+        <div class="question"><%= questionOpenGeo[i].title %></div>
+
+
+        <% } %>
     </div>
 </div>
 

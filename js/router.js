@@ -83,7 +83,7 @@ var AppRouter = Backbone.Router.extend({
 
         $("#content").html(this.activityCardView.render().el);
         
-        con("en activityCard he metido en activityModel: ", this.activityModel)
+//        con("en activityCard he metido en activityModel: ", this.activityModel)
 
     },
     taskList: function() {
@@ -92,7 +92,7 @@ var AppRouter = Backbone.Router.extend({
         var tasks = this.activityModel.get('tasks');
         
         
-        con("en taskList tengo activityModel: ", this.activityModel, " con tareas ", tasks)
+//        con("en taskList tengo activityModel: ", this.activityModel, " con tareas ", tasks)
         
         this.taskListCollection.reset();
         // Add the tasks to the collection
@@ -108,7 +108,10 @@ var AppRouter = Backbone.Router.extend({
         this.taskView.model = this.taskModel;
 
         $("#content").html(this.taskView.render().el);
-
+        
+        con("desde router inicializo el taskController con taskData ", this.taskModel.attributes);
+        
+        app.taskController.init({taskData: this.taskModel.attributes});
     },
     ///////////////////
     ///////////////////

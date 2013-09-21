@@ -1,6 +1,6 @@
 var urlRoot;
 
-var isDev = false;
+var isDev = true;
 
 if(isDev){
     urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/get-activities";
