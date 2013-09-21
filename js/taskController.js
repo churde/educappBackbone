@@ -83,7 +83,7 @@ app.taskController = {
     updateHeading: function(heading) {
 
         this.currentHeading = heading.magneticHeading;
-        alert("updating heading " + this.currentHeading)
+//        alert("updating heading " + this.currentHeading)
 
         this.updateRadar();
 
