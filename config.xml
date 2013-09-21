@@ -30,6 +30,8 @@
 
     <feature name="http://api.PhoneGap.com/1.0/camera"/>
 
+    <feature name="http://api.PhoneGap.com/1.0/compass"/>
+
     <feature name="http://api.PhoneGap.com/1.0/contacts"/>
 
     <feature name="http://api.PhoneGap.com/1.0/file"/>
