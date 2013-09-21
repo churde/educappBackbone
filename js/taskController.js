@@ -8,6 +8,7 @@ app.taskController = {
     currentLong: null,
     currentDistance: null,
     currentAngle: null,
+    currentHeading: 0,
     isInTarget: null,
     init: function(_args) {
 
@@ -16,7 +17,7 @@ app.taskController = {
         app.geolocation.watchPosition({
             success: function(position) {
 
-                app.taskController.update({position: position});
+                app.taskController.updatePosition(position);
             },
             error: function(e) {
                 alert('code: ' + error.code + '\n' +
@@ -24,10 +25,24 @@ app.taskController = {
             },
             options: {}
         });
-    },
-    update: function(_args) {
 
-        var position = _args.position;
+        app.geolocation.watchHeading({
+            success: function(heading) {
+
+                app.taskController.updateHeading(heading);
+            },
+            error: function(e) {
+                alert('code: ' + error.code + '\n' +
+                        'message: ' + error.message + '\n');
+            },
+            options: {
+                frecuency: 10000
+            }
+        });
+
+    },
+    updatePosition: function(position) {
+
 
         this.currentLat = position.coords.latitude;
         this.currentLong = position.coords.longitude;
@@ -51,16 +66,26 @@ app.taskController = {
 
 
     },
+    updateHeading: function(heading) {
+
+        this.currentHeading = heading.magneticHeading;
+        alert("updating heading " + this.currentHeading)
+        
+        this.updateRadar();
+        
+    },
     updateRadar: function(_args) {
 
         var distanceIndicator = $(".distanceIndicator");
         distanceIndicator.html(this.currentDistance + " metros");
 
+        var angle = this.currentHeading - this.currentAngle;
+
         var compassArrow = $(".compassArrow");
 
-        compassArrow.css('transform', 'rotate(' + this.currentAngle + 'deg)');
-        compassArrow.css('-ms-transform', 'rotate(' + this.currentAngle + 'deg)');
-        compassArrow.css('-webkit-transform', 'rotate(' + this.currentAngle + 'deg)');
+        compassArrow.css('transform', 'rotate(' + angle + 'deg)');
+        compassArrow.css('-ms-transform', 'rotate(' + angle + 'deg)');
+        compassArrow.css('-webkit-transform', 'rotate(' + angle + 'deg)');
 
 
     },

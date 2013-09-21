@@ -11,28 +11,12 @@ app.geolocation = {
     },
     watchPosition: function(_args) {
 
-        //   This method accepts a `Position` object, which contains the current GPS coordinates       
-        function onSuccess(position) {
-//            var element = document.getElementById('geolocation');
-//            element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
-//                    'Longitude: ' + position.coords.longitude + '<br />' +
-//                    '<hr />' + element.innerHTML;
-//            
-//            
+        var positionWatchId = navigator.geolocation.watchPosition(_args.success, _args.error, _args.options);
+    },
+    watchHeading: function(_args) {
+        
 
-
-
-        }
-
-        // onError Callback receives a PositionError object
-        function onError(error) {
-            alert('code: ' + error.code + '\n' +
-                    'message: ' + error.message + '\n');
-        }
-
-        // Options: throw an error if no update is received every 30 seconds.
-
-        var watchID = navigator.geolocation.watchPosition(_args.success, _args.error, _args.options);
+        var headingWatchId = navigator.compass.watchHeading(_args.success, _args.error, _args.options);
     },
     calculateDistance: function(_args) {
 
@@ -59,47 +43,13 @@ app.geolocation = {
 
         var angle = Math.atan2(-dLon, dLat);
 
-        if (angle < 0){
+        if (angle < 0) {
             angle += 2 * Math.PI;
         }
-   
+
         angle = angle * 180 / Math.PI;
 
         return angle;
-
-    },
-    calculateTextProximity: function(_args) {
-
-        var currentDistance = _args.currentDistance;
-        var proximityDistance3 = 200;
-        var proximityDistance2 = 100;
-        var proximityDistance1 = 50;
-        var targetDistance = 20;
-        var notInProximityText = "Estás demasiado lejos de tu tarea";
-
-        var text;
-        var isInTarget = false;
-
-        if (currentDistance < targetDistance) {
-            text = _args.text.geoTargetText;
-            isInTarget = true;
-        }
-        else if (currentDistance < proximityDistance1) {
-            text = _args.text.geoTargetProximityText1;
-        }
-        else if (currentDistance < proximityDistance2) {
-            text = _args.text.geoTargetProximityText2;
-        }
-        else if (currentDistance < proximityDistance3) {
-            text = _args.text.geoTargetProximityText3;
-        }
-        else {
-            text = notInProximityText;
-        }
-
-//    isInTarget = true;
-//    con("en calculate prox tengo text " + text, "cuando tengo params ", _args)
-        return {text: text, isInTarget: isInTarget};
 
     }
 }
