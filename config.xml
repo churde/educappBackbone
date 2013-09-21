@@ -11,19 +11,19 @@
         version     = "1.1.0">
 
 
-    <name>Employee Directory</name>
+    <name>Educapp Backbone</name>
 
 
     <description>
 
-        A simple employee directory application
+        Aplicación para la Universidad de Oviedo. Rehecha con Backbone
 
     </description>
 
 
-    <author href="http://coenraets.org" email="ccoenraets@gmail.com">
+    <author href="http://uniovi.es" email="">
 
-        Christophe Coenraets
+        Gonzalo Gayol - Xurde Durán
 
     </author>
 
