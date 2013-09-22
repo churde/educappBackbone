@@ -1,38 +1,46 @@
 var ActivityListView = Backbone.View.extend({
-
-    initialize: function () {
+    initialize: function() {
         this.render();
-        
+
     },
+    render: function() {
+        try {
+            alert("render de activityList view")
+            var activities = this.collection.models;
 
-    render: function () {
+            $(this.el).html('<div class="activities"></div>');
+            alert("2")
+            for (var i = 0; i < activities.length; i++) {
+                alert("for de actividades list con i " + i)
+                $('.activities', this.el).append(new ActivityListItemView({model: activities[i]}).render().el);
+            }
 
-        var activities = this.collection.models;
-        
-        $(this.el).html('<div class="activities"></div>');
-        
-        for (var i = 0; i < activities.length; i++) {
-            $('.activities', this.el).append(new ActivityListItemView({model: activities[i]}).render().el);
+            return this;
+        } catch (e) {
+            alert("error render act list view" + e)
         }
-        
-        return this;
+
+
     }
 });
 
 var ActivityListItemView = Backbone.View.extend({
-
     tagName: "div",
-
     className: "activityRow",
-
-    initialize: function () {
+    initialize: function() {
         this.model.bind("change", this.render, this);
-        this.model.bind("destroy", this.close, this);        
+        this.model.bind("destroy", this.close, this);
     },
+    render: function() {
+        try {
+            alert("renderizo activity")
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        } catch (e) {
+            alert("error en render de act list ITEM view" + e)
+        }
 
-    render: function () {
-        $(this.el).html(this.template(this.model.toJSON()));
-        return this;
+
     }
 
 });

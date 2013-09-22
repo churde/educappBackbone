@@ -5,8 +5,8 @@ var AppRouter = Backbone.Router.extend({
         "activity/card/:id": "activityCard",
         "tasks": "taskList",
         "tasks/:id": "task"
-        
-        
+
+
     },
     initialize: function() {
 
@@ -69,11 +69,20 @@ var AppRouter = Backbone.Router.extend({
         this.navigate('', true);
     },
     activityList: function() {
-        this.activityListCollection.fetch(
-                {success: function() {
-                        $("#content").html(app.router.activityListView.render().el);
-                    }}
-        );
+
+        alert("router: activity list")
+        try {
+            this.activityListCollection.fetch(
+                    {success: function() {
+                            alert("success de traer datos del server, en act list")
+                            $("#content").html(app.router.activityListView.render().el);
+                        }}
+            );
+        } catch (e) {
+            alert("error router act LIST" + e)
+        }
+
+
     },
     activityCard: function(id) {
         // The change event in the model is triggered twice here: with .set('id', id) and then with .fetch
@@ -82,7 +91,7 @@ var AppRouter = Backbone.Router.extend({
         this.activityCardView.model = this.activityModel;
 
         $("#content").html(this.activityCardView.render().el);
-        
+
 //        con("en activityCard he metido en activityModel: ", this.activityModel)
 
     },
@@ -90,10 +99,10 @@ var AppRouter = Backbone.Router.extend({
 
         // get the tasks and add them as a collection to the taskListCollection
         var tasks = this.activityModel.get('tasks');
-        
-        
+
+
 //        con("en taskList tengo activityModel: ", this.activityModel, " con tareas ", tasks)
-        
+
         this.taskListCollection.reset();
         // Add the tasks to the collection
         this.taskListCollection.add(tasks);
@@ -108,9 +117,9 @@ var AppRouter = Backbone.Router.extend({
         this.taskView.model = this.taskModel;
 
         $("#content").html(this.taskView.render().el);
-        
+
         con("desde router inicializo el taskController con taskData ", this.taskModel.attributes);
-        
+
         app.taskController.init({taskData: this.taskModel.attributes});
     },
     ///////////////////
