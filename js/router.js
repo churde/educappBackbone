@@ -9,49 +9,59 @@ var AppRouter = Backbone.Router.extend({
 
     },
     initialize: function() {
+        try {
+            
+            alert("en initialize de router")
+            
+            this.routesHit = 0;
+            //keep count of number of routes handled by your application
+            Backbone.history.on('route', function() {
+                this.routesHit++;
+            }, this);
 
-        this.routesHit = 0;
-        //keep count of number of routes handled by your application
-        Backbone.history.on('route', function() {
-            this.routesHit++;
-        }, this);
+            this.headerView = new HeaderView();
+            $('.header').html(this.headerView.el);
+alert("despues del header")
+            // Activity List Collection
+            this.activityListCollection = new ActivityCollection();
 
-        this.headerView = new HeaderView();
-        $('.header').html(this.headerView.el);
+            // Activity MODEL
+            this.activityModel = new Activity();
 
-        // Activity List Collection
-        this.activityListCollection = new ActivityCollection();
+            // Activity List View
+            this.activityListView = new ActivityListView({collection: this.activityListCollection});
 
-        // Activity MODEL
-        this.activityModel = new Activity();
-
-        // Activity List View
-        this.activityListView = new ActivityListView({collection: this.activityListCollection});
-
-        // Activity List Item View
-        this.activityListItemView = new ActivityListItemView({model: this.activityModel});
+            // Activity List Item View
+            this.activityListItemView = new ActivityListItemView({model: this.activityModel});
 
 
-        // ActivityCard MODEL
+            // ActivityCard MODEL
 //        this.activityCardModel = new ActivityCard(); // Not necessary, we use the ActivityModel
 
-        // ActivityCard VIEW
-        this.activityCardView = new ActivityCardView({model: this.activityModel});
+            // ActivityCard VIEW
+            this.activityCardView = new ActivityCardView({model: this.activityModel});
 
-        // Task Collection
-        this.taskListCollection = new TaskCollection();
+            // Task Collection
+            this.taskListCollection = new TaskCollection();
 
-        // Task Model
-        this.taskModel = new Task();
+            // Task Model
+            this.taskModel = new Task();
 
-        // Task View
-        this.taskListView = new TaskListView({collection: this.taskListCollection});
+            // Task View
+            this.taskListView = new TaskListView({collection: this.taskListCollection});
 
-        // Task Item View
-        this.taskListItemView = new TaskListItemView({model: this.taskModel});
+            // Task Item View
+            this.taskListItemView = new TaskListItemView({model: this.taskModel});
 
-        // Task View
-        this.taskView = new TaskView({model: this.taskModel});
+            // Task View
+            this.taskView = new TaskView({model: this.taskModel});
+            
+            alert("fin")
+        } catch (e) {
+            alert("error en el initialize de router " + e)
+        }
+
+
 
     },
     back: function() {
