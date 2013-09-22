@@ -66,7 +66,7 @@ alert("9")
             
             alert("fin")
         } catch (e) {
-            alert("error en el initialize de router " + e)
+            alert("error en el initialize de router "); alert(e)
         }
 
 

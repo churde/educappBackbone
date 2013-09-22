@@ -23,11 +23,18 @@ var Activity = Backbone.Model.extend({
     }
 });
 
-
-var ActivityCollection = Backbone.Collection.extend({
+alert("esto es model.js")
+try {
+    var ActivityCollection = Backbone.Collection.extend({
     model: Activity,
     url: urlRoot
 });
+} catch (e) {
+    alert("error al declarar ActColleccion")
+    alert(e)
+}
+
+
 
 
 // Activity Card
