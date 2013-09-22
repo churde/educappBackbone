@@ -24,15 +24,18 @@ var AppRouter = Backbone.Router.extend({
 alert("despues del header")
             // Activity List Collection
             this.activityListCollection = new ActivityCollection();
-
+alert("1")
             // Activity MODEL
             this.activityModel = new Activity();
+alert("2")
 
             // Activity List View
             this.activityListView = new ActivityListView({collection: this.activityListCollection});
+alert("3")
 
             // Activity List Item View
             this.activityListItemView = new ActivityListItemView({model: this.activityModel});
+alert("4")
 
 
             // ActivityCard MODEL
@@ -40,18 +43,23 @@ alert("despues del header")
 
             // ActivityCard VIEW
             this.activityCardView = new ActivityCardView({model: this.activityModel});
+alert("5")
 
             // Task Collection
             this.taskListCollection = new TaskCollection();
+alert("6")
 
             // Task Model
             this.taskModel = new Task();
 
+alert("7")
             // Task View
             this.taskListView = new TaskListView({collection: this.taskListCollection});
+alert("8")
 
             // Task Item View
             this.taskListItemView = new TaskListItemView({model: this.taskModel});
+alert("9")
 
             // Task View
             this.taskView = new TaskView({model: this.taskModel});
