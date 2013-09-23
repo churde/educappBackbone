@@ -5,13 +5,13 @@ var ActivityListView = Backbone.View.extend({
     },
     render: function() {
         try {
-            alert("render de activityList view")
+//            alert("render de activityList view")
             var activities = this.collection.models;
 
             $(this.el).html('<div class="activities"></div>');
-            alert("2")
+//            alert("2")
             for (var i = 0; i < activities.length; i++) {
-                alert("for de actividades list con i " + i)
+//                alert("for de actividades list con i " + i)
                 $('.activities', this.el).append(new ActivityListItemView({model: activities[i]}).render().el);
             }
 
@@ -33,7 +33,6 @@ var ActivityListItemView = Backbone.View.extend({
     },
     render: function() {
         try {
-            alert("renderizo activity")
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
         } catch (e) {

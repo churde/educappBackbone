@@ -11,7 +11,6 @@ var AppRouter = Backbone.Router.extend({
     initialize: function() {
         try {
             
-            alert("en initialize de router")
             
             this.routesHit = 0;
             //keep count of number of routes handled by your application
@@ -21,21 +20,21 @@ var AppRouter = Backbone.Router.extend({
 
             this.headerView = new HeaderView();
             $('.header').html(this.headerView.el);
-alert("despues del header")
+//alert("despues del header")
             // Activity List Collection
             this.activityListCollection = new ActivityCollection();
-alert("1")
+//alert("1")
             // Activity MODEL
             this.activityModel = new Activity();
-alert("2")
+//alert("2")
 
             // Activity List View
             this.activityListView = new ActivityListView({collection: this.activityListCollection});
-alert("3")
+//alert("3")
 
             // Activity List Item View
             this.activityListItemView = new ActivityListItemView({model: this.activityModel});
-alert("4")
+//alert("4")
 
 
             // ActivityCard MODEL
@@ -43,28 +42,28 @@ alert("4")
 
             // ActivityCard VIEW
             this.activityCardView = new ActivityCardView({model: this.activityModel});
-alert("5")
+//alert("5")
 
             // Task Collection
             this.taskListCollection = new TaskCollection();
-alert("6")
+//alert("6")
 
             // Task Model
             this.taskModel = new Task();
 
-alert("7")
+//alert("7")
             // Task View
             this.taskListView = new TaskListView({collection: this.taskListCollection});
-alert("8")
+//alert("8")
 
             // Task Item View
             this.taskListItemView = new TaskListItemView({model: this.taskModel});
-alert("9")
+//alert("9")
 
             // Task View
             this.taskView = new TaskView({model: this.taskModel});
             
-            alert("fin")
+//            alert("fin")
         } catch (e) {
             alert("error en el initialize de router "); alert(e)
         }
@@ -88,11 +87,9 @@ alert("9")
     },
     activityList: function() {
 
-        alert("router: activity list")
         try {
             this.activityListCollection.fetch(
                     {success: function() {
-                            alert("success de traer datos del server, en act list")
                             $("#content").html(app.router.activityListView.render().el);
                         }}
             );

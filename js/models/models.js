@@ -23,14 +23,14 @@ var Activity = Backbone.Model.extend({
     }
 });
 
-alert("esto es model.js")
+//alert("esto es model.js")
 try {
     var ActivityCollection = Backbone.Collection.extend({
     model: Activity,
     url: urlRoot
 });
 } catch (e) {
-    alert("error al declarar ActColleccion")
+    alert("error al declarar ActCollection")
     alert(e)
 }
 
