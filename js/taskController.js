@@ -80,7 +80,7 @@ app.taskController = {
         var angle = this.currentAngle - this.currentHeading;
         
         var distanceIndicator = $(".distanceIndicator");
-        distanceIndicator.html(this.currentDistance + " metros");
+        distanceIndicator.html(this.currentDistance.toString() + " metros. Apunta hacia el ángulo " + angle.toString());
 
         
 
