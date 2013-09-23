@@ -79,8 +79,8 @@ app.taskController = {
         var distanceIndicator = $(".distanceIndicator");
         distanceIndicator.html(this.currentDistance);
 
-        alert("currentAngle " + this.currentAngle + ". currentHeading " + this.currentHeading + 
-            ". currenDistance " + this.currentDistance)
+//        alert("currentAngle " + this.currentAngle + ". currentHeading " + this.currentHeading + 
+//            ". currenDistance " + this.currentDistance)
 
         var compassArrow = $(".compassArrow");
 //        compassArrow.rotate(angle);
