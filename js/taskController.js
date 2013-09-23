@@ -16,7 +16,7 @@ app.taskController = {
 
         app.geolocation.watchPosition({
             success: function(position) {
-
+alert("watch position llama a update posiyion")
                 app.taskController.updatePosition(position);
             },
             error: function(e) {
@@ -44,10 +44,10 @@ app.taskController = {
     },
     updatePosition: function(position) {
 
-
+alert("1")
         this.currentLat = position.coords.latitude;
         this.currentLong = position.coords.longitude;
-
+        alert("2");
         var coords = {
             lat1: this.currentLat,
             long1: this.currentLong,
