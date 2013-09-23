@@ -36,7 +36,7 @@ app.taskController = {
                         'message: ' + error.message + '\n');
             },
             options: {
-                frecuency: 20
+                frecuency: 10000//20
             }
         });
 
@@ -59,9 +59,6 @@ app.taskController = {
 
         this.currentAngle = app.geolocation.calculateAngle(coords);
 
-        con("recibo en UPDATE de taskController position ", position, "tengo distance " + this.currentDistance,
-                " y angulo " + this.currentAngle)
-
         this.updateRadar();
         this.updateProximityText();
 
@@ -82,7 +79,8 @@ app.taskController = {
         var distanceIndicator = $(".distanceIndicator");
         distanceIndicator.html(this.currentDistance);
 
-        
+        alert("currentAngle " + this.currentAngle + ". currentHeading " + this.currentHeading + 
+            ". currenDistance " + this.currentDistance)
 
         var compassArrow = $(".compassArrow");
 //        compassArrow.rotate(angle);
