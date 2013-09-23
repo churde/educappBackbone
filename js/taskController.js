@@ -54,7 +54,7 @@ app.taskController = {
             lat2: this.taskData.latitude,
             long2: this.taskData.longitude
         };
-
+alert("llamo a calculate distances con lat " + this.currentLat + " y long " + this.currentLong)
         this.currentDistance = app.geolocation.calculateDistance(coords);
 
         this.currentAngle = app.geolocation.calculateAngle(coords);

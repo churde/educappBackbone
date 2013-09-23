@@ -25,6 +25,7 @@ app.geolocation = {
     },
     calculateDistance: function(_args) {
         try {
+            alert("1")
             var lat1 = _args.lat1, long1 = _args.long1, lat2 = _args.lat2, long2 = _args.long2;
 alert(" lat 1 " + lat1 + " lat 2 " + lat2 + " lon 1 " + long1 + " lon 2" + long2 )
             var R = 6371; // Radius of the earth in km
