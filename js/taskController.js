@@ -36,7 +36,7 @@ app.taskController = {
                         'message: ' + error.message + '\n');
             },
             options: {
-                frecuency: 10000//20
+                frecuency: 20
             }
         });
 
