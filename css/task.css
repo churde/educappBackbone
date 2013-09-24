@@ -38,11 +38,18 @@
 }
 
 .taskContainer .taskTitle{
-
+    background-color: steelblue;
+    border-radius: 20px 20px 0px 0px;
+    color: white;
+    font-size: larger;
+    height: auto;
 }
 
 .taskContainer .taskRadar{
     text-align: center;
+    padding: 20px;
+    border-radius: 0px 0px 20px 20px;
+    background-color: sandybrown;
 }
 
 .taskContainer .compassArrow{

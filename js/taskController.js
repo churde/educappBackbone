@@ -73,7 +73,12 @@ app.taskController = {
         var angle = this.currentAngle - this.currentHeading;
 
         var distanceIndicator = $(".distanceIndicator");
-        distanceIndicator.html(this.currentDistance + " metros");
+        if(this.currentDistance !== null){
+            distanceIndicator.html(this.currentDistance + " metros");
+        }
+        else{
+            distanceIndicator.html("Calculando distancia...");
+        }
 
         var compassArrow = $(".compassArrow");
         
@@ -111,9 +116,7 @@ app.taskController = {
                 text = notInProximityText;
             }
 
-//            $('.proximityText').html(text);
-
-            $('.proximityText').html(this.currentAngle - this.currentHeading);
+            $('.proximityText').html(text);
 
             this.showOverlay(this.isInTarget);
         } catch (e) {
