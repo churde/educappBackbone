@@ -23,4 +23,7 @@
     <!--<icon src="icons/uniovi.png" width="72" height="72" />-->
     <plugin name="Geolocation" value="CDVLocation" />
     
+    <!--Allow access from any url--> 
+    <access origin="*" />
+    
 </widget>
