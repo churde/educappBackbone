@@ -19,8 +19,8 @@
     <preference name="fullscreen"       value="false" />
 
         
-    <icon src="icons/uniovi.png" width="57" height="57" />
-    <icon src="icons/uniovi.png" width="72" height="72" />
+    <icon src="icons/uniovi_57px.png" width="57" height="57" />
+    <!--<icon src="icons/uniovi.png" width="72" height="72" />-->
     <plugin name="Geolocation" value="CDVLocation" />
     
 </widget>
