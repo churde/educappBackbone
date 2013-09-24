@@ -13,14 +13,12 @@ app.taskController = {
     init: function(_args) {
 
         this.taskData = _args.taskData;
-alert("llamamos a watchPosition")
+        
         app.geolocation.watchPosition({
             success: function(position) {
-                alert("watch position llama a update position")
                 app.taskController.updatePosition(position);
             },
             error: function(e) {
-                alert("error en watchPosition")
                 alert('code: ' + error.code + '\n' +
                         'message: ' + error.message + '\n');
             },
@@ -31,7 +29,6 @@ alert("llamamos a watchPosition")
 
         app.geolocation.watchHeading({
             success: function(heading) {
-
                 app.taskController.updateHeading(heading);
             },
             error: function(e) {
@@ -68,8 +65,6 @@ alert("llamamos a watchPosition")
     updateHeading: function(heading) {
 
         this.currentHeading = heading.magneticHeading;
-//        alert("updating heading " + this.currentHeading)
-
         this.updateRadar();
 
     },
@@ -78,13 +73,10 @@ alert("llamamos a watchPosition")
         var angle = this.currentAngle - this.currentHeading;
 
         var distanceIndicator = $(".distanceIndicator");
-        distanceIndicator.html(this.currentDistance);
-
-//        alert("currentAngle " + this.currentAngle + ". currentHeading " + this.currentHeading + 
-//            ". currenDistance " + this.currentDistance)
+        distanceIndicator.html(this.currentDistance + " metros");
 
         var compassArrow = $(".compassArrow");
-//        compassArrow.rotate(angle);
+        
         compassArrow.css('transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-ms-transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-webkit-transform', 'rotate(' + angle + 'deg)');
@@ -119,7 +111,7 @@ alert("llamamos a watchPosition")
                 text = notInProximityText;
             }
 
-            $('.proximityText').html(text);
+//            $('.proximityText').html(text);
 
             $('.proximityText').html(this.currentAngle - this.currentHeading);
 

@@ -12,7 +12,6 @@ app.geolocation = {
 
     },
     watchPosition: function(_args) {
-        alert("iniciando el watchPosition")
         try {
             navigator.geolocation.clearWatch(this.watchPositionId);
             this.watchPositionId = navigator.geolocation.watchPosition(_args.success, _args.error, _args.options);
@@ -45,7 +44,6 @@ app.geolocation = {
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             var d = R * c; // Distance in km
 
-            alert("en calculate distance devuelvo " + Math.floor(d * 1000))
             return Math.floor(d * 1000);
         } catch (e) {
             alert(e)
