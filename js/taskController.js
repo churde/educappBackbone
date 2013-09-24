@@ -53,7 +53,7 @@ app.taskController = {
             long2: this.taskData.longitude
         };
 
-        this.currentDistance = 10,//app.geolocation.calculateDistance(coords);
+        this.currentDistance = app.geolocation.calculateDistance(coords);
 
         this.currentAngle = app.geolocation.calculateAngle(coords);
 
