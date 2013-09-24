@@ -13,18 +13,20 @@ app.taskController = {
     init: function(_args) {
 
         this.taskData = _args.taskData;
-
+alert("llamamos a watchPosition")
         app.geolocation.watchPosition({
             success: function(position) {
-alert("watch position llama a update position")
+                alert("watch position llama a update position")
                 app.taskController.updatePosition(position);
             },
             error: function(e) {
-        alert("error en watchPosition")
+                alert("error en watchPosition")
                 alert('code: ' + error.code + '\n' +
                         'message: ' + error.message + '\n');
             },
-            options: {}
+            options: {
+                enableHighAccuracy: true
+            }
         });
 
         app.geolocation.watchHeading({
@@ -53,7 +55,7 @@ alert("watch position llama a update position")
             lat2: this.taskData.latitude,
             long2: this.taskData.longitude
         };
-        
+
         this.currentDistance = app.geolocation.calculateDistance(coords);
 
         this.currentAngle = app.geolocation.calculateAngle(coords);
@@ -74,7 +76,7 @@ alert("watch position llama a update position")
     updateRadar: function(_args) {
 
         var angle = this.currentAngle - this.currentHeading;
-        
+
         var distanceIndicator = $(".distanceIndicator");
         distanceIndicator.html(this.currentDistance);
 
@@ -118,7 +120,7 @@ alert("watch position llama a update position")
             }
 
             $('.proximityText').html(text);
-            
+
             $('.proximityText').html(this.currentAngle - this.currentHeading);
 
             this.showOverlay(this.isInTarget);

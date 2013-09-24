@@ -12,8 +12,15 @@ app.geolocation = {
 
     },
     watchPosition: function(_args) {
-        navigator.geolocation.clearWatch(this.watchPositionId);
-        this.watchPositionId = navigator.geolocation.watchPosition(_args.success, _args.error, _args.options);
+        alert("iniciando el watchPosition")
+        try {
+            navigator.geolocation.clearWatch(this.watchPositionId);
+            this.watchPositionId = navigator.geolocation.watchPosition(_args.success, _args.error, _args.options);
+        } catch (e) {
+            alert(e)
+        }
+
+
     },
     watchHeading: function(_args) {
         try {
@@ -28,24 +35,21 @@ app.geolocation = {
             var lat1 = _args.lat1, long1 = _args.long1, lat2 = _args.lat2, long2 = _args.long2;
             var R = 6371; // Radius of the earth in km
             var dLat = (lat2 - lat1).toRad();  // Javascript functions in radians
-            
+
             var dLon = (long2 - long1).toRad();
-            
+
             var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                     Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
                     Math.sin(dLon / 2) * Math.sin(dLon / 2);
-            
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));            
+
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             var d = R * c; // Distance in km
 
-alert("en calculate distance devuelvo " + Math.floor(d * 1000))
+            alert("en calculate distance devuelvo " + Math.floor(d * 1000))
             return Math.floor(d * 1000);
         } catch (e) {
             alert(e)
         }
-
-
-
 
     },
     calculateAngle: function(_args) {
