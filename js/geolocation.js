@@ -25,29 +25,20 @@ app.geolocation = {
     },
     calculateDistance: function(_args) {
         try {
-            alert("1")
             var lat1 = _args.lat1, long1 = _args.long1, lat2 = _args.lat2, long2 = _args.long2;
-alert(" lat 1 " + lat1 + " lat 2 " + lat2 + " lon 1 " + long1 + " lon 2" + long2 )
             var R = 6371; // Radius of the earth in km
             var dLat = (lat2 - lat1).toRad();  // Javascript functions in radians
             
-            alert("dLat es " + dLat)
             var dLon = (long2 - long1).toRad();
-            alert("dLon es " + dLong)
             
             var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                     Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
                     Math.sin(dLon / 2) * Math.sin(dLon / 2);
             
-            alert("a es " + a)
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            
-            alert("c es " + c)
-            
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));            
             var d = R * c; // Distance in km
-alert("d es " + d)
 
-alert("devuelvo " + Math.floor(d * 1000))
+alert("en calculate distance devuelvo " + Math.floor(d * 1000))
             return Math.floor(d * 1000);
         } catch (e) {
             alert(e)

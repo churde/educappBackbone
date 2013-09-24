@@ -16,10 +16,11 @@ app.taskController = {
 
         app.geolocation.watchPosition({
             success: function(position) {
-alert("watch position llama a update posiyion")
+alert("watch position llama a update position")
                 app.taskController.updatePosition(position);
             },
             error: function(e) {
+        alert("error en watchPosition")
                 alert('code: ' + error.code + '\n' +
                         'message: ' + error.message + '\n');
             },
@@ -44,17 +45,15 @@ alert("watch position llama a update posiyion")
     },
     updatePosition: function(position) {
 
-alert("1")
         this.currentLat = position.coords.latitude;
         this.currentLong = position.coords.longitude;
-        alert("2");
         var coords = {
             lat1: this.currentLat,
             long1: this.currentLong,
             lat2: this.taskData.latitude,
             long2: this.taskData.longitude
         };
-alert("llamo a calculate distances con lat " + this.currentLat + " y long " + this.currentLong)
+        
         this.currentDistance = app.geolocation.calculateDistance(coords);
 
         this.currentAngle = app.geolocation.calculateAngle(coords);
