@@ -4,17 +4,18 @@ var TaskListView = Backbone.View.extend({
         this.render();
     },
 
-    render: function () {
+    render: function (activityData) {
 
         var tasks = this.collection.models;
         
-        $(this.el).html('<div class="tasks"></div>');
+        con("paso activityData ", activityData)
+        
+        $(this.el).html(this.template({activityData: activityData || {}}));
         
         for (var i = 0; i < tasks.length; i++) {
             $('.tasks', this.el).append(new TaskListItemView({model: tasks[i]}).render().el);
         }
         
-        $(this.el).append('<div class="row" id="buttonGroup"><div class="col-xs-6 col-md-6"><button type="button" class="btn btn-info btn-lg" onclick="app.router.back()"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button></div></div>');
         
         return this;
     }
@@ -36,4 +37,15 @@ var TaskListItemView = Backbone.View.extend({
         return this;
     }
 
+});
+
+var TaskView = Backbone.View.extend({
+    initialize: function() {
+        this.listenTo(this.model, "change", this.render);
+    },
+    render: function() {
+        // it could be passed also as  this.template(this.model.toJson() )
+        $(this.el).html(this.template(this.model.attributes));
+        return this;
+    }
 });

@@ -21,8 +21,6 @@
         <link href="css/task.css" rel="stylesheet">
         <link href="css/actCard.css" rel="stylesheet" media="screen">
         
-        <!--<script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>-->
-        <!--<script src="http://debug.phonegap.com/target/target-script-min.js#es.uniovi.educapp"></script>-->
         
     </head>
 
@@ -44,6 +42,7 @@
         <script src="lib/js/jquery-1.10.2.js"></script>
         <script src="lib/js/underscore-min.js"></script>
         <script src="lib/js/backbone-1.0.0.js"></script>
+        <!--<script src="lib/js/backbone.dualstorage.js"></script>-->
         <script src="lib/js/bootstrap.js"></script>
         <script src="lib/js/date.js"></script>
 
@@ -51,26 +50,29 @@
         <!-- NOTE: memorystore.js will set up an in-memory datastore to allow you to experience the app without setting up
         back-end infrastructure. All the changes you make to the data will be lost the next time you access the app or hit Refresh.
         To use the app with a persistent RESTful back-end (provided in the GitHub repo), simply comment out the line below. -->
-        <!--<script src="js/memorystore.js"></script>-->
+        <!--<script src="js/utils/memorystore.js"></script>-->
         
         <script src="js/main.js"></script>
-        <script src="js/utils.js"></script>
+        
+        <script src="lib/js/backbone.localStorage.js"></script>
+        
+        <script src="js/controllers/taskController.js"></script>
+        <script src="js/controllers/loginController.js"></script>
+        
+        
+        <script src="js/utils/geolocation.js"></script>
+        <script src="js/utils/utils.js"></script>
+        <script src="js/utils/server.js"></script>
+        
         <script src="js/models/models.js"></script>
+        
         <script src="js/views/paginator.js"></script>
         <script src="js/views/header.js"></script>
-        
-
-        <script src="js/views/activityList.js"></script>
-        <script src="js/views/activityCard.js"></script>
-
-
-        <script src="js/views/taskList.js"></script>
+        <script src="js/views/activity.js"></script>
+        <script src="js/views/task.js"></script>
+        <script src="js/views/login.js"></script>
         
         <script src="js/router.js"></script>
-        <script src="js/geolocation.js"></script>
-        <script src="js/taskController.js"></script>
-
-
 
     </body>
 </html>

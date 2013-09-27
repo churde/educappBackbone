@@ -84,7 +84,8 @@
     
     position: absolute;
     top: 200px;
-    left: 100px;
+    width: 90%;
+    left: 5%;
     
     background-color: white;
 }

@@ -13,7 +13,7 @@ app.taskController = {
     init: function(_args) {
 
         this.taskData = _args.taskData;
-        
+
         app.geolocation.watchPosition({
             success: function(position) {
                 app.taskController.updatePosition(position);
@@ -73,15 +73,15 @@ app.taskController = {
         var angle = this.currentAngle - this.currentHeading;
 
         var distanceIndicator = $(".distanceIndicator");
-        if(this.currentDistance !== null){
+        if (this.currentDistance !== null) {
             distanceIndicator.html(this.currentDistance + " metros");
         }
-        else{
+        else {
             distanceIndicator.html("Calculando distancia...");
         }
 
         var compassArrow = $(".compassArrow");
-        
+
         compassArrow.css('transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-ms-transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-webkit-transform', 'rotate(' + angle + 'deg)');
@@ -128,6 +128,9 @@ app.taskController = {
 
     },
     showOverlay: function(isShown) {
+
+//xxx
+        isShown = true;
         if (isShown) {
             $('.questionsOverlay').show();
             $('.taskMainContainer').addClass('overlayBackground');
@@ -137,5 +140,31 @@ app.taskController = {
             $('.taskMainContainer').removeClass('overlayBackground');
         }
 
+    },
+    // QUESTIONS
+    saveQuestions: function() {
+        $('.question .answer').each(function(index, element) {
+
+            var element = $(element);
+
+            var id = element.attr('id');
+            var answer = element.val();
+
+            app.dataModel.questions.save({
+                __questionOpenId: id,
+                answer: answer,
+                userId: app.dataModel.currentUser.get('id')
+            });
+
+        });
+        
+        this.sendQuestionToServer();
+
+    },
+    sendQuestionToServer: function() {
+        
+        app.dataModel.questions.send();
+        
+        
     }
 }

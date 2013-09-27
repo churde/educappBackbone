@@ -2,14 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/Applications/MAMP/htdocs/educapp/tpl/TaskView.html</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/css/task.css</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/js/taskController.js</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/js/geolocation.js</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/index.html</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/config.xml</file>
         <file>file:/Applications/MAMP/htdocs/educapp/js/router.js</file>
         <file>file:/Applications/MAMP/htdocs/educapp/js/models/models.js</file>
-        <file>file:/Applications/MAMP/htdocs/educapp/js/views/activityList.js</file>
+        <file>file:/Applications/MAMP/htdocs/educapp/js/controllers/taskController.js</file>
     </open-files>
 </project-private>

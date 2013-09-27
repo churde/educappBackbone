@@ -1,74 +1,119 @@
 var urlRoot;
 
-var isDev = false;
+var isDev = true;
 
-if(isDev){
-    urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/get-activities";
+if (isDev) {
+    urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/";
 }
-else{
-    urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/pre/public/api/get-activities";
+else {
+    urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/pre/public/api/";
 }
+
+
+app.dataModel = {
+    currentUser: {
+        set: function(_args) {
+
+            var model = new CurrentUser(_args);
+
+            app.router.currentUserCollection.add(model);
+
+            model.save();
+
+//                Backbone.serverSync('update', currentUserModel);
+
+        },
+        get: function(attr) {
+
+            var currentUser = app.router.currentUserCollection.findWhere({isLogged: true});
+
+            return typeof currentUser !== 'undefined' ? currentUser.get(attr) : false;
+        },
+        isLogged: function() {
+            return this.get("isLogged");
+        },
+        clear: function() {
+            app.router.currentUserCollection.destroyAll();
+        }
+    },
+    questions: {
+        save: function(_args) {
+            var model = new Question(_args);
+
+            app.router.questionCollection.add(model);
+
+            model.save();
+        },
+        send: function() {
+    
+            app.router.questionCollection.fetch();
+            
+            Backbone.serverSync('update', app.router.questionCollection);
+        }
+    }
+}
+
 
 
 // Activity List
-
-
-
 var Activity = Backbone.Model.extend({
-    urlRoot: urlRoot, //"api/wines",
+//    urlRoot: urlRoot + "get-activities", //"api/wines",
     idAttribute: '__activityId',
-    
     defaults: {
-        
     }
 });
 
-//alert("esto es model.js")
-try {
-    var ActivityCollection = Backbone.Collection.extend({
+var ActivityCollection = Backbone.Collection.extend({
     model: Activity,
-    url: urlRoot
+    url: urlRoot + "get-activities",
 });
-} catch (e) {
-    alert("error al declarar ActCollection")
-    alert(e)
-}
-
-
-
-
-// Activity Card
-
-//var ActivityCard = Backbone.Model.extend({
-//    // param id is added as /:id
-//    urlRoot: "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/get-activity/id", //"api/wines",
-//    idAttribute: '__activityId',
-//
-//    defaults: {
-//        __activityId: "",
-//        description: ""
-//    }
-//});
 
 
 var Task = Backbone.Model.extend({
-    urlRoot: urlRoot, //"api/wines",
+//    urlRoot: urlRoot, //"api/wines",
     idAttribute: '__taskId',
-    
     defaults: {
-        
     }
 });
 
 
 var TaskCollection = Backbone.Collection.extend({
     model: Task,
-    url: urlRoot
+//    url: urlRoot
+});
+
+var CurrentUser = Backbone.Model.extend({
+//    urlRoot: urlRoot,
+//    idAttribute: '__userId',
+    defaults: {
+    }
 });
 
 
+var CurrentUserCollection = Backbone.Collection.extend({
+    model: CurrentUser,
+//    local: true,
+//    remote: false
+    localStorage: new Backbone.LocalStorage("currentUser"), //new Backbone.LocalStorage("CurrentUser")
+    url: urlRoot
+});
 
+var urlRest = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/rest";
 
+var Question = Backbone.Model.extend({
+    idAttribute: '__questionOpenId',
+//    url: urlRest,
+    defaults: {
+    }
+});
+
+var QuestionCollection = Backbone.Collection.extend({
+    model: Question,
+//    local: true,
+//    remote: false
+    localStorage: new Backbone.LocalStorage("questions"), //new Backbone.LocalStorage("CurrentUser")
+    url: urlRest// urlRoot + "save-questions"
+});
 
 
 
@@ -89,7 +134,6 @@ var TaskCollection = Backbone.Collection.extend({
 
 window.Wine = Backbone.Model.extend({
     urlRoot: "api/wines",
-
     initialize: function() {
         this.validators = {};
 

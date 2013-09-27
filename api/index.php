@@ -14,33 +14,7 @@ $app->delete('/wines/:id',	'deleteWine');
 $app->run();
 
 function getWines() {
-    
-    
-    $wines = array(
-        array(
-            "id" => 1,
-            "name"=> "CHATEAU DE SAINT COSME",
-            "year"=> "2009",
-            "grapes"=> "Grenache / Syrah",
-            "country"=> "France",
-            "region"=> "Southern Rhone",
-            "description"=> "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.",
-            "picture"=> "saint_cosme.jpg"
-        )
-    );
-    
-    echo json_encode($wines);
-    exit;
-    
-    echo '[{id: 1,
-            name: "CHATEAU DE SAINT COSME",
-            year: "2009",
-            grapes: "Grenache / Syrah",
-            country: "France",
-            region: "Southern Rhone",
-            description: "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.",
-            picture: "saint_cosme.jpg"}]';
-    exit;
+        
 	$sql = "select * FROM wine ORDER BY name";
 	try {
 		$db = getConnection();

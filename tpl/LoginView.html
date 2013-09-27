@@ -1,0 +1,19 @@
+<div class="loginContainer">
+
+
+    <form id="formLogin" role="form">
+        <div class="form-group">
+            <label for="user">Usuario</label>
+            <input type="" class="form-control" id="user" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="psw">Password</label>
+            <input type="password" class="form-control" id="psw" placeholder="">
+        </div>
+        
+        <button class="btn btn-default" onclick="app.loginController.validateLogin({isGuest: false})">Entrar</button>
+        <button class="btn btn-default" onclick="app.loginController.validateLogin({isGuest: true})">Entrar como Invitado</button>
+    </form>
+</div>
+
+

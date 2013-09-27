@@ -29,16 +29,21 @@
 
 
         <div class="name" id="description"><%= description %></div>
+        <h4>Preguntas:</h4>
+        <div class="questionsContainer">
 
-        <div class="questionsContainer"><h4>Preguntas:</h4></div>
+            <% for(var i in questionOpenGeo) { %>
 
-        <% for(var i in questionOpenGeo) { %>
+            <div class="form-group question">
+                <label for="user"><%= questionOpenGeo[i].title %></label>
+                <textarea type="" rows="6" class="form-control answer" id="<%= questionOpenGeo[i].__questionOpenId%>" placeholder=""></textarea>
+            </div>
 
-        <div class="question"><%= questionOpenGeo[i].title %></div>
+            <% } %>
 
-
-        <% } %>
+        </div>
+        
+        <button class="btn btn-default" onclick="app.taskController.saveQuestions()">Responder</button>
     </div>
 </div>
-
 
