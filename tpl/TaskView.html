@@ -1,8 +1,9 @@
 
 <div class="taskContainer">
     <div class="row" id="buttonGroup">
-        <button id="testModeButton" class="btn btn-default" onclick="app.taskController.changeTestMode()"></button>
-        <button id="changeRadarViewButton" class="btn btn-default" onclick="app.taskController.changeRadarView()"></button>
+        <button id="btnViewNormal" class="btnView btn btn-default" onclick="app.taskController.changeView('normal')">Vista Normal</button>
+        <button id="btnViewRadar" class="btnView btn btn-default" onclick="app.taskController.changeView('radar')">Vista Radar</button>
+        <button id="btnViewQuestions" class="btnView btn btn-default" onclick="app.taskController.changeView('questions')">Vista Preguntas</button>
     </div>
     
     <div class="taskMainContainer">

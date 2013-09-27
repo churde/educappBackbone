@@ -9,8 +9,7 @@ app.taskController = {
     currentDistance: null,
     currentAngle: null,
     currentHeading: 0,
-    testMode: null,
-    showQuestions: null,
+    viewMode: 'normal',
     isInTarget: null,
     init: function(_args) {
 
@@ -44,11 +43,12 @@ app.taskController = {
 
 
         //DEV . Al llamar a las funciones de changeRadarView y changeTestMode los valores siguientes se cambiarán.
-        this.testMode = false;
-        this.showQuestions = false;
-
-        this.changeTestMode();
-        this.changeRadarView();
+        this.changeView(this.viewMode);
+//        this.testMode = false;
+//        this.showQuestions = false;
+//
+//        this.changeTestMode();
+//        this.changeRadarView();
 
 
     },
@@ -134,18 +134,30 @@ app.taskController = {
         }
 
     },
-    changeTestMode: function() {
-        this.testMode = !this.testMode;
+    changeView: function(view) {
+        this.viewMode = view;
 
-        $("#testModeButton").html(this.testMode ? "Cambiar a modo NORMAL" : "Cambiar a modo TEST");
+        $(".btnView").attr("disabled", false);
 
-        if (this.testMode) {
-            $("#changeRadarViewButton").show();
+
+        switch(this.viewMode){
+            case 'normal':
+                $("#btnViewNormal").attr("disabled", true);
+                break;
+                
+            case 'questions':
+                $("#btnViewQuestions").attr("disabled", true);
+                
+                break;
+                
+            case 'radar':
+                $("#btnViewRadar").attr("disabled", true);
+                
+                break;
+                
         }
-        else {
-            $("#changeRadarViewButton").hide();
-        }
-
+        
+         this.showOverlay();
 
     },
     changeRadarView: function() {
@@ -158,8 +170,15 @@ app.taskController = {
     },
     showOverlay: function(isShown) {
 
-//xxx
-        isShown = this.testMode ? this.showQuestions : isShown;
+        
+        if(this.viewMode === 'questions'){
+            isShown = true;
+        }
+        if(this.viewMode === 'radar'){
+            isShown = false;
+        }
+        
+        
         if (isShown) {
             $('.questionsOverlay').show();
             $('.taskMainContainer').addClass('overlayBackground');
