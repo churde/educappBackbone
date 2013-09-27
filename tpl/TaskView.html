@@ -1,8 +1,13 @@
 
 <div class="taskContainer">
-
+    <div class="row" id="buttonGroup">
+        <button id="testModeButton" class="btn btn-default" onclick="app.taskController.changeTestMode()"></button>
+        <button id="changeRadarViewButton" class="btn btn-default" onclick="app.taskController.changeRadarView()"></button>
+    </div>
+    
     <div class="taskMainContainer">
-
+        
+        
         <div class="taskHeader">
             Sigue las instrucciones del radar para llegar a la tarea
         </div>
@@ -43,7 +48,7 @@
 
         </div>
         
-        <button class="btn btn-default" onclick="app.taskController.saveQuestions()">Responder</button>
+        <button class="btn btn-default" onclick="app.taskController.saveQuestions(<%= __taskId %>)">Responder</button>
     </div>
 </div>
 

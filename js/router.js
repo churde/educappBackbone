@@ -140,31 +140,6 @@ var AppRouter = Backbone.Router.extend({
         this.navigate('', true);
     },
     login: function() {
-
-
-//app.dataModel.currentUser.set({name: 'xur'});
-//this.currentUserCollection.model.save();
-
-
-//var testModel = new CurrentUser({
-//    name: 'otro',
-//    isLogged: true
-//});
-//
-//this.currentUserCollection.add(testModel);
-//
-//testModel.save();
-
-//this.currentUserCollection.fetch(
-//                {success: function() {
-//                        var name = app.dataModel.currentUser.get("name");
-//
-//                    }}
-//        );
-
-
-
-
         $("#content").html(this.loginView.render().el);
     },
     activityList: function() {
@@ -191,7 +166,6 @@ var AppRouter = Backbone.Router.extend({
         this.activityCardView.model = this.activityModel;
 
         $("#content").html(this.activityCardView.render().el);
-
 
     },
     taskList: function() {

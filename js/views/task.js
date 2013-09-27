@@ -8,12 +8,12 @@ var TaskListView = Backbone.View.extend({
 
         var tasks = this.collection.models;
         
-        con("paso activityData ", activityData)
-        
         $(this.el).html(this.template({activityData: activityData || {}}));
         
         for (var i = 0; i < tasks.length; i++) {
             $('.tasks', this.el).append(new TaskListItemView({model: tasks[i]}).render().el);
+            
+            con("la tarea tiene datos: ", tasks[i]);
         }
         
         

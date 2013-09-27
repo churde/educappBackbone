@@ -36,19 +36,45 @@ app.dataModel = {
             app.router.currentUserCollection.destroyAll();
         }
     },
+    tasks: {
+        markAsAnswered: function(taskId) {
+
+            con("en model tasks mark As Answered con taskId " + taskId)
+            
+            con("los modelos de taskList son ", app.router.taskListCollection.models)
+            
+            var task = app.router.taskListCollection.findWhere({__taskId: taskId.toString()});
+            
+            
+            con("task model recuperado de la collection es ", task)
+            
+            task.set('isAnswered', true);
+            
+            
+        }
+    },
     questions: {
         save: function(_args) {
-            var model = new Question(_args);
+            var model = new Question(_args.data);
 
             app.router.questionCollection.add(model);
 
             model.save();
+
+            if (_args.success) {
+                _args.success();
+            }
         },
         send: function() {
-    
+
             app.router.questionCollection.fetch();
-            
+
             Backbone.serverSync('update', app.router.questionCollection);
+        },
+        isQuestionAnswered: function(questionId) {
+            var question = app.router.questionCollection.findWhere({__questionOpenId: questionId});
+
+            return typeof question !== "undefined";
         }
     }
 }

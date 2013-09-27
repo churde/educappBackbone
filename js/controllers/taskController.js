@@ -9,6 +9,8 @@ app.taskController = {
     currentDistance: null,
     currentAngle: null,
     currentHeading: 0,
+    testMode: null,
+    showQuestions: null,
     isInTarget: null,
     init: function(_args) {
 
@@ -39,6 +41,14 @@ app.taskController = {
                 frecuency: 20
             }
         });
+
+
+        //DEV . Al llamar a las funciones de changeRadarView y changeTestMode los valores siguientes se cambiarán.
+        this.testMode = false;
+        this.showQuestions = false;
+
+        this.changeTestMode();
+        this.changeRadarView();
 
 
     },
@@ -123,14 +133,33 @@ app.taskController = {
             alert(e)
         }
 
+    },
+    changeTestMode: function() {
+        this.testMode = !this.testMode;
+
+        $("#testModeButton").html(this.testMode ? "Cambiar a modo NORMAL" : "Cambiar a modo TEST");
+
+        if (this.testMode) {
+            $("#changeRadarViewButton").show();
+        }
+        else {
+            $("#changeRadarViewButton").hide();
+        }
 
 
+    },
+    changeRadarView: function() {
 
+        this.showQuestions = !this.showQuestions;
+
+        $("#changeRadarViewButton").html(this.showQuestions ? "Modo test: Ver Radar" : "Modo Test: Ver Preguntas");
+
+        this.showOverlay();
     },
     showOverlay: function(isShown) {
 
 //xxx
-        isShown = true;
+        isShown = this.testMode ? this.showQuestions : isShown;
         if (isShown) {
             $('.questionsOverlay').show();
             $('.taskMainContainer').addClass('overlayBackground');
@@ -142,29 +171,53 @@ app.taskController = {
 
     },
     // QUESTIONS
-    saveQuestions: function() {
-        $('.question .answer').each(function(index, element) {
+    saveQuestions: function(taskId) {
+con("en saveQ con taskId " + taskId)
+        var save = confirm("¿Guardar respuestas? Una vez guardadas volverás a la lista de tareas")
 
-            var element = $(element);
+        if (save) {
+            $('.question .answer').each(function(index, element) {
 
-            var id = element.attr('id');
-            var answer = element.val();
+                var element = $(element);
 
-            app.dataModel.questions.save({
-                __questionOpenId: id,
-                answer: answer,
-                userId: app.dataModel.currentUser.get('id')
+                var id = element.attr('id');
+                var answer = element.val();
+
+                app.dataModel.questions.save({
+                    data: {
+                        __questionOpenId: id,
+                        answer: answer,
+                        userId: app.dataModel.currentUser.get('id')
+                    },
+                    success: function() {
+                        
+                        // Mark task as answered
+                        app.dataModel.tasks.markAsAnswered(taskId)
+                        
+                        Backbone.history.navigate("/tasks", true);
+                        
+                    }
+
+                });
+
             });
+        }
 
-        });
-        
-        this.sendQuestionToServer();
+
+//        this.sendQuestionToServer();
 
     },
     sendQuestionToServer: function() {
+        var send = confirm("Solo deberías enviar la actividad una vez acabadas todas las tareas, pero de momento te dejamos igual ;)  \n\
+Una vez enviada volverás al panel de actividades. ¿Enviar?");
         
-        app.dataModel.questions.send();
-        
-        
+        if(send){
+            app.dataModel.questions.send({
+                success: function(){
+                    Backbone.history.navigate("/activity", true);
+                }
+            });
+        }
+
     }
 }

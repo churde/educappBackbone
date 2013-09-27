@@ -1,6 +1,7 @@
 
 <a href="#tasks/<%= __taskId %>"><div class="name"><h3><%= name %></h3></div></a>
 <div class="description"><%= description %></div>
+<div class="description">Estado: <% if(typeof isAnswered !== 'undefined'){ %> Realizada <% } else { %> Sin Realizar <% } %></div>
 
 <div class="row" id="buttonGroup">
     <div class="col-xs-6 col-md-6"><a class="btn btn-primary btn-lg"  href="#tasks/<%= __taskId %>"><span class="glyphicon glyphicon-pencil"></span> Hacer tarea</a></div>
