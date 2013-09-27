@@ -9,7 +9,11 @@ app.loginController = {
         var success = function(data) {
             if (data.status) {
                 app.loginController.login(data.user);
-                app.router.navigate('', true);
+                
+                window.setTimeout(function(){
+                    app.router.navigate('', true);
+                }, 1000);
+                
             }
             else {
                 alert("Login incorrecto");
