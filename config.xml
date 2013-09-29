@@ -24,6 +24,9 @@
     <!--<icon src="icons/uniovi.png" width="72" height="72" />-->
     <plugin name="Geolocation" value="CDVLocation" />
     
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+
     <!--Allow access from any url--> 
     <access origin="*" />
     
