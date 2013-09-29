@@ -10,7 +10,7 @@ var ActivityListView = Backbone.View.extend({
             $(this.el).html('<div class="activities"></div>');
             
             
-            alert("renderizando activity list con len " + activities.length)
+//            alert("renderizando activity list con len " + activities.length)
             
             for (var i = 0; i < activities.length; i++) {
                 $('.activities', this.el).append(new ActivityListItemView({model: activities[i]}).render().el);
@@ -34,8 +34,8 @@ var ActivityListItemView = Backbone.View.extend({
     render: function() {
         try {
             
-            alert("en render de list item activity tengo model")
-            alert(JSON.stringify(this.model.toJSON()));
+//            alert("en render de list item activity tengo model")
+//            alert(JSON.stringify(this.model.toJSON()));
             
             $(this.el).html(this.template(this.model.toJSON()));
             return this;

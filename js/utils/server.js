@@ -17,6 +17,8 @@ alert("server.validateLogin, llamo a ajax")
                 alert(data);
             }
         });
+        
+        alert("despues de haber llamado al ajax")
     },
     
     sendTaskQuestions: function(_args){
