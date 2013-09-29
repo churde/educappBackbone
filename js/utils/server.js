@@ -8,7 +8,7 @@ alert("server.validateLogin, llamo a ajax")
             type: 'GET',
             url: this.path + 'login',
             data: _args.data,
-//            jsonp: 'callback',
+            jsonp: 'callback',
 // 'jsonp' type for CROSS DOMAIN !!! 
             dataType: 'jsonp',
             success: _args.success,
