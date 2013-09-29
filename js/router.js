@@ -68,10 +68,10 @@ alert("en el initialize de router")
 
             // Activity MODEL
             this.activityModel = new Activity();
-
+alert("antes de act list view")
             // Activity List View
             this.activityListView = new ActivityListView({collection: this.activityListCollection});
-
+alert("antes de act list item view")
             // Activity List Item View
             this.activityListItemView = new ActivityListItemView({model: this.activityModel});
 
@@ -138,11 +138,15 @@ alert("en el initialize de router")
         $("#content").html(this.loginView.render().el);
     },
     activityList: function() {
+
+alert("en act list")
         if (!app.dataModel.currentUser.isLogged()) {
+            
+            alert("el usuario no está logeado, lo envío a login")
             this.navigate('/login');
             return;
         }
-
+alert("si llego aquí es que el usuario está logueado")
         this.activityListCollection.fetch(
                 {success: function() {
                         $("#content").html(app.router.activityListView.render().el);
@@ -165,11 +169,8 @@ alert("en el initialize de router")
     },
     taskList: function() {
 
-alert("en taskList")
 
         if (!app.dataModel.currentUser.isLogged()) {
-            
-            alert("el usuario no está logeado, lo envío a login")
             
             this.navigate('/login');
             return;
