@@ -7,11 +7,16 @@ app.loginController = {
         var password = $("#psw").val();
 
         var success = function(data) {
+            
+            alert("en el success de validateLogin")
+            
             if (data.status) {
                 app.loginController.login(data.user);
                 
+                alert("pongo usuario como logeado y en 1 segundo redirijo a activity");
+                
                 window.setTimeout(function(){
-                    app.router.navigate('', true);
+                    app.router.navigate('/activity');
                 }, 1000);
                 
             }

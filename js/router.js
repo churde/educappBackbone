@@ -46,10 +46,6 @@ var AppRouter = Backbone.Router.extend({
         // xxx En el template se pone el nombre del alumno llamando a loginController, pero debería pasarsele el parámetro desde aquí. Ver cómo se hace
         this.headerView = new HeaderView();
         $('.header').html(this.headerView.el);
-//        if (!app.dataModel.currentUser.isLogged()) {            
-//            Backbone.history.navigate("/login", true);
-//        }
-
 
     },
     after: function() {
@@ -115,10 +111,6 @@ var AppRouter = Backbone.Router.extend({
 
             this.currentUserCollection.fetch();
 
-
-
-
-
         } catch (e) {
             alert("error en el initialize de router ");
             alert(e)
@@ -147,7 +139,7 @@ var AppRouter = Backbone.Router.extend({
     },
     activityList: function() {
         if (!app.dataModel.currentUser.isLogged()) {
-            Backbone.history.navigate("/login", true);
+            this.navigate('/login');
             return;
         }
 
@@ -160,7 +152,7 @@ var AppRouter = Backbone.Router.extend({
     },
     activityCard: function(id) {
         if (!app.dataModel.currentUser.isLogged()) {
-            Backbone.history.navigate("/login", true);
+            this.navigate('/login');
             return;
         }
         // The change event in the model is triggered twice here: with .set('id', id) and then with .fetch
@@ -172,10 +164,18 @@ var AppRouter = Backbone.Router.extend({
 
     },
     taskList: function() {
+
+alert("en taskList")
+
         if (!app.dataModel.currentUser.isLogged()) {
-            Backbone.history.navigate("/login", true);
+            
+            alert("el usuario no está logeado, lo envío a login")
+            
+            this.navigate('/login');
             return;
         }
+        
+        alert("el usuario sí está logeado, muestro actividades")
         // get the tasks and add them as a collection to the taskListCollection
         var tasks = this.activityModel.get('tasks');
 
@@ -188,7 +188,7 @@ var AppRouter = Backbone.Router.extend({
     },
     task: function(id) {
         if (!app.dataModel.currentUser.isLogged()) {
-            Backbone.history.navigate("/login", true);
+            this.navigate('/login');
             return;
         }
         // The change event in the model is triggered twice here: with .set('id', id) and then with .fetch
