@@ -60,7 +60,7 @@ var AppRouter = Backbone.Router.extend({
                 return;
             }
             
-alreadyLoaded = true;
+//alreadyLoaded = true;
             alert("en el initialize de router")
             this.routesHit = 0;
             //keep count of number of routes handled by your application
@@ -257,7 +257,7 @@ utils.loadTemplate(['HeaderView',
     'ActivityListItemView', 'ActivityCardView',
     'TaskListItemView', 'TaskListView', 'TaskView'], function() {
 
-    alert("despues de cargar las templates llamo a new AppRouter")
+//    alert("despues de cargar las templates llamo a new AppRouter")
     app.router = new AppRouter();
 
     Backbone.history.start();

@@ -52,7 +52,7 @@ window.utils = {
                 alert(view + " not found");
             }
         });
-alert("dentro de LoadTemaplate llamo al callback")
+        
         $.when.apply(null, deferreds).done(callback);
     },
 
