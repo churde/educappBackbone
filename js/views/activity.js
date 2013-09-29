@@ -1,6 +1,6 @@
 var ActivityListView = Backbone.View.extend({
     initialize: function() {
-        this.render();
+//        this.render();
 
     },
     render: function() {
@@ -35,7 +35,7 @@ var ActivityListItemView = Backbone.View.extend({
         try {
             
             alert("en render de list item activity tengo model")
-            alert(this.model);
+            alert(JSON.stringify(this.model.toJSON()));
             
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
