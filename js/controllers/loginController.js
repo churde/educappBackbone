@@ -44,7 +44,7 @@ app.loginController = {
                 name: 'Invitado',
                 isGuest: true
             });
-            app.router.navigate('', true);
+            app.router.navigate('/activity', true);
         }
 
 

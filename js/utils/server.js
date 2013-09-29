@@ -38,20 +38,5 @@ app.server = {
         });
         
     }
-//    ajax: function(_args) {
-//        $.ajax({
-//            type: _args.type || 'GET',
-//            // Here we have to use the oembed API, because the simple API  (e.g.  api/v2 ) don't work for private videos
-//            url: _args.url,
-//            jsonp: _args.jsonp || 'callback',
-//            dataType: _args.dataType || 'jsonp',
-//            success: _args.success || function(data) {
-//
-//
-//            },
-//            error: _args.error || function(data) {
-//                con("error: ", data)
-//            }
-//        });
-//    }
-}
+    
+};

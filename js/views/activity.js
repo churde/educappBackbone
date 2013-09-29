@@ -16,7 +16,7 @@ var ActivityListView = Backbone.View.extend({
 
             return this;
         } catch (e) {
-            alert("error render act list view" + e)
+            alert("error render act list view. " + e)
         }
 
     }
