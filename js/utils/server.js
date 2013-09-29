@@ -13,7 +13,6 @@ app.server = {
             dataType: 'jsonp',
             success: _args.success,
             error: function(data) {
-                con("error: ", data)
                 alert("error en validateLogin ")
                 alert(data);
             }

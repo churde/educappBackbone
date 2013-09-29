@@ -1,24 +1,26 @@
 app.loginController = {
     validateLogin: function(_args) {
 
+        alert("en la funcion de login.validateLogin")
+
         var isGuest = _args.isGuest;
 
         var user = $("#user").val();
         var password = $("#psw").val();
 
         var success = function(data) {
-            
+
             alert("en el success de validateLogin")
-            
+
             if (data.status) {
                 app.loginController.login(data.user);
-                
+
                 alert("pongo usuario como logeado y en 1 segundo redirijo a activity");
-                
-                window.setTimeout(function(){
+
+                window.setTimeout(function() {
                     app.router.navigate('/activity');
                 }, 1000);
-                
+
             }
             else {
                 alert("Login incorrecto");
@@ -54,7 +56,7 @@ app.loginController = {
         app.dataModel.currentUser.clear();
         app.router.navigate('/login', true);
     }
-            
-            
+
+
 
 }
