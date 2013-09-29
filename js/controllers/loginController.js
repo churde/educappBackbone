@@ -1,4 +1,4 @@
-alert("cargando loginController")
+
 
 app.loginController = {
     validateLogin: function(_args) {
@@ -20,7 +20,7 @@ app.loginController = {
             if (data.status) {
                 app.loginController.login(data.user);
 
-                alert("pongo usuario como logeado y en 1 segundo redirijo a activity");
+//                alert("pongo usuario como logeado y en 1 segundo redirijo a activity");
 
                 window.setTimeout(function() {
                     app.router.navigate('/activity');
