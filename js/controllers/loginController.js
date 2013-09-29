@@ -5,6 +5,9 @@ app.loginController = {
 
         alert("en la funcion de login.validateLogin")
 
+app.router.navigate('/activity');
+return;
+
         var isGuest = _args.isGuest;
 
         var user = $("#user").val();
