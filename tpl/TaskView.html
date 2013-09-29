@@ -5,10 +5,10 @@
         <button id="btnViewRadar" class="btnView btn btn-default" onclick="app.taskController.changeView('radar')">Vista Radar</button>
         <button id="btnViewQuestions" class="btnView btn btn-default" onclick="app.taskController.changeView('questions')">Vista Preguntas</button>
     </div>
-    
+
     <div class="taskMainContainer">
-        
-        
+
+
         <div class="taskHeader">
             Sigue las instrucciones del radar para llegar a la tarea
         </div>
@@ -26,7 +26,9 @@
         </div>
 
         <div class="btn-toolbar">
-            <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-info btn-lg" onclick="app.router.back()"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button></div>
+            <button id='btnTaskPrev' type="button" class="btn btn-info btn-lg" onclick="app.taskController.goToTask('prev')"><span class="glyphicon glyphicon-chevron-left"></span> </button>
+            <button type="button" class="btn btn-info btn-lg" onclick="app.taskController.goToTaskList()"><span class="glyphicon"></span> Listado de tareas</button>
+            <button id='btnTaskNext' type="button" class="btn btn-info btn-lg" onclick="app.taskController.goToTask('next')"><span class="glyphicon glyphicon-chevron-right"></span> </button>
         </div>
     </div>
 
@@ -48,8 +50,8 @@
             <% } %>
 
         </div>
-        
-        <button class="btn btn-default" onclick="app.taskController.saveQuestions(<%= __taskId %>)">Responder</button>
+
+        <button class="btn btn-default" onclick="app.taskController.saveQuestions( < %= __taskId % > )">Responder</button>
     </div>
 </div>
 

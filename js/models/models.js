@@ -20,8 +20,6 @@ app.dataModel = {
 
             model.save();
 
-//                Backbone.serverSync('update', currentUserModel);
-
         },
         get: function(attr) {
 
@@ -38,19 +36,8 @@ app.dataModel = {
     },
     tasks: {
         markAsAnswered: function(taskId) {
-
-            con("en model tasks mark As Answered con taskId " + taskId)
-            
-            con("los modelos de taskList son ", app.router.taskListCollection.models)
-            
-            var task = app.router.taskListCollection.findWhere({__taskId: taskId.toString()});
-            
-            
-            con("task model recuperado de la collection es ", task)
-            
-            task.set('isAnswered', true);
-            
-            
+            var task = app.router.taskListCollection.findWhere({__taskId: taskId.toString()});            
+            task.set('isAnswered', true);  
         }
     },
     questions: {

@@ -3,7 +3,7 @@ app.taskController = {
     minimumDistance: 20,
     proximityDistance1: 50,
     proximityDistance2: 100,
-    proximityDistance3: 20,
+    proximityDistance3: 200,
     currentLat: null,
     currentLong: null,
     currentDistance: null,
@@ -11,6 +11,8 @@ app.taskController = {
     currentHeading: 0,
     viewMode: 'normal',
     isInTarget: null,
+    currentTaskIndex: null,
+    tasksIndex: null,
     init: function(_args) {
 
         this.taskData = _args.taskData;
@@ -42,15 +44,74 @@ app.taskController = {
         });
 
 
+        this.setTasksIndex();
+
+
         //DEV . Al llamar a las funciones de changeRadarView y changeTestMode los valores siguientes se cambiarán.
         this.changeView(this.viewMode);
-//        this.testMode = false;
-//        this.showQuestions = false;
-//
-//        this.changeTestMode();
-//        this.changeRadarView();
 
 
+    },
+    setTasksIndex: function() {
+
+        var tasks = app.router.activityModel.get('tasks');
+
+        this.tasksIndex = [];
+
+        for (var i = 0, l = tasks.length; i < l; i++) {
+            this.tasksIndex[i] = {
+                index: i,
+                id: tasks[i].__taskId
+            }
+
+            if (tasks[i].__taskId === this.taskData.__taskId) {
+                this.currentTaskIndex = i;
+            }
+        }
+        this.updateTaskNavigation();
+    },
+    goToTask: function(task) {
+
+        var taskIdToShow = false;
+
+        switch (task) {
+            case 'next':
+                if (this.currentTaskIndex < this.tasksIndex.length - 1) {
+                    this.currentTaskIndex++;
+                    taskIdToShow = this.tasksIndex[this.currentTaskIndex].id;
+                }
+                break;
+
+            case 'prev':
+                if (this.currentTaskIndex > 0) {
+                    this.currentTaskIndex--;
+                    taskIdToShow = this.tasksIndex[this.currentTaskIndex].id;
+                }
+                break;
+        }
+
+        if (taskIdToShow) {
+            app.router.navigate('/tasks/' + taskIdToShow);
+        }
+        
+        this.updateTaskNavigation();
+
+    },
+    updateTaskNavigation: function() {
+        
+
+        $("#btnTaskPrev").attr("disabled", false);
+        $("#btnTaskNext").attr("disabled", false);
+
+        if (this.currentTaskIndex === 0) {
+            $("#btnTaskPrev").attr("disabled", true);
+        }
+        if (this.currentTaskIndex === this.tasksIndex.length - 1) {
+            $("#btnTaskNext").attr("disabled", true);
+        }
+    },
+    goToTaskList: function() {
+        app.router.navigate('/tasks');
     },
     updatePosition: function(position) {
 
@@ -135,50 +196,40 @@ app.taskController = {
 
     },
     changeView: function(view) {
-        this.viewMode = view;
 
+        this.viewMode = view;
         $(".btnView").attr("disabled", false);
 
-
-        switch(this.viewMode){
+        switch (this.viewMode) {
             case 'normal':
                 $("#btnViewNormal").attr("disabled", true);
                 break;
-                
+
             case 'questions':
                 $("#btnViewQuestions").attr("disabled", true);
-                
+
                 break;
-                
+
             case 'radar':
                 $("#btnViewRadar").attr("disabled", true);
-                
+
                 break;
-                
         }
-        
-         this.showOverlay();
-
-    },
-    changeRadarView: function() {
-
-        this.showQuestions = !this.showQuestions;
-
-        $("#changeRadarViewButton").html(this.showQuestions ? "Modo test: Ver Radar" : "Modo Test: Ver Preguntas");
 
         this.showOverlay();
+
     },
     showOverlay: function(isShown) {
 
-        
-        if(this.viewMode === 'questions'){
+
+        if (this.viewMode === 'questions') {
             isShown = true;
         }
-        if(this.viewMode === 'radar'){
+        if (this.viewMode === 'radar') {
             isShown = false;
         }
-        
-        
+
+
         if (isShown) {
             $('.questionsOverlay').show();
             $('.taskMainContainer').addClass('overlayBackground');
@@ -191,7 +242,7 @@ app.taskController = {
     },
     // QUESTIONS
     saveQuestions: function(taskId) {
-con("en saveQ con taskId " + taskId)
+
         var save = confirm("¿Guardar respuestas? Una vez guardadas volverás a la lista de tareas")
 
         if (save) {
@@ -209,19 +260,13 @@ con("en saveQ con taskId " + taskId)
                         userId: app.dataModel.currentUser.get('id')
                     },
                     success: function() {
-                        
                         // Mark task as answered
                         app.dataModel.tasks.markAsAnswered(taskId)
-                        
                         Backbone.history.navigate("/tasks", true);
-                        
                     }
-
                 });
-
             });
         }
-
 
 //        this.sendQuestionToServer();
 
@@ -229,10 +274,10 @@ con("en saveQ con taskId " + taskId)
     sendQuestionToServer: function() {
         var send = confirm("Solo deberías enviar la actividad una vez acabadas todas las tareas, pero de momento te dejamos igual ;)  \n\
 Una vez enviada volverás al panel de actividades. ¿Enviar?");
-        
-        if(send){
+
+        if (send) {
             app.dataModel.questions.send({
-                success: function(){
+                success: function() {
                     Backbone.history.navigate("/activity", true);
                 }
             });

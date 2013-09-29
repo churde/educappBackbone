@@ -42,14 +42,14 @@ var AppRouter = Backbone.Router.extend({
 
     },
     before: function() {
-        
-            // xxx En el template se pone el nombre del alumno llamando a loginController, pero debería pasarsele el parámetro desde aquí. Ver cómo se hace
-            this.headerView = new HeaderView();
-            $('.header').html(this.headerView.el);
+
+        // xxx En el template se pone el nombre del alumno llamando a loginController, pero debería pasarsele el parámetro desde aquí. Ver cómo se hace
+        this.headerView = new HeaderView();
+        $('.header').html(this.headerView.el);
 //        if (!app.dataModel.currentUser.isLogged()) {            
 //            Backbone.history.navigate("/login", true);
 //        }
-        
+
 
     },
     after: function() {
@@ -109,15 +109,15 @@ var AppRouter = Backbone.Router.extend({
 
             // Questions
             this.questionModel = new Question();
-            
+
             this.questionCollection = new QuestionCollection({model: this.questionModel});
 
 
             this.currentUserCollection.fetch();
-            
-            
-            
-            
+
+
+
+
 
         } catch (e) {
             alert("error en el initialize de router ");
@@ -135,6 +135,9 @@ var AppRouter = Backbone.Router.extend({
             this.navigate('app/', {trigger: true, replace: true});
         }
     },
+    navigate: function(url) {
+        Backbone.history.navigate(url, true);
+    },
     refresh: function() {
         this.activityList();
         this.navigate('', true);
@@ -143,11 +146,11 @@ var AppRouter = Backbone.Router.extend({
         $("#content").html(this.loginView.render().el);
     },
     activityList: function() {
-        if (!app.dataModel.currentUser.isLogged()) {            
+        if (!app.dataModel.currentUser.isLogged()) {
             Backbone.history.navigate("/login", true);
             return;
         }
-        
+
         this.activityListCollection.fetch(
                 {success: function() {
                         $("#content").html(app.router.activityListView.render().el);
@@ -156,7 +159,7 @@ var AppRouter = Backbone.Router.extend({
 
     },
     activityCard: function(id) {
-        if (!app.dataModel.currentUser.isLogged()) {            
+        if (!app.dataModel.currentUser.isLogged()) {
             Backbone.history.navigate("/login", true);
             return;
         }
@@ -169,22 +172,22 @@ var AppRouter = Backbone.Router.extend({
 
     },
     taskList: function() {
-        if (!app.dataModel.currentUser.isLogged()) {            
+        if (!app.dataModel.currentUser.isLogged()) {
             Backbone.history.navigate("/login", true);
             return;
         }
         // get the tasks and add them as a collection to the taskListCollection
         var tasks = this.activityModel.get('tasks');
 
-        this.taskListCollection.reset();
+        this.taskListCollection.reset(tasks);
         // Add the tasks to the collection
-        this.taskListCollection.add(tasks);
+//        this.taskListCollection.add(tasks);
 
         $("#content").html(app.router.taskListView.render(this.activityModel.attributes).el);
 
     },
     task: function(id) {
-        if (!app.dataModel.currentUser.isLogged()) {            
+        if (!app.dataModel.currentUser.isLogged()) {
             Backbone.history.navigate("/login", true);
             return;
         }
