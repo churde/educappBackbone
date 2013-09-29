@@ -54,7 +54,7 @@ var AppRouter = Backbone.Router.extend({
     initialize: function() {
         try {
 
-
+alert("en el initialize de router")
             this.routesHit = 0;
             //keep count of number of routes handled by your application
             Backbone.history.on('route', function() {

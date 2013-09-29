@@ -29,6 +29,7 @@ app.loginController = {
         }
 
         if (!isGuest) {
+            alert("no es guest: le paso user " + user + " y psw " + password)
             app.server.validateLogin({
                 data: {
                     user: user,
@@ -38,6 +39,7 @@ app.loginController = {
             });
         }
         else {
+            alert("SI ES GUEST")
             app.loginController.login({
                 name: 'Invitado',
                 isGuest: true
