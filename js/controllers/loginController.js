@@ -1,3 +1,5 @@
+alert("cargando loginController")
+
 app.loginController = {
     validateLogin: function(_args) {
 

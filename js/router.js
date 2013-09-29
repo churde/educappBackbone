@@ -153,10 +153,10 @@ var AppRouter = Backbone.Router.extend({
 //            return;
         }
         else {
-            alert("ACT list, usuario logueado")
+//            alert("ACT list, usuario logueado")
             this.activityListCollection.fetch(
                     {success: function() {
-                            alert("success de get activities, llamo a render")
+//                            alert("success de get activities, llamo a render")
                             $("#content").html(app.router.activityListView.render().el);
                         }}
             );
