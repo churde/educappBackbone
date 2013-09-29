@@ -57,7 +57,9 @@ app.loginController = {
 
     },
     login: function(user) {
+alert("en app.login pongo al usuario como logeado")
         app.dataModel.currentUser.set(app.utils.combineJson(user, {isLogged: true}));
+        alert("en app.login despues de poner al usuario como logueado")
     },
     logout: function() {
         app.dataModel.currentUser.clear();

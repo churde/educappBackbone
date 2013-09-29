@@ -13,13 +13,13 @@ else {
 app.dataModel = {
     currentUser: {
         set: function(_args) {
-
+alert("datamodel currentUser set 1")
             var model = new CurrentUser(_args);
-
+alert("2")
             app.router.currentUserCollection.add(model);
-
+alert("3")
             model.save();
-
+alert("4")
         },
         get: function(attr) {
 
