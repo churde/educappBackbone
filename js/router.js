@@ -1,3 +1,5 @@
+var alreadyLoaded;
+
 Backbone.Router.prototype.before = function() {
 };
 Backbone.Router.prototype.after = function() {
@@ -53,7 +55,12 @@ var AppRouter = Backbone.Router.extend({
     },
     initialize: function() {
         try {
-
+            
+            if(alreadyLoaded){
+                return;
+            }
+            
+alreadyLoaded = true;
             alert("en el initialize de router")
             this.routesHit = 0;
             //keep count of number of routes handled by your application
