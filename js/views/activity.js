@@ -33,7 +33,7 @@ var ActivityListItemView = Backbone.View.extend({
         try {
             
             alert("en render de list item activity tengo model")
-            alert(this.model.toJSON());
+            alert(this.model);
             
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
