@@ -243,7 +243,7 @@ var AppRouter = Backbone.Router.extend({
     }
 });
 
-
+alert("esto es la raiz de router, desde donde se llama a loadTemaplates")
 
 utils.loadTemplate(['HeaderView',
     'LoginView',

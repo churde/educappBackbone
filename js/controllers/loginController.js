@@ -29,7 +29,7 @@ app.loginController = {
         }
 
         if (!isGuest) {
-            alert("no es guest: le paso user " + user + " y psw " + password)
+            
             app.server.validateLogin({
                 data: {
                     user: user,
