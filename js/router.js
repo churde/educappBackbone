@@ -246,6 +246,9 @@ utils.loadTemplate(['HeaderView',
     'LoginView',
     'ActivityListItemView', 'ActivityCardView',
     'TaskListItemView', 'TaskListView', 'TaskView'], function() {
+    
+    alert("despues de cargar las templates llamo a new AppRouter")
     app.router = new AppRouter();
+    
     Backbone.history.start();
 });
