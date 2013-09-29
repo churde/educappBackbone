@@ -54,7 +54,7 @@ var AppRouter = Backbone.Router.extend({
     initialize: function() {
         try {
 
-alert("en el initialize de router")
+            alert("en el initialize de router")
             this.routesHit = 0;
             //keep count of number of routes handled by your application
             Backbone.history.on('route', function() {
@@ -68,10 +68,10 @@ alert("en el initialize de router")
 
             // Activity MODEL
             this.activityModel = new Activity();
-            
+
             // Activity List View
             this.activityListView = new ActivityListView({collection: this.activityListCollection});
-            
+
             // Activity List Item View
             this.activityListItemView = new ActivityListItemView({model: this.activityModel});
 
@@ -140,18 +140,21 @@ alert("en el initialize de router")
     activityList: function() {
 
         if (!app.dataModel.currentUser.isLogged()) {
-            
+
             alert("ACT list: el usuario no está logeado, lo envío a login")
             this.navigate('/login');
-            return;
+//            return;
         }
-alert("ACT list, usuario logueado")
-        this.activityListCollection.fetch(
-                {success: function() {
-                alert("success de get activities, llamo a render")
-                        $("#content").html(app.router.activityListView.render().el);
-                    }}
-        );
+        else {
+            alert("ACT list, usuario logueado")
+            this.activityListCollection.fetch(
+                    {success: function() {
+                            alert("success de get activities, llamo a render")
+                            $("#content").html(app.router.activityListView.render().el);
+                        }}
+            );
+        }
+
 
     },
     activityCard: function(id) {
@@ -171,11 +174,11 @@ alert("ACT list, usuario logueado")
 
 
         if (!app.dataModel.currentUser.isLogged()) {
-            
+
             this.navigate('/login');
             return;
         }
-        
+
         alert("el usuario sí está logeado, muestro actividades")
         // get the tasks and add them as a collection to the taskListCollection
         var tasks = this.activityModel.get('tasks');
@@ -246,9 +249,9 @@ utils.loadTemplate(['HeaderView',
     'LoginView',
     'ActivityListItemView', 'ActivityCardView',
     'TaskListItemView', 'TaskListView', 'TaskView'], function() {
-    
+
     alert("despues de cargar las templates llamo a new AppRouter")
     app.router = new AppRouter();
-    
+
     Backbone.history.start();
 });

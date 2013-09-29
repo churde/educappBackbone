@@ -18,7 +18,7 @@
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
 
-    <preference name="load-url-timeout" value="50000" />
+    <preference name="load-url-timeout" value="500000" />
         
     <icon src="icons/uniovi_57px.png" width="57" height="57" />
     <!--<icon src="icons/uniovi.png" width="72" height="72" />-->
