@@ -5,6 +5,7 @@ var ActivityListView = Backbone.View.extend({
     },
     render: function() {
         try {
+            alert("renderizando activity list")
             var activities = this.collection.models;
 
             $(this.el).html('<div class="activities"></div>');

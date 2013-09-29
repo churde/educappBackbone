@@ -68,10 +68,10 @@ alert("en el initialize de router")
 
             // Activity MODEL
             this.activityModel = new Activity();
-alert("antes de act list view")
+            
             // Activity List View
             this.activityListView = new ActivityListView({collection: this.activityListCollection});
-alert("antes de act list item view")
+            
             // Activity List Item View
             this.activityListItemView = new ActivityListItemView({model: this.activityModel});
 
@@ -139,16 +139,16 @@ alert("antes de act list item view")
     },
     activityList: function() {
 
-alert("en act list")
         if (!app.dataModel.currentUser.isLogged()) {
             
-            alert("el usuario no está logeado, lo envío a login")
+            alert("ACT list: el usuario no está logeado, lo envío a login")
             this.navigate('/login');
             return;
         }
-alert("si llego aquí es que el usuario está logueado")
+alert("ACT list, usuario logueado")
         this.activityListCollection.fetch(
                 {success: function() {
+                alert("success de get activities, llamo a render")
                         $("#content").html(app.router.activityListView.render().el);
                     }}
         );
