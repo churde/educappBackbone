@@ -1,4 +1,4 @@
-
+<% con("en taskView tengo data"); con(data); %>
 <div class="taskContainer">
     <div class="row" id="buttonGroup">
         <button id="btnViewNormal" class="btnView btn btn-default" onclick="app.taskController.changeView('normal')">Vista Normal</button>
@@ -14,7 +14,7 @@
         </div>
 
         <div class="taskTitle">
-            Tarea: <%= name %>
+            Tarea: <%= data.name %>
         </div>
 
         <div class="taskRadar">
@@ -33,25 +33,25 @@
     </div>
 
     <div class="questionsOverlay">
-        <div><h3>Tarea Actual: <%= name %></h3></div>
+        <div><h3>Tarea Actual: <%= data.name %></h3></div>
 
 
-        <div class="name" id="description"><%= description %></div>
+        <div class="name" id="description"><%= data.description %></div>
         <h4>Preguntas:</h4>
         <div class="questionsContainer">
 
-            <% for(var i in questionOpenGeo) { %>
+            <% for(var i in data.questionOpenGeo) { %>
 
             <div class="form-group question">
-                <label for="user"><%= questionOpenGeo[i].title %></label>
-                <textarea type="" rows="6" class="form-control answer" id="<%= questionOpenGeo[i].__questionOpenId%>" placeholder=""></textarea>
+                <label for="user"><%= data.questionOpenGeo[i].title %></label>
+                <textarea type="" rows="6" class="form-control answer" id="<%= data.questionOpenGeo[i].__questionOpenId%>" placeholder=""></textarea>
             </div>
 
             <% } %>
 
         </div>
 
-        <button class="btn btn-default" onclick="app.taskController.saveQuestions( <%= __taskId %> )">Responder</button>
+        <button class="btn btn-default" onclick="app.taskController.saveTask( <%= data.__taskId %> )">Responder</button>
     </div>
 </div>
 

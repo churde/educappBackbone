@@ -241,11 +241,14 @@ app.taskController = {
 
     },
     // QUESTIONS
-    saveQuestions: function(taskId) {
+    saveTask: function(taskId) {
 
         var save = confirm("¿Guardar respuestas? Una vez guardadas volverás a la lista de tareas")
 
         if (save) {
+            
+            var aQuestions = [];
+            
             $('.question .answer').each(function(index, element) {
 
                 var element = $(element);
@@ -253,22 +256,19 @@ app.taskController = {
                 var id = element.attr('id');
                 var answer = element.val();
 
-                app.dataModel.questions.save({
-                    data: {
-                        __questionOpenId: id,
-                        answer: answer,
-                        userId: app.dataModel.currentUser.get('id')
-                    },
-                    success: function() {
-                        // Mark task as answered
-                        app.dataModel.tasks.markAsAnswered(taskId)
-                        Backbone.history.navigate("/tasks", true);
-                    }
+                aQuestions.push({
+                    __questionOpenId: id,
+                    answer: answer
                 });
             });
         }
 
-//        this.sendQuestionToServer();
+        app.router.activityUserModel.saveTask({
+            __taskId: taskId,
+            aQuestions: aQuestions
+        });
+        
+        app.router.navigate('/tasks');
 
     },
     sendQuestionToServer: function() {
@@ -276,13 +276,17 @@ app.taskController = {
         // Check if all tasks were answered
         var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
         
-        con("todas las tareas respondidas?", allTasksAnswered)
-        
-        var send = confirm("Solo deberías enviar la actividad una vez acabadas todas las tareas, pero de momento te dejamos igual ;)  \n\
-Una vez enviada volverás al panel de actividades. ¿Enviar?");
+        if(!allTasksAnswered){
+            
+            alert("Para enviar la actividad necesitas realizar TODAS las tareas");
+            return;
+            
+        }
+                
+        var send = confirm("¿Enviar Actividad? Una vez enviada no podrás realizar ningún cambio.");
 
         if (send) {
-            app.dataModel.questions.send({
+            app.router.activityUserModel.sendToServer({
                 success: function() {
                     Backbone.history.navigate("/activity", true);
                 }

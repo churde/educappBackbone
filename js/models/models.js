@@ -14,7 +14,7 @@ app.dataModel = {
     currentUser: {
         set: function(_args) {
 
-            var model = new CurrentUser(_args);
+            var model = new CurrentUserModel(_args);
 
             app.router.currentUserCollection.add(model);
 
@@ -35,102 +35,172 @@ app.dataModel = {
         }
     },
     tasks: {
-        markAsAnswered: function(taskId) {
-            var task = app.router.taskListCollection.findWhere({__taskId: taskId.toString()});
-            task.set('isAnswered', true);
-            task.save();
-        },
         areAllTasksAnswered: function() {
-            var answeredTasks = app.router.taskListCollection.where({isAnswered: true});
-            
-            con("len de respondidas " + answeredTasks.length, "len de Collection " + app.router.taskListCollection.length, "para answeredTasks", answeredTasks)
-            
-            return answeredTasks.length === app.router.taskListCollection.length;
-            
-        }
-    },
-    questions: {
-        save: function(_args) {
-            var model = new Question(_args.data);
-
-            app.router.questionCollection.add(model);
-
-            model.save();
-
-            if (_args.success) {
-                _args.success();
-            }
-        },
-        send: function() {
-
-            app.router.questionCollection.fetch();
-
-            Backbone.serverSync('update', app.router.questionCollection);
-        },
-        isQuestionAnswered: function(questionId) {
-            var question = app.router.questionCollection.findWhere({__questionOpenId: questionId});
-
-            return typeof question !== "undefined";
+            var answeredTasksLength = app.router.activityUserModel.tasks.length;
+            return answeredTasksLength === app.router.taskListCollection.length;
         }
     }
 }
 
 
 
-var CurrentUser = Backbone.Model.extend({
+var CurrentUserModel = Backbone.Model.extend({
     idAttribute: '__userId',
     defaults: {
     }
 });
 
-
 var CurrentUserCollection = Backbone.Collection.extend({
-    model: CurrentUser,
-    localStorage: new Backbone.LocalStorage("currentUser"), 
+    model: CurrentUserModel,
+    localStorage: new Backbone.LocalStorage("currentUser"),
     url: urlRoot
 });
 
-
 // Activity List
-var Activity = Backbone.Model.extend({
+var ActivityModel = Backbone.Model.extend({
     idAttribute: '__activityId',
+    initialize: function()
+    {
+
+
+    },
     defaults: {
     }
 });
 
 var ActivityCollection = Backbone.Collection.extend({
-    model: Activity,
+    model: ActivityModel,
     url: urlRoot + "get-activities",
 });
 
-
-var Task = Backbone.Model.extend({
+var TaskModel = Backbone.Model.extend({
     idAttribute: '__taskId',
     defaults: {
     }
 });
 
-
 var TaskCollection = Backbone.Collection.extend({
-    model: Task,
+    model: TaskModel,
     localStorage: new Backbone.LocalStorage("tasks")
 });
 
 var urlRest = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/rest";
 
-var Question = Backbone.Model.extend({
+
+
+// USER DATA
+var QuestionUserModel = Backbone.Model.extend({
     idAttribute: '__questionOpenId',
     defaults: {
     }
 });
 
-var QuestionCollection = Backbone.Collection.extend({
-    model: Question,
-    localStorage: new Backbone.LocalStorage("questions"), 
+var QuestionUserCollection = Backbone.Collection.extend({
+    model: QuestionUserModel,
+    localStorage: new Backbone.LocalStorage("questionsUser"),
     url: urlRest
 });
 
+var TaskUserModel = Backbone.Model.extend({
+    idAttribute: '__taskId',
+    initialize: function() {
+        this.questions = new QuestionUserCollection();
+        this.questions.parent = this;
+        
+        this.questions.fetch();
+    },
+    saveQuestions: function(aQuestions) {
 
+        for (var i = 0, l = aQuestions.length; i < l; i++) {
+            var questionUserModel = new QuestionUserModel(aQuestions[i]);
+            this.questions.add(questionUserModel);
+            questionUserModel.save();
+            
+            con("he añadido questionUserModel a la collection");
+        }        
+
+    },
+    getQuestion: function(id) {
+        return this.questions.get(id);
+    },
+    defaults: {
+        isAnswered: false
+    }
+});
+
+var TaskUserCollection = Backbone.Collection.extend({
+    model: TaskUserModel,
+    getOrCreate: function(id) {
+        var task = this.get(id);
+        if (!task) {
+            task = new TaskUserModel({'__taskId': id});
+            this.add(task);
+            task.save();
+        }
+
+        return task;
+    },
+    localStorage: new Backbone.LocalStorage("taskUser")
+});
+
+
+var ActivityUserModel = Backbone.Model.extend({
+    idAttribute: '__activityId',
+    initialize: function() {
+        this.tasks = new TaskUserCollection();
+        this.tasks.parent = this;
+        
+        this.tasks.fetch();
+        
+    },
+    saveTask: function(data) {
+        var taskUserModel = new TaskUserModel({
+            '__taskId': data.__taskId,
+            'isAnswered': true
+        });
+        // Save Questions
+        taskUserModel.saveQuestions(data.aQuestions);
+        // Save Task
+        this.tasks.add(taskUserModel);
+        taskUserModel.save();
+        // Save this Activity
+        this.save();
+
+    },
+    isTaskSaved: function(id) {
+        return typeof this.tasks.get(id) !== 'undefined';
+    },
+    sendToServer: function(_args) {
+        // Send to the server
+        this.fetch(); // Is it necessary??
+
+        Backbone.serverSync('update', this);
+        if (_args.success) {
+            _args.success();
+        }
+    },
+    getTask: function(id) {
+        return this.tasks.getOrCreate(id);
+    },
+    defaults: {
+    }
+});
+
+var ActivityUserCollection = Backbone.Collection.extend({
+    model: ActivityUserModel,
+    getOrCreate: function(id) {
+        var model = this.get(id);
+        if (!model) {
+            model = new ActivityUserModel({'__activityId': id});
+            this.add(model);
+            model.save();
+        }
+
+        return model;
+    },
+    localStorage: new Backbone.LocalStorage("activityUser"),
+    url: urlRest
+});
 
 
 

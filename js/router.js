@@ -62,10 +62,10 @@ var AppRouter = Backbone.Router.extend({
 
             // - - CURRENT USER
             // Current User Model
-            this.currentUserModel = new CurrentUser();
+            this.currentUserModel = new CurrentUserModel();
 
             // Current User Collection
-            this.currentUserCollection = new CurrentUserCollection({model: this.currentUserModel});
+            this.currentUserCollection = new CurrentUserCollection();
 
             // Login View
             this.loginView = new LoginView({model: this.currentUserModel});
@@ -77,7 +77,7 @@ var AppRouter = Backbone.Router.extend({
             this.activityListCollection = new ActivityCollection();
 
             // Activity MODEL
-            this.activityModel = new Activity();
+            this.activityModel = new ActivityModel();
 
             // Activity List View
             this.activityListView = new ActivityListView({collection: this.activityListCollection});
@@ -93,7 +93,7 @@ var AppRouter = Backbone.Router.extend({
             this.taskListCollection = new TaskCollection();
 
             // Task Model
-            this.taskModel = new Task();
+            this.taskModel = new TaskModel();
 
             // Task View
             this.taskListView = new TaskListView({collection: this.taskListCollection});
@@ -104,10 +104,15 @@ var AppRouter = Backbone.Router.extend({
             // Task View
             this.taskView = new TaskView({model: this.taskModel});
 
-            // Questions
-            this.questionModel = new Question();
 
-            this.questionCollection = new QuestionCollection({model: this.questionModel});
+
+            // USER DATA
+            this.activityUserCollection = new ActivityUserCollection();
+            
+            this.activityUserModel = new ActivityUserModel();
+            
+            this.activityUserCollection.fetch();
+
 
         } catch (e) {
             alert("error en el initialize de router ");
@@ -140,9 +145,11 @@ var AppRouter = Backbone.Router.extend({
         }
         // Get the activity model from the collection, store it in this.activityModel and assign it to the view. This seems to be more
         // complicated that it should be
-        this.activityModel = this.activityListCollection.get(id);
+        this.activityModel = this.activityListCollection.get(id);        
         this.activityCardView.model = this.activityModel;
-
+        
+        this.activityUserModel = this.activityUserCollection.getOrCreate(id);
+        
         $("#content").html(this.activityCardView.render().el);
 
     },

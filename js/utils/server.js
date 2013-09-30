@@ -3,7 +3,6 @@
 app.server = {
     path: 'http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/',
     validateLogin: function(_args) {
-        alert("server.validateLogin, llamo a ajax")
         
         try {
             $.ajax({
@@ -20,7 +19,6 @@ app.server = {
                 }
             });
             
-            alert("despues de haber llamado al ajax")
         } catch (e) {
             alert(e)
         }
