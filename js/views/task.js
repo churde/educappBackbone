@@ -29,7 +29,6 @@ var TaskListItemView = Backbone.View.extend({
         $(this.el).html(this.template({data: data, isAnswered: isAnswered}));
         return this;
     }
-
 });
 
 var TaskView = Backbone.View.extend({
@@ -39,8 +38,9 @@ var TaskView = Backbone.View.extend({
     render: function() {
         // it could be passed also as  this.template(this.model.toJson() )
         var data = this.model.attributes;
-        var questionsUser = app.router.activityUserModel.getTask(data.__taskId).questions.models;
-        var task = app.router.activityUserModel.getTask(data.__taskId)
+        var taskUser = app.router.activityUserModel.getTask(data.__taskId);
+        var questionsUserModels = taskUser.questions.model;
+        var questionsUser = {};
         con("respuestas del usuario son ", questionsUser, "si intento recuperar el 121: ", app.router.activityUserModel.getTask(data.__taskId).questions.get('121'), 
     "toda la tarea ", task.questions);
         $(this.el).html(this.template({data: data}));
