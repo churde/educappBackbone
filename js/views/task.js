@@ -12,10 +12,7 @@ var TaskListView = Backbone.View.extend({
         
         for (var i = 0; i < tasks.length; i++) {
             $('.tasks', this.el).append(new TaskListItemView({model: tasks[i]}).render().el);
-            
-            con("la tarea tiene datos: ", tasks[i]);
-        }
-        
+        }        
         
         return this;
     }
@@ -46,6 +43,9 @@ var TaskView = Backbone.View.extend({
     render: function() {
         // it could be passed also as  this.template(this.model.toJson() )
         $(this.el).html(this.template(this.model.attributes));
+        
+        
+        
         return this;
     }
 });

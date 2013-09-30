@@ -1,5 +1,3 @@
-var alreadyLoaded;
-
 Backbone.Router.prototype.before = function() {
 };
 Backbone.Router.prototype.after = function() {
@@ -55,21 +53,26 @@ var AppRouter = Backbone.Router.extend({
     },
     initialize: function() {
         try {
-            
-            if(alreadyLoaded){
-                return;
-            }
-            
-//alreadyLoaded = true;
-            alert("en el initialize de router")
+
             this.routesHit = 0;
             //keep count of number of routes handled by your application
             Backbone.history.on('route', function() {
                 this.routesHit++;
             }, this);
 
+            // - - CURRENT USER
+            // Current User Model
+            this.currentUserModel = new CurrentUser();
 
+            // Current User Collection
+            this.currentUserCollection = new CurrentUserCollection({model: this.currentUserModel});
 
+            // Login View
+            this.loginView = new LoginView({model: this.currentUserModel});
+
+            this.currentUserCollection.fetch();
+
+            // - - ACTIVITY
             // Activity List Collection
             this.activityListCollection = new ActivityCollection();
 
@@ -85,6 +88,7 @@ var AppRouter = Backbone.Router.extend({
             // ActivityCard VIEW
             this.activityCardView = new ActivityCardView({model: this.activityModel});
 
+            // - - TASK
             // Task Collection
             this.taskListCollection = new TaskCollection();
 
@@ -100,23 +104,10 @@ var AppRouter = Backbone.Router.extend({
             // Task View
             this.taskView = new TaskView({model: this.taskModel});
 
-            // Current User Model
-            this.currentUserModel = new CurrentUser();
-
-            // Current User Collection
-            this.currentUserCollection = new CurrentUserCollection({model: this.currentUserModel});
-
-            // Login View
-            this.loginView = new LoginView({model: this.currentUserModel});
-
-
             // Questions
             this.questionModel = new Question();
 
             this.questionCollection = new QuestionCollection({model: this.questionModel});
-
-
-            this.currentUserCollection.fetch();
 
         } catch (e) {
             alert("error en el initialize de router ");
@@ -124,6 +115,70 @@ var AppRouter = Backbone.Router.extend({
         }
 
     },
+    login: function() {
+        $("#content").html(this.loginView.render().el);
+    },
+    /* Fetch activities from server. Each model contains all the info about an activity*/
+    activityList: function() {
+
+        if (!app.dataModel.currentUser.isLogged()) {
+            this.navigate('/login');
+            return;
+        }
+
+        this.activityListCollection.fetch(
+                {success: function() {
+                        $("#content").html(app.router.activityListView.render().el);
+                    }}
+        );
+
+    },
+    activityCard: function(id) {
+        if (!app.dataModel.currentUser.isLogged()) {
+            this.navigate('/login');
+            return;
+        }
+        // Get the activity model from the collection, store it in this.activityModel and assign it to the view. This seems to be more
+        // complicated that it should be
+        this.activityModel = this.activityListCollection.get(id);
+        this.activityCardView.model = this.activityModel;
+
+        $("#content").html(this.activityCardView.render().el);
+
+    },
+    taskList: function() {
+
+        if (!app.dataModel.currentUser.isLogged()) {
+            this.navigate('/login');
+            return;
+        }
+
+        // get the tasks and add them as a collection to the taskListCollection
+        var tasks = this.activityModel.get('tasks');
+        // taskListCollection is set with the tasks of the current shown activity
+        this.taskListCollection.reset(tasks);
+        // activityModel.attributes are passed to the view render function. That function will render task list elements (i.e. title and buttons) 
+        // and it will iterate over the task to show each one with a different view
+        $("#content").html(app.router.taskListView.render(this.activityModel.attributes).el);
+
+    },
+    task: function(id) {
+        if (!app.dataModel.currentUser.isLogged()) {
+            this.navigate('/login');
+            return;
+        }
+
+        this.taskModel = this.taskListCollection.get(id);
+        this.taskView.model = this.taskModel;
+
+        $("#content").html(this.taskView.render().el);
+
+        // NOTE: This must be called after render
+        app.taskController.init({taskData: this.taskModel.attributes});
+
+    },
+    ///////
+    ///////
     back: function() {
         if (this.routesHit > 1) {
             //more than one route hit -> user did not land to current page directly
@@ -140,113 +195,6 @@ var AppRouter = Backbone.Router.extend({
     refresh: function() {
         this.activityList();
         this.navigate('', true);
-    },
-    login: function() {
-        $("#content").html(this.loginView.render().el);
-    },
-    activityList: function() {
-
-        if (!app.dataModel.currentUser.isLogged()) {
-
-            alert("ACT list: el usuario no está logeado, lo envío a login")
-            this.navigate('/login');
-//            return;
-        }
-        else {
-//            alert("ACT list, usuario logueado")
-            this.activityListCollection.fetch(
-                    {success: function() {
-//                            alert("success de get activities, llamo a render")
-                            $("#content").html(app.router.activityListView.render().el);
-                        }}
-            );
-        }
-
-
-    },
-    activityCard: function(id) {
-        if (!app.dataModel.currentUser.isLogged()) {
-            this.navigate('/login');
-            return;
-        }
-        // The change event in the model is triggered twice here: with .set('id', id) and then with .fetch
-        // But the element is shown just when added to the #content
-        this.activityModel = this.activityListCollection.get(id);
-        this.activityCardView.model = this.activityModel;
-
-        $("#content").html(this.activityCardView.render().el);
-
-    },
-    taskList: function() {
-
-
-        if (!app.dataModel.currentUser.isLogged()) {
-
-            this.navigate('/login');
-            return;
-        }
-
-        alert("el usuario sí está logeado, muestro actividades")
-        // get the tasks and add them as a collection to the taskListCollection
-        var tasks = this.activityModel.get('tasks');
-
-        this.taskListCollection.reset(tasks);
-        // Add the tasks to the collection
-//        this.taskListCollection.add(tasks);
-
-        $("#content").html(app.router.taskListView.render(this.activityModel.attributes).el);
-
-    },
-    task: function(id) {
-        if (!app.dataModel.currentUser.isLogged()) {
-            this.navigate('/login');
-            return;
-        }
-        // The change event in the model is triggered twice here: with .set('id', id) and then with .fetch
-        // But the element is shown just when added to the #content
-        this.taskModel = this.taskListCollection.get(id);
-        this.taskView.model = this.taskModel;
-
-        $("#content").html(this.taskView.render().el);
-
-        app.taskController.init({taskData: this.taskModel.attributes});
-    },
-    ///////////////////
-    ///////////////////
-    ///////////////////
-    ///////////////////
-    ///////////////////
-    ///////////////////
-    ///////////////////
-    ///////////////////
-    ///////////////////
-    ///////////////////
-    list: function(page) {
-        var p = page ? parseInt(page, 10) : 1;
-        var wineList = new WineCollection();
-        wineList.fetch({success: function() {
-                $("#content").html(new WineListView({model: wineList, page: p}).el);
-            }});
-        this.headerView.selectMenuItem('home-menu');
-    },
-    wineDetails: function(id) {
-        var wine = new Wine({id: id});
-        wine.fetch({success: function() {
-                $("#content").html(new WineView({model: wine}).el);
-            }});
-        this.headerView.selectMenuItem();
-    },
-    addWine: function() {
-        var wine = new Wine();
-        $('#content').html(new WineView({model: wine}).el);
-        this.headerView.selectMenuItem('add-menu');
-    },
-    about: function() {
-        if (!this.aboutView) {
-            this.aboutView = new AboutView();
-        }
-        $('#content').html(this.aboutView.el);
-        this.headerView.selectMenuItem('about-menu');
     }
 });
 
@@ -255,7 +203,6 @@ utils.loadTemplate(['HeaderView',
     'ActivityListItemView', 'ActivityCardView',
     'TaskListItemView', 'TaskListView', 'TaskView'], function() {
 
-//    alert("despues de cargar las templates llamo a new AppRouter")
     app.router = new AppRouter();
 
     Backbone.history.start();

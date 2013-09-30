@@ -1,25 +1,17 @@
 var ActivityListView = Backbone.View.extend({
     initialize: function() {
-//        this.render();
 
     },
     render: function() {
-        try {
-            var activities = this.collection.models;
+        var activities = this.collection.models;
 
-            $(this.el).html('<div class="activities"></div>');
-            
-            
-//            alert("renderizando activity list con len " + activities.length)
-            
-            for (var i = 0; i < activities.length; i++) {
-                $('.activities', this.el).append(new ActivityListItemView({model: activities[i]}).render().el);
-            }
+        $(this.el).html('<div class="activities"></div>');
 
-            return this;
-        } catch (e) {
-            alert("error render act list view. " + e)
+        for (var i = 0; i < activities.length; i++) {
+            $('.activities', this.el).append(new ActivityListItemView({model: activities[i]}).render().el);
         }
+
+        return this;
 
     }
 });
@@ -32,16 +24,8 @@ var ActivityListItemView = Backbone.View.extend({
         this.model.bind("destroy", this.close, this);
     },
     render: function() {
-        try {
-            
-//            alert("en render de list item activity tengo model")
-//            alert(JSON.stringify(this.model.toJSON()));
-            
-            $(this.el).html(this.template(this.model.toJSON()));
-            return this;
-        } catch (e) {
-            alert("error en render de act list ITEM view" + e)
-        }
+        $(this.el).html(this.template(this.model.toJSON()));
+        return this;
     }
 
 });

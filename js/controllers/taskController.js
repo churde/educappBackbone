@@ -272,6 +272,12 @@ app.taskController = {
 
     },
     sendQuestionToServer: function() {
+        
+        // Check if all tasks were answered
+        var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
+        
+        con("todas las tareas respondidas?", allTasksAnswered)
+        
         var send = confirm("Solo deberías enviar la actividad una vez acabadas todas las tareas, pero de momento te dejamos igual ;)  \n\
 Una vez enviada volverás al panel de actividades. ¿Enviar?");
 

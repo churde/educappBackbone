@@ -2,60 +2,40 @@
 
 app.loginController = {
     validateLogin: function(_args) {
+        var isGuest = _args.isGuest;
 
-        alert("en la funcion de login.validateLogin")
+        var user = $("#user").val();
+        var password = $("#psw").val();
 
-//app.router.navigate('/activity');
-//return;
+        var success = function(data) {
 
-        try {
-            var isGuest = _args.isGuest;
+            if (data.status) {
+                app.loginController.login(data.user);
+                app.router.navigate('/activity');
 
-            var user = $("#user").val();
-            var password = $("#psw").val();
-
-            var success = function(data) {
-
-                alert("en el success de validateLogin")
-
-                if (data.status) {
-                    app.loginController.login(data.user);
-
-//                alert("pongo usuario como logeado y en 1 segundo redirijo a activity");
-
-                    window.setTimeout(function() {
-                        app.router.navigate('/activity');
-                    }, 1000);
-
-                }
-                else {
-                    alert("Login incorrecto");
-                    app.dataModel.currentUser.set({isLogged: false});
-                }
-            }
-
-            if (!isGuest) {
-
-                app.server.validateLogin({
-                    data: {
-                        user: user,
-                        password: password
-                    },
-                    success: success
-                });
             }
             else {
-                alert("SI ES GUEST")
-                app.loginController.login({
-                    name: 'Invitado',
-                    isGuest: true
-                });
-                alert("antes del navigate")
-                app.router.navigate('/activity', true);
-                alert("despues del navigate")
+                alert("Login incorrecto");
+                app.dataModel.currentUser.set({isLogged: false});
             }
-        } catch (e) {
-            alert(e)
+        }
+
+        if (!isGuest) {
+
+            app.server.validateLogin({
+                data: {
+                    user: user,
+                    password: password
+                },
+                success: success
+            });
+        }
+        else {
+            app.loginController.login({
+                name: 'Invitado',
+                isGuest: true
+            });
+            app.router.navigate('/activity', true);
         }
 
 

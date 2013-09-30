@@ -36,8 +36,17 @@ app.dataModel = {
     },
     tasks: {
         markAsAnswered: function(taskId) {
-            var task = app.router.taskListCollection.findWhere({__taskId: taskId.toString()});            
-            task.set('isAnswered', true);  
+            var task = app.router.taskListCollection.findWhere({__taskId: taskId.toString()});
+            task.set('isAnswered', true);
+            task.save();
+        },
+        areAllTasksAnswered: function() {
+            var answeredTasks = app.router.taskListCollection.where({isAnswered: true});
+            
+            con("len de respondidas " + answeredTasks.length, "len de Collection " + app.router.taskListCollection.length, "para answeredTasks", answeredTasks)
+            
+            return answeredTasks.length === app.router.taskListCollection.length;
+            
         }
     },
     questions: {
@@ -68,9 +77,22 @@ app.dataModel = {
 
 
 
+var CurrentUser = Backbone.Model.extend({
+    idAttribute: '__userId',
+    defaults: {
+    }
+});
+
+
+var CurrentUserCollection = Backbone.Collection.extend({
+    model: CurrentUser,
+    localStorage: new Backbone.LocalStorage("currentUser"), 
+    url: urlRoot
+});
+
+
 // Activity List
 var Activity = Backbone.Model.extend({
-//    urlRoot: urlRoot + "get-activities", //"api/wines",
     idAttribute: '__activityId',
     defaults: {
     }
@@ -83,7 +105,6 @@ var ActivityCollection = Backbone.Collection.extend({
 
 
 var Task = Backbone.Model.extend({
-//    urlRoot: urlRoot, //"api/wines",
     idAttribute: '__taskId',
     defaults: {
     }
@@ -92,40 +113,21 @@ var Task = Backbone.Model.extend({
 
 var TaskCollection = Backbone.Collection.extend({
     model: Task,
-//    url: urlRoot
-});
-
-var CurrentUser = Backbone.Model.extend({
-//    urlRoot: urlRoot,
-//    idAttribute: '__userId',
-    defaults: {
-    }
-});
-
-
-var CurrentUserCollection = Backbone.Collection.extend({
-    model: CurrentUser,
-//    local: true,
-//    remote: false
-    localStorage: new Backbone.LocalStorage("currentUser"), //new Backbone.LocalStorage("CurrentUser")
-    url: urlRoot
+    localStorage: new Backbone.LocalStorage("tasks")
 });
 
 var urlRest = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/rest";
 
 var Question = Backbone.Model.extend({
     idAttribute: '__questionOpenId',
-//    url: urlRest,
     defaults: {
     }
 });
 
 var QuestionCollection = Backbone.Collection.extend({
     model: Question,
-//    local: true,
-//    remote: false
-    localStorage: new Backbone.LocalStorage("questions"), //new Backbone.LocalStorage("CurrentUser")
-    url: urlRest// urlRoot + "save-questions"
+    localStorage: new Backbone.LocalStorage("questions"), 
+    url: urlRest
 });
 
 
