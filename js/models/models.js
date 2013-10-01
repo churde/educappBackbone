@@ -37,6 +37,10 @@ app.dataModel = {
     tasks: {
         areAllTasksAnswered: function() {
             var answeredTasksLength = app.router.activityUserModel.tasks.length;
+            
+            con("len de aswer es " + answeredTasksLength + "  y len total es " + app.router.taskListCollection.length)
+            
+            
             return answeredTasksLength === app.router.taskListCollection.length;
         }
     }
@@ -116,8 +120,11 @@ var TaskUserModel = Backbone.Model.extend({
             this.questions.add(questionUserModel);
             questionUserModel.save();
             
-            con("he añadido questionUserModel a la collection");
-        }        
+        }   
+        
+        
+        this.questions.fetch();
+        con("despues de guardar questions, tengo: ", this.questions, " en la tarea con id " + this.get("__taskId"))
 
     },
     getQuestion: function(id) {
@@ -133,6 +140,10 @@ var TaskUserCollection = Backbone.Collection.extend({
     getOrCreate: function(id) {
         var task = this.get(id);
         if (!task) {
+            
+            
+            con("en getOrCreate de taskUserCollection creo una tarea nueva para id " + id)
+            
             task = new TaskUserModel({'__taskId': id});
             this.add(task);
             task.save();
@@ -154,6 +165,9 @@ var ActivityUserModel = Backbone.Model.extend({
         
     },
     saveTask: function(data) {
+
+con("en saveTask del MODEL con taskId " + data.__taskId);
+
         var taskUserModel = new TaskUserModel({
             '__taskId': data.__taskId,
             'isAnswered': true
@@ -165,10 +179,19 @@ var ActivityUserModel = Backbone.Model.extend({
         taskUserModel.save();
         // Save this Activity
         this.save();
-
+        this.tasks.fetch();
     },
     isTaskSaved: function(id) {
-        return typeof this.tasks.get(id) !== 'undefined';
+        var isSaved, task = this.tasks.get(id);
+        
+        if(typeof task === 'undefined'){
+            isSaved = false;
+        }
+        else{
+            isSaved = task.get("isAnswered");
+        }
+
+        return isSaved;
     },
     sendToServer: function(_args) {
         // Send to the server
