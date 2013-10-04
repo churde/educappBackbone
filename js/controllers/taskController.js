@@ -93,12 +93,12 @@ app.taskController = {
         if (taskIdToShow) {
             app.router.navigate('/tasks/' + taskIdToShow);
         }
-        
+
         this.updateTaskNavigation();
 
     },
     updateTaskNavigation: function() {
-        
+
 
         $("#btnTaskPrev").attr("disabled", false);
         $("#btnTaskNext").attr("disabled", false);
@@ -248,9 +248,9 @@ app.taskController = {
         var save = confirm("¿Guardar respuestas? Una vez guardadas volverás a la lista de tareas")
 
         if (save) {
-            
+
             var aQuestions = [];
-            
+
             $('.question .answer').each(function(index, element) {
 
                 var element = $(element);
@@ -265,30 +265,27 @@ app.taskController = {
             });
         }
 
-con("en saveTask de taskController llamo a actUserModel saveTask con taskID " + taskId + " y le paso questions ", aQuestions)
 
         app.router.activityUserModel.saveTask({
             __taskId: taskId,
             aQuestions: aQuestions
         });
-        
-        con("he guardado la tarea " + taskId + ". Tiene cuestions", app.router.activityUserModel.getTask(taskId).questions);
-        
+
         app.router.navigate('/tasks');
 
     },
     sendQuestionToServer: function() {
-        
+
         // Check if all tasks were answered
-//        var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
-//        
-//        if(!allTasksAnswered){
-//            
-//            alert("Para enviar la actividad necesitas realizar TODAS las tareas");
-//            return;
-//            
-//        }
-//                
+        var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
+
+        if (!allTasksAnswered) {
+
+            alert("Para enviar la actividad necesitas realizar TODAS las tareas");
+            return;
+
+        }
+
         var send = confirm("¿Enviar Actividad? Una vez enviada no podrás realizar ningún cambio.");
 
         if (send) {

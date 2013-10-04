@@ -36,12 +36,7 @@ app.dataModel = {
     },
     tasks: {
         areAllTasksAnswered: function() {
-            
-            var answeredTasksLength = 0, taskUserCollection = app.router.activityUserModel.tasks;
-            
-            if(taskUserCollection.length > 0){
-                answeredTasksLength = taskUserCollection.where({'isAnswered': true}).length;
-            }
+            var answeredTasksLength = app.router.activityUserModel.tasks.length;
 
             con("len de aswer es " + answeredTasksLength + "  y len total es " + app.router.taskListCollection.length)
 
@@ -121,17 +116,17 @@ var TaskUserModel = Backbone.Model.extend({
 
     },
     saveQuestions: function(aQuestions) {
+
         for (var i = 0, l = aQuestions.length; i < l; i++) {
             var questionUserModel = new QuestionUserModel(aQuestions[i]);
-
             this.get("questions").add(questionUserModel);
             questionUserModel.save();
+        }
 
-        }        
     },
-//    getQuestion: function(id) {
-//        return this.questions.get(id);
-//    },
+    getQuestion: function(id) {
+        return this.get("questions").get(id);
+    },
     defaults: {
         isAnswered: false
     }
@@ -148,70 +143,92 @@ var TaskUserCollection = Backbone.Collection.extend({
 
         }
         return task;
-    },
-    url: urlRest
-            
+    }
 });
 
-/* IMPORTANTE: no entiendo por qué, en questions funciona bien si creo la colección de questiones como un atributo dentro del modelo de tareas: this.set("questions", questionsCollection)
- * y no funcionaba si se hacía como un parámetro directamente: this.questions = questionsCollection. Y para las tareas, es al revés :( */
+
 var ActivityUserModel = Backbone.Model.extend({
     idAttribute: '__activityId',
-    initialize: function(id) {
-        this.tasks = new TaskUserCollection();
+    initialize: function() {
+//        var tasksCollection = new TaskUserCollection();
+//
+//        tasksCollection.localStorage = new Backbone.LocalStorage("tasksUserActivity_" + this.get("__activityId"));
+//
+//        this.set("tasks", tasksCollection);
 
-        this.tasks.localStorage = new Backbone.LocalStorage("tasksUserActivity_" + this.get("__activityId"));
-        this.tasks.parent = this;
 
-        this.tasks.fetch();
+
+
+        
+
+        this.set("tasks", new TaskUserCollection());
+
+        this.get("tasks").localStorage = new Backbone.LocalStorage("tasksUserActivity_" + this.get("__activityId"));
+
+        this.get("tasks").fetch();
+        con("en initialize del activityUser model " + this.get("__activityId") + " donde he guardado tasks", this.get("tasks"))
 
     },
     saveTask: function(data) {
 
         var taskUserModel = new TaskUserModel({
             '__taskId': data.__taskId,
-            'isAnswered': true,
-            'userId': app.dataModel.currentUser.get("id"),
-            'activityId': app.router.activityUserModel.get("__activityId")
+            'isAnswered': true
         });
         // Save Questions
         taskUserModel.saveQuestions(data.aQuestions);
         // Save Task
-        this.tasks.add(taskUserModel);
+        this.get("tasks").add(taskUserModel);
         taskUserModel.save();
         // Save this Activity
         this.save();
-        this.tasks.fetch();
+//        this.tasks.fetch();
+
+
+con("despues de guardar tarea tengo tasks ", this.get("tasks"))
+
     },
     isTaskSaved: function(id) {
-        var isSaved, task = this.tasks.get(id);
 
-        if (typeof task === 'undefined') {
+        var isSaved, tasksCollection = this.get("tasks");
+con("tasksCollection en isTaskSaved es ", tasksCollection)
+        if (tasksCollection.length === 0) {
             isSaved = false;
         }
         else {
-            isSaved = task.get("isAnswered");
+            
+            var task = tasksCollection.get(id);
+            
+            if (typeof task === 'undefined') {
+                isSaved = false;
+            }
+            else {
+                isSaved = task.get("isAnswered");
+            }
+
+            return isSaved;
         }
 
-        return isSaved;
+
     },
     sendToServer: function(_args) {
         // Send to the server
         this.fetch(); // Is it necessary??
 
-        var tasksCollection = this.tasks;
-        
-        con("tasksCollection es ", tasksCollection);
-        
-
-
-        Backbone.serverSync('update', this.tasks);
+        Backbone.serverSync('update', this);
         if (_args.success) {
             _args.success();
         }
     },
     getTask: function(id) {
-        return this.tasks.getOrCreate(id);
+
+//        var tasksCollection = this.get("tasks");
+//        if(tasksCollection.length === 0){
+//            con("llamo a initialize para recrear tasks")
+//            this.initialize();
+//        }
+
+        return this.get("tasks").getOrCreate(id);
     },
     defaults: {
     }

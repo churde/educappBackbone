@@ -26,7 +26,7 @@ var TaskListItemView = Backbone.View.extend({
     render: function() {
         var data = this.model.toJSON();
         var isAnswered = app.router.activityUserModel.isTaskSaved(data.__taskId);
-                
+
         $(this.el).html(this.template({data: data, isAnswered: isAnswered}));
         return this;
     }
@@ -40,21 +40,31 @@ var TaskView = Backbone.View.extend({
         // it could be passed also as  this.template(this.model.toJson() )
         var data = this.model.attributes;
         var questionsUser = {};
-//        con("en render de taskView obtengo datos de usuario para task ", data.__taskId)
-//        
-//        var taskUser = app.router.activityUserModel.getTask(data.__taskId);
-//        var questionsUserModels = taskUser.questions.models;
-//        // Convert to json so it's indexed
-//        var questionsUser = {};
-//        for(var i=0, l=questionsUserModels.length; i<l; i++){
-//            questionsUser[questionsUserModels[i].id] = {
-//                __questionOpenId: questionsUserModels[i].get("__questionOpenId"),
-//                answer: questionsUserModels[i].get("answer")
-//            }
-//        }
-//        
-//        
-//        con("respuestas del usuario son ", questionsUserModels, "toda la tarea es ", taskUser, " y solamente las questions (sin model): ", taskUser.questions);
+
+
+        var taskUser = app.router.activityUserModel.getTask(data.__taskId);
+
+        con("en render de taskView obtengo datos de usuario para task ", data.__taskId, " donde tengo task ", taskUser)
+
+
+//        taskUser.questions.fetch();
+        var questionsUser = taskUser.get("questions");
+
+        if (typeof questionsUser.models !== 'undefined') {
+            var questionsUserModels = questionsUser.models;
+            // Convert to json so it's indexed
+            var questionsUser = {};
+            for (var i = 0, l = questionsUserModels.length; i < l; i++) {
+                questionsUser[questionsUserModels[i].id] = {
+                    __questionOpenId: questionsUserModels[i].get("__questionOpenId"),
+                    answer: questionsUserModels[i].get("answer")
+                }
+            }
+
+
+            con("respuestas del usuario son ", questionsUserModels, "toda la tarea es ", taskUser);
+        }
+
         $(this.el).html(this.template({data: data, questionsUser: questionsUser}));
 
         return this;

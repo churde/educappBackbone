@@ -4,5 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
         <file>file:/Applications/MAMP/htdocs/educapp/js/models/models.js</file>
         <file>file:/Applications/MAMP/htdocs/educapp/js/views/task.js</file>
+        <file>file:/Applications/MAMP/htdocs/educapp/js/controllers/taskController.js</file>
+        <file>file:/Applications/MAMP/htdocs/educapp/tpl/TaskView.html</file>
     </open-files>
 </project-private>

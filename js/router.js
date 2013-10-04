@@ -105,14 +105,12 @@ var AppRouter = Backbone.Router.extend({
             this.taskView = new TaskView({model: this.taskModel});
 
 
-
             // USER DATA
             this.activityUserCollection = new ActivityUserCollection();
             
-            this.activityUserModel = new ActivityUserModel();
+//            this.activityUserModel = null;// = new ActivityUserModel();
             
             this.activityUserCollection.fetch();
-
 
         } catch (e) {
             alert("error en el initialize de router ");
@@ -130,9 +128,10 @@ var AppRouter = Backbone.Router.extend({
             this.navigate('/login');
             return;
         }
-
+        
         this.activityListCollection.fetch(
                 {success: function() {
+                                
                         $("#content").html(app.router.activityListView.render().el);
                     }}
         );
@@ -149,6 +148,7 @@ var AppRouter = Backbone.Router.extend({
         this.activityCardView.model = this.activityModel;
         
         this.activityUserModel = this.activityUserCollection.getOrCreate(id);
+        this.activityUserModel.save();
         
         $("#content").html(this.activityCardView.render().el);
 
