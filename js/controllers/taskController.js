@@ -93,12 +93,12 @@ app.taskController = {
         if (taskIdToShow) {
             app.router.navigate('/tasks/' + taskIdToShow);
         }
-        
+
         this.updateTaskNavigation();
 
     },
     updateTaskNavigation: function() {
-        
+
 
         $("#btnTaskPrev").attr("disabled", false);
         $("#btnTaskNext").attr("disabled", false);
@@ -156,6 +156,8 @@ app.taskController = {
         compassArrow.css('transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-ms-transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-webkit-transform', 'rotate(' + angle + 'deg)');
+
+        $(".headingIndicator").html("El dispositivo apunta a " + this.currentHeading)
 
 
     },
@@ -246,9 +248,9 @@ app.taskController = {
         var save = confirm("¿Guardar respuestas? Una vez guardadas volverás a la lista de tareas")
 
         if (save) {
-            
+
             var aQuestions = [];
-            
+
             $('.question .answer').each(function(index, element) {
 
                 var element = $(element);
@@ -263,26 +265,25 @@ app.taskController = {
             });
         }
 
+
         app.router.activityUserModel.saveTask({
             __taskId: taskId,
             aQuestions: aQuestions
         });
-        
+
         app.router.navigate('/tasks');
 
     },
     sendQuestionToServer: function() {
-        
+
         // Check if all tasks were answered
         var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
-        
-        if(!allTasksAnswered){
-            
+
+        if (!allTasksAnswered) {
             alert("Para enviar la actividad necesitas realizar TODAS las tareas");
             return;
-            
         }
-                
+
         var send = confirm("¿Enviar Actividad? Una vez enviada no podrás realizar ningún cambio.");
 
         if (send) {

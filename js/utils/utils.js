@@ -19,7 +19,13 @@ app.utils = {
         
         var oDate = new Date(date);
         
-        return oDate.toString(format);
+        
+        if(date === "1970-01-01"){
+            return "Sin Fecha";
+        }
+        else{
+           return oDate.toString(format); 
+        }        
                 
     },
             

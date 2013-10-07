@@ -26,10 +26,10 @@ var TaskListItemView = Backbone.View.extend({
     render: function() {
         var data = this.model.toJSON();
         var isAnswered = app.router.activityUserModel.isTaskSaved(data.__taskId);
+
         $(this.el).html(this.template({data: data, isAnswered: isAnswered}));
         return this;
     }
-
 });
 
 var TaskView = Backbone.View.extend({
@@ -39,11 +39,25 @@ var TaskView = Backbone.View.extend({
     render: function() {
         // it could be passed also as  this.template(this.model.toJson() )
         var data = this.model.attributes;
-        var questionsUser = app.router.activityUserModel.getTask(data.__taskId).questions.models;
-        var task = app.router.activityUserModel.getTask(data.__taskId)
-        con("respuestas del usuario son ", questionsUser, "si intento recuperar el 121: ", app.router.activityUserModel.getTask(data.__taskId).questions.get('121'), 
-    "toda la tarea ", task.questions);
-        $(this.el).html(this.template({data: data}));
+        var questionsUser = {};
+
+        var taskUser = app.router.activityUserModel.getTask(data.__taskId);
+        
+        var questionsUser = taskUser.get("questions");
+
+        if (typeof questionsUser.models !== 'undefined') {
+            var questionsUserModels = questionsUser.models;
+            // Convert to json so it's indexed
+            var questionsUser = {};
+            for (var i = 0, l = questionsUserModels.length; i < l; i++) {
+                questionsUser[questionsUserModels[i].id] = {
+                    __questionOpenId: questionsUserModels[i].get("__questionOpenId"),
+                    answer: questionsUserModels[i].get("answer")
+                }
+            }
+        }
+
+        $(this.el).html(this.template({data: data, questionsUser: questionsUser}));
 
         return this;
     }

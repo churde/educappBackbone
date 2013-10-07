@@ -1,34 +1,3 @@
-Backbone.Router.prototype.before = function() {
-};
-Backbone.Router.prototype.after = function() {
-};
-
-Backbone.Router.prototype.route = function(route, name, callback) {
-    if (!_.isRegExp(route))
-        route = this._routeToRegExp(route);
-    if (_.isFunction(name)) {
-        callback = name;
-        name = '';
-    }
-    if (!callback)
-        callback = this[name];
-
-    var router = this;
-
-    Backbone.history.route(route, function(fragment) {
-        var args = router._extractParameters(route, fragment);
-
-        router.before.apply(router, arguments);
-        callback && callback.apply(router, args);
-        router.after.apply(router, arguments);
-
-        router.trigger.apply(router, ['route:' + name].concat(args));
-        router.trigger('route', name, args);
-        Backbone.history.trigger('route', router, name, args);
-    });
-    return this;
-};
-
 
 var AppRouter = Backbone.Router.extend({
     routes: {
@@ -105,14 +74,12 @@ var AppRouter = Backbone.Router.extend({
             this.taskView = new TaskView({model: this.taskModel});
 
 
-
             // USER DATA
             this.activityUserCollection = new ActivityUserCollection();
             
-            this.activityUserModel = new ActivityUserModel();
+//            this.activityUserModel = null;// = new ActivityUserModel();
             
             this.activityUserCollection.fetch();
-
 
         } catch (e) {
             alert("error en el initialize de router ");
@@ -130,9 +97,10 @@ var AppRouter = Backbone.Router.extend({
             this.navigate('/login');
             return;
         }
-
+        
         this.activityListCollection.fetch(
                 {success: function() {
+                                
                         $("#content").html(app.router.activityListView.render().el);
                     }}
         );
@@ -149,6 +117,7 @@ var AppRouter = Backbone.Router.extend({
         this.activityCardView.model = this.activityModel;
         
         this.activityUserModel = this.activityUserCollection.getOrCreate(id);
+        this.activityUserModel.save();
         
         $("#content").html(this.activityCardView.render().el);
 
