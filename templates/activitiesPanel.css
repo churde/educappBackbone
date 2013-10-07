@@ -1,0 +1,195 @@
+/* 
+    Document   : activityPanel
+    Created on : 01-oct-2013, 16:29:02
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Candara, Helvetica, sans-serif;
+}
+
+#topBar
+{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #4BACC6;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 2px 5px 10px black;
+}
+
+#logoImg
+{
+    text-align: left;
+}
+
+#userName
+{
+    font-size: 1.25em;
+    white-space: nowrap;
+    z-index: -1;
+    border-right-style: solid;
+    border-right-color: white;
+    border-width: 1px;
+}
+
+#closeGroup
+{
+    font-size: 2em;
+}
+
+#helpText
+{
+    margin-top: 65px;
+    margin-right: 5px;
+    margin-left: 5px;
+    text-align: center;
+    background-color: gainsboro;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#helpTitle
+{
+    font-size: 1.75em;
+    font-weight: bold;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#helpDescription
+{
+    margin-right: auto;
+    margin-left: auto;
+    font-style: italic;
+    font-size: .85em;
+}
+
+#activitiesTable
+{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.tableRow
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: .3em;
+    height: 5em;
+    white-space: nowrap;
+    background-color: #4BACC6;
+    border-radius: 10px;
+}
+
+.activityImg
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding: .4em;
+    height: 100%;
+}
+.activityImg > img
+{
+    height: 4.3em;
+    width: auto;
+}
+
+.activityName
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 5px;
+    padding-left: 0px;
+    line-height: 2.6em;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: white;
+}
+
+.activityTopic
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 5px;
+    padding-left: 0px;
+    font-size: 0.75em;
+    color: white;
+    font-style: italic;
+}
+
+.activityStatus
+{
+    height: 4.3em;
+    margin-top: .4em;
+    margin-bottom: .3em;
+    padding: .4em;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.statusName
+{
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5em;
+    font-size: .75em;
+}
+
+.statusIcon
+{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.75em;
+}
+
+span{
+    font-weight: bold;
+}
+
+#status1
+{
+    background-color: tomato;
+}
+
+#status2
+{
+    background-color: gold;
+}
+
+#status3
+{
+    background-color: limegreen;
+}
+
+#status4
+{
+    background-color: mediumpurple;
+}
+
+#status5
+{
+    background-color: firebrick;
+}
+
+#status6
+{
+    background-color: sandybrown;
+}

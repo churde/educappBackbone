@@ -1,0 +1,52 @@
+/* 
+    Document   : login
+    Created on : 05-oct-2013, 16:46:01
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Candara, Helvetica, sans-serif;
+}
+
+.row
+{
+    margin: 0 auto;
+}
+
+#appLogo > img
+{
+    margin: 0 auto;
+}
+
+#appLogin
+{
+    margin: 20px auto;
+    padding: 15px 20px 15px ;
+    background-color: #4BACC6;
+    color: white;
+    border-radius: 10px;
+}
+
+.form-control
+{
+    margin: 5px 0 5px 0;
+}
+
+#enterButton
+{
+    width: 6em;
+    margin: 10px auto 0px auto;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+}

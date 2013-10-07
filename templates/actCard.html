@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Ficha de actividad</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link href="../lib/css/bootstrapGonza.css" rel="stylesheet">
+        <!--<link href="lib/css/bootstrap-responsive.css" rel="stylesheet">-->
+        <link href="../lib/css/bootstrap-theme.css" rel="stylesheet">
+        <link href="actCard.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="row" id="topBar">
+            <div class="col-xs-2 col-md-2" id="logoImg"><img class="img-rounded" title="Logo" src="../img/uniovi_logo.jpg" alt="Logo" style="height:40px; width:auto"></div>
+            <div class="col-xs-8 col-md-8" id="userName">Alumno Apellido Apellido</div>
+            <div class="col-xs-2 col-md-2" id="closeGroup"><span class="glyphicon glyphicon-remove"></span></div>
+        </div>
+
+        <div class="row" id="actBrief">
+            <div class="col-xs-5 col-md-5" id="actImg"><img class="img-responsive img-rounded" title="Foto actividad" src="../img/botanicoGijon.jpg" alt="Foto de la actividad"></div>
+            <div class="col-xs-7 col-md-7">
+                <div class="row" id="actName">Jardín Botánico Atlántico de Gijón</div>
+                <div class="row" id="actTopic"><span class="glyphicon glyphicon-book"></span> Biología y Geología</div>
+            </div>
+            <span id="actDescription">Una actividad para descubrir las diferentes especies atlánticas, diferenciar los tipos de bosques y reconocer la flora del Cantábrico.</span>
+        </div>
+
+        <div class="row" id="actDetail">
+            <div class="row rowField">
+                <div class="col-xs-6 col-md-6 field" id="locationField">
+                    <div class="col-xs-2 col-md-2 iconP" id="locationIcon"><span class="glyphicon glyphicon-map-marker"></span></div>
+                    <div class="col-xs-10 col-md-10 titleAndText" id="locationTitleAndText">
+                        <div class="row titleP" id="locationTitle">Ubicación</div>
+                        <div class="row textP" id="locationText">Gijón</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-6 field" id="enableDateField">
+                    <div class="col-xs-2 col-md-2 iconP" id="enableDateIcon"><span class="glyphicon glyphicon-eye-open"></span></div>
+                    <div class="col-xs-10 col-md-10 titleAndText" id="enableDateTitleAndText">
+                        <div class="row titleP" id="enableDateTitle">Disponible desde</div>
+                        <div class="row textP" id="enableDateText">16 ago 2013 - 16:00h</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row rowField">
+                <div class="col-xs-6 col-md-6 field" id="deliveryDateField">
+                    <div class="col-xs-2 col-md-2 iconP" id="deliveryDateIcon"><span class="glyphicon glyphicon-envelope"></span></div>
+                    <div class="col-xs-10 col-md-10 titleAndText" id="deliveryDateTitleAndText">
+                        <div class="row titleP" id="deliveryDateTitle">Fecha de entrega</div>
+                        <div class="row textP" id="deliveryDateText">18 ago 2013 - 00:00h</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-6 field" id="durationField">
+                    <div class="col-xs-2 col-md-2 iconP" id="durationIcon"><span class="glyphicon glyphicon-time"></span></div>
+                    <div class="col-xs-10 col-md-10 titleAndText" id="durationTitleAndText">
+                        <div class="row titleP" id="durationTitle">Duración</div>
+                        <div class="row textP" id="durationText">35 minutos</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row rowField">
+                <div class="col-xs-6 col-md-6 field" id="difficultyField">
+                    <div class="col-xs-2 col-md-2 iconP" id="difficultyIcon"><span class="glyphicon glyphicon-cog"></span></div>
+                    <div class="col-xs-10 col-md-10 titleAndText" id="difficultyTitleAndText">
+                        <div class="row titleP" id="difficultyTitle">Dificutad</div>
+                        <div class="row textP" id="difficultyText">Media</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-6 field" id="creatorField">
+                    <div class="col-xs-2 col-md-2 iconP" id="creatorIcon"><span class="glyphicon glyphicon-user"></span></div>
+                    <div class="col-xs-10 col-md-10 titleAndText" id="creatorTitleAndText">
+                        <div class="row titleP" id="creatorTitle">Creador</div>
+                        <div class="row textP" id="creatorText">Javier Fombona</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row rowField" id="stateAndTasks">
+            <div class="col-xs-1 col-md-1"></div>
+            <div class="col-xs-4 col-md-4 field" id="stateField" >
+                <div class="row" id="stateName">Disponible</div>
+                <div class="row" id="stateIcon"><span class="glyphicon glyphicon-pencil"></span></div>
+            </div>
+            <div class="col-xs-2 col-md-2"></div>
+            <div class="col-xs-4 col-md-4 field" id="tasksField">
+                <div class="row iconP" id="tasksIcon">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                    <span class="glyphicon glyphicon-edit"></span>
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                    <span class="glyphicon glyphicon-edit"></span>
+                </div>
+                <div class="row titleP" id="tasksTitle">Tareas</div>
+                <div class="row textP" id="tasksText">Son 7 secuenciales</div>
+            </div>
+        </div>
+
+
+        <div class="row" id="buttonGroup">
+            <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-primary btn-lg" id="startButton"><span class="glyphicon glyphicon-pencil"></span> INICIAR</button></div>
+            <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-info btn-lg" id="backButton"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button></div>
+        </div>
+
+
+        <div class="modal fade" id="startActivity">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title">- Iniciar actividad -</span>
+                    </div>
+                    <div class="modal-body">
+                        <p>Vas a iniciar la actividad <strong>Jardín Botánico de Gijón</strong>. Una vez que pulses EMPEZAR se iniciará la actividad, no podrás realizarla de nuevo y deberás completarla hasta el final.</p>
+                        <p>Recuerda también que, una vez que la hayas completado, deberás guardarla y finalizarla para que quede almacenada en tu dispositivo móvil.</p>
+                        <p style="font-style: italic; font-weight: bold">Información previa del creador:</p>
+                        <p id="preInfo">Para esta actividad tendrás que llevar una bolsa para recoger muestras que presentarás después en clase.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="launchButton"><span class="glyphicon glyphicon-edit"> EMPEZAR</span></button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancelar</span></button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="//code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../lib/js/bootstrap.js"></script>
+
+        <script>
+            $(function() {
+                $('#locationField').tooltip({
+                    title: 'Lugar principal de realización de la actividad'
+                });
+
+                $('#enableDateField').tooltip({
+                    title: 'Fecha a partir de la cual se puede realizar la actividad'
+                });
+
+                $('#deliveryDateField').tooltip({
+                    title: 'Fecha a partir de la cual no se podrá realizar ni enviar la actividad'
+                });
+
+                $('#durationField').tooltip({
+                    title: 'Tiempo de duración de la actividad'
+                });
+
+                $('#difficultyField').tooltip({
+                    title: 'Nivel de complejidad de la actividad'
+                });
+                $('#creatorField').tooltip({
+                    title: 'Nombre del usuario que ha creado la actividad'
+                });
+
+                $('#stateField').tooltip({
+                    title: 'La actividad puede realizarse dentro de la fecha de entrega'
+                });
+
+                $('#tasksField').tooltip({
+                    title: 'Las tareas deben hacerse ordenadamente'
+                });
+            });
+
+            $('#startButton').on('click', function() {
+                $('#startActivity').modal();
+            });
+            
+        </script>
+
+    </body>
+</html>

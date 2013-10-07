@@ -1,0 +1,268 @@
+/* 
+    Document   : currentTask
+    Created on : 02-oct-2013, 11:54:57
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Candara, Helvetica, sans-serif;
+}
+
+body
+{
+    background-image: url('../img/botanico_bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#topBar
+{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #4BACC6;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 2px 5px 10px black;
+}
+
+#logoImg
+{
+    text-align: left;
+}
+
+#userName
+{
+    font-size: 1.25em;
+    white-space: nowrap;
+    z-index: -1;
+    border-right-style: solid;
+    border-right-color: white;
+    border-width: 1px;
+}
+
+#closeGroup
+{
+    font-size: 2em;
+}
+
+#helpText
+{
+    margin-top: 60px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    color: white;
+    text-shadow: black 0.2em 0.2em 0.3em;
+}
+
+#helpIconFlag
+{
+    height: 3em;
+    line-height: 3em;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgba(255,0,0,0.5);
+    border-top-left-radius: 1.5em;
+    border-bottom-left-radius: 1.5em; 
+}
+
+#helpDescription
+{ 
+    height: 3em;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: rgba(255,0,0,0.5);
+    border-top-right-radius: 1.5em;
+    border-bottom-right-radius: 1.5em;
+}
+
+#helpTime
+{
+    height: 3em;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgba(255,0,0,0.5);
+    border-radius: 1.5em;
+}
+
+#time
+{
+    font-weight: bold;
+}
+
+#taskID
+{
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    height: 3.25em;
+    margin-top: -3.25em;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    color: #4BACC6;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: black 0.2em 0.2em 0.3em;
+}
+
+#taskNumber
+{
+
+}
+
+#taskName
+{
+    font-size: 1.25em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+#radar
+{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 5em;
+    height: 5em;
+    line-height: 2em;
+    margin-left: -2.5em;
+    margin-right: auto;
+    padding: 0;
+    text-align: center;
+    background-color: yellow;
+    border-radius: 2.5em;
+    border: 1px solid black;
+    box-shadow: 2px 5px 10px black;
+}
+
+#radar > img
+{
+    display: block;
+    margin: auto;
+    width: 3.25em;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+#tip
+{
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    height: 3.25em;
+    margin-top: 5em;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 15px 0 15px;
+    color: yellow;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: black 0.2em 0.2em 0.3em;
+}
+
+.modal-dialog
+{
+    
+}
+
+.modal-header
+{
+    padding: 5px;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+    color: #4BACC6;
+}
+
+.modal-body
+{
+    font-size: 1em;
+    text-align: justify;
+    padding: 15px;
+}
+
+.modal-footer
+{
+    text-align: center;
+    margin: 0;
+}
+
+#bottomBar
+{
+    position: fixed;
+    z-index: 998;
+    top: 100%;
+    margin-top: -60px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+#prevTaskButton
+{
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    background-color: #4BACC6;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 3px 3px 10px black;
+}
+
+#bottomBarCenterButton
+{
+    height: 50px;
+    background-color: #4BACC6;
+    box-shadow: 3px 3px 10px black;
+}
+
+#activityNameBottomBar
+{
+    line-height: 35px;
+    font-size: 1em;
+    font-weight: bold;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+#taskListBottomBar
+{
+    font-style: italic;
+    line-height: 10px;
+    font-size: .75em;
+    white-space: nowrap;
+}
+
+#nextTaskButton
+{
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    background-color: #4BACC6;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 3px 3px 10px black;
+}

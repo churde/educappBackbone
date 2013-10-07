@@ -1,0 +1,239 @@
+/* 
+    Document   : actCard
+    Created on : 04-oct-2013, 18:37:39
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+root { 
+    display: block;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Candara, Helvetica, sans-serif;
+}
+
+#topBar
+{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #4BACC6;
+    text-align: center;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    box-shadow: 2px 5px 10px black;
+}
+
+#logoImg
+{
+    text-align: left;
+}
+
+#userName
+{
+    font-size: 1.25em;
+    white-space: nowrap;
+    z-index: -1;
+    border-right-style: solid;
+    border-right-color: white;
+    border-width:1px;
+}
+
+#closeGroup
+{
+    font-size: 2em;
+}
+
+#actBrief
+{
+    margin-top: 65px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 5px 0 5px;
+    text-align: justify;
+}
+
+#actImg
+{
+    padding: 0 10px 5px 0px;
+}
+
+#actName
+{
+    font-size: 1.85em;
+    line-height: 1.0em;
+    font-weight: bold;
+    color: #4BACC6;
+    text-align: left;
+}
+
+#actTopic
+{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #4BACC6;
+    text-align: left;
+    border-bottom-style: solid;
+    border-bottom-color: #4BACC6;
+    border-bottom-width: 1px;
+}
+
+#actDescription
+{
+
+}
+
+#actDetail
+{
+    margin: 5px 0 5px 0;
+    padding: 5px;
+    white-space: nowrap;
+}
+.rowField,
+.field,
+.titleAndText,
+.iconP,
+.titleP,
+.textP
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+}
+
+.field
+{
+    margin-bottom: 5px;
+}
+
+.iconP
+{
+    height: 35px;
+    color: white;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #4BACC6;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    text-shadow: black 0.2em 0.2em 0.3em;
+}
+
+.titleP
+{
+    padding-left: 3px;
+    height: 20px;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.textP
+{
+    padding-left: 3px;
+    height: 15px;
+    line-height: 15px;
+    font-size: .85em;
+    border-bottom: 1px solid #4BACC6;
+}
+
+#stateAndTasks
+{
+    text-align: center;
+}
+
+#stateField
+{
+    font-weight: bold;
+    background-color: gold;
+    border: 2px solid dimgray;
+    border-radius: 20px;
+}
+
+#stateName
+{
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+#stateIcon
+{
+    font-size: 22px;
+    padding-bottom: 5px;
+}
+
+#tasksField
+{
+    
+}
+
+#tasksIcon
+{
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#buttonGroup
+{
+    margin: 15px auto 10px auto;
+    text-align: center;
+}
+
+.tooltip
+{
+    width: 45%;
+}
+
+.modal-header
+{
+    padding: 5px;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+    color: #4BACC6;
+}
+
+.modal-body
+{
+    font-size: 1em;
+    text-align: justify;
+    padding: 15px;
+}
+
+.modal-footer
+{
+    text-align: center;
+    margin: 0;
+}
+
+/*.iconP > .glyphicon
+{
+    animation-name: shake;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;    
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: infinite;
+}
+@keyframes shake
+{
+0% {transform: rotate(20deg);}
+50% {transform: rotate(-20deg);}
+100% {transform: rotate(20deg);}
+}
+
+@-webkit-keyframes shake
+{
+0% {-webkit-transform: rotate(20deg);}
+50% {-webkit-transform: rotate(-20deg);}
+100% {-webkit-transform: rotate(20deg);}
+}*/

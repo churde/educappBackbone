@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Listado de tareas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link href="../lib/css/bootstrapGonza.css" rel="stylesheet">
+        <!--<link href="lib/css/bootstrap-responsive.css" rel="stylesheet">-->
+        <link href="../lib/css/bootstrap-theme.css" rel="stylesheet">
+        <link href="tasks.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="row" id="topBar">
+            <div class="col-xs-2 col-md-2" id="logoImg"><img class="img-rounded" title="Logo" src="../img/uniovi_logo.jpg" alt="Logo" style="height:40px; width:auto"></div>
+            <div class="col-xs-8 col-md-8" id="userName">Alumno Apellido Apellido</div>
+            <div class="col-xs-2 col-md-2" id="closeGroup"><span class="glyphicon glyphicon-remove"></span></div>
+        </div>
+
+        <div class="row" id="actBrief">
+            <div class="col-xs-5 col-md-5" id="actImg"><img class="img-responsive img-rounded" title="Foto actividad" src="../img/botanicoGijon.jpg" alt="Foto de la actividad"></div>
+            <div class="col-xs-7 col-md-7">
+                <div class="row" id="actName">Jardín Botánico de Gijón</div>
+                <div class="row" id="actTopic"><span class="glyphicon glyphicon-book"></span> Biología y Geología</div>
+                <div class="row" id="actCreator"><span class="glyphicon glyphicon-user"></span> Javier Fombona</div>
+            </div>
+        </div>
+
+        <div class="row" id="helpText">
+            <div class="row" id="helpTitle"><span class="glyphicon glyphicon-list"></span> - Listado de tareas - <span class="glyphicon glyphicon-list"></span></div>
+            <div class="row" id="helpDescription">Pulsa en cada tarea para realizarla</div>
+        </div>
+
+        <div class="row" id="tasksTable">
+            <div class="row tableRow" id="row1">
+                <div class="col-xs-1 col-md-1 taskNumber">1</div>
+                <div class="col-xs-10 col-md-10 taskName">Hoja perenne y hoja caduca</div>
+                <div class="col-xs-1 col-md-1 taskStatus"><span class="glyphicon glyphicon-question-sign"></span></div>
+            </div>
+
+            <div class="row tableRow" id="row2">
+                <div class="col-xs-1 col-md-1 taskNumber">2</div>
+                <div class="col-xs-10 col-md-10 taskName">El bosque templado de frondosas</div>
+                <div class="col-xs-1 col-md-1 taskStatus"><span class="glyphicon glyphicon-ok-sign"></span></div>
+            </div>
+            
+            <div class="row tableRow" id="row3">
+                <div class="col-xs-1 col-md-1 taskNumber">3</div>
+                <div class="col-xs-10 col-md-10 taskName">La fotosíntesis</div>
+                <div class="col-xs-1 col-md-1 taskStatus"><span class="glyphicon glyphicon-ok-sign"></span></div>
+            </div>
+            
+            <div class="row tableRow" id="row4">
+                <div class="col-xs-1 col-md-1 taskNumber">4</div>
+                <div class="col-xs-10 col-md-10 taskName">Las plantas acuáticas</div>
+                <div class="col-xs-1 col-md-1 taskStatus"><span class="glyphicon glyphicon-question-sign"></span></div>
+            </div>
+            
+            <div class="row tableRow" id="row5">
+                <div class="col-xs-1 col-md-1 taskNumber">5</div>
+                <div class="col-xs-10 col-md-10 taskName">Semillas y esporas</div>
+                <div class="col-xs-1 col-md-1 taskStatus"><span class="glyphicon glyphicon-ok-sign"></span></div>
+            </div>
+        </div>
+        
+        <div class="row" id="buttonGroup">
+		<button type="button" class="btn btn-primary btn-lg" id="saveButton"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar y finalizar</button>
+	</div>
+
+        
+        <div class="modal fade" id="finishActivity">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title">- Guardar actividad -</span>
+                    </div>
+                    <div class="modal-body">
+                        <p>Vas a guardar en tu dispositivo la actividad <strong>Jardín Botánico de Gijón</strong>. Una vez que pulses GUARDAR, la actividad finalizará y aparecerá como Realizada.</p>
+                        <p id="preInfo">Recuerda también que sólo vas a poder hacerlo una vez.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="saveModalButton"><span class="glyphicon glyphicon-floppy-save"> GUARDAR</span></button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancelar</span></button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        
+        
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="//code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../lib/js/bootstrap.js"></script>
+
+        
+        <script>
+            $('#saveButton').on('click', function() {
+                $('#finishActivity').modal();
+            });
+            
+        </script>
+        
+    </body>
+</html>

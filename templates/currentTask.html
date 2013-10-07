@@ -1,0 +1,106 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Tarea actual</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link href="../lib/css/bootstrapGonza.css" rel="stylesheet">
+        <!--<link href="lib/css/bootstrap-responsive.css" rel="stylesheet">-->
+        <link href="../lib/css/bootstrap-theme.css" rel="stylesheet">
+        <link href="currentTask.css" rel="stylesheet" media="screen">
+        <link href="taskQuestions.html" rel="external">
+    </head>
+    <body>
+
+        <div class="row" id="topBar">
+            <div class="col-xs-2 col-md-2" id="logoImg"><img class="img-rounded" title="Logo" src="../img/uniovi_logo.jpg" alt="Logo" style="height:40px; width:auto"></div>
+            <div class="col-xs-8 col-md-8" id="userName">Alumno Apellido Apellido</div>
+            <div class="col-xs-2 col-md-2" id="closeGroup"><span class="glyphicon glyphicon-remove"></span></div>
+        </div>
+
+
+        <div class="row" id="helpText">
+            <div class="col-xs-1 col-md-1" id="helpIconFlag"><span class="glyphicon glyphicon-question-sign"></span></div>
+            <div class="col-xs-9 col-md-9" style="padding: 0px 5px 0px 5px"><div id="helpDescription">Sigue las indicaciones del radar para llegar hasta la tarea</div></div>
+            <div class="col-xs-2 col-md-2" id="helpTime">
+                <span class="glyphicon glyphicon-time"></span><p id="time">35:59</p>
+            </div>
+        </div>
+
+        <div class="row" id="taskID">
+            <div class="row" id="taskNumber">Tarea 2</div>
+            <div class="row" id="taskName">El bosque templado de frondosas</div>
+        </div>
+
+        <div class="row" id="radar">
+            <img class="img-responsive" title="Logo" src="../img/compassArrow.png" alt="Logo">
+            87m
+        </div>
+
+        <div class="row" id="tip">
+            Todavía te encuentras muy lejos de la tarea, sigue avanzando
+        </div>
+
+        <div class="row container" id="bottomBar">
+            <div class="col-xs-2 col-md-2" id="prevTaskButton"><span class="glyphicon glyphicon-step-backward"></span></div>
+            <div class="col-xs-8 col-md-8" style="padding: 0px 5px 0px 5px">
+                <div id="bottomBarCenterButton">
+                    <div class="row" id="activityNameBottomBar">Jardín Botánico de Gijón</div>
+                    <div class="row" id="taskListBottomBar">Presiona aquí para ver el listado de tareas</div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-md-2" id="nextTaskButton"><span class="glyphicon glyphicon-step-forward"></span></div>
+        </div>
+
+
+
+        <div class="modal fade" id="questions">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title" id="modalTaskNumber">- Tarea 3 -</span><br>
+                        <span class="modal-title" id="modalTaskName">El bosque templado de frondosas</span>
+                    </div>
+                    <div class="modal-body">
+                        <p>El bosque templado de frondosas o de hojas anchas es un bioma de bosque de clima templado dominado por las angiospermas y que posee gran variabilidad de temperatura y precipitaciones.</p>
+                        <p><strong>Responde a las siguientes preguntas</strong></p>
+                        <ol type="a" style="margin-left: 3em">
+                            <li>
+                                <p>¿El bosque templado de frondosas está constituido únicamente por árboles de hoja perenne?</p>
+                                <p><input type="radio" name="answer1" value="true">Verdadero  <input type="radio" name="answer1" value="false">Falso</p>
+                            </li>
+                            <li>
+                                <p>Escribe tres especies de árboles que estés viendo que pertenezcan al bosque templado de frondosas:</p>
+                                <p><input type="text" name="answer2" class="form-control" placeholder="Pulsa aquí para escribir"></p>
+                            </li>
+                            <li>
+                                <p>¿Dónde puedes encontrar este tipo de bosque?</p>
+                                <p><input type="checkbox" name="answer3" value="Asia">Asia <input type="checkbox" name="answer3" value="Europa">Europa <input type="checkbox" name="answer2" value="América">América </p>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-check"> Responder</span></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-chevron-left"> Volver</span></button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="//code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../lib/js/bootstrap.js"></script>
+
+        <script>
+            $('#radar').on('click', function() {
+                $('#questions').modal();
+            });
+        </script>
+    </body>
+</html>
