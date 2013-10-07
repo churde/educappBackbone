@@ -41,13 +41,8 @@ var TaskView = Backbone.View.extend({
         var data = this.model.attributes;
         var questionsUser = {};
 
-
         var taskUser = app.router.activityUserModel.getTask(data.__taskId);
-
-        con("en render de taskView obtengo datos de usuario para task ", data.__taskId, " donde tengo task ", taskUser)
-
-
-//        taskUser.questions.fetch();
+        
         var questionsUser = taskUser.get("questions");
 
         if (typeof questionsUser.models !== 'undefined') {
@@ -60,9 +55,6 @@ var TaskView = Backbone.View.extend({
                     answer: questionsUserModels[i].get("answer")
                 }
             }
-
-
-            con("respuestas del usuario son ", questionsUserModels, "toda la tarea es ", taskUser);
         }
 
         $(this.el).html(this.template({data: data, questionsUser: questionsUser}));

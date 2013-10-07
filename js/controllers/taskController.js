@@ -280,10 +280,8 @@ app.taskController = {
         var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
 
         if (!allTasksAnswered) {
-
             alert("Para enviar la actividad necesitas realizar TODAS las tareas");
             return;
-
         }
 
         var send = confirm("¿Enviar Actividad? Una vez enviada no podrás realizar ningún cambio.");

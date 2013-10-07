@@ -1,13 +1,5 @@
-var urlRoot;
+var isDev = true, urlRoot = isDev ? "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/" : "http://www.appio.es/xurde/Zend/projects/educapp/pre/public/api/";
 
-var isDev = true;
-
-if (isDev) {
-    urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/";
-}
-else {
-    urlRoot = "http://www.appio.es/xurde/Zend/projects/educapp/pre/public/api/";
-}
 
 
 app.dataModel = {
@@ -36,14 +28,12 @@ app.dataModel = {
     },
     tasks: {
         areAllTasksAnswered: function() {
-            
+
             var answeredTasksLength = 0, taskUserCollection = app.router.activityUserModel.tasks;
-            
-            if(taskUserCollection.length > 0){
+
+            if (taskUserCollection.length > 0) {
                 answeredTasksLength = taskUserCollection.where({'isAnswered': true}).length;
             }
-
-            con("len de aswer es " + answeredTasksLength + "  y len total es " + app.router.taskListCollection.length)
 
             return answeredTasksLength === app.router.taskListCollection.length;
         }
@@ -67,10 +57,7 @@ var CurrentUserCollection = Backbone.Collection.extend({
 // Activity List
 var ActivityModel = Backbone.Model.extend({
     idAttribute: '__activityId',
-    initialize: function()
-    {
-
-
+    initialize: function() {
     },
     defaults: {
     }
@@ -105,7 +92,6 @@ var QuestionUserModel = Backbone.Model.extend({
 
 var QuestionUserCollection = Backbone.Collection.extend({
     model: QuestionUserModel,
-//    localStorage: new Backbone.LocalStorage("questionsUser"),
     url: urlRest
 });
 
@@ -127,11 +113,8 @@ var TaskUserModel = Backbone.Model.extend({
             this.get("questions").add(questionUserModel);
             questionUserModel.save();
 
-        }        
+        }
     },
-//    getQuestion: function(id) {
-//        return this.questions.get(id);
-//    },
     defaults: {
         isAnswered: false
     }
@@ -150,11 +133,17 @@ var TaskUserCollection = Backbone.Collection.extend({
         return task;
     },
     url: urlRest
-            
+
 });
 
 /* IMPORTANTE: no entiendo por qué, en questions funciona bien si creo la colección de questiones como un atributo dentro del modelo de tareas: this.set("questions", questionsCollection)
- * y no funcionaba si se hacía como un parámetro directamente: this.questions = questionsCollection. Y para las tareas, es al revés :( */
+ * y no funcionaba si se hacía como un parámetro directamente: this.questions = questionsCollection. Y para las tareas, es al revés :( 
+ * 
+ * Una diferencia importante parece ser (comprobar) es que al agregarlo como atributo se envía esta información al server. Tal como lo hacemos ahora, enviamos la collection
+ * de tasks al servidor, las preguntas también se envían. Pero si intentamos enviar el modelo de activityUser no se envían las tasks (porque estas no están guardadas
+ * como atributo del modelo sino con this.tasks). Lo óptimo sería enviar el modelo de la actividad, tiene más sentido, y le podríamos agregar info extra como el userId y
+ * el activityId
+ * */
 var ActivityUserModel = Backbone.Model.extend({
     idAttribute: '__activityId',
     initialize: function(id) {
@@ -196,15 +185,7 @@ var ActivityUserModel = Backbone.Model.extend({
         return isSaved;
     },
     sendToServer: function(_args) {
-        // Send to the server
-        this.fetch(); // Is it necessary??
-
-        var tasksCollection = this.tasks;
-        
-        con("tasksCollection es ", tasksCollection);
-        
-
-
+        // Send to the server        
         Backbone.serverSync('update', this.tasks);
         if (_args.success) {
             _args.success();
@@ -230,7 +211,7 @@ var ActivityUserCollection = Backbone.Collection.extend({
         return model;
     },
     localStorage: new Backbone.LocalStorage("activityUser"),
-    url: urlRest
+//    url: urlRest
 });
 
 
