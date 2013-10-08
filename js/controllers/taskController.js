@@ -157,6 +157,7 @@ app.taskController = {
         compassArrow.css('-ms-transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-webkit-transform', 'rotate(' + angle + 'deg)');
 
+        
         $(".headingIndicator").html("El dispositivo apunta a " + this.currentHeading)
 
 

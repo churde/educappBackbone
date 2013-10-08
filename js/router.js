@@ -1,4 +1,3 @@
-
 var AppRouter = Backbone.Router.extend({
     routes: {
         "": "activityList",
@@ -100,7 +99,6 @@ var AppRouter = Backbone.Router.extend({
         
         this.activityListCollection.fetch(
                 {success: function() {
-                                
                         $("#content").html(app.router.activityListView.render().el);
                     }}
         );
@@ -129,6 +127,7 @@ var AppRouter = Backbone.Router.extend({
             return;
         }
 
+
         // get the tasks and add them as a collection to the taskListCollection
         var tasks = this.activityModel.get('tasks');
         // taskListCollection is set with the tasks of the current shown activity
@@ -144,6 +143,7 @@ var AppRouter = Backbone.Router.extend({
             return;
         }
 
+        
         this.taskModel = this.taskListCollection.get(id);
         this.taskView.model = this.taskModel;
 

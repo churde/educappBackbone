@@ -39,7 +39,6 @@ var TaskView = Backbone.View.extend({
     render: function() {
         // it could be passed also as  this.template(this.model.toJson() )
         var data = this.model.attributes;
-        var questionsUser = {};
 
         var taskUser = app.router.activityUserModel.getTask(data.__taskId);
         
@@ -56,6 +55,7 @@ var TaskView = Backbone.View.extend({
                 }
             }
         }
+        
 
         $(this.el).html(this.template({data: data, questionsUser: questionsUser}));
 
