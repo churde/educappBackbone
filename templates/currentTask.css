@@ -16,13 +16,13 @@ root {
     font-family: Candara, Helvetica, sans-serif;
 }
 
-body
+/*body
 {
     background-image: url('../img/botanico_bg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-}
+}*/
 
 #topBar
 {

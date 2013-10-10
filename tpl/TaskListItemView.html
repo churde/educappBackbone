@@ -1,4 +1,4 @@
-<div class="taskContainer <% if(isAnswered) { %> taskAnswered<% } %>">
+<div class="taskContainer <% if(isAnswered) { %> taskAnswered<% } %>" style="margin-top: 65px">
     <a href="#tasks/<%= data.__taskId %>"><div class="name"><h3><%= data.name %></h3></div></a>
     <div class="description"><%= data.description %></div>
     <div class="state">Estado: <h4><% if(isAnswered) { %> REALIZADA <% }else{ %> Sin realizar <% } %></h4></div>

@@ -75,9 +75,9 @@ var AppRouter = Backbone.Router.extend({
 
             // USER DATA
             this.activityUserCollection = new ActivityUserCollection();
-            
+
 //            this.activityUserModel = null;// = new ActivityUserModel();
-            
+
             this.activityUserCollection.fetch();
 
         } catch (e) {
@@ -96,7 +96,7 @@ var AppRouter = Backbone.Router.extend({
             this.navigate('/login');
             return;
         }
-        
+
         this.activityListCollection.fetch(
                 {success: function() {
                         $("#content").html(app.router.activityListView.render().el);
@@ -111,13 +111,15 @@ var AppRouter = Backbone.Router.extend({
         }
         // Get the activity model from the collection, store it in this.activityModel and assign it to the view. This seems to be more
         // complicated that it should be
-        this.activityModel = this.activityListCollection.get(id);        
+        this.activityModel = this.activityListCollection.get(id);
         this.activityCardView.model = this.activityModel;
-        
+
         this.activityUserModel = this.activityUserCollection.getOrCreate(id);
         this.activityUserModel.save();
         
         $("#content").html(this.activityCardView.render().el);
+
+        app.activityController.initialize();
 
     },
     taskList: function() {
@@ -143,7 +145,7 @@ var AppRouter = Backbone.Router.extend({
             return;
         }
 
-        
+
         this.taskModel = this.taskListCollection.get(id);
         this.taskView.model = this.taskModel;
 

@@ -1,88 +1,113 @@
-<div class="activityCardContainer">
 
-    <div class="row container" id="actBrief">
-        <div class="col-xs-5 col-md-5" id="actImg"><img class="img-responsive img-rounded" title="Foto actividad" src="img/botanicoGijon.jpg" alt="Foto de la actividad"></div>
-        <div class="col-xs-7 col-md-7">
-            <div class="row content" id="actName"><h3><%= name %></h3></div>
-            <div class="row content" id="actTopic"><h4><%= courseName %></h4></div>
-            <div class="row content" id="actDescription"><%= description %></div>
+<script type="text/x-handlebars-template" id="activityCardTemplate">
+
+<div class="row" id="actBrief">
+    <div class="col-xs-5 col-md-5" id="actImg"><img class="img-responsive img-rounded" title="Foto actividad" src="img/botanicoGijon.jpg" alt="Foto de la actividad"></div>
+    <div class="col-xs-7 col-md-7">
+        <div class="row" id="actName"><{{ name }}</div>
+        <div class="row" id="actTopic"><span class="glyphicon glyphicon-book"></span> {{courseName}}</div>
+    </div>
+    <span id="actDescription">{{ description }}</span>
+</div>
+
+<div class="row" id="actDetail">
+    <div class="row rowField">
+        <div class="col-xs-6 col-md-6 field" id="locationField">
+            <div class="col-xs-2 col-md-2 iconP" id="locationIcon"><span class="glyphicon glyphicon-map-marker"></span></div>
+            <div class="col-xs-10 col-md-10 titleAndText" id="locationTitleAndText">
+                <div class="row titleP" id="locationTitle">Ubicación</div>
+                <div class="row textP" id="locationText">{{ location }}</div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-6 field" id="enableDateField">
+            <div class="col-xs-2 col-md-2 iconP" id="enableDateIcon"><span class="glyphicon glyphicon-eye-open"></span></div>
+            <div class="col-xs-10 col-md-10 titleAndText" id="enableDateTitleAndText">
+                <div class="row titleP" id="enableDateTitle">Disponible desde</div>
+                <div class="row textP" id="enableDateText">{{ app.utils.formatDate({date:initTime, format: 'dd-MM-yyyy'}) }}</div>
+            </div>
         </div>
     </div>
-
-    <div class="row container" id="actDetail">
-        <!--class="col-xs-7 col-md-7"-->
-        <div  id="rightField"><h5></h5>
-            <div class="row" id="locationField">
-                <div class="col-xs-2 col-md-2 iconP" id="locationIcon"><span class="glyphicon glyphicon-map-marker"></span></div>
-                <div class="col-xs-10 col-md-10" id="locationTitleAndText">
-                    <div class="row titleP" id="locationTitle">Ubicación</div>
-                    <div class="row textP" id="locationText"><%= location %></div>
-                </div>
-            </div>
-            <div class="row" id="enableDateField">
-                <div class="col-xs-2 col-md-2 iconP" id="enableDateIcon"><span class="glyphicon glyphicon-calendar"></span></div>
-                <div class="col-xs-10 col-md-10" id="enableDateTitleAndText">
-                    <div class="row titleP" id="enableDateTitle">Disponible desde el</div>
-                    <div class="row textP" id="enableDateText"><%= app.utils.formatDate({date:initTime, format: 'dd-MM-yyyy'}) %></div>
-                </div>
-            </div>
-            <div class="row" id="deliveryDateField">
-                <div class="col-xs-2 col-md-2 iconP" id="deliveryDateIcon"><span class="glyphicon glyphicon-envelope"></span></div>
-                <div class="col-xs-10 col-md-10" id="deliveryDateTitleAndText">
-                    <div class="row titleP" id="deliveryDateTitle">Fecha de entrega antes del</div>
-                    <div class="row textP" id="deliveryDateText"><%= app.utils.formatDate({date:deliveryTime, format: 'dd-MM-yyyy'}) %></div>
-                </div>
-            </div>
-            <div class="row" id="durationField">
-                <div class="col-xs-2 col-md-2 iconP" id="durationIcon"><span class="glyphicon glyphicon-time"></span></div>
-                <div class="col-xs-10 col-md-10" id="durationTitleAndText">
-                    <div class="row titleP" id="durationTitle">Duración</div>
-                    <div class="row textP" id="durationText"><%= duration %> minutos</div>
-                </div>
-            </div>
-            <div class="row" id="difficultyField">
-                <div class="col-xs-2 col-md-2 iconP" id="difficultyIcon"><span class="glyphicon glyphicon-wrench"></span></div>
-                <div class="col-xs-10 col-md-10" id="difficultyTitleAndText">
-                    <div class="row titleP" id="difficultyTitle">Dificutad</div>
-                    <div class="row textP" id="difficultyText"><%= difficulty %></div>
-                </div>
-            </div>
-            <div class="row" id="creatorField">
-                <div class="col-xs-2 col-md-2 iconP" id="creatorIcon"><span class="glyphicon glyphicon-user"></span></div>
-                <div class="col-xs-10 col-md-10" id="creatorTitleAndText">
-                    <div class="row titleP" id="creatorTitle">Profesor</div>
-                    <div class="row textP" id="creatorText"><%= courseCreatorFirstName + " " + courseCreatorLastName %></div>
-                </div>
+    <div class="row rowField">
+        <div class="col-xs-6 col-md-6 field" id="deliveryDateField">
+            <div class="col-xs-2 col-md-2 iconP" id="deliveryDateIcon"><span class="glyphicon glyphicon-envelope"></span></div>
+            <div class="col-xs-10 col-md-10 titleAndText" id="deliveryDateTitleAndText">
+                <div class="row titleP" id="deliveryDateTitle">Fecha de entrega</div>
+                <div class="row textP" id="deliveryDateText">{{ app.utils.formatDate({date:deliveryTime, format: 'dd-MM-yyyy'}) }}</div>
             </div>
         </div>
-        <!--class="col-xs-5 col-md-5"--> 
-        <div id="leftField">
-            <div class="row iconP" id="tasksIcon"><span class="glyphicon glyphicon-edit"></span></div>
-            <div class="row titleP" id="tasksTitle">Tareas</div>
-            <div class="row textP" id="tasksText">En total son <%= tasks.length %> tareas NO secuenciales</div>
-
-            <div class="row">
-                <div class="col-xs-2 col-md-2"></div>
-                <div class="col-xs-8 col-md-8" id="stateName">Disponible</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-2 col-md-2"></div>
-                <div class="col-xs-8 col-md-8" id="stateIcon"><span class="glyphicon glyphicon-pencil"></span></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-2 col-md-2"></div>
-                <div class="col-xs-8 col-md-8" id="stateDescription">Se puede realizar dentro de la fecha de entrega</div>
+        <div class="col-xs-6 col-md-6 field" id="durationField">
+            <div class="col-xs-2 col-md-2 iconP" id="durationIcon"><span class="glyphicon glyphicon-time"></span></div>
+            <div class="col-xs-10 col-md-10 titleAndText" id="durationTitleAndText">
+                <div class="row titleP" id="durationTitle">Duración</div>
+                <div class="row textP" id="durationText">{{ difficulty }}</div>
             </div>
         </div>
-        
     </div>
-
-
-    <div class="row" id="buttonGroup">
-        <div class="col-xs-6 col-md-6"><a class="btn btn-primary btn-lg" href="#tasks"><span class="glyphicon glyphicon-pencil"></span> INICIAR</a></div>
-        <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-info btn-lg" onclick="app.router.back()"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button></div>
+    <div class="row rowField">
+        <div class="col-xs-6 col-md-6 field" id="difficultyField">
+            <div class="col-xs-2 col-md-2 iconP" id="difficultyIcon"><span class="glyphicon glyphicon-cog"></span></div>
+            <div class="col-xs-10 col-md-10 titleAndText" id="difficultyTitleAndText">
+                <div class="row titleP" id="difficultyTitle">Dificutad</div>
+                <div class="row textP" id="difficultyText">Media</div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-6 field" id="creatorField">
+            <div class="col-xs-2 col-md-2 iconP" id="creatorIcon"><span class="glyphicon glyphicon-user"></span></div>
+            <div class="col-xs-10 col-md-10 titleAndText" id="creatorTitleAndText">
+                <div class="row titleP" id="creatorTitle">Creador</div>
+                <div class="row textP" id="creatorText">{{ courseCreatorFirstName + " " + courseCreatorLastName }}</div>
+            </div>
+        </div>
     </div>
 
 </div>
 
+<div class="row rowField" id="stateAndTasks">
+    <div class="col-xs-1 col-md-1"></div>
+    <div class="col-xs-4 col-md-4 field" id="stateField" >
+        <div class="row" id="stateName">Disponible</div>
+        <div class="row" id="stateIcon"><span class="glyphicon glyphicon-pencil"></span></div>
+    </div>
+    <div class="col-xs-2 col-md-2"></div>
+    <div class="col-xs-4 col-md-4 field" id="tasksField">
+        <div class="row iconP" id="tasksIcon">
+            <span class="glyphicon glyphicon-edit"></span>
+            <span class="glyphicon glyphicon-arrow-right"></span>
+            <span class="glyphicon glyphicon-edit"></span>
+            <span class="glyphicon glyphicon-arrow-right"></span>
+            <span class="glyphicon glyphicon-edit"></span>
+        </div>
+        <div class="row titleP" id="tasksTitle">Tareas</div>
+        <div class="row textP" id="tasksText">Son {{ tasks.length }} secuenciales</div>
+    </div>
+</div>
 
+
+<div class="row" id="buttonGroup">
+    <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-success btn-lg" id="startButton"><span class="glyphicon glyphicon-pencil"></span> INICIAR</button></div>
+    <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-info btn-lg" id="backButton" onclick="app.router.back()"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button></div>
+</div>
+
+
+<div class="modal fade" id="startActivityModal" data-backdrop="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">- Iniciar actividad -</span>
+            </div>
+            <div class="modal-body">
+                <p>Vas a iniciar la actividad <strong>Jardín Botánico de Gijón</strong>. Una vez que pulses EMPEZAR se iniciará la actividad, no podrás realizarla de nuevo y deberás completarla hasta el final.</p>
+                <p>Recuerda también que, una vez que la hayas completado, deberás guardarla y finalizarla para que quede almacenada en tu dispositivo móvil.</p>
+                <p style="font-style: italic; font-weight: bold">Información previa del creador:</p>
+                <p id="preInfo">Para esta actividad tendrás que llevar una bolsa para recoger muestras que presentarás después en clase.</p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-success btn-lg" href="#tasks" id="startActivityModalButton"><span class="glyphicon glyphicon-edit"> EMPEZAR</span></a>
+                <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancelar</span></button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+        
+</script>
