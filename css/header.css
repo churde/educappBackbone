@@ -1,0 +1,49 @@
+/* 
+    Document   : header.css
+    Created on : 08-oct-2013, 19:08:52
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#topBar
+{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #4BACC6;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 2px 5px 10px black;
+}
+
+#logoImg
+{
+    text-align: left;
+}
+
+#userName
+{
+    font-size: 1.25em;
+    white-space: nowrap;
+    z-index: -1;
+    border-right-style: solid;
+    border-right-color: white;
+    border-width: 1px;
+}
+
+#closeGroup
+{
+    font-size: 2em;
+}
