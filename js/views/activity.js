@@ -45,8 +45,8 @@ var ActivityCardView = Backbone.View.extend({
 
         //compile template
         //window.alert($('activityCardTemplate').html());
-        var sourceTemplate = $("<p style='margin-top: 65px'>{{name}} - {{courseName}}</p>").html();
-        con("vamos a ver la plantilla", sourceTemplate);
+        var sourceTemplate = $("#activityCardTemplate").html();
+        con("vamos a ver la plantilla", sourceTemplate, " y test es ", $("#testHandlebars"));
         var template = Handlebars.compile(sourceTemplate);
 
         //cargamos los datos
