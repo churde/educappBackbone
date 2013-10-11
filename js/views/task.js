@@ -27,6 +27,7 @@ var TaskListItemView = Backbone.View.extend({
         var data = this.model.toJSON();
         var isAnswered = app.router.activityUserModel.isTaskSaved(data.__taskId);
 
+        // pass data
         $(this.el).html(this.template({data: data, isAnswered: isAnswered}));
         return this;
     }

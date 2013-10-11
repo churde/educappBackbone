@@ -36,7 +36,7 @@
             <div class="col-xs-2 col-md-2 iconP" id="durationIcon"><span class="glyphicon glyphicon-time"></span></div>
             <div class="col-xs-10 col-md-10 titleAndText" id="durationTitleAndText">
                 <div class="row titleP" id="durationTitle">Duración</div>
-                <div class="row textP" id="durationText">{{ duration }}</div>
+                <div class="row textP" id="durationText">{{ duration }} min</div>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
 <div class="row rowField" id="stateAndTasks">
     <div class="col-xs-1 col-md-1"></div>
     <div class="col-xs-4 col-md-4 field" id="stateField" >
-        <div class="row" id="stateName">Disponible</div>
+        <div class="row" id="stateName">{{status}}</div>
         <div class="row" id="stateIcon"><span class="glyphicon glyphicon-pencil"></span></div>
     </div>
     <div class="col-xs-2 col-md-2"></div>
@@ -81,8 +81,8 @@
 
 
 <div class="row" id="buttonGroup">
-    <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-success btn-lg" id="startButton"><span class="glyphicon glyphicon-pencil"></span> INICIAR</button></div>
     <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-info btn-lg" id="backButton" onclick="app.router.back()"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button></div>
+    <div class="col-xs-6 col-md-6"><button type="button" class="btn btn-success btn-lg" id="startButton"><span class="glyphicon glyphicon-pencil"></span> INICIAR</button></div>
 </div>
 
 
@@ -96,11 +96,11 @@
                 <p>Vas a iniciar la actividad <strong>Jardín Botánico de Gijón</strong>. Una vez que pulses EMPEZAR se iniciará la actividad, no podrás realizarla de nuevo y deberás completarla hasta el final.</p>
                 <p>Recuerda también que, una vez que la hayas completado, deberás guardarla y finalizarla para que quede almacenada en tu dispositivo móvil.</p>
                 <p style="font-style: italic; font-weight: bold">Información previa del creador:</p>
-                <p id="preInfo">Para esta actividad tendrás que llevar una bolsa para recoger muestras que presentarás después en clase.</p>
+                <p id="preInfo">{{previousInfo}}</p>
             </div>
             <div class="modal-footer">
-                <a class="btn btn-success btn-lg" href="#tasks" id="startActivityModalButton"><span class="glyphicon glyphicon-edit"> EMPEZAR</span></a>
                 <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancelar</span></button>
+                <a class="btn btn-success btn-lg" href="#tasks" id="startActivityModalButton"><span class="glyphicon glyphicon-edit"> EMPEZAR</span></a>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

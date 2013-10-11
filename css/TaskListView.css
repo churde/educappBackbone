@@ -1,0 +1,202 @@
+/* 
+    Document   : tasks
+    Created on : 01-oct-2013, 11:05:12
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Candara, Helvetica, sans-serif;
+}
+
+#topBar
+{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #4BACC6;
+    text-align: center;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    box-shadow: 2px 5px 10px black;
+}
+
+#logoImg
+{
+    text-align: left;
+}
+
+#userName
+{
+    font-size: 1.25em;
+    white-space: nowrap;
+    z-index: -1;
+    border-right-style: solid;
+    border-right-color: white;
+    border-width:1px;
+}
+
+#closeGroup
+{
+    font-size: 2em;
+}
+
+#actBrief
+{
+    margin-top: 65px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 5px 0 5px;
+}
+
+#actImg
+{
+    padding: 0 10px 5px 0px;
+}
+
+#actName
+{
+    font-size: 1.85em;
+    line-height: 1.0em;
+    font-weight: bold;
+    color: #4BACC6;
+}
+
+#actTopic
+{
+    margin-top: 5px;
+    font-style: italic;
+    color: #4BACC6;
+    border-bottom-style: solid;
+    border-bottom-color: #4BACC6;
+    border-bottom-width: 1px;
+}
+
+#actCreator
+{
+    margin-top: 5px;
+}
+
+#helpText
+{
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    text-align: center;
+    background-color: gainsboro;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#helpTitle
+{
+    font-size: 1.75em;
+    font-weight: bold;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#helpDescription
+{
+    margin-right: auto;
+    margin-left: auto;
+    font-style: italic;
+    font-size: .85em;
+}
+
+#tasksTable
+{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.tableRow
+{
+    margin-left: auto;
+    margin-right: auto;
+    height: 3em;
+    line-height: 3em;
+    font-size: 1.25em;
+    font-weight: bold;
+    white-space: nowrap;
+    border-top-style: solid;
+    border-top-color: white;
+    border-top-width: 4px;
+}
+
+.taskNumber
+{
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.taskName
+{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.taskStatus
+{
+    padding-right: 5px;
+    padding-left: 0px;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+#row1,#row4
+{
+    background-color: lightblue;
+}
+
+#row2,#row3,#row5
+{
+    background-color: #4BACC6;
+}
+
+#row5
+{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#buttonGroup
+{
+    margin: 15px auto 10px auto;
+    text-align: center;
+}
+
+.modal-header
+{
+    padding: 5px;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+    color: #4BACC6;
+}
+
+.modal-body
+{
+    font-size: 1em;
+    text-align: justify;
+    padding: 15px;
+}
+
+.modal-footer
+{
+    text-align: center;
+    margin: 0;
+}

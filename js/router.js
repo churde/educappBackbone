@@ -178,7 +178,7 @@ var AppRouter = Backbone.Router.extend({
 
 utils.loadTemplate(['HeaderView',
     'LoginView',
-    'ActivityListItemView', 
+    'ActivityListItemView', 'ActivityCardView',
     'TaskListItemView', 'TaskListView', 'TaskView'], function() {
 
     app.router = new AppRouter();
