@@ -1,6 +1,6 @@
 app.activityController = {
     initialize: function() {
-
+        
         $('#locationField').tooltip({title: 'Lugar principal de realización de la actividad'});
         $('#enableDateField').tooltip({title: 'Fecha a partir de la cual se puede realizar la actividad'});
         $('#deliveryDateField').tooltip({title: 'Fecha a partir de la cual no se podrá realizar ni enviar la actividad'});
@@ -16,7 +16,7 @@ app.activityController = {
         $('#startActivityModalButton').on('click', function() {
             $('#startActivityModal').modal('hide');
         });
-
+ 
     }
 
 }

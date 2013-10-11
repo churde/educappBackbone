@@ -45,7 +45,7 @@
 
             <div class="form-group question">
                 <label for="user"><%= data.questionOpenGeo[i].title %></label>
-                <textarea type="" rows="6" class="form-control answer" id="<%= data.questionOpenGeo[i].__questionOpenId%>" placeholder=""><% if(typeof questionsUser[data.questionOpenGeo[i].__questionOpenId] !== 'undefined') { %> <%= questionsUser[data.questionOpenGeo[i].__questionOpenId].answer %> <% } %></textarea>
+                <textarea type="" rows="6" class="form-control answer" id="<%= data.questionOpenGeo[i].__questionId%>" placeholder=""><% if(typeof questionsUser[data.questionOpenGeo[i].__questionId] !== 'undefined') { %> <%= questionsUser[data.questionOpenGeo[i].__questionId].answer %> <% } %></textarea>
             </div>
 
             <% } %>

@@ -260,7 +260,7 @@ app.taskController = {
                 var answer = element.val();
 
                 aQuestions.push({
-                    __questionOpenId: id,
+                    __questionId: id,
                     answer: answer
                 });
             });

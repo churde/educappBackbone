@@ -119,7 +119,7 @@ var AppRouter = Backbone.Router.extend({
         
         $("#content").html(this.activityCardView.render().el);
 
-        app.activityController.initialize();
+        
 
     },
     taskList: function() {

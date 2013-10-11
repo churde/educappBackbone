@@ -6,8 +6,11 @@ var urlRoot = isDev ? "http://www.appio.es/xurde/Zend/projects/educapp/dev/publi
 app.dataModel = {
     currentUser: {
         set: function(_args) {
-
-            var model = new CurrentUserModel(_args);
+            var model = new CurrentUserModel({
+                name: _args.name,
+                __userId: _args.id,
+                isLogged: _args.isLogged
+            });
 
             app.router.currentUserCollection.add(model);
 
@@ -25,6 +28,7 @@ app.dataModel = {
         },
         clear: function() {
             app.router.currentUserCollection.destroyAll();
+                        
         }
     },
     tasks: {
@@ -86,7 +90,7 @@ var urlRest = "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/rest";
 
 // USER DATA
 var QuestionUserModel = Backbone.Model.extend({
-    idAttribute: '__questionOpenId',
+    idAttribute: '__questionId',
     defaults: {
     }
 });
@@ -101,7 +105,7 @@ var TaskUserModel = Backbone.Model.extend({
     initialize: function() {
 
         var questionsCollection = new QuestionUserCollection();
-        questionsCollection.localStorage = new Backbone.LocalStorage("questionsUserTask_" + this.get("__taskId"));
+        questionsCollection.localStorage = new Backbone.LocalStorage("questionsUserTask_" + this.get("__taskId") + "_user_" + app.dataModel.currentUser.get("id"));
 
         questionsCollection.fetch();
         this.set("questions", questionsCollection);
@@ -150,7 +154,7 @@ var ActivityUserModel = Backbone.Model.extend({
     initialize: function(id) {
         this.tasks = new TaskUserCollection();
 
-        this.tasks.localStorage = new Backbone.LocalStorage("tasksUserActivity_" + this.get("__activityId"));
+        this.tasks.localStorage = new Backbone.LocalStorage("tasksUserActivity_" + this.get("__activityId") + "_user_" + app.dataModel.currentUser.get("id"));
         this.tasks.parent = this;
 
         this.tasks.fetch();
@@ -161,7 +165,7 @@ var ActivityUserModel = Backbone.Model.extend({
         var taskUserModel = new TaskUserModel({
             '__taskId': data.__taskId,
             'isAnswered': true,
-            'userId': app.dataModel.currentUser.get("id"),
+            'userId': app.dataModel.currentUser.get("__userId"),
             'activityId': app.router.activityUserModel.get("__activityId")
         });
         // Save Questions
@@ -188,6 +192,7 @@ var ActivityUserModel = Backbone.Model.extend({
     sendToServer: function(_args) {
         // Send to the server        
         Backbone.serverSync('update', this.tasks);
+        con("enviando al servidor tasks ", this.tasks)
         if (_args.success) {
             _args.success();
         }

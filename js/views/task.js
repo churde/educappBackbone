@@ -50,7 +50,7 @@ var TaskView = Backbone.View.extend({
             var questionsUser = {};
             for (var i = 0, l = questionsUserModels.length; i < l; i++) {
                 questionsUser[questionsUserModels[i].id] = {
-                    __questionOpenId: questionsUserModels[i].get("__questionOpenId"),
+                    __questionId: questionsUserModels[i].get("__questionId"),
                     answer: questionsUserModels[i].get("answer")
                 }
             }

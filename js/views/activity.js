@@ -52,6 +52,7 @@ var ActivityCardView = Backbone.View.extend({
             var dataT = templateT(that.model.attributes);
             $(that.el).html(dataT);
 
+            app.activityController.initialize();
         });
         
         return this;
