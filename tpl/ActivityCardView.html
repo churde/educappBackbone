@@ -1,10 +1,8 @@
 
-<script type="text/x-handlebars-template" id="activityCardTemplate">
-
 <div class="row" id="actBrief">
     <div class="col-xs-5 col-md-5" id="actImg"><img class="img-responsive img-rounded" title="Foto actividad" src="img/botanicoGijon.jpg" alt="Foto de la actividad"></div>
     <div class="col-xs-7 col-md-7">
-        <div class="row" id="actName"><{{ name }}</div>
+        <div class="row" id="actName">{{ name }}</div>
         <div class="row" id="actTopic"><span class="glyphicon glyphicon-book"></span> {{courseName}}</div>
     </div>
     <span id="actDescription">{{ description }}</span>
@@ -23,7 +21,7 @@
             <div class="col-xs-2 col-md-2 iconP" id="enableDateIcon"><span class="glyphicon glyphicon-eye-open"></span></div>
             <div class="col-xs-10 col-md-10 titleAndText" id="enableDateTitleAndText">
                 <div class="row titleP" id="enableDateTitle">Disponible desde</div>
-                <div class="row textP" id="enableDateText">{{ app.utils.formatDate({date:initTime, format: 'dd-MM-yyyy'}) }}</div>
+                <div class="row textP" id="enableDateText">{{initTime}}</div>
             </div>
         </div>
     </div>
@@ -32,14 +30,14 @@
             <div class="col-xs-2 col-md-2 iconP" id="deliveryDateIcon"><span class="glyphicon glyphicon-envelope"></span></div>
             <div class="col-xs-10 col-md-10 titleAndText" id="deliveryDateTitleAndText">
                 <div class="row titleP" id="deliveryDateTitle">Fecha de entrega</div>
-                <div class="row textP" id="deliveryDateText">{{ app.utils.formatDate({date:deliveryTime, format: 'dd-MM-yyyy'}) }}</div>
+                <div class="row textP" id="deliveryDateText">{{deliveryTime}}</div>
             </div>
         </div>
         <div class="col-xs-6 col-md-6 field" id="durationField">
             <div class="col-xs-2 col-md-2 iconP" id="durationIcon"><span class="glyphicon glyphicon-time"></span></div>
             <div class="col-xs-10 col-md-10 titleAndText" id="durationTitleAndText">
                 <div class="row titleP" id="durationTitle">Duración</div>
-                <div class="row textP" id="durationText">{{ difficulty }}</div>
+                <div class="row textP" id="durationText">{{ duration }}</div>
             </div>
         </div>
     </div>
@@ -48,17 +46,17 @@
             <div class="col-xs-2 col-md-2 iconP" id="difficultyIcon"><span class="glyphicon glyphicon-cog"></span></div>
             <div class="col-xs-10 col-md-10 titleAndText" id="difficultyTitleAndText">
                 <div class="row titleP" id="difficultyTitle">Dificutad</div>
-                <div class="row textP" id="difficultyText">Media</div>
+                <div class="row textP" id="difficultyText">{{ difficulty }}</div>
             </div>
         </div>
         <div class="col-xs-6 col-md-6 field" id="creatorField">
             <div class="col-xs-2 col-md-2 iconP" id="creatorIcon"><span class="glyphicon glyphicon-user"></span></div>
             <div class="col-xs-10 col-md-10 titleAndText" id="creatorTitleAndText">
                 <div class="row titleP" id="creatorTitle">Creador</div>
-                <div class="row textP" id="creatorText">{{ courseCreatorFirstName + " " + courseCreatorLastName }}</div>
+                <div class="row textP" id="creatorText">{{ courseCreatorFirstName }} {{ courseCreatorLastName }}</div>
             </div>
         </div>
-    </div>
+    </div> 
 
 </div>
 
@@ -109,5 +107,4 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-        
-</script>
+

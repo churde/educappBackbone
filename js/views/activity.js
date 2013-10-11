@@ -44,14 +44,15 @@ var ActivityCardView = Backbone.View.extend({
         //$(this.el).html(this.template(this.model.attributes));
 
         //compile template
-        //window.alert($('activityCardTemplate').html());
-        var sourceTemplate = $("<p style='margin-top: 65px'>{{name}} - {{courseName}}</p>").html();
-        con("vamos a ver la plantilla", sourceTemplate);
-        var template = Handlebars.compile(sourceTemplate);
+        var sourceT /*= "<div style='margin-top: 100px'>{{name}}</div>"*/;
+        sourceT = jQuery.get('tpl/ActivityCardView.html');
+        con('contenido devuelto', sourceT);
+        
+        var templateT = Handlebars.compile(sourceT.responseText);
 
         //cargamos los datos
-        var html = this.template(this.model.attributes);
-        $(this.el).html(html);
+        var dataT = templateT(this.model.attributes);
+        $(this.el).html(dataT);
 
         return this;
     }
