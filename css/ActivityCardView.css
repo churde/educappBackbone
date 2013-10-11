@@ -173,6 +173,15 @@ root {
     margin: 0;
 }
 
+#preInfo
+{
+    padding: 5px;
+    background-color: gainsboro;
+    border: 1px solid grey;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
 /*.iconP > .glyphicon
 {
     animation-name: shake;
