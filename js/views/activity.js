@@ -40,20 +40,22 @@ var ActivityCardView = Backbone.View.extend({
     },
     render: function() {
 
-        // it could be passed also as this.template(this.model.toJson() )
-        //$(this.el).html(this.template(this.model.attributes));
+        // Inside the $.get function 'this' refers to the jQuery object, not the ActivityCardView. So we need to store it in a differente variable (that)
+        // in order to user it later. 
 
-        //compile template
-        //window.alert($('activityCardTemplate').html());
-        var sourceTemplate = $("#activityCardTemplate").html();
-        con("vamos a ver la plantilla", sourceTemplate, " y test es ", $("#testHandlebars"));
-        var template = Handlebars.compile(sourceTemplate);
+        var that = this;
 
-        //cargamos los datos
-        var html = this.template(this.model.attributes);
-        $(this.el).html(html);
+        $.get("tpl/ActivityCardView.html", function(data) {
+            var templateT = Handlebars.compile(data);
 
+            //cargamos los datos
+            var dataT = templateT(that.model.attributes);
+            $(that.el).html(dataT);
+
+        });
+        
         return this;
+
     }
 });
 
