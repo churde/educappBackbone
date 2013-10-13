@@ -43,7 +43,7 @@ var AppRouter = Backbone.Router.extend({
             // - - ACTIVITY
             // Activity List Collection
             this.activityListCollection = new ActivityCollection();
-
+ 
             // Activity MODEL
             this.activityModel = new ActivityModel();
 
@@ -77,10 +77,11 @@ var AppRouter = Backbone.Router.extend({
             this.activityUserCollection = new ActivityUserCollection();
 
 //            this.activityUserModel = null;// = new ActivityUserModel();
-
+con("10")
             this.activityUserCollection.fetch();
-
+con("fin de initialize")
         } catch (e) {
+            con("error en el inicitalize de router", e)
             alert("error en el initialize de router ");
             alert(e)
         }
@@ -99,6 +100,7 @@ var AppRouter = Backbone.Router.extend({
 
         this.activityListCollection.fetch(
             {success: function() {
+            con("success de fetch list")
                     $("#content").html(app.router.activityListView.render().el);
                 }}
         );
@@ -180,7 +182,7 @@ utils.loadTemplate(['HeaderView',
     'LoginView',
     'ActivityListItemView', 'ActivityCardView',
     'TaskListItemView', 'TaskListView', 'TaskView'], function() {
-
+con("se crea app.router")
     app.router = new AppRouter();
 
     Backbone.history.start();
