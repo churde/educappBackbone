@@ -1,8 +1,7 @@
 app.activityController = {
     initialize: function() {
         if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
-            $(".my-button")
-                    .bind("touchstart", function() {
+            $(".tableActivityRow").bind("touchstart", function() {
                 $(this).addClass("fake-active");
             })
                     .bind("touchend", function() {
