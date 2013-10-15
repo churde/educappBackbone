@@ -105,7 +105,7 @@ var TaskUserModel = Backbone.Model.extend({
     initialize: function() {
 
         var questionsCollection = new QuestionUserCollection();
-        questionsCollection.localStorage = new Backbone.LocalStorage("questionsUserTask_" + this.get("__taskId") + "_user_" + app.dataModel.currentUser.get("id"));
+        questionsCollection.localStorage = new Backbone.LocalStorage("questionsUserTask_" + this.get("__taskId") + "_user_" + app.dataModel.currentUser.get("__userId"));
 
         questionsCollection.fetch();
         this.set("questions", questionsCollection);
@@ -151,10 +151,10 @@ var TaskUserCollection = Backbone.Collection.extend({
  * */
 var ActivityUserModel = Backbone.Model.extend({
     idAttribute: '__activityId',
-    initialize: function(id) {
+    initialize: function() {
         this.tasks = new TaskUserCollection();
 
-        this.tasks.localStorage = new Backbone.LocalStorage("tasksUserActivity_" + this.get("__activityId") + "_user_" + app.dataModel.currentUser.get("id"));
+        this.tasks.localStorage = new Backbone.LocalStorage("tasksUserActivity_" + this.get("__activityId") + "_user_" + app.dataModel.currentUser.get("__userId"));
         this.tasks.parent = this;
 
         this.tasks.fetch();

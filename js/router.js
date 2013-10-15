@@ -74,12 +74,10 @@ var AppRouter = Backbone.Router.extend({
 
 
             // USER DATA
-            this.activityUserCollection = new ActivityUserCollection();
-
-//            this.activityUserModel = null;// = new ActivityUserModel();
-con("10")
-            this.activityUserCollection.fetch();
-con("fin de initialize")
+            // activityUserCollection is not created here but in activityList function. This model initialization depends on app.router.dataModel so
+            // it can not be done here (app.router is not defined yet at this point).
+            this.activityUserCollection = null;
+            
         } catch (e) {
             con("error en el inicitalize de router", e)
             alert("error en el initialize de router ");
@@ -96,6 +94,13 @@ con("fin de initialize")
         if (!app.dataModel.currentUser.isLogged()) {
             this.navigate('/login');
             return;
+        }
+        
+        if(this.activityUserCollection === null){
+            // USER DATA
+            this.activityUserCollection = new ActivityUserCollection();
+
+            this.activityUserCollection.fetch();
         }
 
         this.activityListCollection.fetch(
