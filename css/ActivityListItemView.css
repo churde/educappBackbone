@@ -66,6 +66,7 @@ a
     background-color: #4BACC6;
     border-radius: 10px;
     box-shadow: 2px 5px 10px black;
+    text-decoration: none;
 }
 
 .tableActivityRow:active
@@ -109,6 +110,7 @@ a
     overflow: hidden;
     text-overflow: ellipsis;
     -ms-text-overflow: ellipsis;
+    text-decoration: none;
 }
 
 .activityCourseInPanel
