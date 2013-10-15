@@ -68,7 +68,7 @@ a
     box-shadow: 2px 5px 10px black;
 }
 
-.tableActivityRow:active, .tableActivityRow.fake-active
+.tableActivityRow:active
 {
     box-shadow: none;
     transform: scale(.98,.98);
