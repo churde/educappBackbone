@@ -1,15 +1,15 @@
 app.activityController = {
     initialize: function() {
-        if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
-            $(".tableActivityRow").bind("touchstart", function() {
-                $(this).addClass("fake-active");
+        if (navigator.userAgent.toLowerCase().indexOf('android') > -1) {
+            $('.tableActivityRow').bind('touchstart', function() {
+                $(this).addClass('fake-active');
             })
-                    .bind("touchend", function() {
-                $(this).removeClass("fake-active");
+                    .bind('touchend', function() {
+                $(this).removeClass('fake-active');
             })
-                    .bind("touchcancel", function() {
+                    .bind('touchcancel', function() {
                 var $this = $(this);
-                $this.removeClass("fake-active");
+                $this.removeClass('fake-active');
             });
         }
         /*alert("Estoy en el initialize de activityController")*/
