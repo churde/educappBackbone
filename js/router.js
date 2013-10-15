@@ -117,10 +117,8 @@ var AppRouter = Backbone.Router.extend({
         this.activityUserModel = this.activityUserCollection.getOrCreate(id);
         this.activityUserModel.save();
         
-        $("#content").html(this.activityCardView.render().el);
-
-        app.activityController.initialize();
-
+        var a = $("#content").html(this.activityCardView.render().el);
+        
     },
     taskList: function() {
 

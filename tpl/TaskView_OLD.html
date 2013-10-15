@@ -45,14 +45,18 @@
 
             <div class="form-group question">
                 <label for="user"><%= data.questionOpenGeo[i].title %></label>
-                <textarea type="" rows="6" class="form-control answer" id="<%= data.questionOpenGeo[i].__questionOpenId%>" placeholder=""><% if(typeof questionsUser[data.questionOpenGeo[i].__questionOpenId] !== 'undefined') { %> <%= questionsUser[data.questionOpenGeo[i].__questionOpenId].answer %> <% } %></textarea>
+                <textarea type="" rows="6" class="form-control answer" id="<%= data.questionOpenGeo[i].__questionOpenId%>" placeholder="">
+                    <% if(typeof questionsUser[data.questionOpenGeo[i].__questionOpenId] !== 'undefined') { %> 
+                        <%= questionsUser[data.questionOpenGeo[i].__questionOpenId].answer %>
+                    <% } %>
+                </textarea>
             </div>
 
             <% } %>
 
         </div>
 
-        <button class="btn btn-default" onclick="app.taskController.saveTask( <%= data.__taskId %> )">Responder y guardar</button>
+        <button class="btn btn-default" onclick="app.taskController.saveTask( < %= data.__taskId % > )">Responder y guardar</button>
     </div>
 </div>
 

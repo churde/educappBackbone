@@ -1,5 +1,5 @@
 <div class="row" id="actBrief">
-    <div class="col-xs-5 col-md-5" id="actImg"><img class="img-responsive img-rounded" title="Foto actividad" src="img/botanicoGijon.jpg" alt="Foto de la actividad"></div>
+    <div class="col-xs-5 col-md-5" id="actImg"><img class="img-responsive img-rounded" title="Foto actividad" src="{{picture.small}}" alt="Foto de la actividad"></div>
     <div class="col-xs-7 col-md-7">
         <div class="row" id="actName">{{ name }}</div>
         <div class="row" id="actTopic"><span class="glyphicon glyphicon-book"></span> {{courseName}}</div>
@@ -59,11 +59,11 @@
 
 </div>
 
-<div class="row rowField" id="stateAndTasks">
+<div class="row rowField" id="statusAndTasks">
     <div class="col-xs-1 col-md-1"></div>
-    <div class="col-xs-4 col-md-4 field" id="stateField" >
-        <div class="row" id="stateName">{{status}}</div>
-        <div class="row" id="stateIcon"><span class="glyphicon glyphicon-pencil"></span></div>
+    <div class="col-xs-4 col-md-4 field {{status}}BgColor" id="statusField" >
+        <div class="row" id="statusName">{{status}}</div>
+        <div class="row" id="statusIcon"><span class="glyphicon glyphicon-pencil"></span></div>
     </div>
     <div class="col-xs-2 col-md-2"></div>
     <div class="col-xs-4 col-md-4 field" id="tasksField">
@@ -93,10 +93,10 @@
                 <span class="modal-title">- Iniciar actividad -</span>
             </div>
             <div class="modal-body">
-                <p>Vas a iniciar la actividad <strong>Jardín Botánico de Gijón</strong>. Una vez que pulses EMPEZAR se iniciará la actividad, no podrás realizarla de nuevo y deberás completarla hasta el final.</p>
+                <p>Vas a iniciar la actividad <strong>{{name}}</strong>. Una vez que pulses EMPEZAR se iniciará la actividad, no podrás realizarla de nuevo y deberás completarla hasta el final.</p>
                 <p>Recuerda también que, una vez que la hayas completado, deberás guardarla y finalizarla para que quede almacenada en tu dispositivo móvil.</p>
                 <p style="font-style: italic; font-weight: bold">Información previa del creador:</p>
-                <p id="preInfo">{{previousInfo}}</p>
+                <p class="creatorInfo" id="preInfo">{{previousInfo}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancelar</span></button>

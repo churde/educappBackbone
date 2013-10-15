@@ -49,7 +49,8 @@ app.taskController = {
 
         //DEV . Al llamar a las funciones de changeRadarView y changeTestMode los valores siguientes se cambiarán.
         this.changeView(this.viewMode);
-
+        
+        
 
     },
     setTasksIndex: function() {
@@ -252,7 +253,7 @@ app.taskController = {
 
             var aQuestions = [];
 
-            $('.question .answer').each(function(index, element) {
+            $('.answer').each(function(index, element) {
 
                 var element = $(element);
 
@@ -260,7 +261,7 @@ app.taskController = {
                 var answer = element.val();
 
                 aQuestions.push({
-                    __questionOpenId: id,
+                    __questionId: id,
                     answer: answer
                 });
             });
@@ -272,8 +273,6 @@ app.taskController = {
             aQuestions: aQuestions
         });
 
-        app.router.navigate('/tasks');
-
     },
     sendQuestionToServer: function() {
 
@@ -282,7 +281,7 @@ app.taskController = {
 
         if (!allTasksAnswered) {
             alert("Para enviar la actividad necesitas realizar TODAS las tareas");
-            return;
+            return false;
         }
 
         var send = confirm("¿Enviar Actividad? Una vez enviada no podrás realizar ningún cambio.");
@@ -290,10 +289,13 @@ app.taskController = {
         if (send) {
             app.router.activityUserModel.sendToServer({
                 success: function() {
-                    Backbone.history.navigate("/activity", true);
+                    /*Backbone.history.navigate("/activity", true);*/
+                    alert("Actividad Enviada");
+                    return true;
                 }
             });
+            return true;
         }
-
+        return false;
     }
 }

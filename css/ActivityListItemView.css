@@ -1,0 +1,185 @@
+/* 
+    Document   : activityPanel
+    Created on : 01-oct-2013, 16:29:02
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Candara, Helvetica, sans-serif;
+}
+
+#helpTextInPanel
+{
+    margin-top: 65px;
+    margin-right: 5px;
+    margin-left: 5px;
+    text-align: center;
+    background-color: gainsboro;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#helpTitleInPanel
+{
+    font-size: 1.75em;
+    font-weight: bold;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#helpDescriptionInPanel
+{
+    margin-right: auto;
+    margin-left: auto;
+    font-style: italic;
+    font-size: .85em;
+}
+
+#activitiesTable
+{
+    margin-right: 5px;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+.tableActivityRow
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding-right: .3em;
+    height: 5em;
+    background-color: #4BACC6;
+    border-radius: 10px;
+    box-shadow: 2px 5px 10px black;
+}
+
+.tableActivityRow:active
+{
+    box-shadow: none;
+    transform: scale(.98,.98);
+    -webkit-transform: scale(.98,.98);
+    -ms-transform: scale(.98,.98);
+}
+
+.empty
+{
+    background-color: gainsboro;
+    color: grey;
+    text-align: center;
+    font-style: italic;
+}
+
+.activityImgInPanel
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding: .4em;
+    height: 100%;
+}
+.activityImgInPanel > img
+{
+    height: 4.3em;
+    width: auto;
+    box-shadow: 2px 2px 10px black;
+}
+
+.activityNameInPanel
+{
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 2.4em;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+}
+
+.activityCourseInPanel
+{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: .9em;
+    color: white;
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+}
+
+.activityStatusInPanel
+{
+    height: 4.3em;
+    margin-top: .4em;
+    margin-bottom: .3em;
+    padding: .4em;
+    color: dimgray;
+    text-align: center;
+    border: 1px solid dimgray;
+    border-radius: 10px;
+}
+
+.statusNameInPanel
+{
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5em;
+    font-size: .75em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+}
+
+.statusIconInPanel
+{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.75em;
+    font-weight: bold;
+}
+
+.deliveredBgColor
+{
+    background-color: tomato;
+}
+
+.availableBgColor
+{
+    background-color: gold;
+}
+
+.markedBgColor
+{
+    background-color: limegreen;
+}
+
+.publishedBgColor
+{
+    background-color: mediumpurple;
+}
+
+.undeliveredBgColor
+{
+    background-color: firebrick;
+}
+
+.doneBgColor
+{
+    background-color: sandybrown;
+}

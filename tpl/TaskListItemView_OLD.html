@@ -1,0 +1,10 @@
+<div class="taskContainer <% if(isAnswered) { %> taskAnswered<% } %>" style="margin-top: 65px">
+    <a href="#tasks/<%= data.__taskId %>"><div class="name"><h3><%= data.name %></h3></div></a>
+    <div class="description"><%= data.description %></div>
+    <div class="state">Estado: <h4><% if(isAnswered) { %> REALIZADA <% }else{ %> Sin realizar <% } %></h4></div>
+
+    <div class="row" id="buttonGroup">
+        <div class="col-xs-6 col-md-6"><a class="btn btn-primary btn-lg"  href="#tasks/<%= data.__taskId %>"><span class="glyphicon glyphicon-pencil"></span> Hacer tarea</a></div>
+    </div>
+
+</div>
