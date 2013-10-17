@@ -6,16 +6,6 @@
         Purpose of the stylesheet follows.
 */
 
-root { 
-    display: block;
-}
-
-*{
-    margin: 0px;
-    padding: 0px;
-    font-family: Candara, Helvetica, sans-serif;
-}
-
 #helpText
 {
     margin-top: 60px;
@@ -37,16 +27,37 @@ root {
     border-bottom-left-radius: 1.5em; 
 }
 
+#helpDescriptionContainer
+{
+    position: relative;
+    height: 3em;
+    padding: 0px 5px 0px 5px;
+    overflow: hidden;
+}
+
 #helpDescription
 { 
+    position: absolute;
+    left: -100%;
     height: 3em;
     padding-left: 5px;
     padding-right: 5px;
+    text-align: left;
     display: table-cell;
     vertical-align: middle;
     background-color: rgba(255,0,0,0.5);
     border-top-right-radius: 1.5em;
     border-bottom-right-radius: 1.5em;
+    -webkit-animation: slide 0.75s forwards;
+    animation: slide 0.75s forwards;
+}
+
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
 }
 
 #helpTime
@@ -145,31 +156,20 @@ root {
     text-shadow: black 0.2em 0.2em 0.3em;
 }
 
-.modal-dialog
+ol.questionsList
 {
-    
-}
-
-.modal-header
-{
-    padding: 5px;
-    font-size: 1.25em;
+    font-size: 1.2em;
     font-weight: bold;
-    text-align: center;
-    color: #4BACC6;
+    list-style: lower-latin;
+    margin-left: 1.85em;
 }
 
-.modal-body
+.btnT.active, .btnF.active
 {
-    font-size: 1em;
-    text-align: justify;
-    padding: 15px;
-}
-
-.modal-footer
-{
-    text-align: center;
-    margin: 0;
+    background-color: #449D44;
+    border-color: #419641;
+    color: #FFFFFF;
+    text-shadow: none;
 }
 
 #bottomBar

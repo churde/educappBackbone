@@ -1,12 +1,16 @@
 app.taskListController = {
     initialize: function() {
+        
+        $('#actImg').on('click', function() {
+            $('#showImgModal').modal('toggle');
+        });
 
         $('#saveButtonInList').on('click', function() {
             $('#savingActivityModal').modal();
         });
 
         $('#savingActivityModalButton').on('click', function() {
-            var send = app.taskController.sendQuestionToServer();
+            var send = app.activityController.saveActivity();
             if (send) {
                 $('#savingActivityModal').modal('hide');
                 $('#finishingActivityModal').modal();
