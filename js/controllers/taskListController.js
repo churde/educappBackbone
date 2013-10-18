@@ -10,13 +10,13 @@ app.taskListController = {
         });
 
         $('#savingActivityModalButton').on('click', function() {
-            var send = app.activityController.saveActivity();
-            if (send) {
+            var save = app.activityController.saveActivity();
+            if (save) {
+                alert('lanza la modal!!');
                 $('#savingActivityModal').modal('hide');
                 $('#finishingActivityModal').modal();
-                return;
             }
-                $('#savingActivityModal').modal('hide');
+            else $('#savingActivityModal').modal('hide');
         });
 
         $('#finishingActivityModalButton').on('click', function() {

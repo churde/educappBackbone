@@ -13,29 +13,36 @@ app.activityController = {
         $('#actImg').on('click', function() {
             $('#showImgModal').modal('toggle');
         });
-        
+
         $('#statusField').on('click', function() {
             $('#pressStatusModal').modal();
         });
-        
+
         $('#startActivityModalButton').on('click', function() {
             $('#pressStatusModal').modal('hide');
             $('#startActivityModal').modal('hide');
         });
-        
-        $('#startActivityModalButtonDirect').on('click', function() {
-            $('#startActivityModal').modal('hide');
-        });
-        
+
         $('#startButtonOnBody').on('click', function() {
             $('#startActivityModal').modal();
         });
-        
+
+        $('#startActivityModalButtonDirect').on('click', function() {
+            $('#startActivityModal').modal('hide');
+        });
+
+        $('#sendButtonOnBody').on('click', function() {
+            $('#sendActivityModal').modal();
+        });
+
+        $('#sendActivityModalButtonDirect').on('click', function() {
+            $('#sendActivityModal').modal('hide');
+        });
+
         $('#sendActivityModalButton').on('click', function() {
             $('#pressStatusModal').modal('hide');
         });
     },
-    
     sendActivityToServer: function() {
 
         // Check if all tasks were answered
@@ -60,10 +67,26 @@ app.activityController = {
         }
         return false;
     },
-    
     saveActivity: function() {
-        
-    },
+        // Check if all tasks were answered
+        var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
 
+        if (!allTasksAnswered) {
+            alert("Para guardar la actividad necesitas realizar TODAS las tareas");
+            return false;
+        }
+
+        var save = confirm("¿Estás seguro de que quieres GUARDAR la actividad?");
+
+        if (save) {
+            app.router.activityUserModel.save({isCompleted: true}, {
+                success: function() {
+                    alert('Actividad CERRADA');
+                    return true;
+                }
+            });
+        }
+        return false;
+    },
 }
 

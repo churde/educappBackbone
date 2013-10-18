@@ -86,6 +86,9 @@
     {{#ifCond status 'available'}}
     <button type="button" class="btn btn-success btn-lg" id="startButtonOnBody"><span class="glyphicon glyphicon-pencil"></span> INICIAR</button>
     {{/ifCond}}
+    {{#ifCond status 'done'}}
+    <button type="button" class="btn btn-success btn-lg" id="sendButtonOnBody"><span class="glyphicon glyphicon-pencil"></span> ENVIAR</button>
+    {{/ifCond}}
 </div>
 
 
@@ -162,6 +165,28 @@
                 <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-chevron-left"> Volver</span></button>
                 <a class="btn btn-success btn-lg" href="#tasks" id="startActivityModalButtonDirect"><span class="glyphicon glyphicon-edit"> EMPEZAR</span></a>
                                
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="sendActivityModal" data-backdrop="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">- Enviar Actividad -</span>
+            </div>
+            <div class="modal-body">
+                
+                <p>Vas a enviar la actividad <strong>{{name}}</strong>. Una vez que pulses ENVIAR, la actividad aparecerá como Entregada en el Panel de Actividades.</p>
+                <p>Recuerda también que debes tener una conexión a Internet activa (WiFi ó 3G).</p>
+                               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-chevron-left"> Volver</span></button>
+                <button type="button" class="btn btn-success btn-lg" id="sendActivityModalButtonDirect" onclick="app.activityController.sendActivityToServer();"><span class="glyphicon glyphicon-send"> ENVIAR</span></button>
+                
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

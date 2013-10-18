@@ -2,7 +2,7 @@
 
 #actBrief
 {
-    margin-top: 65px;
+    margin-top: 60px;
     margin-right: auto;
     margin-left: auto;
     padding: 0 5px 0 5px;
@@ -40,7 +40,7 @@
 
 #actName
 {
-    font-size: 1.85em;
+    font-size: 1.75em;
     line-height: 1.0em;
     font-weight: 900;
     color: #4BACC6;
@@ -140,7 +140,7 @@
 
 #statusName
 {
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 #statusIcon
