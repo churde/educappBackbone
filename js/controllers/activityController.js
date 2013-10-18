@@ -22,6 +22,8 @@ app.activityController = {
             $('#pressStatusModal').modal('hide');
             $('#startActivityModal').modal('hide');
         });
+ 
+    
 
         $('#startButtonOnBody').on('click', function() {
             $('#startActivityModal').modal();
@@ -33,7 +35,7 @@ app.activityController = {
 
         $('#sendButtonOnBody').on('click', function() {
             $('#sendActivityModal').modal();
-        });
+        }); 
 
         $('#sendActivityModalButtonDirect').on('click', function() {
             $('#sendActivityModal').modal('hide');
