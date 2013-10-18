@@ -49,8 +49,8 @@ app.taskController = {
 
         //DEV . Al llamar a las funciones de changeRadarView y changeTestMode los valores siguientes se cambiarán.
         this.changeView(this.viewMode);
-        
-        
+
+
 
     },
     setTasksIndex: function() {
@@ -158,7 +158,7 @@ app.taskController = {
         compassArrow.css('-ms-transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-webkit-transform', 'rotate(' + angle + 'deg)');
 
-        
+
         $(".headingIndicator").html("El dispositivo apunta a " + this.currentHeading)
 
 
@@ -247,26 +247,23 @@ app.taskController = {
     // QUESTIONS
     saveTask: function(taskId) {
 
-        var save = confirm("¿Guardar respuestas? Una vez guardadas volverás a la lista de tareas")
+        var aQuestions = [];
 
-        if (save) {
+        $('.answer').each(function(index, element) {
 
-            var aQuestions = [];
+            var element = $(element);
+            var id;
+            var answer;
+            if (element.hasClass('openText') || element.hasClass('TF  active')) {
+                id = element.attr('id');
+                answer = element.val();
+            }
 
-            $('.answer').each(function(index, element) {
-
-                var element = $(element);
-
-                var id = element.attr('id');
-                var answer = element.val();
-
-                aQuestions.push({
-                    __questionId: id,
-                    answer: answer
-                });
+            aQuestions.push({
+                __questionId: id,
+                answer: answer
             });
-        }
-
+        });       
 
         app.router.activityUserModel.saveTask({
             __taskId: taskId,
@@ -274,28 +271,5 @@ app.taskController = {
         });
 
     },
-    sendQuestionToServer: function() {
-
-        // Check if all tasks were answered
-        var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
-
-        if (!allTasksAnswered) {
-            alert("Para enviar la actividad necesitas realizar TODAS las tareas");
-            return false;
-        }
-
-        var send = confirm("¿Enviar Actividad? Una vez enviada no podrás realizar ningún cambio.");
-
-        if (send) {
-            app.router.activityUserModel.sendToServer({
-                success: function() {
-                    /*Backbone.history.navigate("/activity", true);*/
-                    alert("Actividad Enviada");
-                    return true;
-                }
-            });
-            return true;
-        }
-        return false;
-    }
+    
 }

@@ -1,18 +1,8 @@
 @CHARSET "ISO-8859-1";
 
-*{
-    margin: 0px;
-    padding: 0px;
-    font-family: Candara, Helvetica, sans-serif;
-}
-
-root { 
-    display: block;
-}
-
 #actBrief
 {
-    margin-top: 65px;
+    margin-top: 60px;
     margin-right: auto;
     margin-left: auto;
     padding: 0 5px 0 5px;
@@ -29,13 +19,33 @@ root {
     box-shadow: 2px 2px 5px black;
 }
 
+#actImg > img:active
+{
+    transform: scale(.98,.98);
+    -webkit-transform: scale(.98,.98);
+    -ms-transform: scale(.98,.98);
+    box-shadow: none;
+}
+
+#imgModal
+{
+    margin: 0 auto;
+}
+
+#showImgModalButton
+{
+    margin: 10px;
+    text-align: center;
+}
+
 #actName
 {
-    font-size: 1.85em;
+    font-size: 1.75em;
     line-height: 1.0em;
-    font-weight: bold;
+    font-weight: 900;
     color: #4BACC6;
     text-align: left;
+    text-shadow: -1px 0 dimgray, 0 1px dimgray, 1px 0 dimgray, 0 -1px dimgray;
 }
 
 #actTopic
@@ -113,22 +123,37 @@ root {
 
 #statusField
 {
+    padding: 3px;
     font-weight: bold;
     border: 2px solid dimgray;
     border-radius: 20px;
     box-shadow: 2px 2px 10px black;
 }
 
+#statusField:active
+{
+    transform: scale(.98,.98);
+    -webkit-transform: scale(.98,.98);
+    -ms-transform: scale(.98,.98);
+    box-shadow: none;
+}
+
 #statusName
 {
-    padding-top: 5px;
-    font-size: 20px;
+    font-size: 1.3em;
 }
 
 #statusIcon
 {
-    font-size: 22px;
-    padding-bottom: 5px;
+    font-size: 1.5em;
+}
+
+#statusInfo
+{
+    color: dimgray;
+    font-size: .85em;
+    font-style: italic;
+    font-weight: normal;
 }
 
 #tasksField
@@ -161,6 +186,12 @@ root {
     font-weight: bold;
     text-align: center;
     color: #4BACC6;
+}
+
+#modalHeaderStatusModal
+{
+    color: #333333; 
+    border-bottom-color: #333333
 }
 
 .modal-body

@@ -129,9 +129,9 @@ a
     margin-top: .4em;
     margin-bottom: .3em;
     padding: .4em;
-    color: dimgray;
+    color: #333333;
     text-align: center;
-    border: 1px solid dimgray;
+    border: 1px solid #333333;
     border-radius: 10px;
 }
 

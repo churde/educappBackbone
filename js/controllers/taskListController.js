@@ -1,18 +1,22 @@
 app.taskListController = {
     initialize: function() {
+        
+        $('#actImg').on('click', function() {
+            $('#showImgModal').modal('toggle');
+        });
 
         $('#saveButtonInList').on('click', function() {
             $('#savingActivityModal').modal();
         });
 
         $('#savingActivityModalButton').on('click', function() {
-            var send = app.taskController.sendQuestionToServer();
-            if (send) {
+            var save = app.activityController.saveActivity();
+            if (save) {
+                alert('lanza la modal!!');
                 $('#savingActivityModal').modal('hide');
                 $('#finishingActivityModal').modal();
-                return;
             }
-                $('#savingActivityModal').modal('hide');
+            else $('#savingActivityModal').modal('hide');
         });
 
         $('#finishingActivityModalButton').on('click', function() {

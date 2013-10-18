@@ -1,15 +1,35 @@
+<script>
+    $('#radar').on('click', function() {
+    $('#questions').modal();
+    });
+            $('#prevTaskButton').on('click', function() {
+            app.taskController.goToTask('prev');
+    });
+            $('#nextTaskButton').on('click', function() {
+            app.taskController.goToTask('next');
+    });
+            $('#bottomBarCenterButton').on('click', function() {
+            app.taskController.goToTaskList();
+    });
+            $('#questionsModalAcceptButton').on('click', function() {
+            app.taskController.saveTask({{data.__taskId}});
+            $('#questions').modal('hide');
+    });
+</script>
+
+
 <div class="row" id="helpText">
     <div class="col-xs-1 col-md-1" id="helpIconFlag"><span class="glyphicon glyphicon-question-sign"></span></div>
-    <div class="col-xs-9 col-md-9" style="padding: 0px 5px 0px 5px"><div id="helpDescription">Sigue las indicaciones del radar para llegar hasta la tarea</div></div>
+    <div class="col-xs-9 col-md-9" id="helpDescriptionContainer"><div id="helpDescription">Sigue las indicaciones del radar para llegar hasta la tarea</div></div>
     <div class="col-xs-2 col-md-2" id="helpTime">
         <span class="glyphicon glyphicon-time"></span><p id="time">35:59</p>
     </div>
 </div>
 
 <div class="row" id="buttonGroup">
-    <button id="btnViewNormal" class="btnView btn btn-default" onclick="app.taskController.changeView('normal')">Vista Normal</button>
-    <button id="btnViewRadar" class="btnView btn btn-default" onclick="app.taskController.changeView('radar')">Vista Radar</button>
-    <button id="btnViewQuestions" class="btnView btn btn-default" onclick="app.taskController.changeView('questions')">Vista Preguntas</button>
+    <button id="btnViewNormal" class="btnView btn btn-default btn-sm" onclick="app.taskController.changeView('normal')">Vista Normal</button>
+    <button id="btnViewRadar" class="btnView btn btn-default btn-sm" onclick="app.taskController.changeView('radar')">Vista Radar</button>
+    <button id="btnViewQuestions" class="btnView btn btn-default btn-sm" onclick="app.taskController.changeView('questions')">Vista Preguntas</button>
 </div>
 
 <div class="row" id="taskID">
@@ -31,7 +51,7 @@
     <div class="col-xs-8 col-md-8" style="padding: 0px 5px 0px 5px">
         <div id="bottomBarCenterButton">
             <div class="row" id="activityNameBottomBar">--ACTIVIDAD ID:{{data._activityId}}--</div>
-            <div class="row" id="taskListBottomBar">Presiona aquí para ver el listado de tareas</div>
+            <div class="row" id="taskListBottomBar">Ver el listado de tareas</div>
         </div>
     </div>
     <div class="col-xs-2 col-md-2" id="nextTaskButton"><span class="glyphicon glyphicon-step-forward"></span></div>
@@ -48,53 +68,34 @@
             </div>
             <div class="modal-body">
                 <p>{{data.description}}</p>
-                <p><strong>Responde a las siguientes preguntas</strong></p>
-                <ol type="a" style="margin-left: 3em">
+                <p>Responde a las siguientes preguntas:</p>
+                <ol class="questionsList">
                     {{#data.questionGeo}}
+                    <li>
+                        <p>{{title}}</p>
                         {{#ifCond type 'open'}}
-                        <li>
-                            <p>{{type}}-{{title}}</p>
-                            <p><input type="text" name="answer{{@index}}" class="form-control answer openText" id="{{__questionId}}" placeholder="Pulsa aquí para escribir" value="{{#each ../../questionsUser}}{{#ifCond __questionId ../../__questionId}}{{answer}}{{/ifCond}}{{/each}}">
-                            </p>
-                        </li>
+                        <p>
+                            <input type="text" name="answer{{@index}}" class="form-control answer openText" id="{{__questionId}}" placeholder="Pulsa aquí para responder" value="{{#each ../../questionsUser}}{{#ifCond __questionId ../../__questionId}}{{answer}}{{/ifCond}}{{/each}}">
+                        </p>
                         {{/ifCond}}
-                        
                         {{#ifCond type 'vf'}}
-                        <li>
-                            <p>{{type}}-{{title}}</p>
-                            <input type="radio" name="vf{{@index}}" class="form-control answer radioButton" value="true"> Verdadero<input type="radio" name="vf" class="form-control answer radioButton" value="false"> Falso
-                        </li>
+                        <p>
+                        <div class="btn-group" data-toggle="buttons-radio">
+                            <button type="button" class="btn btn-default btnT answer TF {{#each ../../questionsUser}}{{#ifCond __questionId ../../__questionId}}{{#ifCond answer 'true'}}active{{/ifCond}}{{/ifCond}}{{/each}}" id="{{__questionId}}" value="true">Verdadero</button>
+                            <button type="button" class="btn btn-default btnF answer TF {{#each ../../questionsUser}}{{#ifCond __questionId ../../__questionId}}{{#ifCond answer 'false'}}active{{/ifCond}}{{/ifCond}}{{/each}}" id="{{__questionId}}" value="false">Falso</button>
+                        </div>
+                        </p>
                         {{/ifCond}}
+                    </li>
                     {{/data.questionGeo}}
                 </ol>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="questionsModalResponseButton"><span class="glyphicon glyphicon-check"> Responder</span></button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-chevron-left"> Volver</span></button>
+                <button type="button" class="btn btn-primary btn-lg" id="questionsModalAcceptButton"><span class="glyphicon glyphicon-check"> Aceptar</span></button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 
-<script>
-                
-                $('#radar').on('click', function() {
-        $('#questions').modal();
-        });
-                $('#prevTaskButton').on('click', function() {
-        app.taskController.goToTask('prev');
-        });
-                $('#nextTaskButton').on('click', function() {
-        app.taskController.goToTask('next');
-        });
-                $('#bottomBarCenterButton').on('click', function() {
-        app.taskController.goToTaskList();
-        });
-                $('#questionsModalResponseButton').on('click', function() {
-        app.taskController.saveTask({{data.__taskId}});
-                $('#questions').modal('hide');
-                app.router.navigate('/tasks');
-        });
-</script>
 

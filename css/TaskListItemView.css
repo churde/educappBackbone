@@ -6,16 +6,6 @@
         Purpose of the stylesheet follows.
 */
 
-root { 
-    display: block;
-}
-
-*{
-    margin: 0px;
-    padding: 0px;
-    font-family: Candara, Helvetica, sans-serif;
-}
-
 #actCreator
 {
     margin-top: 5px;
@@ -97,24 +87,3 @@ root {
     font-size: 1.5em;
 }
 
-.modal-header
-{
-    padding: 5px;
-    font-size: 1.25em;
-    font-weight: bold;
-    text-align: center;
-    color: #4BACC6;
-}
-
-.modal-body
-{
-    font-size: 1em;
-    text-align: justify;
-    padding: 15px;
-}
-
-.modal-footer
-{
-    text-align: center;
-    margin: 0;
-}
