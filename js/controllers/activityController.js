@@ -32,7 +32,7 @@ app.activityController = {
                     return true;
                 }
             });
-        }
+        } 
         return false;
     },
 }
