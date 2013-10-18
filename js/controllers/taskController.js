@@ -9,7 +9,6 @@ app.taskController = {
     currentDistance: null,
     currentAngle: null,
     currentHeading: 0,
-    viewMode: 'normal',
     isInTarget: null,
     currentTaskIndex: null,
     tasksIndex: null,
@@ -45,12 +44,6 @@ app.taskController = {
 
 
         this.setTasksIndex();
-
-
-        //DEV . Al llamar a las funciones de changeRadarView y changeTestMode los valores siguientes se cambiarán.
-        this.changeView(this.viewMode);
-
-
 
     },
     setTasksIndex: function() {
@@ -144,7 +137,7 @@ app.taskController = {
 
         var angle = this.currentAngle - this.currentHeading;
 
-        var distanceIndicator = $(".distanceIndicator");
+        var distanceIndicator = $("#distanceIndicator");
         if (this.currentDistance !== null) {
             distanceIndicator.html(this.currentDistance + " metros");
         }
@@ -152,7 +145,7 @@ app.taskController = {
             distanceIndicator.html("Calculando distancia...");
         }
 
-        var compassArrow = $(".compassArrow");
+        var compassArrow = $("#compassArrow");
 
         compassArrow.css('transform', 'rotate(' + angle + 'deg)');
         compassArrow.css('-ms-transform', 'rotate(' + angle + 'deg)');
@@ -191,7 +184,7 @@ app.taskController = {
                 text = notInProximityText;
             }
 
-            $('.proximityText').html(text);
+            $('#tip').html(text);
 
             this.showOverlay(this.isInTarget);
         } catch (e) {
@@ -199,40 +192,7 @@ app.taskController = {
         }
 
     },
-    changeView: function(view) {
-
-        this.viewMode = view;
-        $(".btnView").attr("disabled", false);
-
-        switch (this.viewMode) {
-            case 'normal':
-                $("#btnViewNormal").attr("disabled", true);
-                break;
-
-            case 'questions':
-                $("#btnViewQuestions").attr("disabled", true);
-
-                break;
-
-            case 'radar':
-                $("#btnViewRadar").attr("disabled", true);
-
-                break;
-        }
-
-        this.showOverlay();
-
-    },
     showOverlay: function(isShown) {
-
-
-        if (this.viewMode === 'questions') {
-            isShown = true;
-        }
-        if (this.viewMode === 'radar') {
-            isShown = false;
-        }
-
 
         if (isShown) {
             $('.questionsOverlay').show();
@@ -246,7 +206,7 @@ app.taskController = {
     },
     // QUESTIONS
     saveTask: function(taskId) {
-
+con("en saveTask con id ", taskId)
         var aQuestions = [];
 
         $('.answer').each(function(index, element) {
