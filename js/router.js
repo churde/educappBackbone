@@ -133,14 +133,25 @@ var AppRouter = Backbone.Router.extend({
             return;
         }
 
-
         // get the tasks and add them as a collection to the taskListCollection
         var tasks = this.activityModel.get('tasks');
         // taskListCollection is set with the tasks of the current shown activity
         this.taskListCollection.reset(tasks);
+        
+        var activityData = this.activityModel.attributes;
+        con("activityData es", activityData);
+        
+        // Iterate over the tasks adding the isAnswered property for each one
+        for(var i in activityData.tasks){
+            activityData.tasks[i].isAnswered = this.activityUserModel.getTask(activityData.tasks[i].__taskId).get('isAnswered');
+        }
+        
+        con("despues tengo ", activityData)
+        
+        
         // activityModel.attributes are passed to the view render function. That function will render task list elements (i.e. title and buttons) 
         // and it will iterate over the task to show each one with a different view
-        $("#content").html(app.router.taskListView.render(this.activityModel.attributes).el);
+        $("#content").html(app.router.taskListView.render(activityData).el);
 
     },
     task: function(id) {

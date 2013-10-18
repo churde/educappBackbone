@@ -217,7 +217,7 @@ var ActivityUserCollection = Backbone.Collection.extend({
         return model;
     },
             
-    localStorage: new Backbone.LocalStorage("activityUser" + "_user_" + app.dataModel.currentUser.get("__userId")),
+    localStorage: new Backbone.LocalStorage(""),
 //    url: urlRest
 });
 
