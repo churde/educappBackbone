@@ -12,6 +12,7 @@
             app.taskController.goToTaskList();
     });
             $('#questionsModalAcceptButton').on('click', function() {
+                // this code seems to be not valid javascript but REMEMBER this is done with handlebars, so {{ variable }} is allowed
             app.taskController.saveTask({{data.__taskId}});
             $('#questions').modal('hide');
     });
@@ -26,24 +27,18 @@
     </div>
 </div>
 
-<div class="row" id="buttonGroup">
-    <button id="btnViewNormal" class="btnView btn btn-default btn-sm" onclick="app.taskController.changeView('normal')">Vista Normal</button>
-    <button id="btnViewRadar" class="btnView btn btn-default btn-sm" onclick="app.taskController.changeView('radar')">Vista Radar</button>
-    <button id="btnViewQuestions" class="btnView btn btn-default btn-sm" onclick="app.taskController.changeView('questions')">Vista Preguntas</button>
-</div>
-
 <div class="row" id="taskID">
     <div class="row" id="taskNumber">T.{{data.__taskId}}</div>
     <div class="row" id="taskName">{{data.name}}</div>
 </div>
 
 <div class="row" id="radar">
-    <img class="img-responsive" title="Logo" src="img/compassArrow.png" alt="Logo">
-    87m
+    <img id="compassArrow" class="img-responsive" title="Logo" src="img/compassArrow.png" alt="Logo">
+    <div id="distanceIndicator">Calculando distancia...</div>
 </div>
 
 <div class="row" id="tip">
-    Todavía te encuentras muy lejos de la tarea, sigue avanzando
+    
 </div>
 
 <div class="row" id="bottomBar">

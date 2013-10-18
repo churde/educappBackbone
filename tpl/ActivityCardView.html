@@ -82,7 +82,7 @@
 
 
 <div class="row" id="buttonGroup">
-    <button type="button" class="btn btn-info btn-lg" id="backButton" onclick="app.router.back()"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button>
+    <button type="button" class="btn btn-info btn-lg" id="backButton" onclick="app.router.navigate('/activityList')"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button>
     {{#ifCond status 'available'}}
     <button type="button" class="btn btn-success btn-lg" id="startButtonOnBody"><span class="glyphicon glyphicon-pencil"></span> INICIAR</button>
     {{/ifCond}}
