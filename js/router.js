@@ -102,7 +102,6 @@ var AppRouter = Backbone.Router.extend({
                     $("#content").html(app.router.activityListView.render().el);
                 }}
         );
-
     },
     activityCard: function(id) {
         if (!app.dataModel.currentUser.isLogged()) {

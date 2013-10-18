@@ -201,6 +201,10 @@ var ActivityUserModel = Backbone.Model.extend({
 
 var ActivityUserCollection = Backbone.Collection.extend({
     model: ActivityUserModel,
+    initialize: function() {
+        localStorage: new Backbone.LocalStorage("activityUser" + "_user_" + app.dataModel.currentUser.get("__userId"));
+    },        
+    
     getOrCreate: function(id) {
         var model = this.get(id);
         if (!model) {
@@ -212,7 +216,6 @@ var ActivityUserCollection = Backbone.Collection.extend({
         return model;
     },
             
-    localStorage: new Backbone.LocalStorage("activityUser" + "_user_" + app.dataModel.currentUser.get("__userId")),
 //    url: urlRest
 });
 
