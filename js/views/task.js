@@ -4,9 +4,12 @@ var TaskListView = Backbone.View.extend({
     },
     render: function(activityData) {
 
+
+        con("en render de taskListView tengo activityData", activityData)
+
         var that = this;
 
-        $.get("tpl/TaskListItemView.html", function(data) {
+        $.get("tpl/TaskListView.html", function(data) {
             var templateT = Handlebars.compile(data);
 
             //cargamos los datos
