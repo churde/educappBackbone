@@ -66,7 +66,7 @@ app.activityController = {
             return true;
         }
         return false;
-    },
+    }, 
     saveActivity: function() {
         // Check if all tasks were answered
         var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
