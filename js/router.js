@@ -105,7 +105,6 @@ var AppRouter = Backbone.Router.extend({
 
         this.activityListCollection.fetch(
             {success: function() {
-            con("success de fetch list")
                     $("#content").html(app.router.activityListView.render().el);
                 }}
         );

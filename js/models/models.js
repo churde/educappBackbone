@@ -192,7 +192,7 @@ var ActivityUserModel = Backbone.Model.extend({
     sendToServer: function(_args) {
         // Send to the server        
         Backbone.serverSync('update', this.tasks);
-        con("enviando al servidor tasks ", this.tasks)
+        
         if (_args.success) {
             _args.success();
         }
