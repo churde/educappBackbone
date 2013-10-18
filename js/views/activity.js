@@ -4,7 +4,7 @@ var ActivityListView = Backbone.View.extend({
     },
     render: function() {
 
-        /*// Inside the $.get function 'this' refers to the jQuery object, not the ActivityCardView. So we need to store it in a differente variable (that)
+        // Inside the $.get function 'this' refers to the jQuery object, not the ActivityCardView. So we need to store it in a differente variable (that)
         // in order to user it later. 
 
         var that = this;
@@ -14,19 +14,20 @@ var ActivityListView = Backbone.View.extend({
 
             //cargamos los datos
             var dataT = templateT(that.collection.models);
+            con(that.collection.models);
             $(that.el).html(dataT);
 
-        });*/
-        
-        var activities = this.collection.models;
+        });
 
-        con("this.collection se compone de:", this.collection, "this.collection.models se compone de:", this.collection.models)
-
-        $(this.el).html('<div class="activities"></div>');
-
-        for (var i = 0; i < activities.length; i++) {
+        /*var activities = this.collection.models;
+         
+         con("this.collection se compone de:", this.collection, "this.collection.models se compone de:", this.collection.models)
+         
+         $(this.el).html('<div class="activities"></div>');
+         
+         for (var i = 0; i < activities.length; i++) {
             $('.activities', this.el).append(new ActivityListItemView({model: activities[i]}).render().el);
-        }
+         }*/
 
         return this;
 
@@ -66,7 +67,7 @@ var ActivityCardView = Backbone.View.extend({
             //cargamos los datos
             var dataT = templateT(that.model.attributes);
             $(that.el).html(dataT);
-
+            
             app.activityController.initialize();
         });
         

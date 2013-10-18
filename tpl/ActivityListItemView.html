@@ -1,7 +1,25 @@
-<div class="activityContainer" style="margin-top: 65px">
+<div class="row" id="helpTextInPanel">
+    <div class="row" id="helpTitleInPanel"> - Tus actividades - </div>
+    <div class="row" id="helpDescriptionInPanel">Actividades mostradas: Todas</div>
+</div>
 
-    <a href="#activity/card/<%= __activityId %>"><div class="name"><h3><%= name %> (<%= location %>)</h3></div></a>
-    <div class="courseName"><%= courseName %></div>
+<div class="row" id="activitiesTable">
+
+    {{#each this}}
+    <a class="activityLink" href="#activity/card/{{attributes.__activityId}}">
+        <div class="row tableActivityRow">
+            <div class="col-xs-2 col-md-2 activityImgInPanel"><img class="img-rounded" title="Foto actividad" src="{{attributes.picture.small}}" alt="Foto de la actividad"></div>
+            <div class="col-xs-8 col-md-8">
+                <div class="row activityNameInPanel">{{attributes.name}}</div>
+                <div class="row activityCourseInPanel">{{attributes.courseName}}</div>
+            </div>
+            <div class="col-xs-2 col-md-2 activityStatusInPanel {{attributes.status}}BgColor">
+                <div class="row statusNameInPanel">{{attributes.status}}</div>
+                <div class="row statusIconInPanel"><span class="glyphicon glyphicon-envelope"></span></div>
+            </div>
+        </div>
+    </a>
+    {{/each}}
 
 </div>
 

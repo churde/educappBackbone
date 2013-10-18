@@ -35,12 +35,14 @@ root {
 
 #userName
 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
     font-size: 1.25em;
     white-space: nowrap;
     z-index: -1;
-    border-right-style: solid;
-    border-right-color: white;
-    border-width: 1px;
+    border-right: 1px solid white;
 }
 
 #closeGroup

@@ -6,13 +6,19 @@
     </div>
 </div>
 
+<div class="row" id="buttonGroup">
+    <button id="btnViewNormal" class="btnView btn btn-default" onclick="app.taskController.changeView('normal')">Vista Normal</button>
+    <button id="btnViewRadar" class="btnView btn btn-default" onclick="app.taskController.changeView('radar')">Vista Radar</button>
+    <button id="btnViewQuestions" class="btnView btn btn-default" onclick="app.taskController.changeView('questions')">Vista Preguntas</button>
+</div>
+
 <div class="row" id="taskID">
-    <div class="row" id="taskNumber">Tarea 2</div>
-    <div class="row" id="taskName">El bosque templado de frondosas</div>
+    <div class="row" id="taskNumber">T.{{data.__taskId}}</div>
+    <div class="row" id="taskName">{{data.name}}</div>
 </div>
 
 <div class="row" id="radar">
-    <img class="img-responsive" title="Logo" src="../img/compassArrow.png" alt="Logo">
+    <img class="img-responsive" title="Logo" src="img/compassArrow.png" alt="Logo">
     87m
 </div>
 
@@ -24,7 +30,7 @@
     <div class="col-xs-2 col-md-2" id="prevTaskButton"><span class="glyphicon glyphicon-step-backward"></span></div>
     <div class="col-xs-8 col-md-8" style="padding: 0px 5px 0px 5px">
         <div id="bottomBarCenterButton">
-            <div class="row" id="activityNameBottomBar">Jardín Botánico de Gijón</div>
+            <div class="row" id="activityNameBottomBar">--ACTIVIDAD ID:{{data._activityId}}--</div>
             <div class="row" id="taskListBottomBar">Presiona aquí para ver el listado de tareas</div>
         </div>
     </div>
@@ -37,29 +43,33 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title" id="modalTaskNumber">- Tarea 3 -</span><br>
-                <span class="modal-title" id="modalTaskName">El bosque templado de frondosas</span>
+                <span class="modal-title" id="modalTaskNumber">-T.{{data.__taskId}} -</span><br>
+                <span class="modal-title" id="modalTaskName">{{data.name}}</span>
             </div>
             <div class="modal-body">
-                <p>El bosque templado de frondosas o de hojas anchas es un bioma de bosque de clima templado dominado por las angiospermas y que posee gran variabilidad de temperatura y precipitaciones.</p>
+                <p>{{data.description}}</p>
                 <p><strong>Responde a las siguientes preguntas</strong></p>
                 <ol type="a" style="margin-left: 3em">
-                    <li>
-                        <p>¿El bosque templado de frondosas está constituido únicamente por árboles de hoja perenne?</p>
-                        <p><input type="radio" name="answer1" value="true">Verdadero  <input type="radio" name="answer1" value="false">Falso</p>
-                    </li>
-                    <li>
-                        <p>Escribe tres especies de árboles que estés viendo que pertenezcan al bosque templado de frondosas:</p>
-                        <p><input type="text" name="answer2" class="form-control" placeholder="Pulsa aquí para escribir"></p>
-                    </li>
-                    <li>
-                        <p>¿Dónde puedes encontrar este tipo de bosque?</p>
-                        <p><input type="checkbox" name="answer3" value="Asia">Asia <input type="checkbox" name="answer3" value="Europa">Europa <input type="checkbox" name="answer2" value="América">América </p>
-                    </li>
+                    {{#data.questionGeo}}
+                        {{#ifCond type 'open'}}
+                        <li>
+                            <p>{{type}}-{{title}}</p>
+                            <p><input type="text" name="answer{{@index}}" class="form-control answer openText" id="{{__questionId}}" placeholder="Pulsa aquí para escribir" value="{{#each ../../questionsUser}}{{#ifCond __questionId ../../__questionId}}{{answer}}{{/ifCond}}{{/each}}">
+                            </p>
+                        </li>
+                        {{/ifCond}}
+                        
+                        {{#ifCond type 'vf'}}
+                        <li>
+                            <p>{{type}}-{{title}}</p>
+                            <input type="radio" name="vf{{@index}}" class="form-control answer radioButton" value="true"> Verdadero<input type="radio" name="vf" class="form-control answer radioButton" value="false"> Falso
+                        </li>
+                        {{/ifCond}}
+                    {{/data.questionGeo}}
                 </ol>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-check"> Responder</span></button>
+                <button type="button" class="btn btn-primary" id="questionsModalResponseButton"><span class="glyphicon glyphicon-check"> Responder</span></button>
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-chevron-left"> Volver</span></button>
             </div>
         </div><!-- /.modal-content -->
@@ -68,8 +78,23 @@
 
 
 <script>
-    $('#radar').on('click', function() {
+                
+                $('#radar').on('click', function() {
         $('#questions').modal();
-    });
+        });
+                $('#prevTaskButton').on('click', function() {
+        app.taskController.goToTask('prev');
+        });
+                $('#nextTaskButton').on('click', function() {
+        app.taskController.goToTask('next');
+        });
+                $('#bottomBarCenterButton').on('click', function() {
+        app.taskController.goToTaskList();
+        });
+                $('#questionsModalResponseButton').on('click', function() {
+        app.taskController.saveTask({{data.__taskId}});
+                $('#questions').modal('hide');
+                app.router.navigate('/tasks');
+        });
 </script>
 
