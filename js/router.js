@@ -67,7 +67,7 @@ var AppRouter = Backbone.Router.extend({
             this.taskListView = new TaskListView({collection: this.taskListCollection});
 
             // Task Item View
-            this.taskListItemView = new TaskListItemView({model: this.taskModel});
+            //this.taskListItemView = new TaskListItemView({model: this.taskModel});
 
             // Task View
             this.taskView = new TaskView({model: this.taskModel});
@@ -182,7 +182,7 @@ var AppRouter = Backbone.Router.extend({
 utils.loadTemplate(['HeaderView',
     'LoginView',
     'ActivityListItemView', 'ActivityCardView',
-    'TaskListItemView', 'TaskListView', 'TaskView'], function() {
+    'TaskListView', 'TaskView'], function() {
 con("se crea app.router")
     app.router = new AppRouter();
 

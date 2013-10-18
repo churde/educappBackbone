@@ -28,7 +28,7 @@ app.dataModel = {
         },
         clear: function() {
             app.router.currentUserCollection.destroyAll();
-                        
+
         }
     },
     tasks: {
@@ -192,7 +192,7 @@ var ActivityUserModel = Backbone.Model.extend({
     sendToServer: function(_args) {
         // Send to the server        
         Backbone.serverSync('update', this.tasks);
-        
+
         if (_args.success) {
             _args.success();
         }
@@ -208,8 +208,7 @@ var ActivityUserCollection = Backbone.Collection.extend({
     model: ActivityUserModel,
     initialize: function() {
         localStorage: new Backbone.LocalStorage("activityUser" + "_user_" + app.dataModel.currentUser.get("__userId"));
-    },        
-    
+    },
     getOrCreate: function(id) {
         var model = this.get(id);
         if (!model) {
@@ -220,7 +219,7 @@ var ActivityUserCollection = Backbone.Collection.extend({
 
         return model;
     },
-            
+    localStorage: new Backbone.LocalStorage(""),
 //    url: urlRest
 });
 
