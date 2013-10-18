@@ -25,15 +25,7 @@ app.activityController = {
  
     }
 
-        if (save) {
-            app.router.activityUserModel.save({isCompleted: true}, {
-                success: function() {
-                    alert('Actividad CERRADA');
-                    return true;
-                }
-            });
-        } 
-        return false;
-    },
+       
+    
 }
 
