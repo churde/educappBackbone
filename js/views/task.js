@@ -6,7 +6,7 @@ var TaskListView = Backbone.View.extend({
 
         var that = this;
 
-        $.get("tpl/TaskListItemView.html", function(data) {
+        $.get("tpl/TaskListView.html", function(data) {
             var templateT = Handlebars.compile(data);
 
             //cargamos los datos
@@ -29,7 +29,7 @@ var TaskListView = Backbone.View.extend({
     }
 });
 
-var TaskListItemView = Backbone.View.extend({
+/*var TaskListItemView = Backbone.View.extend({
     tagName: "div",
 //    className: "taskContainer",
     initialize: function() {
@@ -45,7 +45,7 @@ var TaskListItemView = Backbone.View.extend({
 
         return this;
     }
-});
+});*/
 
 var TaskView = Backbone.View.extend({
     initialize: function() {
@@ -54,7 +54,10 @@ var TaskView = Backbone.View.extend({
     render: function() {
         // it could be passed also as  this.template(this.model.toJson() )
         var data = this.model.attributes;
-
+        
+        //xxx habría que mejorar la manera de meter este dato aquí
+        data.activityName = app.router.activityListCollection.get(data._activityId).attributes.name;
+        
         var taskUser = app.router.activityUserModel.getTask(data.__taskId);
 
         var questionsUser = taskUser.get("questions");

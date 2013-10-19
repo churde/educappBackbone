@@ -14,7 +14,7 @@ app.taskListController = {
             if (save) {
                 alert('lanza la modal!!');
                 $('#savingActivityModal').modal('hide');
-                $('#finishingActivityModal').modal();
+                $('#finishingActivityModal').modal('show');
             }
             else $('#savingActivityModal').modal('hide');
         });

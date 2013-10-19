@@ -66,9 +66,6 @@ var AppRouter = Backbone.Router.extend({
             // Task View
             this.taskListView = new TaskListView({collection: this.taskListCollection});
 
-            // Task Item View
-            this.taskListItemView = new TaskListItemView({model: this.taskModel});
-
             // Task View
             this.taskView = new TaskView({model: this.taskModel});
 
@@ -108,7 +105,6 @@ var AppRouter = Backbone.Router.extend({
                     $("#content").html(app.router.activityListView.render().el);
                 }}
         );
-
     },
     activityCard: function(id) {
         if (!app.dataModel.currentUser.isLogged()) {
@@ -144,6 +140,8 @@ var AppRouter = Backbone.Router.extend({
         for(var i in activityData.tasks){
             activityData.tasks[i].isAnswered = this.activityUserModel.getTask(activityData.tasks[i].__taskId).get('isAnswered');
         }
+        
+        con('activityData con isAnswered', activityData)
         
         // activityModel.attributes are passed to the view render function. That function will render task list elements (i.e. title and buttons) 
         // and it will iterate over the task to show each one with a different view
@@ -190,8 +188,9 @@ var AppRouter = Backbone.Router.extend({
 utils.loadTemplate(['HeaderView',
     'LoginView',
     'ActivityListItemView', 'ActivityCardView',
-    'TaskListItemView', 'TaskListView', 'TaskView'], function() {
-    
+    'TaskListView', 'TaskView'], function() {
+    con("se crea app.router")
+
     app.router = new AppRouter();
 
     Backbone.history.start();
