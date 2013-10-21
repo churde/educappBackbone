@@ -56,14 +56,16 @@ app.activityController = {
         var save = confirm("¿Estás seguro de que quieres GUARDAR la actividad?");
 
         if (save) {
-            app.router.activityUserModel.save({isCompleted: true}, {
+            app.router.activityUserModel.save({statusUser: 'done'}, {
                 success: function() {
                     ret = true;
                 }
             });
         }
-        else
+        else{
             ret = false;
+        }
+            
         return ret;
     },
     
@@ -84,12 +86,15 @@ app.activityController = {
                 success: function() {
                     /*Backbone.history.navigate("/activity", true);*/
                     alert("Actividad Enviada");
+                    app.router.navigate('');
                     ret = true;
                 }
             });
         }
-        else
+        else{
             ret = false;
+        }
+            
         return ret;
     },
 }

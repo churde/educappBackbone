@@ -15,7 +15,9 @@ app.taskListController = {
                 $('#savingActivityModal').modal('hide');
                 $('#finishingActivityModal').modal('show');
             }
-            else $('#savingActivityModal').modal('hide');
+            else {
+                $('#savingActivityModal').modal('hide');
+            }
         });
 
         $('#finishingActivityModalButton').on('click', function() {

@@ -16,9 +16,9 @@ app.taskController = {
 
         var taskData = _args.taskData
         this.taskData = taskData;
-        
-        con('this.data',taskData.__taskId)
-        
+
+        con('this.data', taskData.__taskId)
+
         $('#radar').on('click', function() {
             $('#questions').modal();
         });
@@ -32,12 +32,11 @@ app.taskController = {
             app.taskController.goToTaskList();
         });
         $('#questionsModalAcceptButton').on('click', function() {
-                // this code seems to be not valid javascript but REMEMBER this is done with handlebars, so {{ variable }} is allowed
+            // this code seems to be not valid javascript but REMEMBER this is done with handlebars, so {{ variable }} is allowed
             app.taskController.saveTask(taskData.__taskId);
-        $('#questions').modal('hide');
+            $('#questions').modal('hide');
         }),
-
-        app.geolocation.watchPosition({
+                app.geolocation.watchPosition({
             success: function(position) {
                 app.taskController.updatePosition(position);
             },
@@ -227,7 +226,7 @@ app.taskController = {
     },
     // QUESTIONS
     saveTask: function(taskId) {
-con("en saveTask con id ", taskId)
+        con("en saveTask con id ", taskId)
         var aQuestions = [];
 
         $('.answer').each(function(index, element) {
@@ -238,13 +237,16 @@ con("en saveTask con id ", taskId)
             if (element.hasClass('openText') || element.hasClass('TF  active')) {
                 id = element.attr('id');
                 answer = element.val();
-            }
 
-            aQuestions.push({
-                __questionId: id,
-                answer: answer
-            });
-        });       
+                aQuestions.push({
+                    __questionId: id,
+                    answer: answer
+                });
+            }
+            con("en el bucle de each para id " + id + " , recorriendo todas las preguntas con index " + index + " y element",
+                    $(element));
+
+        });
 
         app.router.activityUserModel.saveTask({
             __taskId: taskId,
@@ -252,5 +254,4 @@ con("en saveTask con id ", taskId)
         });
 
     },
-    
 }

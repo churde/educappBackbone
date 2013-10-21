@@ -11,6 +11,8 @@ app.loginController = {
 
             if (data.status) {
                 app.loginController.login(data.user);
+                // Force initialize models
+                app.router.modelsInitialized = null;
                 app.router.navigate('/activity');
 
             }

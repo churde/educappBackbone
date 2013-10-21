@@ -31,6 +31,47 @@ app.dataModel = {
 
         }
     },
+    activity: {
+        addStatusGlobalToModels: function() {
+            app.router.activityListCollection.each(function(model) {
+
+                var modelUser = app.router.activityUserCollection.get(model.get('__activityId'));
+
+                var statusActivity = model.get('statusActivity');
+                var statusUser = typeof modelUser !== 'undefined' ? modelUser.get('statusUser') : 'undone';
+
+                var statusGlobal = app.dataModel.activity.getStatusGlobal(statusUser, statusActivity);
+                model.set('statusGlobal', statusGlobal);
+
+            })
+        },
+        getStatusGlobal: function(statusUser, statusActivity) {
+            var statusGlobal;
+            switch (statusActivity) {
+                case 'available':
+
+                    switch (statusUser) {
+                        case 'undone':
+                            statusGlobal = 'available';
+                            break;
+
+                        case 'done':
+                            statusGlobal = 'done';
+                            break;
+
+                    }
+
+                    break;
+
+                default:
+                    statusGlobal = statusActivity;
+                    break;
+            }
+
+            con("statusActivity: " + statusActivity + ". statusUser: " + statusUser + ". global: " + statusGlobal)
+            return statusGlobal;
+        }
+    },
     tasks: {
         areAllTasksAnswered: function() {
 
@@ -39,8 +80,7 @@ app.dataModel = {
             if (taskUserCollection.length > 0) {
                 answeredTasksLength = taskUserCollection.where({'isAnswered': true}).length;
             }
-
-            return answeredTasksLength === app.router.taskListCollection.length;
+            return answeredTasksLength === app.router.activityModel.get('tasks').length;
         }
     }
 }
@@ -65,13 +105,14 @@ var ActivityModel = Backbone.Model.extend({
     initialize: function() {
     },
     defaults: {
+        statusGlobal: 'available'
     }
 });
 
 var ActivityCollection = Backbone.Collection.extend({
     model: ActivityModel,
     initialize: function() {
-        this.url = urlRoot + "get-activities/userId/" +  app.dataModel.currentUser.get("__userId");
+        this.url = urlRoot + "get-activities/userId/" + app.dataModel.currentUser.get("__userId");
     },
     url: ""
 });
@@ -204,6 +245,7 @@ var ActivityUserModel = Backbone.Model.extend({
         return this.tasks.getOrCreate(id);
     },
     defaults: {
+        statusUser: 'undone'
     }
 });
 

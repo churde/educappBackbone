@@ -7,6 +7,7 @@ var AppRouter = Backbone.Router.extend({
         "tasks/:id": "task",
         "login": "login"
     },
+    modelsInitialized: null,
     before: function() {
         con("en before")
         if (this.modelsInitialized === null) {
@@ -86,7 +87,6 @@ var AppRouter = Backbone.Router.extend({
         this.modelsInitialized = true;
         
     },
-    modelsInitialized: null,
     login: function() {
         $("#content").html(this.loginView.render().el);
     },
@@ -103,6 +103,8 @@ var AppRouter = Backbone.Router.extend({
         this.activityListCollection.fetch(
                 {success: function() {
                 
+        // Add globalStatus to the models in the collection
+        app.dataModel.activity.addStatusGlobalToModels();
                 
                         $("#content").html(app.router.activityListView.render().el);
                     }}
