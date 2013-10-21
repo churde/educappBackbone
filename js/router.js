@@ -6,8 +6,6 @@ var AppRouter = Backbone.Router.extend({
         "tasks": "taskList",
         "tasks/:id": "task",
         "login": "login"
-
-
     },
     before: function() {
 

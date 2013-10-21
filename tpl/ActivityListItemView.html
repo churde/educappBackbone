@@ -9,13 +9,40 @@
     <a class="activityLink" href="#activity/card/{{attributes.__activityId}}">
         <div class="row tableActivityRow">
             <div class="col-xs-2 col-md-2 activityImgInPanel"><img class="img-rounded" title="Foto actividad" src="{{attributes.picture.small}}" alt="Foto de la actividad"></div>
-            <div class="col-xs-8 col-md-8">
+            <div class="col-xs-8 col-md-8 activityNameAndCourseInPanel">
                 <div class="row activityNameInPanel">{{attributes.name}}</div>
                 <div class="row activityCourseInPanel">{{attributes.courseName}}</div>
             </div>
-            <div class="col-xs-2 col-md-2 activityStatusInPanel {{attributes.status}}BgColor">
-                <div class="row statusNameInPanel">{{statusSpanish attributes.status}}</div>
+            <div class="col-xs-2 col-md-2 activityStatusInPanel {{attributes.statusActivity}}BgColor">
+                <div class="row statusNameInPanel">{{statusSpanish attributes.statusActivity}}</div>
+                {{#ifCond attributes.statusActivity 'published'}}
+                <div class="row statusIconInPanel"><span class="glyphicon glyphicon-eye-close"></span></div>
+                {{/ifCond}}
+                
+                {{#ifCond attributes.statusActivity 'available'}}
+                <div class="row statusIconInPanel"><span class="glyphicon glyphicon-pencil"></span></div>
+                {{/ifCond}}
+                
+                {{#ifCond attributes.statusActivity 'done'}}
+                <div class="row statusIconInPanel"><span class="glyphicon glyphicon-check"></span></div>
+                {{/ifCond}}
+                
+                {{#ifCond attributes.statusActivity 'delivered'}}
                 <div class="row statusIconInPanel"><span class="glyphicon glyphicon-envelope"></span></div>
+                {{/ifCond}}
+                
+                {{#ifCond attributes.statusActivity 'undelivered'}}
+                <div class="row statusIconInPanel"><span class="glyphicon glyphicon-remove"></span></div>
+                {{/ifCond}}
+                
+                {{#ifCond attributes.statusActivity 'revised'}}
+                <div class="row statusIconInPanel"><span class="glyphicon glyphicon-star"></span></div>
+                {{/ifCond}}
+                
+                {{#ifCond attributes.statusActivity 'unknown'}}
+                <div class="row statusIconInPanel"><span class="glyphicon glyphicon-question-sign"></span></div>
+                {{/ifCond}}
+                
             </div>
         </div>
     </a>
