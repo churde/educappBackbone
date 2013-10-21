@@ -5,7 +5,18 @@ window.HeaderView = Backbone.View.extend({
     },
 
     render: function () {
-        $(this.el).html(this.template());
+        var name = app.dataModel.currentUser.get( 'name' );
+        //$(this.el).html(this.template());
+        var that = this;
+
+        $.get("tpl/HeaderView.html", function(data) {
+            var templateT = Handlebars.compile(data);
+
+            //cargamos los datos
+            var dataT = templateT(name);
+            $(that.el).html(dataT);
+
+        });
         return this;
     }
 

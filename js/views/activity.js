@@ -32,7 +32,7 @@ var ActivityListView = Backbone.View.extend({
          $(this.el).html('<div class="activities"></div>');
          
          for (var i = 0; i < activities.length; i++) {
-            $('.activities', this.el).append(new ActivityListItemView({model: activities[i]}).render().el);
+         $('.activities', this.el).append(new ActivityListItemView({model: activities[i]}).render().el);
          }*/
 
         return this;
@@ -73,10 +73,10 @@ var ActivityCardView = Backbone.View.extend({
             //cargamos los datos
             var dataT = templateT(that.model.attributes);
             $(that.el).html(dataT);
-            
+
             app.activityController.initialize();
         });
-        
+
         return this;
 
     }

@@ -49,8 +49,8 @@
     margin-left: auto;
     margin-right: auto;
     height: 3em;
-    background-color: lightblue;
-    color: #428BCA;
+    background-color: grey;
+    color: gainsboro;
     line-height: 3em;
     font-size: 1.25em;
     font-weight: bold;
@@ -60,17 +60,28 @@
     border-top-width: 4px;
 }
 
-.isAnsweredtrue
-{
-    background-color: #428BCA;
-    color: black;
-}
-
 .tableTaskRow:active
 {
     transform: scale(.98,.98);
     -webkit-transform: scale(.98,.98);
     -ms-transform: scale(.98,.98);
+}
+
+
+.isAnsweredtrue
+{
+    background-color: gainsboro;
+    color: black;
+}
+
+.isAnsweredtrueIcon
+{
+    color: #5CB85C;
+}
+
+.isAnsweredfalseIcon
+{
+    
 }
 
 .taskNumberInList
@@ -90,7 +101,7 @@
 {
     padding-right: 5px;
     padding-left: 0px;
-    text-align: left;
+    text-align: right;
     font-size: 1.5em;
 }
 

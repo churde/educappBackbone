@@ -20,9 +20,9 @@
             <div class="col-xs-1 col-md-1 taskNumberInList">{{@index}}</div>
             <div class="col-xs-10 col-md-10 taskNameInList">{{name}}</div>
             {{#ifCond isAnswered true}}
-            <div class="col-xs-1 col-md-1 taskStatusInList"><span class="glyphicon glyphicon-ok-sign" style="color: yellowgreen"></span></div>
+            <div class="col-xs-1 col-md-1 taskStatusInList isAnsweredtrueIcon"><span class="glyphicon glyphicon-ok-sign"></span></div>
             {{else}}
-            <div class="col-xs-1 col-md-1 taskStatusInList"><span class="glyphicon glyphicon-question-sign"></span></div>
+            <div class="col-xs-1 col-md-1 taskStatusInList isAnsweredfalseIcon"><span class="glyphicon glyphicon-question-sign"></span></div>
             {{/ifCond}}
         </div>
     </a>

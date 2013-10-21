@@ -6,8 +6,6 @@ var AppRouter = Backbone.Router.extend({
         "tasks": "taskList",
         "tasks/:id": "task",
         "login": "login"
-
-
     },
     before: function() {
         // xxx En el template se pone el nombre del alumno llamando a loginController, pero debería pasarsele el parámetro desde aquí. Ver cómo se hace

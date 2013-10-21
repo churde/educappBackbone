@@ -20,10 +20,7 @@ app.activityController = {
 
         $('#startActivityModalButton').on('click', function() {
             $('#pressStatusModal').modal('hide');
-            $('#startActivityModal').modal('hide');
         });
- 
-    
 
         $('#startButtonOnBody').on('click', function() {
             $('#startActivityModal').modal();
@@ -35,7 +32,7 @@ app.activityController = {
 
         $('#sendButtonOnBody').on('click', function() {
             $('#sendActivityModal').modal();
-        }); 
+        });
 
         $('#sendActivityModalButtonDirect').on('click', function() {
             $('#sendActivityModal').modal('hide');
@@ -45,8 +42,33 @@ app.activityController = {
             $('#pressStatusModal').modal('hide');
         });
     },
-    sendActivityToServer: function() {
+            
+    saveActivity: function() {
+        var ret;
+        // Check if all tasks were answered
+        var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
 
+        if (!allTasksAnswered) {
+            alert("Para guardar la actividad necesitas realizar TODAS las tareas");
+            return false;
+        }
+
+        var save = confirm("¿Estás seguro de que quieres GUARDAR la actividad?");
+
+        if (save) {
+            app.router.activityUserModel.save({isCompleted: true}, {
+                success: function() {
+                    ret = true;
+                }
+            });
+        }
+        else
+            ret = false;
+        return ret;
+    },
+    
+    sendActivityToServer: function() {
+        var ret;
         // Check if all tasks were answered
         var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
 
@@ -62,33 +84,13 @@ app.activityController = {
                 success: function() {
                     /*Backbone.history.navigate("/activity", true);*/
                     alert("Actividad Enviada");
-                    return true;
+                    ret = true;
                 }
             });
-            return true;
         }
-        return false;
-    }, 
-    saveActivity: function() {
-        // Check if all tasks were answered
-        var allTasksAnswered = app.dataModel.tasks.areAllTasksAnswered();
-
-        if (!allTasksAnswered) {
-            alert("Para guardar la actividad necesitas realizar TODAS las tareas");
-            return false;
-        }
-
-        var save = confirm("¿Estás seguro de que quieres GUARDAR la actividad?");
-
-        if (save) {
-            app.router.activityUserModel.save({isCompleted: true}, {
-                success: function() {
-                    alert('Actividad CERRADA');
-                    return true;
-                }
-            });
-        } 
-        return false;
+        else
+            ret = false;
+        return ret;
     },
 }
 

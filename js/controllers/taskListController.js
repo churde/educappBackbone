@@ -12,7 +12,6 @@ app.taskListController = {
         $('#savingActivityModalButton').on('click', function() {
             var save = app.activityController.saveActivity();
             if (save) {
-                alert('lanza la modal!!');
                 $('#savingActivityModal').modal('hide');
                 $('#finishingActivityModal').modal('show');
             }

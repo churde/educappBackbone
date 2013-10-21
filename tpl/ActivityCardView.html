@@ -61,8 +61,8 @@
 
 <div class="row rowField" id="statusAndTasks">
     <div class="col-xs-1 col-md-1"></div>
-    <div class="col-xs-4 col-md-4 field {{status}}BgColor" id="statusField" >
-        <div class="row" id="statusName">{{statusSpanish status}}</div>
+    <div class="col-xs-4 col-md-4 field {{statusGlobal}}BgColor" id="statusField" >
+        <div class="row" id="statusName">{{statusSpanish statusGlobal}}</div>
         <div class="row" id="statusIcon"><span class="glyphicon glyphicon-pencil"></span></div>
         <div class="row" id="statusInfo">Toca para info</div>
     </div>
@@ -82,12 +82,13 @@
 
 
 <div class="row" id="buttonGroup">
-    <button type="button" class="btn btn-info btn-lg" id="backButton" onclick="app.router.navigate('/activityList')"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button>
-    {{#ifCond status 'available'}}
+    <button type="button" class="btn btn-info btn-lg" id="backButton" onclick="app.router.navigate('/activity')"><span class="glyphicon glyphicon-chevron-left"></span> Volver</button>
+    {{#ifCond statusGlobal 'available'}}
     <button type="button" class="btn btn-success btn-lg" id="startButtonOnBody"><span class="glyphicon glyphicon-pencil"></span> INICIAR</button>
     {{/ifCond}}
-    {{#ifCond status 'done'}}
-    <button type="button" class="btn btn-success btn-lg" id="sendButtonOnBody"><span class="glyphicon glyphicon-pencil"></span> ENVIAR</button>
+    
+    {{#ifCond statusGlobal 'done'}}
+    <button type="button" class="btn btn-success btn-lg" id="sendButtonOnBody"><span class="glyphicon glyphicon-plane"></span> ENVIAR</button>
     {{/ifCond}}
 </div>
 
@@ -95,37 +96,37 @@
 <div class="modal fade" id="pressStatusModal" data-backdrop="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header {{status}}BgColor" id="modalHeaderStatusModal">
-                <span class="modal-title">- Estado {{statusSpanish status}} -</span>
+            <div class="modal-header {{statusGlobal}}BgColor" id="modalHeaderStatusModal">
+                <span class="modal-title">- Estado {{statusSpanish statusGlobal}} -</span>
             </div>
             <div class="modal-body">
-                <p>La actividad <strong>{{name}}</strong> tiene actualmente el estado <strong>{{statusSpanish status}}</strong>.</p>
+                <p>La actividad <strong>{{name}}</strong> tiene actualmente el estado <strong>{{statusSpanish statusGlobal}}</strong>.</p>
                 
-                {{#ifCond status 'published'}}
+                {{#ifCond statusGlobal 'published'}}
                 <p>Esto quiere decir que no podrás realizarla hasta que se cumpla la fecha de inicio, que aparece al lado del icono <span class="glyphicon glyphicon-eye-open"></span> en la ficha de la actividad, pero seguirá apareciendo en el Panel de Actividades para su consulta.</p>
                 {{/ifCond}}
 
-                {{#ifCond status 'available'}}
+                {{#ifCond statusGlobal 'available'}}
                 <p>Esto quiere decir que está preparada para ser realizada antes de la fecha de entrega, que aparece al lado del icono <span class="glyphicon glyphicon-envelope"></span> en la ficha de la actividad. Una vez que pulses EMPEZAR se iniciará la actividad. Deberás completarla hasta el final y no podrás realizarla de nuevo.</p>
                 <p>Recuerda también que, una vez que la hayas completado, deberás guardarla y finalizarla para que quede almacenada en tu dispositivo móvil y poder enviarla posteriormente.</p>
                 <p style="font-style: italic; font-weight: bold">Información del creador:</p>
                 <p class="creatorInfo" id="preInfo">{{previousInfo}}</p>
                 {{/ifCond}}
 
-                {{#ifCond status 'done'}}
+                {{#ifCond statusGlobal 'done'}}
                 <p>Esto quiere decir que ya la has completado, por lo que debes entregarla al sistema para que sea corregida. Una vez que pulses ENVIAR, la actividad aparecerá como Entregada en el Panel de Actividades.</p>
                 <p>Recuerda también que debes tener una conexión a Internet activa (WiFi ó 3G).</p>
                 {{/ifCond}}
 
-                {{#ifCond status 'delivered'}}
+                {{#ifCond statusGlobal 'delivered'}}
                 <p>Esto quiere decir que la actividad está a la espera de la calificación.</p>
                 {{/ifCond}}
 
-                {{#ifCond status 'undelivered'}}
+                {{#ifCond statusGlobal 'undelivered'}}
                 <p>Esto quiere decir que ya ha expirado el plazo de entrega y no has enviado la actividad, por lo que no será corregida.</p>
                 {{/ifCond}}
 
-                {{#ifCond status 'marked'}}
+                {{#ifCond statusGlobal 'revised'}}
                 <p>La calificación que has obtenido en esta actividad ha sido de:</p>
                 <p>--CALIFICACIÓN--</p>
                 {{/ifCond}}
@@ -133,11 +134,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-chevron-left"> Volver</span></button>
-                {{#ifCond status 'available'}}
+                {{#ifCond statusGlobal 'available'}}
                 <a class="btn btn-success btn-lg" href="#tasks" id="startActivityModalButton"><span class="glyphicon glyphicon-edit"> EMPEZAR</span></a>
                 {{/ifCond}}
                 
-                {{#ifCond status 'done'}}
+                {{#ifCond statusGlobal 'done'}}
                 <button type="button" class="btn btn-success btn-lg" id="sendActivityModalButton" onclick="app.activityController.sendActivityToServer();"><span class="glyphicon glyphicon-send"> ENVIAR</span></button>
                 {{/ifCond}}
                 

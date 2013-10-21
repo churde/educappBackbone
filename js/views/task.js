@@ -17,35 +17,10 @@ var TaskListView = Backbone.View.extend({
             app.taskListController.initialize();
         });
 
-        /*var tasks = this.collection.models;
-         
-         $(this.el).html(this.template({activityData: activityData || {}}));
-         
-         for (var i = 0; i < tasks.length; i++) {
-         $('.tasks', this.el).append(new TaskListItemView({model: tasks[i]}).render().el);
-         }*/
-
         return this;
     }
 });
 
-/*var TaskListItemView = Backbone.View.extend({
-    tagName: "div",
-//    className: "taskContainer",
-    initialize: function() {
-        this.model.bind("change", this.render, this);
-        this.model.bind("destroy", this.close, this);
-    },
-    render: function() {
-        var data = this.model.toJSON();
-        var isAnswered = app.router.activityUserModel.isTaskSaved(data.__taskId);
-
-        // pass data
-        $(this.el).html(this.template({data: data, isAnswered: isAnswered}));
-
-        return this;
-    }
-});*/
 
 var TaskView = Backbone.View.extend({
     initialize: function() {
@@ -84,8 +59,6 @@ var TaskView = Backbone.View.extend({
             con('datos de las tareas y de las respuestas realizadas',{data: data, questionsUser: questionsUser});
             $(that.el).html(dataT);
         });
-        
-        /*$(this.el).html(this.template({data: data, questionsUser: questionsUser}));*/
 
         return this;
     }
