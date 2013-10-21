@@ -20,6 +20,7 @@ var AppRouter = Backbone.Router.extend({
     },
     initialize: function() {
         try {
+            con("en initialize del router")
             this.routesHit = 0;
             //keep count of number of routes handled by your application
             Backbone.history.on('route', function() {
@@ -101,6 +102,8 @@ var AppRouter = Backbone.Router.extend({
 
         this.activityListCollection.fetch(
                 {success: function() {
+                
+                
                         $("#content").html(app.router.activityListView.render().el);
                     }}
         );
@@ -114,7 +117,7 @@ var AppRouter = Backbone.Router.extend({
         // complicated that it should be
         this.activityModel = this.activityListCollection.get(id);
         this.activityCardView.model = this.activityModel;
-con("datos de actividad", this.activityModel.attributes)
+        
         this.activityUserModel = this.activityUserCollection.getOrCreate(id);
         this.activityUserModel.save();
 

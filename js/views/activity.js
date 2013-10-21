@@ -7,14 +7,20 @@ var ActivityListView = Backbone.View.extend({
         // Inside the $.get function 'this' refers to the jQuery object, not the ActivityCardView. So we need to store it in a differente variable (that)
         // in order to user it later. 
 
+        // Add globalStatus to the models in the collection
+        
+
         var that = this;
 
         $.get("tpl/ActivityListItemView.html", function(data) {
             var templateT = Handlebars.compile(data);
 
+
+
+
             //cargamos los datos
             var dataT = templateT(that.collection.models);
-            con(that.collection.models);
+            
             $(that.el).html(dataT);
 
         });
