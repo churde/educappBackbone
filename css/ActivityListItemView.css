@@ -43,6 +43,13 @@ root {
     font-size: .85em;
 }
 
+#refreshButtonInPanel
+{
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
 #activitiesTable
 {
     margin-right: 5px;
