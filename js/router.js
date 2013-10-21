@@ -8,6 +8,10 @@ var AppRouter = Backbone.Router.extend({
         "login": "login"
     },
     before: function() {
+        con("en before")
+        if (this.modelsInitialized === null) {
+            this.initModels();
+        }
         // xxx En el template se pone el nombre del alumno llamando a loginController, pero debería pasarsele el parámetro desde aquí. Ver cómo se hace
         this.headerView = new HeaderView();
         $('.header').html(this.headerView.el);
@@ -89,9 +93,7 @@ var AppRouter = Backbone.Router.extend({
     /* Fetch activities from server. Each model contains all the info about an activity*/
     activityList: function() {
         
-        if (this.modelsInitialized === null) {
-            this.initModels();
-        }
+        
 
         if (!app.dataModel.currentUser.isLogged()) {
             this.navigate('/login');
