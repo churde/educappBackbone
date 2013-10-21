@@ -8,7 +8,6 @@ var AppRouter = Backbone.Router.extend({
         "login": "login"
     },
     before: function() {
-
         // xxx En el template se pone el nombre del alumno llamando a loginController, pero debería pasarsele el parámetro desde aquí. Ver cómo se hace
         this.headerView = new HeaderView();
         $('.header').html(this.headerView.el);
@@ -19,60 +18,13 @@ var AppRouter = Backbone.Router.extend({
     },
     initialize: function() {
         try {
-
             this.routesHit = 0;
             //keep count of number of routes handled by your application
             Backbone.history.on('route', function() {
                 this.routesHit++;
             }, this);
 
-            // - - CURRENT USER
-            // Current User Model
-            this.currentUserModel = new CurrentUserModel();
 
-            // Current User Collection
-            this.currentUserCollection = new CurrentUserCollection();
-
-            // Login View
-            this.loginView = new LoginView({model: this.currentUserModel});
-
-            this.currentUserCollection.fetch();
-
-            // - - ACTIVITY
-            // Activity List Collection
-            this.activityListCollection = new ActivityCollection();
- 
-            // Activity MODEL
-            this.activityModel = new ActivityModel();
-
-            // Activity List View
-            this.activityListView = new ActivityListView({collection: this.activityListCollection});
-
-            // Activity List Item View
-            this.activityListItemView = new ActivityListItemView({model: this.activityModel});
-
-            // ActivityCard VIEW
-            this.activityCardView = new ActivityCardView({model: this.activityModel});
-
-            // - - TASK
-            // Task Collection
-            this.taskListCollection = new TaskCollection();
-
-            // Task Model
-            this.taskModel = new TaskModel();
-
-            // Task View
-            this.taskListView = new TaskListView({collection: this.taskListCollection});
-
-            // Task View
-            this.taskView = new TaskView({model: this.taskModel});
-
-
-            // USER DATA
-            // activityUserCollection is not created here but in activityList function. This model initialization depends on app.router.dataModel so
-            // it can not be done here (app.router is not defined yet at this point).
-            this.activityUserCollection = null;
-            
         } catch (e) {
             con("error en el inicitalize de router", e)
             alert("error en el initialize de router ");
@@ -80,28 +32,75 @@ var AppRouter = Backbone.Router.extend({
         }
 
     },
+    initModels: function() {
+        // - - CURRENT USER
+        // Current User Model
+        this.currentUserModel = new CurrentUserModel();
+
+        // Current User Collection
+        this.currentUserCollection = new CurrentUserCollection();
+
+        // Login View
+        this.loginView = new LoginView({model: this.currentUserModel});
+
+        this.currentUserCollection.fetch();
+
+        // - - ACTIVITY
+        // Activity List Collection        
+        this.activityListCollection = new ActivityCollection();
+        // Activity MODEL
+        this.activityModel = new ActivityModel();
+
+        // Activity List View
+        this.activityListView = new ActivityListView({collection: this.activityListCollection});
+
+        // Activity List Item View
+        this.activityListItemView = new ActivityListItemView({model: this.activityModel});
+
+        // ActivityCard VIEW
+        this.activityCardView = new ActivityCardView({model: this.activityModel});
+
+        // - - TASK
+        // Task Collection
+        this.taskListCollection = new TaskCollection();
+
+        // Task Model
+        this.taskModel = new TaskModel();
+
+        // Task View
+        this.taskListView = new TaskListView({collection: this.taskListCollection});
+
+        // Task View
+        this.taskView = new TaskView({model: this.taskModel});
+
+
+        // USER DATA
+        this.activityUserCollection = new ActivityUserCollection();
+        this.activityUserCollection.fetch();
+        
+        this.modelsInitialized = true;
+        
+    },
+    modelsInitialized: null,
     login: function() {
         $("#content").html(this.loginView.render().el);
     },
     /* Fetch activities from server. Each model contains all the info about an activity*/
     activityList: function() {
+        
+        if (this.modelsInitialized === null) {
+            this.initModels();
+        }
 
         if (!app.dataModel.currentUser.isLogged()) {
             this.navigate('/login');
             return;
         }
-        
-        if(this.activityUserCollection === null){
-            // USER DATA
-            this.activityUserCollection = new ActivityUserCollection();
-
-            this.activityUserCollection.fetch();
-        }
 
         this.activityListCollection.fetch(
-            {success: function() {
-                    $("#content").html(app.router.activityListView.render().el);
-                }}
+                {success: function() {
+                        $("#content").html(app.router.activityListView.render().el);
+                    }}
         );
     },
     activityCard: function(id) {
@@ -113,12 +112,12 @@ var AppRouter = Backbone.Router.extend({
         // complicated that it should be
         this.activityModel = this.activityListCollection.get(id);
         this.activityCardView.model = this.activityModel;
-
+con("datos de actividad", this.activityModel.attributes)
         this.activityUserModel = this.activityUserCollection.getOrCreate(id);
         this.activityUserModel.save();
-        
+
         var a = $("#content").html(this.activityCardView.render().el);
-        
+
     },
     taskList: function() {
 
@@ -131,16 +130,16 @@ var AppRouter = Backbone.Router.extend({
         var tasks = this.activityModel.get('tasks');
         // taskListCollection is set with the tasks of the current shown activity
         this.taskListCollection.reset(tasks);
-        
+
         var activityData = this.activityModel.attributes;
-        
+
         // Iterate over the tasks adding the isAnswered property for each one
-        for(var i in activityData.tasks){
+        for (var i in activityData.tasks) {
             activityData.tasks[i].isAnswered = this.activityUserModel.getTask(activityData.tasks[i].__taskId).get('isAnswered');
         }
-        
+
         con('activityData con isAnswered', activityData)
-        
+
         // activityModel.attributes are passed to the view render function. That function will render task list elements (i.e. title and buttons) 
         // and it will iterate over the task to show each one with a different view
         $("#content").html(app.router.taskListView.render(activityData).el);
@@ -187,7 +186,7 @@ utils.loadTemplate(['HeaderView',
     'LoginView',
     'ActivityListItemView', 'ActivityCardView',
     'TaskListView', 'TaskView'], function() {
-    con("se crea app.router")
+    
 
     app.router = new AppRouter();
 

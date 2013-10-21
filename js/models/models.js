@@ -70,7 +70,10 @@ var ActivityModel = Backbone.Model.extend({
 
 var ActivityCollection = Backbone.Collection.extend({
     model: ActivityModel,
-    url: urlRoot + "get-activities",
+    initialize: function() {
+        this.url = urlRoot + "get-activities/userId/" +  app.dataModel.currentUser.get("__userId");
+    },
+    url: ""
 });
 
 var TaskModel = Backbone.Model.extend({
@@ -207,7 +210,7 @@ var ActivityUserModel = Backbone.Model.extend({
 var ActivityUserCollection = Backbone.Collection.extend({
     model: ActivityUserModel,
     initialize: function() {
-        localStorage: new Backbone.LocalStorage("activityUser" + "_user_" + app.dataModel.currentUser.get("__userId"));
+        this.localStorage = new Backbone.LocalStorage("activityUser" + "_user_" + app.dataModel.currentUser.get("__userId"));
     },
     getOrCreate: function(id) {
         var model = this.get(id);
@@ -219,7 +222,6 @@ var ActivityUserCollection = Backbone.Collection.extend({
 
         return model;
     },
-            
     localStorage: new Backbone.LocalStorage("")
 });
 
