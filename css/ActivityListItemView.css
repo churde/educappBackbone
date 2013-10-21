@@ -27,6 +27,11 @@ root {
     border-top-right-radius: 10px;
 }
 
+#helpTextMarkInPanel, #refreshButtonMarkInPanel
+{
+    padding: 0;
+}
+
 #helpTitleInPanel
 {
     font-size: 1.75em;

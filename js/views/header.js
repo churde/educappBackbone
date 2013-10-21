@@ -5,7 +5,7 @@ window.HeaderView = Backbone.View.extend({
     },
 
     render: function () {
-        var name = app.dataModel.currentUser.get( 'name' );
+        var name = app.dataModel.currentUser.get('name');
         //$(this.el).html(this.template());
         var that = this;
 
