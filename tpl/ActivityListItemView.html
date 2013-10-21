@@ -13,33 +13,33 @@
                 <div class="row activityNameInPanel">{{attributes.name}}</div>
                 <div class="row activityCourseInPanel">{{attributes.courseName}}</div>
             </div>
-            <div class="col-xs-2 col-md-2 activityStatusInPanel {{attributes.statusActivity}}BgColor">
-                <div class="row statusNameInPanel">{{statusSpanish attributes.statusActivity}}</div>
-                {{#ifCond attributes.statusActivity 'published'}}
+            <div class="col-xs-2 col-md-2 activityStatusInPanel {{attributes.statusGlobal}}BgColor">
+                <div class="row statusNameInPanel">{{statusSpanish attributes.statusGlobal}}</div>
+                {{#ifCond attributes.statusGlobal 'published'}}
                 <div class="row statusIconInPanel"><span class="glyphicon glyphicon-eye-close"></span></div>
                 {{/ifCond}}
                 
-                {{#ifCond attributes.statusActivity 'available'}}
+                {{#ifCond attributes.statusGlobal 'available'}}
                 <div class="row statusIconInPanel"><span class="glyphicon glyphicon-pencil"></span></div>
                 {{/ifCond}}
                 
-                {{#ifCond attributes.statusActivity 'done'}}
+                {{#ifCond attributes.statusGlobal 'done'}}
                 <div class="row statusIconInPanel"><span class="glyphicon glyphicon-check"></span></div>
                 {{/ifCond}}
                 
-                {{#ifCond attributes.statusActivity 'delivered'}}
+                {{#ifCond attributes.statusGlobal 'delivered'}}
                 <div class="row statusIconInPanel"><span class="glyphicon glyphicon-envelope"></span></div>
                 {{/ifCond}}
                 
-                {{#ifCond attributes.statusActivity 'undelivered'}}
+                {{#ifCond attributes.statusGlobal 'undelivered'}}
                 <div class="row statusIconInPanel"><span class="glyphicon glyphicon-remove"></span></div>
                 {{/ifCond}}
                 
-                {{#ifCond attributes.statusActivity 'revised'}}
+                {{#ifCond attributes.statusGlobal 'revised'}}
                 <div class="row statusIconInPanel"><span class="glyphicon glyphicon-star"></span></div>
                 {{/ifCond}}
                 
-                {{#ifCond attributes.statusActivity 'unknown'}}
+                {{#ifCond attributes.statusGlobal 'unknown'}}
                 <div class="row statusIconInPanel"><span class="glyphicon glyphicon-question-sign"></span></div>
                 {{/ifCond}}
                 
