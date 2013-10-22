@@ -91,8 +91,8 @@ var AppRouter = Backbone.Router.extend({
         $("#content").html(this.loginView.render().el);
     },
     /* Fetch activities from server. Each model contains all the info about an activity*/
-    activityList: function() {
-        
+    activityList: function() {        
+
         
 
         if (!app.dataModel.currentUser.isLogged()) {
@@ -123,7 +123,13 @@ var AppRouter = Backbone.Router.extend({
         this.activityUserModel = this.activityUserCollection.getOrCreate(id);
         this.activityUserModel.save();
 
-        var a = $("#content").html(this.activityCardView.render().el);
+        var html = this.activityCardView.render().el;
+
+//        window.setTimeout(function(){
+             $("#content").html(html);
+//        }, 1000)
+
+       
 
     },
     taskList: function() {

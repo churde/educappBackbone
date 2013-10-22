@@ -70,6 +70,42 @@ app.dataModel = {
 
             con("statusActivity: " + statusActivity + ". statusUser: " + statusUser + ". global: " + statusGlobal)
             return statusGlobal;
+        },
+        clearAllData: function() {
+
+            if (typeof app.router.activityUserCollection !== 'undefined') {
+
+                app.router.activityUserCollection.each(function(activityUserModel) {
+
+                    var taskCollection = activityUserModel.tasks;
+
+                    taskCollection.each(function(taskModel) {
+                        var questionCollection = taskModel.get("questions");
+                        questionCollection.destroyAll();
+                    });
+
+                    taskCollection.destroyAll();
+
+                });
+
+                app.router.activityUserCollection.destroyAll();
+
+            }
+
+            $.ajax({
+                type: 'GET',
+                // Here we have to use the oembed API, because the simple API  (e.g.  api/v2 ) don't work for private videos
+                url: urlRoot + "clear-user-activities/userId/" + app.dataModel.currentUser.get('__userId'),
+                jsonp: 'callback',
+                dataType: 'jsonp',
+                success: function(data) {
+
+                    alert("Se han borrado todos los datos");
+
+                    app.router.refresh();
+                }
+            });
+
         }
     },
     tasks: {
@@ -243,6 +279,10 @@ var ActivityUserModel = Backbone.Model.extend({
     },
     getTask: function(id) {
         return this.tasks.getOrCreate(id);
+    },
+    clearData: function() {
+
+
     },
     defaults: {
         statusUser: 'undone'

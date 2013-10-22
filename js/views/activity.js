@@ -75,7 +75,7 @@ var ActivityCardView = Backbone.View.extend({
 
             app.activityController.initialize();
         });
-
+        
         return this;
 
     }
