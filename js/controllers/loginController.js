@@ -11,9 +11,6 @@ app.loginController = {
 
             if (data.status) {
                 
-                alert("logueado para user ")
-                alert(data.user)
-                alert(data.user.name)
                 app.loginController.login(data.user);
                 // Force initialize models
                 app.router.modelsInitialized = null;
