@@ -1,5 +1,5 @@
 .modal-dialog{
-    overflow-y: auto;
+    overflow-y: scroll;
     height: 95%;
 }
 
