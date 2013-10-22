@@ -1,6 +1,10 @@
-.modal-dialog{
-    overflow-y: scroll;
+.modal-open{
+    overflow: auto;
     height: 95%;
+}
+
+.modal{
+    position: absolute;
 }
 
 /* 
