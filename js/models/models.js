@@ -1,4 +1,4 @@
-var isDev = true;
+var isDev = false;
 var urlRoot = isDev ? "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/" : "http://www.appio.es/xurde/Zend/projects/educapp/pre/public/api/";
 
 

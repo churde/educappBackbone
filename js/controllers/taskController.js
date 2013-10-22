@@ -17,24 +17,24 @@ app.taskController = {
         var taskData = _args.taskData
         this.taskData = taskData;
 
-        $('#radar').on('click', function() {
-            $('#questions').modal();
-        });
-        $('#prevTaskButton').on('click', function() {
-            app.taskController.goToTask('prev');
-        });
-        $('#nextTaskButton').on('click', function() {
-            app.taskController.goToTask('next');
-        });
-        $('#bottomBarCenterButton').on('click', function() {
-            app.taskController.goToTaskList();
-        });
-        $('#questionsModalAcceptButton').on('click', function() {
-            app.taskController.saveTask(taskData.__taskId);
-            $('#questions').modal('hide');
-            
-            
-        }),
+//        $('#radar').on('click', function() {
+//            $('#questions').modal();
+//        });
+//        $('#prevTaskButton').on('click', function() {
+//            app.taskController.goToTask('prev');
+//        });
+//        $('#nextTaskButton').on('click', function() {
+//            app.taskController.goToTask('next');
+//        });
+//        $('#bottomBarCenterButton').on('click', function() {
+//            app.taskController.goToTaskList();
+//        });
+//        $('#questionsModalAcceptButton').on('click', function() {
+//            app.taskController.saveTask(taskData.__taskId);
+//            $('#questions').modal('hide');
+//            
+//            
+//        }),
                 
         app.geolocation.watchPosition({
             success: function(position) {
@@ -215,12 +215,15 @@ app.taskController = {
     showOverlay: function(isShown) {
 
         if (isShown) {
-            $('.questionsOverlay').show();
-            $('.taskMainContainer').addClass('overlayBackground');
+//            $('.questionsOverlay').show();
+//            $('.taskMainContainer').addClass('overlayBackground');
+            
+            $('#questions').modal();
         }
         else {
-            $('.questionsOverlay').hide();
-            $('.taskMainContainer').removeClass('overlayBackground');            
+//            $('#questions').modal('hide');
+//            $('.questionsOverlay').hide();
+//            $('.taskMainContainer').removeClass('overlayBackground');            
         }
 
     },
