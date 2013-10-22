@@ -33,6 +33,7 @@ app.loginController = {
             });
         }
         else {
+            alert("Acabas de logearte como invitado. Tus actividades no podrán ser corregidas")
             app.loginController.login({
                 name: 'Invitado',
                 isGuest: true
