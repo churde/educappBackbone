@@ -35,7 +35,7 @@ app.loginController = {
         else {
             alert("Acabas de logearte como invitado. Tus actividades no podrán ser corregidas")
             app.loginController.login({
-                name: 'Invitado',
+                name: 'Usuario Invitado',
                 isGuest: true
             });
             app.router.navigate('/activity', true);
