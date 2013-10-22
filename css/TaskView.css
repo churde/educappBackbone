@@ -1,3 +1,8 @@
+.modal-dialog{
+    overflow-y: auto;
+    height: 95%;
+}
+
 /* 
     Document   : currentTask
     Created on : 02-oct-2013, 11:54:57
