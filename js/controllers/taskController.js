@@ -13,11 +13,9 @@ app.taskController = {
     currentTaskIndex: null,
     tasksIndex: null,
     init: function(_args) {
-
+//alert("en taskControllerInit")
         var taskData = _args.taskData
         this.taskData = taskData;
-
-        con('this.data', taskData.__taskId)
 
         $('#radar').on('click', function() {
             $('#questions').modal();
@@ -32,11 +30,13 @@ app.taskController = {
             app.taskController.goToTaskList();
         });
         $('#questionsModalAcceptButton').on('click', function() {
-            // this code seems to be not valid javascript but REMEMBER this is done with handlebars, so {{ variable }} is allowed
             app.taskController.saveTask(taskData.__taskId);
             $('#questions').modal('hide');
+            
+            
         }),
-                app.geolocation.watchPosition({
+                
+        app.geolocation.watchPosition({
             success: function(position) {
                 app.taskController.updatePosition(position);
             },
@@ -220,7 +220,7 @@ app.taskController = {
         }
         else {
             $('.questionsOverlay').hide();
-            $('.taskMainContainer').removeClass('overlayBackground');
+            $('.taskMainContainer').removeClass('overlayBackground');            
         }
 
     },

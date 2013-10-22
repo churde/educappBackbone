@@ -15,6 +15,11 @@
                 // this code seems to be not valid javascript but REMEMBER this is done with handlebars, so {{ variable }} is allowed
             app.taskController.saveTask({{data.__taskId}});
             $('#questions').modal('hide');
+            
+            
+            // refresh
+            alert("llamando a refresh")
+            app.router.navigate('tasks');
     });
 </script>   
 
