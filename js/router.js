@@ -93,22 +93,51 @@ var AppRouter = Backbone.Router.extend({
     /* Fetch activities from server. Each model contains all the info about an activity*/
     activityList: function() {        
 
-        
+
 
         if (!app.dataModel.currentUser.isLogged()) {
             this.navigate('/login');
             return;
         }
 
-        this.activityListCollection.fetch(
+        var isOnline = app.utils.isOnline();
+        
+        if( isOnline ){
+            Backbone.serverSync('read', this.activityListCollection, {success: function(models) {
+
+                // Using Backbone.sync with 'read' does not set the models automatically to the collection
+                // so we do it by ourselves
+                app.router.activityListCollection.set(models);
+
+                /* Save data to localStorage*/
+                for (var i = app.router.activityListCollection.models.length - 1; i >= 0; i--) {
+                    app.router.activityListCollection.models[i].save();
+                };
+
+                // Add globalStatus to the models in the collection
+                app.dataModel.activity.addStatusGlobalToModels();
+
+                $("#content").html(app.router.activityListView.render().el);
+            },
+            error: function(e) {
+                alert("error fetching activityList " + e);
+            }
+        }); 
+        }
+        else{
+            this.activityListCollection.fetch(
                 {success: function() {
-                
-        // Add globalStatus to the models in the collection
-        app.dataModel.activity.addStatusGlobalToModels();
-                
-                        $("#content").html(app.router.activityListView.render().el);
-                    }}
-        );
+                // Add globalStatus to the models in the collection
+                app.dataModel.activity.addStatusGlobalToModels();
+
+                $("#content").html(app.router.activityListView.render().el);
+            }} 
+            );
+        }
+
+        
+
+        
     },
     activityCard: function(id) {
         if (!app.dataModel.currentUser.isLogged()) {
@@ -126,18 +155,18 @@ var AppRouter = Backbone.Router.extend({
         var html = this.activityCardView.render().el;
 
 //        window.setTimeout(function(){
-             $("#content").html(html);
+   $("#content").html(html);
 //        }, 1000)
 
-       
 
-    },
-    taskList: function() {
 
-        if (!app.dataModel.currentUser.isLogged()) {
-            this.navigate('/login');
-            return;
-        }
+},
+taskList: function() {
+
+    if (!app.dataModel.currentUser.isLogged()) {
+        this.navigate('/login');
+        return;
+    }
 
         // get the tasks and add them as a collection to the taskListCollection
         var tasks = this.activityModel.get('tasks');
@@ -199,9 +228,9 @@ utils.loadTemplate(['HeaderView',
     'LoginView',
     'ActivityListItemView', 'ActivityCardView',
     'TaskListView', 'TaskView'], function() {
-    
 
-    app.router = new AppRouter();
 
-    Backbone.history.start();
-});
+        app.router = new AppRouter();
+
+        Backbone.history.start();
+    });
