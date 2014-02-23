@@ -1,0 +1,226 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EducaApp - Editar actividad</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link href="lib/css/bootstrap.css" rel="stylesheet">
+        <link href="navbar.css" rel="stylesheet" media="screen">
+        <link href="edit.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="inicio.html"><strong>EducApp</strong></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li class="active"><a href="panel.html">Panel de actividades</a></li>
+                        <li><a href="help.html">Ayuda</a></li>
+                        <li><a href="about.html">Acerca de</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><strong> Gonzalo Gayol <b class="caret"></b></strong></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="user.html">Ver mi perfil</a></li>
+                                <li><a href="user.html">Modificar mi perfil</a></li>
+                                <li class="divider"></li>
+                                <li><a href="logout.htlm"><span class="glyphicon glyphicon-remove" style="margin-left: -15px"></span> Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <a class="btn btn-danger" id="cancelButton" href="ficha.html"><span class="glyphicon glyphicon-remove"></span> Cancelar</a> 
+            <a class="btn btn-info" id="saveButton" href="ficha.html"><span class="glyphicon glyphicon-save"></span> Guardar</a> 
+
+            <div class="row" id="actBriefInEdit">
+
+                <div class="col-md-3" id="actImgInEdit"><img class="img-responsive img-rounded" title="Botánico" src="../img/botanicoGijon.jpg" alt="Botánico"></div>
+
+                <div class="col-md-7" >
+                    <div class="row input-group" id="actNameInEdit">
+                        <span class="input-group-addon">Nombre</span>
+                        <input type="text" id="actNameInEditInput" class="form-control" value="Jardín Botánico Atlántico de Gijón">
+                    </div>
+                    <div class="row input-group" id="actCourseInEdit">
+                        <span class="input-group-addon">Asignatura</span>
+                        <select class="selectpicker" id="actCourseInEditSelectPicker">
+                            <option>Biología y Geología</option>
+                            <option>Historia</option>
+                            <option>Lengua y Literatura</option>
+                            <option>Educación Física</option>
+                        </select>
+                    </div>
+                    <div class="row input-group" id="actLocationInEdit">
+                        <span class="input-group-addon">Localización</span>
+                        <input type="text" id="actLocationInEditInput" class="form-control" value="Gijón">
+                    </div>
+                    <div class="row input-group" id="actCreatorInEdit">
+                        <span class="input-group-addon">Creador</span>
+                        <input type="text" id="actCreatorInEditInput" class="form-control" value="Javier Fombona" disabled>
+                    </div>
+                    <textarea id="actDescriptionInEditInput" class="form-control">Una actividad para descubrir las diferentes especies atlánticas, diferenciar los tipos de bosques y reconocer la flora del Cantábrico.</textarea>
+                </div>
+
+            </div>
+
+
+            <div class="row" id="actAttributesInEdit">
+
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="initDateInEditLabel" class="panel-heading panel-title">Fecha inicio <span class="glyphicon glyphicon-calendar"></span></div>
+                        <div id="initDateInEdit" class="panel-body">27-nov-2013 23:59</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="deliveryDateInEditLabel" class="panel-heading panel-title">Fecha entrega <span class="glyphicon glyphicon-calendar"></span></div>
+                        <div id="deliveryDateInEdit" class="panel-body">28-nov-2013 23:59</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="tasksInEditLabel" class="panel-heading panel-title">Nº de tareas <span class="glyphicon glyphicon-tasks"></span></div>
+                        <input type="text" id="tasksInEditInput" class="form-control panel-body" value="5" disabled>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="sequentialInEditLabel" class="panel-heading panel-title">Secuencial <span class="glyphicon glyphicon-tasks"></span> <span class="glyphicon glyphicon-arrow-right"></span> <span class="glyphicon glyphicon-tasks"></span></div>
+                        <div id="sequentialInEdit" class="panel-body">No<input type="range" id="sequentialInEditRange" class="form-control" min="0" max="1">Sí</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="difficultyInEditLabel" class="panel-heading panel-title">Dificultad <span class="glyphicon glyphicon-cog"></span></div>
+                        <div id="difficultyInEdit" class="panel-body">Baja<input type="range" id="difficultyInEditRange" class="form-control" min="1" max="3">Alta</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="durationInEditLabel" class="panel-heading panel-title">Duración <span class="glyphicon glyphicon-time"></span></div>
+                        <input type="text" id="durationInEditInput" class="form-control panel-body" value="45">min.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" id="actInfoInEdit">
+                <div class="col-md-4 ">
+                    <div class="panel panel-info">
+                        <div id="privateInfoInEditLabel" class="panel-heading panel-title">Información privada <span class="glyphicon glyphicon-eye-close"></span></div>
+                        <textarea id="privateInfoInEditInput" class="form-control" rows="5">Dejar claro a los alumnos que la actividad es pedagógica, y que se pueden aprender muchas cosas en un entorno diferente al aula. No dejarles usar el WhatsApp ni nada parecido. Pasar lista antes y después del inicio de la actividad</textarea>
+                        <div class="panel-footer">Únicamente visible por el creador</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 ">
+                    <div class="panel panel-info">
+                        <div id="preInfoInEditLabel" class="panel-heading panel-title">Información previa <span class="glyphicon glyphicon-info-sign"></span></div>
+                        <textarea id="preInfoInEditInput" class="form-control" rows="5">Para esta actividad debes tener una bolsa para recoger muestras que llevarás después a clase.</textarea>
+                        <div class="panel-footer">Mostrada al usuario al empezar la actividad</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 ">
+                    <div class="panel panel-info">
+                        <div id="postInfoInEditLabel" class="panel-heading panel-title">Información posterior <span class="glyphicon glyphicon-info-sign"></span></div>
+                        <textarea id="postInfoInEdit" class="form-control" rows="5">Espero que a partir de ahora sepas identificar algunas plantas y árboles, además los distintos fenómenos biológicos asociado. Esta actividad tendrá un peso del 10% en la nota final de la asignatura de Biología y Geología.</textarea>
+                        <div class="panel-footer">Mostrada al usuario al finalizar la actividad</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="footer">
+            <p><strong>EducApp</strong> © 2013  |  Esta página web es un site de la <a href="http://www.uniovi.es">Universidad de Oviedo</a></p>
+            <p>Creado y diseñado con mucho afán por <strong>Xurde Durán</strong> y <strong>Gonzalo Gayol</strong></p>
+            <p>Versión 1.0 - <a href="about.html">Saber más</a></p>
+        </div>
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="lib/js/bootstrap.js"></script>        
+
+        <script>
+            $(document).ready(function() {
+                $('.selectpicker').selectpicker();
+            });
+            $(function() {
+                $('#actCourseInEdit').tooltip({
+                    title: 'Asignatura',
+                    placement: 'right'
+                });
+
+                $('#actLocationInEdit').tooltip({
+                    title: 'Localización',
+                    placement: 'right'
+                });
+
+                $('#actCreatorInEdit').tooltip({
+                    title: 'Creador',
+                    placement: 'right'
+                });
+
+                $('#actDescriptionInEdit').tooltip({
+                    title: 'Descripción',
+                    placement: 'right'
+                });
+
+                $('#statusInEdit').tooltip({
+                    title: 'Estado',
+                });
+
+                $('#statusDateInEdit').tooltip({
+                    title: 'Fecha con este estado',
+                    placement: 'bottom'
+                });
+
+                $('#editActivityButtonInEdit').tooltip({
+                    title: 'Modificar datos y tareas'
+                });
+
+                $('#tasksActivityButtonInEdit').tooltip({
+                    title: 'Ver tareas'
+                });
+
+                $('#reviseActivityButtonInEdit').tooltip({
+                    title: 'Corregir y ver resultados',
+                    placement: 'bottom'
+                });
+
+                $('#removeActivityButtonInEdit').tooltip({
+                    title: 'Borrar la actividad',
+                    placement: 'bottom'
+                });
+
+            });
+
+        </script>
+
+    </body>
+</html>

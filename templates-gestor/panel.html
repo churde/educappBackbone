@@ -1,0 +1,215 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EducaApp - Panel de actividades</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link href="lib/css/bootstrap.css" rel="stylesheet">
+        <link href="navbar.css" rel="stylesheet" media="screen">
+        <link href="panel.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="inicio.html"><strong>EducApp</strong></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li class="active"><a href="panel.html">Panel de actividades</a></li>
+                        <li><a href="help.html">Ayuda</a></li>
+                        <li><a href="about.html" >Acerca de</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><strong> Gonzalo Gayol <b class="caret"></b></strong></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="user.html">Ver mi perfil</a></li>
+                                <li><a href="user.html">Modificar mi perfil</a></li>
+                                <li class="divider"></li>
+                                <li><a href="logout.htlm"><span class="glyphicon glyphicon-remove" style="margin-left: -15px"></span> Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+
+            <div id="activityList">
+                <div class="row" id="topRow"><span class="glyphicon glyphicon-list-alt" id="iconActivityList"></span><span id="textActivityList"> Actividades</span>
+                    <a class="btn btn-primary" href="#" id="createActivityButton"><span class="glyphicon glyphicon-star"></span> Crear actividad</a>
+                </div>
+
+                <div class="row" id="descriptionRow">
+                    <div class="col-md-5" style="padding-left: 80px">Nombre</div>
+                    <div class="col-md-1" style="width: 13.8888%">Asignatura</div>
+                    <div class="col-md-2" style="width: 13.8888%">Lugar</div>
+                    <div class="col-md-2" style="width: 13.8888%">Estado</div>
+                    <div class="col-md-2" style="padding-left: 3px">Opciones</div>
+                </div>
+
+                <div class="row activityRow">
+                    <a href="ficha.html">
+                        <div class="col-md-5 media activityImgNameAndDescription">
+                            <img class="img-responsive img-rounded media-object pull-left activityImage" title="Campus Viesques" src="../img/botanicoGijon.jpg" alt="Campus de Viesques">
+                            <div class="media-body">
+                                <div class="media-heading activityName">Actividad en el Campus de Viesques</div>
+                                <div class="activityDescription">Una actividad para ver como es el Campus de Gijón de la Universidad de Oviedo</div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="col-md-3 activityCourse">Historia</div>
+                    <div class="col-md-3 activityLocation">Campus de Viesques, Gijón</div>
+                    <div class="col-md-2 activityStatusAndDate">
+                        <span class="label createdBgColor">Creada</span>
+                        <div class="deliveryDate">27-nov-2013 23:59</div>
+                    </div>
+
+                    <div class="col-md-2 activityOptions">
+                        <span class="editActivityButton tooltipBtn"><a class="btn btn-info btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-edit"></span></a></span>
+                        <span class="tasksActivityButton tooltipBtn"><a class="btn btn-default btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-tasks"></span></a></span>
+                        <span class="reviseActivityButton tooltipBtn"><a class="btn btn-success btn-sm optionBtn disabled" href="#"><span class="glyphicon glyphicon-tags"></span></a></span>
+                        <span class="removeActivityButton tooltipBtn"><a class="btn btn-danger btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-remove"></span></a></span>
+                    </div>
+                </div>
+
+                <div class="row activityRow">
+                    <a href="ficha.html">
+                        <div class="col-md-5 media activityImgNameAndDescription">
+                            <img class="img-responsive img-rounded media-object pull-left activityImage" title="Málaga" src="../img/uniovi_logo.jpg" alt="Málaga">
+                            <div class="media-body">
+                                <div class="media-heading activityName">Actividad en Málaga</div>
+                                <div class="activityDescription">Una actividad para ver realizar tareas en el entorno urbano de la ciudad de Málaga</div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="col-md-3 activityCourse">Matemáticas</div>
+                    <div class="col-md-3 activityLocation">Centro urbano de Málaga, Malaga</div>
+                    <div class="col-md-2 activityStatusAndDate">
+                        <span class="label availableBgColor">Disponible</span>
+                        <div class="deliveryDate">27-nov-2013 23:59</div>
+                    </div>
+                    <div class="col-md-2 activityOptions">
+                        <span class="editActivityButton tooltipBtn"><a class="btn btn-info btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-edit"></span></a></span>
+                        <span class="tasksActivityButton tooltipBtn"><a class="btn btn-default btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-tasks"></span></a></span>
+                        <span class="reviseActivityButton tooltipBtn"><a class="btn btn-success btn-sm optionBtn disabled" href="#"><span class="glyphicon glyphicon-tags"></span></a></span>
+                        <span class="removeActivityButton tooltipBtn"><a class="btn btn-danger btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-remove"></span></a></span>
+                    </div>
+                </div>
+
+                <div class="row activityRow">
+                    <a href="ficha.html">
+                        <div class="col-md-5 media activityImgNameAndDescription">
+                            <img class="img-responsive img-rounded media-object pull-left activityImage" title="Campus Viesques" src="../img/botanicoGijon.jpg" alt="Campus de Viesques">
+                            <div class="media-body">
+                                <div class="media-heading activityName">Jardín Botánico Atlántico de Gijón</div>
+                                <div class="activityDescription"><p>Una actividad para descubrir las diferentes especies atlánticas, diferenciar los tipos de bosques y reconocer la flora del Cantábrico</p></div>
+                            </div>
+                        </div>
+                    </a>                    
+                    <div class="col-md-3 activityCourse">Biología y Geología</div>
+                    <div class="col-md-3 activityLocation">Jardín Botánico, Gijón</div>
+                    <div class="col-md-2 activityStatusAndDate">
+                        <span class="label finishedBGColor">Finalizada</span>
+                        <div class="deliveryDate">20-nov-2013 13:00</div>
+                    </div>
+                    <div class="col-md-2 activityOptions">
+                        <span class="editActivityButton tooltipBtn"><a class="btn btn-info btn-sm optionBtn disabled" href="#"><span class="glyphicon glyphicon-edit"></span></a></span>
+                        <span class="tasksActivityButton tooltipBtn"><a class="btn btn-default btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-tasks"></span></a></span>
+                        <span class="reviseActivityButton tooltipBtn"><a class="btn btn-success btn-sm optionBtn" href="correccion.html"><span class="glyphicon glyphicon-tags"></span></a></span>
+                        <span class="removeActivityButton tooltipBtn"><a class="btn btn-danger btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-remove"></span></a></span>
+                    </div>
+                </div>
+
+                <div class="row activityRow">
+                    <a href="ficha.html">
+                        <div class="col-md-5 media activityImgNameAndDescription">
+                            <img class="img-responsive img-rounded media-object pull-left activityImage" title="La Regenta" src="../img/La_Regenta.jpg" alt="La Regenta">
+                            <div class="media-body">
+                                <div class="media-heading activityName">La Vetusta de La Regenta</div>
+                                <div class="activityDescription">En esta actividad se realizarán tareas mientras se da un paseo por los lugares de la ciudad de Oviedo que aparecen en la emblemática novela de Clarín</div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="col-md-3 activityCourse">Lengua y literatura</div>
+                    <div class="col-md-3 activityLocation">Casco antiguo, Oviedo</div>
+                    <div class="col-md-2 activityStatusAndDate">
+                        <span class="label revisedBgColor">Corregida</span>
+                        <div class="deliveryDate">15-dic-2013 18:00</div>
+                    </div>
+                    <div class="col-md-2 activityOptions">
+                        <span class="editActivityButton tooltipBtn"><a class="btn btn-info btn-sm optionBtn disabled" href="#"><span class="glyphicon glyphicon-edit"></span></a></span>
+                        <span class="tasksActivityButton tooltipBtn"><a class="btn btn-default btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-tasks"></span></a></span>
+                        <span class="reviseActivityButton tooltipBtn"><a class="btn btn-success btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-tags"></span></a></span>
+                        <span class="removeActivityButton tooltipBtn"><a class="btn btn-danger btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-remove"></span></a></span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+        
+        <div id="footer">
+            <p><strong>EducApp</strong> © 2013  |  Esta página web es un site de la <a href="http://www.uniovi.es">Universidad de Oviedo</a></p>
+            <p>Creado y diseñado con mucho afán por <strong>Xurde Durán</strong> y <strong>Gonzalo Gayol</strong></p>
+            <p>Versión 1.0 - <a href="about.html">Saber más</a></p>
+        </div>
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="lib/js/bootstrap.js"></script>        
+
+        <script>
+            $(function() {
+                var p = $('.activityDescription p');
+                var divh = $('.activityDescription').height();
+                while ($(p).outerHeight() > divh) {
+                    $(p).text(function(index, text) {
+                        return text.replace(/\W*\s(\S)*$/, '...');
+                    });
+                }
+
+                $('#createActivityButton').tooltip({
+                    title: 'Crear nueva actividad'
+                });
+
+                $('.editActivityButton').tooltip({
+                    title: 'Modificar datos y tareas'
+                });
+
+                $('.tasksActivityButton').tooltip({
+                    title: 'Ver tareas'
+                });
+
+                $('.reviseActivityButton').tooltip({
+                    title: 'Corregir y ver resultados'
+                });
+
+                $('.removeActivityButton').tooltip({
+                    title: 'Borrar actividad'
+                });
+
+            });
+
+        </script>        
+
+    </body>
+</html>

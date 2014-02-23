@@ -1,0 +1,285 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EducaApp - Jardin Botánico - Gonzalo Gayol Álvarez</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link href="lib/css/bootstrap.css" rel="stylesheet">
+        <link href="navbar.css" rel="stylesheet" media="screen">
+        <link href="correccion_indiv.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="inicio.html"><strong>EducApp</strong></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li class="active"><a href="panel.html">Panel de actividades</a></li>
+                        <li><a href="help.html">Ayuda</a></li>
+                        <li><a href="about.html">Acerca de</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><strong> Gonzalo Gayol <b class="caret"></b></strong></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="user.html">Ver mi perfil</a></li>
+                                <li><a href="user.html">Modificar mi perfil</a></li>
+                                <li class="divider"></li>
+                                <li><a href="logout.htlm"><span class="glyphicon glyphicon-remove" style="margin-left: -15px"></span> Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <a class="btn btn-default" id="backButton" href="correccion.html"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a> 
+
+            <div class="row" id="headingInCorrection">
+
+                <div class="col-md-6 media" id="actBriefInCorrection">
+                    <div class="media-object pull-left" id="actImgInCorrectionContainer"><img class="img-responsive img-rounded" id="actImgInCorrection" title="Botánico" src="../img/botanicoGijon.jpg" alt="Botánico">Clic ampliar</div>
+                    <div class="media-heading" id="actNameInCorrection">Jardín Botánico Atlántico de Gijón</div>
+                    <div class="media-body">
+                        <div class="col-md-6 attributesCol">
+                            <div class="row actAttributesInCorrection" id="actCourseInCorrection"><span class="glyphicon glyphicon-book courseIcon"></span> Biología y Geología sdfdsgdsgagfd gsg aasg ag</div>
+                            <div class="row actAttributesInCorrection" id="actLocationInCorrection"><span class="glyphicon glyphicon-map-marker locationIcon"></span> Gijón</div>
+                            <div class="row actAttributesInCorrection" id="actCreatorInCorrection"><span class="glyphicon glyphicon-user creatorIcon"></span> Javier Fombona</div>
+                        </div>
+                        <div class="col-md-6 attributesCol">
+                            <div class="row actAttributesInCorrection" id="actInitDateInCorrection"><span class="glyphicon glyphicon-calendar initDateIcon"></span> 27-nov-2013 23:59</div>
+                            <div class="row actAttributesInCorrection" id="actDeliveryDateInCorrection"><span class="glyphicon glyphicon-calendar deliveryDateIcon"></span> 28-nov-2013 23:59</div>
+                            <div class="row actAttributesInCorrection" id="actDifficultyInCorrection"><span class="glyphicon glyphicon-cog difficultyIcon"></span> Alta</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-info" id="statsFieldInCorrection">
+                        <div class="panel-heading panel-title">Estadísticas</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nº alumnos</th>
+                                    <th>Aprobados</th>
+                                    <th>Suspensos</th>
+                                    <th>Nota media</th>
+                                    <th>Nota más alta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="pass">25</td>
+                                    <td class="noPass">5</td>
+                                    <td class="global">6,75</td>
+                                    <td>9,5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            Desde esta pantalla se pueden ver los resultados y las estadísticas del alumno/a. Para ver las correcciones, despliega el panel de cada tarea para que se muestren las preguntas y las respuestas.
+
+            <div id="userNameInCorrectionReport">Gonzalo Gayol Álvarez</div>
+
+            <div class="input-group" id="conclusionsInCorrectionReport">
+                <span class="input-group-addon">Conclusiones de la actividad<br><small>(las verá el alumno)</small></span>
+                <textarea class="form-control" rows="2" id="MessageBox">Puedes hacerlo mejor en global, aunque no hay nada que hayas hecho mal. En la siguiente actividad te exigiré más</textarea>
+            </div>
+
+            <div class="col-md-12" id="userTasksList">
+
+                <div class="panel panel-info">
+                    <div class="panel-heading panel-title">
+                        <a data-toggle="collapse" href="#panelTask1"><strong>TAREA 1.</strong> El bosque templado de frondosas</a>
+                        <div style="float: right;">
+                            Núm. preguntas: <span class="numQuestions">5</span>
+                            Nota tarea: <span class="taskGrade">8,5</span>
+                        </div>
+                    </div>
+
+                    <div id="panelTask1" class="panel-body panel-collapse collapse">
+                        <p>El bosque templado de frondosas o de hojas anchas es un bioma de bosque de clima templado dominado por las angiospermas y que posee gran variabilidad de temperatura y precipitaciones.</p>
+                        <div class="panel panel-default questionGroup">
+                            <div class="panel-heading panel-title">
+                                <a data-toggle="collapse" href="#panelTask1_1">PREGUNTA 1</a>
+                                <div style="float: right;"><small>Nota:</small><div class="questionGradeInHeading">10</div></div>
+                            </div>
+                            <div id="panelTask1_1" class="panel-body panel-collapse collapse">
+                                <div class="questionWording">¿El bosque templado de frondosas está constituido únicamente por árboles de hoja perenne?</div>
+                                <div class="questionAnswerGroup">
+                                    <div class="col-md-5 questionUserAnswerGroup userAnswerBG"><div class="answerGroupHelp">Respuesta usuario/a</div><span class="questionUserAnswer">Verdadero</span></div>
+                                    <div class="col-md-5 questionCorrectAnswerGroup correctAnswerBG"><div class="answerGroupHelp">Respuesta correcta</div><span class="questionCorrectAnswer">Verdadero</span></div>
+                                    <div class="col-md-2 questionRevisedAnswerGroup revisedAnswerBG"><div class="answerGroupHelp">Nota</div>
+                                        <select class="selectpicker questionGrade">
+                                            <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>                                            
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default questionGroup">
+                            <div class="panel-heading panel-title">
+                                <a data-toggle="collapse" href="#panelTask1_2">PREGUNTA 2</a>
+                                <div style="float: right;"><small>Nota:</small><div class="questionGradeInHeading">7</div></div>
+                            </div>
+                            <div id="panelTask1_2" class="panel-body panel-collapse collapse">
+                                <div class="questionWording">Escribe cuatro especies de árboles que estés viendo que pertenezcan al bosque templado de frondosas</div>
+                                <div class="questionAnswerGroup">
+                                    <div class="col-md-5 questionUserAnswerGroup userAnswerBG"><div class="answerGroupHelp">Respuesta usuario/a</div><span class="questionUserAnswer">Pino, laurel, álamo y haya</span></div>
+                                    <div class="col-md-5 questionCorrectAnswerGroup correctAnswerBG"><div class="answerGroupHelp">Respuesta correcta</div><span class="questionCorrectAnswer">Álamo, pino, laurel, sauce, roble, alarce, manzano, cerezo, castaño, ciprés, olmo, peral y naranjo</span></div>
+                                    <div class="col-md-2 questionRevisedAnswerGroup revisedAnswerBG"><div class="answerGroupHelp">Nota</div>
+                                        <select class="selectpicker questionGrade">
+                                            <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>                                            
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">Anotaciones sobre la tarea<br><small>(las verá el alumno)</small></span>
+                            <textarea class="form-control" rows="2" id="MessageBox">Bastante bien en general. No hay nada que necesite mejorar</textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-title">
+                        <a data-toggle="collapse" href="#panelTask2">Tarea 2</a>
+                    </div>
+                    <div id="panelTask2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Contents panel 2
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-title">
+                        <a data-toggle="collapse" href="#panelTask3">Tarea 3</a>
+                    </div>
+                    <div id="panelTask3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Contents panel 3
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-title">
+                        <a data-toggle="collapse" href="#panelTask4">Tarea 4</a>
+                    </div>
+                    <div id="panelTask4" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Contents panel 4
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-title">
+                        <a data-toggle="collapse" href="#panelTask5">Tarea 5</a>
+                    </div>
+                    <div id="panelTask5" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Contents panel 5
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="footer">
+            <p><strong>EducApp</strong> © 2013  |  Esta página web es un site de la <a href="http://www.uniovi.es">Universidad de Oviedo</a></p>
+            <p>Creado y diseñado con mucho afán por <strong>Xurde Durán</strong> y <strong>Gonzalo Gayol</strong></p>
+            <p>Versión 1.0 - <a href="about.html">Saber más</a></p>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="lib/js/bootstrap.js"></script>        
+
+        <script>
+            $(function() {
+                $('#actCourseInCorrection').tooltip({
+                    title: 'Asignatura',
+                    placement: 'right'
+                });
+
+                $('#actLocationInCorrection').tooltip({
+                    title: 'Localización',
+                    placement: 'right'
+                });
+
+                $('#actCreatorInCorrection').tooltip({
+                    title: 'Creador',
+                    placement: 'right'
+                });
+
+                $('#actDescriptionInCorrection').tooltip({
+                    title: 'Descripción',
+                    placement: 'right'
+                });
+
+                $('#statusInCorrection').tooltip({
+                    title: 'Estado',
+                });
+
+                $('#statusDateInCorrection').tooltip({
+                    title: 'Fecha con este estado',
+                    placement: 'bottom'
+                });
+
+                $('#editActivityButtonInCorrection').tooltip({
+                    title: 'Modificar datos y tareas'
+                });
+
+                $('#tasksActivityButtonInCorrection').tooltip({
+                    title: 'Ver tareas'
+                });
+
+                $('#reviseActivityButtonInCorrection').tooltip({
+                    title: 'Corregir y ver resultados',
+                    placement: 'bottom'
+                });
+
+                $('#removeActivityButtonInCorrection').tooltip({
+                    title: 'Borrar la actividad',
+                    placement: 'bottom'
+                });
+
+
+            });
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,51 @@
+/* 
+    Document   : inicio
+    Created on : 09-nov-2013, 11:53:40
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+*{
+    font-family: Candara, Helvetica, sans-serif;
+}
+
+html,body
+{
+    height:100%;
+}
+
+.navbar-default
+{
+    color: white;
+}
+
+.container
+{
+    min-height:100%;
+}
+
+.container:after
+{
+    width: 100%;
+    height: 150px;
+    display: block;
+    clear: both;
+}
+
+#footer
+{
+    width: 40%;
+    height: auto;
+    margin: -120px auto 0;
+    padding-top: 20px;
+    font-size: 0.9em;
+    text-align: center;
+    border-top: 1px solid lightgrey;
+    overflow: visible;
+    white-space: nowrap
+}

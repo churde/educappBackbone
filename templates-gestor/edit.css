@@ -1,0 +1,126 @@
+/* 
+    Document   : inicio
+    Created on : 09-nov-2013, 11:53:40
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#cancelButton
+{
+    margin: 5px;
+}
+
+#actBriefInEdit
+{
+    margin-top: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px;
+}
+
+#actImgInEdit
+{
+    padding: 0 10px 5px 0px;
+}
+
+#actImgInEdit > img
+{
+    margin: 5px auto 10px auto;
+    box-shadow: 2px 2px 5px black;
+}
+
+#actImgInEdit > img:active
+{
+    transform: scale(.99,.99);
+    -webkit-transform: scale(.99,.99);
+    -ms-transform: scale(.99,.99);
+    box-shadow: none;
+}
+
+.input-group-addon
+{
+    font-weight: bolder;
+}
+
+#actNameInEdit,
+#actCourseInEdit,
+#actLocationInEdit,
+#actCreatorInEdit
+{
+    margin: auto;
+    margin-top: 10px;
+    font-size: 1.15em;
+}
+
+#actNameInEditInput
+{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #4BACC6;
+}
+
+#actDescriptionInEditInput
+{
+    height: 90px;
+    margin-top: 15px;
+    text-align: justify;
+    border-top: 1px solid lightgrey;
+}
+
+#actAttributesInEdit,
+#actInfoInEdit
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#sequentialInEdit,
+#difficultyInEdit
+{
+    text-align: center;
+}
+
+#sequentialInEditRange,
+#difficultyInEditRange
+{
+    height: 1em;
+    display: inline-block;
+    margin: auto;
+    padding: 6px;
+    width: 60%;
+    border: none;
+    box-shadow: none;
+}
+
+#durationInEditInput
+{
+    width: 30%;
+    display: inline-block;
+}
+
+.panel-title
+{
+    padding: 10px;
+}
+
+.panel-title > span
+{
+    float: right;
+}
+
+.panel-body
+{
+    margin: 2px;
+    padding: 8px;
+}
+
+.panel-footer
+{
+    padding: 5px 10px 5px 10px;
+    text-align: right;
+    font-style: italic;
+    font-size: .85em;
+}
