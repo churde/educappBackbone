@@ -124,6 +124,11 @@
     text-decoration: none;
 }
 
+.panel-body
+{
+    background-color: #F5FAFF;
+}
+
 .numQuestions
 {
     margin: 5px;
