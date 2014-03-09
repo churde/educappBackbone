@@ -6,11 +6,15 @@
 var app;
 
 app = {
+    edit: {
+        init: function() {
+            
+        }
+    },
     correccion: {
         init: function() {
             app.addTooltip('myId', 'myTitle', 'fdsa');
         }
-
     },
     panel: {
         init: function() {

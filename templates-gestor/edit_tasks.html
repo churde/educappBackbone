@@ -1,0 +1,301 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EducaApp - Jardin Botánico - Editar Tareas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link href="lib/css/bootstrap.css" rel="stylesheet">
+        <link href="navbar.css" rel="stylesheet" media="screen">
+        <link href="edit_tasks.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="inicio.html"><strong>EducApp</strong></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li class="active"><a href="panel.html">Panel de actividades</a></li>
+                        <li><a href="help.html">Ayuda</a></li>
+                        <li><a href="about.html">Acerca de</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><strong> Gonzalo Gayol <b class="caret"></b></strong></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="user.html">Ver mi perfil</a></li>
+                                <li><a href="user.html">Modificar mi perfil</a></li>
+                                <li class="divider"></li>
+                                <li><a href="logout.htlm"><span class="glyphicon glyphicon-remove" style="margin-left: -15px"></span> Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <a class="btn btn-danger" id="cancelButton" href="edit.html"><span class="glyphicon glyphicon-remove"></span> Cancelar</a> 
+            <a class="btn btn-info" id="saveButton" href="edit.html"><span class="glyphicon glyphicon-save"></span> Guardar</a> 
+
+            <div class="row" id="headingInCorrection">
+
+                <div class="col-md-6 media" id="actBriefInCorrection">
+                    <div class="media-object pull-left" id="actImgInCorrectionContainer"><img class="img-responsive img-rounded" id="actImgInCorrection" title="Botánico" src="../img/botanicoGijon.jpg" alt="Botánico">Clic ampliar</div>
+                    <div class="media-heading" id="actNameInCorrection">Jardín Botánico Atlántico de Gijón</div>
+                    <div class="media-body">
+                        <div class="col-md-6 attributesCol">
+                            <div class="row actAttributesInCorrection" id="actCourseInCorrection"><span class="glyphicon glyphicon-book courseIcon"></span> Biología y Geología sdfdsgdsgagfd gsg aasg ag</div>
+                            <div class="row actAttributesInCorrection" id="actLocationInCorrection"><span class="glyphicon glyphicon-map-marker locationIcon"></span> Gijón</div>
+                            <div class="row actAttributesInCorrection" id="actCreatorInCorrection"><span class="glyphicon glyphicon-user creatorIcon"></span> Javier Fombona</div>
+                        </div>
+                        <div class="col-md-6 attributesCol">
+                            <div class="row actAttributesInCorrection" id="actInitDateInCorrection"><span class="glyphicon glyphicon-calendar initDateIcon"></span> 27-nov-2013 23:59</div>
+                            <div class="row actAttributesInCorrection" id="actDeliveryDateInCorrection"><span class="glyphicon glyphicon-calendar deliveryDateIcon"></span> 28-nov-2013 23:59</div>
+                            <div class="row actAttributesInCorrection" id="actDifficultyInCorrection"><span class="glyphicon glyphicon-cog difficultyIcon"></span> Alta</div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            Desde esta pantalla se pueden crear y editar las tareas de la actividad. Despliega el panel de cada tarea para que se muestren las preguntas y para crearlas.
+
+            <div class="col-md-12" id="userTasksList">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading panel-title">
+                        <a data-toggle="collapse" href="#panelTask1"><strong>TAREA 1.</strong> El bosque templado de frondosas</a>
+                        <a class="btn btn-danger btn-sm btn-remove rightFieldInPanelHeading" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                    </div>
+
+                    <div id="panelTask1" class="panel-body panel-collapse collapse">  
+
+                        <div class="row deviceLabel">
+                            Los campos con este símbolo <span class="glyphicon glyphicon-phone"></span> serán vistos por todos los dispositivos,
+                            y los campos con <span class="glyphicon glyphicon-globe"></span> sólo por los dispositivos con geolocalización GPS
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-12 input-group taskLocation">
+                                        <span class="input-group-addon">Ubicación <span class="glyphicon glyphicon-phone"></span></span>
+                                        <input type="text" class="form-control" placeholder="Lugar de la tarea" value="">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 input-group taskCoordinates">
+                                        <span class="input-group-addon">Coord. <span class="glyphicon glyphicon-globe"></span></span>
+                                        <input type="text" class="form-control" placeholder="Coord. geolocalización" value="">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 input-group taskActiveRadius">
+                                        <span class="input-group-addon">Radio activación (m) <span class="glyphicon glyphicon-globe"></span></span>
+                                        <input type="number" class="form-control" value="15">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5 locationMap">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1446.5547387435277!2d-5.615177829691637!3d43.52090972264023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2s!4v1394189021494" width=100% height=auto frameborder="0" style="border:0"></iframe>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-12 input-group proxText1">
+                                        <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(100m)</small></span>
+                                        <textarea class="form-control" rows="1" placeholder="Texto"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 input-group proxText2">
+                                        <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(50m)</small></span>
+                                        <textarea class="form-control" rows="1" placeholder="Texto"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 input-group taskWording">
+                                <span class="input-group-addon">Descripción <span class="glyphicon glyphicon-phone"></span></span>
+                                <textarea class="form-control" rows="2" placeholder="Enunciado de la tarea">El bosque templado de frondosas o de hojas anchas es un bioma de bosque de clima templado dominado por las angiospermas y que posee gran variabilidad de temperatura y precipitaciones.</textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 input-group taskAnnotation">
+                                <span class="input-group-addon">Anotaciones <span class="glyphicon glyphicon-phone"></span><br><small>(NO las verá el alumno)</small></span>
+                                <textarea class="form-control taskAnnotation" rows="2" placeholder="Comentarios sobre la tarea"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info questionGroup">
+
+                            <div class="panel-heading panel-title">
+                                <a data-toggle="collapse" href="#panelTask1_1">PREGUNTA 1</a>                                
+                                <div class="rightFieldInPanelHeading">
+                                    <small>Tipo:</small><div class="questionTypeInHeading">R.A.</div>
+                                    <a class="btn btn-danger btn-sm btn-remove" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                </div>
+                            </div>
+
+                            <div id="panelTask1_1" class="panel-body panel-collapse collapse">
+
+                                <div class="col-md-6 input-group questionWording">
+                                    <span class="input-group-addon">Enunciado</span>
+                                    <textarea class="form-control" rows="2" placeholder="Enunciado de la pregunta">¿El bosque templado de frondosas está constituido únicamente por árboles de hoja perenne?</textarea>
+                                </div>
+
+                                <div class="col-md-6 input-group questionCorrectAnswer">
+                                    <span class="input-group-addon">Respuesta correcta</span>
+                                    <textarea class="form-control" rows="2" placeholder="Respuesta correcta a la pregunta">¿El bosque templado de frondosas está constituido únicamente por árboles de hoja perenne?</textarea>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info questionGroup">
+
+                            <div class="panel-heading panel-title">
+                                <a data-toggle="collapse" href="#panelTask1_2">PREGUNTA 2</a>                                
+                                <div class="rightFieldInPanelHeading">
+                                    <small>Tipo:</small><div class="questionTypeInHeading">V.F.</div>
+                                    <a class="btn btn-danger btn-sm btn-remove" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                </div>
+                            </div>
+
+                            <div id="panelTask1_2" class="panel-body panel-collapse collapse">
+
+                                <div class="col-md-6 input-group questionWording">
+                                    <span class="input-group-addon">Enunciado</span>
+                                    <textarea class="form-control" rows="2" placeholder="Enunciado de la pregunta">¿El bosque templado de frondosas está constituido únicamente por árboles de hoja perenne?</textarea>
+                                </div>
+
+                                <div class="col-md-6 input-group questionCorrectAnswer">
+                                    <span class="input-group-addon">Respuesta correcta</span>
+                                    <select class="selectpicker selectCorrectAnswer">
+                                        <option value="">-- Seleccionar respuesta --</option>
+                                        <option value="true">Verdadero</option>
+                                        <option value="false">Falso</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-offset-1 btn-group newTaskContent">
+
+                            <select class="selectpicker selectAnswerType">
+                                <option value="">-- Tipo de pregunta --</option>
+                                <option value="VF">Verdadero o falso</option>
+                                <option value="RA">Respuesta abierta</option>
+                            </select>
+                            <a class="btn btn-sm btn-default" href="" id="createQuestionButtonInEditTasks"><span class="glyphicon glyphicon-star"></span> Crear nueva pregunta</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 btn-group">
+
+                    <a class="btn btn-default" href="" id="createTaskButtonInEditTasks"><span class="glyphicon glyphicon-star"></span> Crear nueva tarea</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="footer">
+            <p><strong>EducApp</strong> © 2013  |  Esta página web es un site de la <a href="http://www.uniovi.es">Universidad de Oviedo</a></p>
+            <p>Creado y diseñado con mucho afán por <strong>Xurde Durán</strong> y <strong>Gonzalo Gayol</strong></p>
+            <p>Versión 1.0 - <a href="about.html">Saber más</a></p>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="lib/js/bootstrap.js"></script>        
+
+        <script>
+            $(function() {
+                $('#actCourseInCorrection').tooltip({
+                    title: 'Asignatura',
+                    placement: 'right'
+                });
+
+                $('#actLocationInCorrection').tooltip({
+                    title: 'Localización',
+                    placement: 'right'
+                });
+
+                $('#actCreatorInCorrection').tooltip({
+                    title: 'Creador',
+                    placement: 'right'
+                });
+
+                $('#actDescriptionInCorrection').tooltip({
+                    title: 'Descripción',
+                    placement: 'right'
+                });
+
+                $('#statusInCorrection').tooltip({
+                    title: 'Estado',
+                });
+
+                $('#statusDateInCorrection').tooltip({
+                    title: 'Fecha con este estado',
+                    placement: 'bottom'
+                });
+
+                $('#editActivityButtonInCorrection').tooltip({
+                    title: 'Modificar datos y tareas'
+                });
+
+                $('#tasksActivityButtonInCorrection').tooltip({
+                    title: 'Ver tareas'
+                });
+
+                $('#reviseActivityButtonInCorrection').tooltip({
+                    title: 'Corregir y ver resultados',
+                    placement: 'bottom'
+                });
+
+                $('#removeActivityButtonInCorrection').tooltip({
+                    title: 'Borrar la actividad',
+                    placement: 'bottom'
+                });
+
+
+            });
+
+        </script>
+
+    </body>
+</html>

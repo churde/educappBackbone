@@ -9,8 +9,10 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
         <link href="lib/css/bootstrap.css" rel="stylesheet">
+        <link href="lib/css/datepicker.css" rel="stylesheet">
         <link href="navbar.css" rel="stylesheet" media="screen">
         <link href="edit.css" rel="stylesheet" media="screen">
+        <script src="lib/js/bootstrap-datepicker.js"></script>
     </head>
     <body>
 
@@ -89,7 +91,9 @@ and open the template in the editor.
                 <div class="col-md-2">
                     <div class="panel panel-info">
                         <div id="initDateInEditLabel" class="panel-heading panel-title">Fecha inicio <span class="glyphicon glyphicon-calendar"></span></div>
-                        <div id="initDateInEdit" class="panel-body">27-nov-2013 23:59</div>
+                        <div class="panel-body">
+                            <input type="text" id="initDateInEdit" class="datepicker form-control">
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -151,7 +155,9 @@ and open the template in the editor.
                 </div>
 
             </div>
-
+            <div class="row col-lg-offset-4 col-md-4">
+                <a id="editTasksButton" class="btn btn-block btn-warning btn-lg" href="edit_tasks.html"><span class="glyphicon glyphicon-edit"> Editar tareas</span></a>
+            </div>
         </div>
 
         <div id="footer">
@@ -164,7 +170,9 @@ and open the template in the editor.
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="http://code.jquery.com/jquery.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="lib/js/bootstrap.js"></script>        
+        <script src="lib/js/bootstrap.js"></script>
+        <script src="lib/js/bootstrap-datepicker.js"></script>
+        <script src="lib/js/main.js"></script>
 
         <script>
             $(document).ready(function() {
@@ -192,7 +200,7 @@ and open the template in the editor.
                 });
 
                 $('#statusInEdit').tooltip({
-                    title: 'Estado',
+                    title: 'Estado'
                 });
 
                 $('#statusDateInEdit').tooltip({
@@ -216,6 +224,14 @@ and open the template in the editor.
                 $('#removeActivityButtonInEdit').tooltip({
                     title: 'Borrar la actividad',
                     placement: 'bottom'
+                });
+
+                $('#initDateInEdit').datepicker({
+                    format: "dd/mm/yy",
+                    weekStart: 1,
+                    todayBtn: "linked",
+                    language: "es",
+                    autoclose: true
                 });
 
             });
