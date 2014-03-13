@@ -6,6 +6,7 @@ var urlRest = isDev ? "http://www.appio.es/xurde/Zend/projects/educapp/dev/publi
 
 app.dataModel = {
     currentUser: {
+        
         set: function(_args) {
             var model = new CurrentUserModel({
                 name: _args.name,

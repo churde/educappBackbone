@@ -1,0 +1,265 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EducaApp - Jardin Botánico - Corrección y Resultados</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link href="lib/css/bootstrap.css" rel="stylesheet">
+        <link href="navbar.css" rel="stylesheet" media="screen">
+        <link href="correccion.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="inicio.html"><strong>EducApp</strong></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li class="active"><a href="panel.html">Panel de actividades</a></li>
+                        <li><a href="help.html">Ayuda</a></li>
+                        <li><a href="about.html">Acerca de</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><strong> Gonzalo Gayol <b class="caret"></b></strong></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="user.html">Ver mi perfil</a></li>
+                                <li><a href="user.html">Modificar mi perfil</a></li>
+                                <li class="divider"></li>
+                                <li><a href="logout.htlm"><span class="glyphicon glyphicon-remove" style="margin-left: -15px"></span> Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <a class="btn btn-default" id="backButton" href="ficha.html"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a> 
+
+            <div class="row" id="headingInCorrection">
+
+                <div class="col-md-6 media" id="actBriefInCorrection">
+                    <div class="media-object pull-left" id="actImgInCorrectionContainer"><img class="img-responsive img-rounded" id="actImgInCorrection" title="Botánico" src="../img/botanicoGijon.jpg" alt="Botánico">Clic ampliar</div>
+                    <div class="media-heading" id="actNameInCorrection">Jardín Botánico Atlántico de Gijón</div>
+                    <div class="media-body">
+                        <div class="col-md-6 attributesCol">
+                            <div class="row actAttributesInCorrection" id="actCourseInCorrection"><span class="glyphicon glyphicon-book courseIcon"></span> Biología y Geología sdfdsgdsgagfd gsg aasg ag</div>
+                            <div class="row actAttributesInCorrection" id="actLocationInCorrection"><span class="glyphicon glyphicon-map-marker locationIcon"></span> Gijón</div>
+                            <div class="row actAttributesInCorrection" id="actCreatorInCorrection"><span class="glyphicon glyphicon-user creatorIcon"></span> Javier Fombona</div>
+                        </div>
+                        <div class="col-md-6 attributesCol">
+                            <div class="row actAttributesInCorrection" id="actInitDateInCorrection"><span class="glyphicon glyphicon-calendar initDateIcon"></span> 27-nov-2013 23:59</div>
+                            <div class="row actAttributesInCorrection" id="actDeliveryDateInCorrection"><span class="glyphicon glyphicon-calendar deliveryDateIcon"></span> 28-nov-2013 23:59</div>
+                            <div class="row actAttributesInCorrection" id="actDifficultyInCorrection"><span class="glyphicon glyphicon-cog difficultyIcon"></span> Alta</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-info" id="statsFieldInCorrection">
+                        <div class="panel-heading panel-title">Estadísticas</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nº alumnos</th>
+                                    <th>Aprobados</th>
+                                    <th>Suspensos</th>
+                                    <th>Nota media</th>
+                                    <th>Nota más alta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="pass">25</td>
+                                    <td class="noPass">5</td>
+                                    <td class="global">6,75</td>
+                                    <td>9,5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            Desde esta pantalla se pueden ver los resultados y las estadísticas de la actividad. Para ver las respuestas de cada usuario, presiona en su nombre en la lista de abajo.
+
+            <div id="leyenda"><strong>Leyenda --> </strong>
+                <div class="pass" id="passL">Aprobado</div>
+                <div class="noPass" id="noPassL">Suspenso</div>
+                <div class="pending" id="pendingL">Pendiente corrección</div>
+            </div>
+
+            <div class="col-md-12 table-responsive" id="usersCorrectionList">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>T1</th>
+                            <th>T2</th>
+                            <th>T3</th>
+                            <th>T4</th>
+                            <th>T5</th>
+                            <th>Global</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td>1</td>
+                            <td><a href="correccion_indiv.html">Gonzalo</a></td>
+                            <td><a href="correccion_indiv.html">Gayol Álvarez</a></td>
+                            <td class="noPending">0,75</td>
+                            <td class="noPending">0,0</td>
+                            <td class="noPending">0,25</td>
+                            <td class="noPending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="pass">8,5</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Xurde</td>
+                            <td>Durán</td>
+                            <td class="noPending">0,75</td>
+                            <td class="pending">0,0</td>
+                            <td class="pending">0,25</td>
+                            <td class="noPending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="pending">-</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Aida</td>
+                            <td>Fuentes Abad</td>
+                            <td class="pending">0,75</td>
+                            <td class="noPending">0,0</td>
+                            <td class="noPending">0,25</td>
+                            <td class="noPending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="pending">-</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Gustavo</td>
+                            <td>Martín Peláez</td>
+                            <td class="noPending">0,75</td>
+                            <td class="noPending">0,0</td>
+                            <td class="noPending">0,25</td>
+                            <td class="noPending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="pass">7,0</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Almudena</td>
+                            <td>Méndez Martino</td>
+                            <td class="noPending">0,75</td>
+                            <td class="noPending">0,0</td>
+                            <td class="noPending">0,25</td>
+                            <td class="noPending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="noPass">2,75</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Marcos</td>
+                            <td>Fernández-Sierra de la Bella</td>
+                            <td class="noPending">0,75</td>
+                            <td class="noPending">0,0</td>
+                            <td class="noPending">0,25</td>
+                            <td class="noPending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="noPass">3,5</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Raúl</td>
+                            <td>Acebal García</td>
+                            <td class="noPending">0,75</td>
+                            <td class="noPending">0,0</td>
+                            <td class="noPending">0,25</td>
+                            <td class="noPending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="pass">5,0</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>María</td>
+                            <td>Nazario Lima</td>
+                            <td class="noPending">0,75</td>
+                            <td class="noPending">0,0</td>
+                            <td class="noPending">0,25</td>
+                            <td class="noPending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="pass">5,0</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Faustino</td>
+                            <td>Junquera Hoyas</td>
+                            <td class="noPending">0,75</td>
+                            <td class="pending">0,0</td>
+                            <td class="noPending">0,25</td>
+                            <td class="pending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="pending">-</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Flor</td>
+                            <td>González Pérez</td>
+                            <td class="noPending">0,75</td>
+                            <td class="noPending">0,0</td>
+                            <td class="noPending">0,25</td>
+                            <td class="noPending">0,5</td>
+                            <td class="noPending">1,0</td>
+                            <td class="noPass">4,0</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div id="footer">
+            <p><strong>EducApp</strong> © 2013  |  Esta página web es un site de la <a href="http://www.uniovi.es">Universidad de Oviedo</a></p>
+            <p>Creado y diseñado con mucho afán por <strong>Xurde Durán</strong> y <strong>Gonzalo Gayol</strong></p>
+            <p>Versión 1.0 - <a href="about.html">Saber más</a></p>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="lib/js/bootstrap.js"></script>        
+
+        <script src="lib/js/main.js"></script>
+
+        <script>
+
+            $(function() {
+                app.correccion.init();
+            });
+
+        </script>
+
+    </body>
+</html>

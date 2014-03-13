@@ -1,0 +1,174 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EducaApp - Jardin Botánico</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link href="lib/css/bootstrap.css" rel="stylesheet">
+        <link href="navbar.css" rel="stylesheet" media="screen">
+        <link href="ficha.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="inicio.html"><strong>EducApp</strong></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li class="active"><a href="panel.html">Panel de actividades</a></li>
+                        <li><a href="help.html">Ayuda</a></li>
+                        <li><a href="about.html">Acerca de</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><strong> Gonzalo Gayol <b class="caret"></b></strong></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="user.html">Ver mi perfil</a></li>
+                                <li><a href="user.html">Modificar mi perfil</a></li>
+                                <li class="divider"></li>
+                                <li><a href="logout.htlm"><span class="glyphicon glyphicon-remove" style="margin-left: -15px"></span> Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <a class="btn btn-default" id="backButton" href="panel.html"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a> 
+
+            <div class="row" id="actBriefInCard">
+
+                <div class="col-md-3" id="actImgInCard"><img class="img-responsive img-rounded" title="Botánico" src="../img/botanicoGijon.jpg" alt="Botánico"></div>
+
+                <div class="col-md-5">
+                    <div class="row" id="actNameInCard">Jardín Botánico Atlántico de Gijón</div>
+                    <div class="row" id="actCourseInCard"><span class="glyphicon glyphicon-book"></span> Biología y Geología</div>
+                    <div class="row" id="actLocationInCard"><span class="glyphicon glyphicon-map-marker"></span> Gijón</div>
+                    <div class="row" id="actCreatorInCard"><span class="glyphicon glyphicon-user"></span> Javier Fombona</div>
+                    <div id="actDescriptionInCard">Una actividad para descubrir las diferentes especies atlánticas, diferenciar los tipos de bosques y reconocer la flora del Cantábrico.</div>
+                </div>
+
+                <div class="col-md-4" id="statusFieldInCard">
+
+                    <div id="statusInCard">Disponible</div>
+                    <div id="statusDateInCard">Desde el<br>20-nov-2013 13:00</div>
+
+                    <div class="row" id="buttonGroup">
+                        <span class="tooltipBtn" id="editActivityButtonInCard"><a class="btn btn-info btn-sm optionBtn" href="edit.html"><span class="glyphicon glyphicon-edit"> Editar</span></a></span>
+                        <span class="tooltipBtn" id="tasksActivityButtonInCard"><a class="btn btn-default btn-sm optionBtn" href="tasks.html"><span class="glyphicon glyphicon-tasks"></span> Ver tareas</a></span>
+                        <span class="tooltipBtn" id="reviseActivityButtonInCard"><a class="btn btn-success btn-sm optionBtn" href="correccion.html"><span class="glyphicon glyphicon-tags"></span> Corrección</a></span>
+                        <span class="tooltipBtn" id="removeActivityButtonInCard"><a class="btn btn-danger btn-sm optionBtn" href="#"><span class="glyphicon glyphicon-remove"></span> Eliminar</a></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="row" id="actAttributesInCard">
+
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="initDateInCardLabel" class="panel-heading panel-title">Fecha inicio <span class="glyphicon glyphicon-calendar"></span></div>
+                        <div id="initDateInCard" class="panel-body">27-nov-2013 23:59</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="deliveryDateInCardLabel" class="panel-heading panel-title">Fecha entrega <span class="glyphicon glyphicon-calendar"></span></div>
+                        <div id="deliveryDateInCard" class="panel-body">28-nov-2013 23:59</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="tasksInCardLabel" class="panel-heading panel-title">Nº de tareas <span class="glyphicon glyphicon-tasks"></span></div>
+                        <div id="tasksInCard" class="panel-body">5</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="sequentialInCardLabel" class="panel-heading panel-title">Secuencial <span class="glyphicon glyphicon-tasks"></span> <span class="glyphicon glyphicon-arrow-right"></span> <span class="glyphicon glyphicon-tasks"></span></div>
+                        <div id="secuentialInCard" class="panel-body">No</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="difficultyInCardLabel" class="panel-heading panel-title">Dificultad <span class="glyphicon glyphicon-cog"></span></div>
+                        <div id="difficultyInCard" class="panel-body">Alta</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel panel-info">
+                        <div id="durationInCardLabel" class="panel-heading panel-title">Duración <span class="glyphicon glyphicon-time"></span></div>
+                        <div id="durationInCard" class="panel-body">45 min.</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" id="actInfoInCard">
+                <div class="col-md-4 ">
+                    <div class="panel panel-info">
+                        <div id="privateInfoInCardLabel" class="panel-heading panel-title">Información privada <span class="glyphicon glyphicon-eye-close"></span></div>
+                        <div id="privateInfoInCard" class="panel-body">Dejar claro a los alumnos que la actividad es pedagógica, y que se pueden aprender muchas cosas en un entorno diferente al aula. No dejarles usar el WhatsApp ni nada parecido. Pasar lista antes y después del inicio de la actividad.</div>
+                        <div class="panel-footer">Únicamente visible por el creador</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 ">
+                    <div class="panel panel-info">
+                        <div id="preInfoInCardLabel" class="panel-heading panel-title">Información previa <span class="glyphicon glyphicon-info-sign"></span></div>
+                        <div id="preInfoInCard" class="panel-body">Para esta actividad debes tener una bolsa para recoger muestras que llevarás después a clase.</div>
+                        <div class="panel-footer">Mostrada al usuario al empezar la actividad</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 ">
+                    <div class="panel panel-info">
+                        <div id="postInfoInCardLabel" class="panel-heading panel-title">Información posterior <span class="glyphicon glyphicon-info-sign"></span></div>
+                        <div id="postInfoInCard" class="panel-body">Espero que a partir de ahora sepas identificar algunas plantas y árboles, además los distintos fenómenos biológicos asociado. Esta actividad tendrá un peso del 10% en la nota final de la asignatura de Biología y Geología.</div>
+                        <div class="panel-footer">Mostrada al usuario al finalizar la actividad</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div id="footer">
+            <p><strong>EducApp</strong> © 2013  |  Esta página web es un site de la <a href="http://www.uniovi.es">Universidad de Oviedo</a></p>
+            <p>Creado y diseñado con mucho afán por <strong>Xurde Durán</strong> y <strong>Gonzalo Gayol</strong></p>
+            <p>Versión 1.0 - <a href="about.html">Saber más</a></p>
+        </div>
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="lib/js/bootstrap.js"></script>      
+        <script src="lib/js/main.js"></script>        
+
+        <script>
+            $(function() {
+                app.ficha.init();
+            });
+
+        </script>
+
+    </body>
+</html>

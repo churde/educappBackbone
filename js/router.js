@@ -193,7 +193,6 @@ taskList: function() {
             return;
         }
 
-
         this.taskModel = this.taskListCollection.get(id);
         this.taskView.model = this.taskModel;
 

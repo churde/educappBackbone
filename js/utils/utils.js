@@ -2,7 +2,7 @@
 function con() {
     try {
         for (var i = 0, l = arguments.length; i < l; i++) {
-            console.log(arguments[i])
+            console.log(arguments[i]);
         }
     }
     catch (e) {
@@ -10,7 +10,7 @@ function con() {
 }
 
 function err(e) {
-    con("Error " + e.message + " en la linea " + e.lineNumber + " del archivo " + e.fileName)
+    con("Error " + e.message + " en la linea " + e.lineNumber + " del archivo " + e.fileName);
 }
 
 app.utils = {
@@ -20,7 +20,7 @@ app.utils = {
         var oDate = new Date(date);
         
         
-        if(date === "1970-01-01"){
+        if(date == "1970-01-01"){
             return "Sin Fecha";
         }
         else{

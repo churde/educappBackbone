@@ -1,0 +1,177 @@
+/* 
+    Document   : panel
+    Created on : 09-nov-2013, 20:06:09
+    Author     : Tali
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#activityList
+{
+    margin-top: 40px;
+}
+
+#topRow
+{
+    margin: 15px;
+}
+
+#iconActivityList
+{
+    color: #4BACC6;
+    font-size: 2em;
+}
+
+#textActivityList
+{
+    margin-left: 15px;
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+#createActivityButton
+{
+    float: right;
+}
+
+#descriptionRow
+{
+    margin: 15px;
+    background-color: aliceblue;
+    color: #4BACC6;
+    border-top: 1px solid #4BACC6;
+    border-bottom: 1px solid #4BACC6;
+    font-size: 1.0em;
+    line-height: 2.5em;
+    /*text-transform: uppercase;*/
+}
+
+.activityRow
+{
+    margin: 0px 15px 0px 15px;
+    padding: 10px 0px 10px 0px;
+    line-height: 2em;
+    border-bottom: 1px solid lightgray;
+}
+
+.activityRow:hover
+{
+    background-color: aliceblue;
+}
+
+.activityImgNameAndDescription
+{
+   padding-left: 5px;
+}
+
+.activityImage
+{
+    margin-top: 3px;
+    margin-bottom: 5px;
+    height: 64px;
+    width: 64px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.activityName
+{
+    margin-left: 0px;
+    font-size: 1.5em;
+    line-height: 1.1em;
+    font-weight: bold;
+}
+
+.activityDescription
+{
+    height: 2.2em;
+    line-height: 1.1em;
+    color: grey;
+    /*overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;*/
+}
+
+.activityCourse,
+.activityLocation,
+.activityStatusAndDate
+{
+    padding-top: 22px;
+    width: 13.8888%;
+    line-height: 1.1em;
+}
+
+.activityCourse
+{
+    
+}
+.activityLocation
+{
+    
+}
+
+.activityStatusAndDate
+{
+    font-size: 1.3em;
+}
+
+.deliveryDate
+{
+    margin-top: 4px;
+    font-size: .75em;
+    color: grey;
+}
+
+.activityOptions
+{
+    padding-top: 20px;
+    padding-left: 3px;
+    padding-right: 0px;
+}
+
+.optionBtn > span
+{
+    font-size: 1.25em;
+}
+
+
+.createdBgColor,.unknownBgColor
+{
+    background-color: grey;
+}
+
+.publishedBgColor
+{
+    background-color: mediumpurple;
+}
+
+.availableBgColor
+{
+    background-color: gold;
+}
+
+.finishedBGColor
+{
+    background-color: tomato;
+}
+
+.revisedBgColor
+{
+    background-color: limegreen;
+}
+
+.tooltipBtn
+{
+    padding-top: 5px;
+}
+
+.content > a
+{
+    color: inherit;
+}
+
