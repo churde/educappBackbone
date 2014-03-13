@@ -33,7 +33,6 @@
 
     var Datepicker = function(element, options) {
         var that = this;
-
         this.element = $(element);
         this.language = options.language || this.element.data('date-language') || "en";
         this.language = this.language in dates ? this.language : this.language.split('-')[0]; //Check if "de-DE" style date is available, if not language should fallback to 2 letter code eg "de"
@@ -46,7 +45,6 @@
         this.hasInput = this.component && this.element.find('input').length;
         if (this.component && this.component.length === 0)
             this.component = false;
-
         this.forceParse = true;
         if ('forceParse' in options) {
             this.forceParse = options.forceParse;
@@ -57,7 +55,6 @@
         this.picker = $(DPGlobal.template);
         this._buildEvents();
         this._attachEvents();
-
         if (this.isInline) {
             this.picker.addClass('datepicker-inline').appendTo(this.element);
         } else {
@@ -111,10 +108,8 @@
         }
 
         this.viewMode = this.startViewMode = Math.max(this.startViewMode, this.minViewMode);
-
         this.todayBtn = (options.todayBtn || this.element.data('date-today-btn') || false);
         this.todayHighlight = (options.todayHighlight || this.element.data('date-today-highlight') || false);
-
         this.calendarWeeks = false;
         if ('calendarWeeks' in options) {
             this.calendarWeeks = options.calendarWeeks;
@@ -126,9 +121,7 @@
                     .attr('colspan', function(i, val) {
                 return parseInt(val) + 1;
             });
-
         this._allow_update = false;
-
         this.weekStart = ((options.weekStart || this.element.data('date-weekstart') || dates[this.language].weekStart || 0) % 7);
         this.weekEnd = ((this.weekStart + 6) % 7);
         this.startDate = -Infinity;
@@ -140,17 +133,13 @@
         this.fillDow();
         this.fillMonths();
         this.setRange(options.range);
-
         this._allow_update = true;
-
         this.update();
         this.showMode();
-
         if (this.isInline) {
             this.show();
         }
     };
-
     Datepicker.prototype = {
         constructor: Datepicker,
         _events: [],
@@ -258,7 +247,6 @@
             this._detachSecondaryEvents();
             this.viewMode = this.startViewMode;
             this.showMode();
-
             if (
                     this.forceParse &&
                     (
@@ -356,7 +344,6 @@
         update: function() {
             if (!this._allow_update)
                 return;
-
             var date, fromArgs = false;
             if (arguments && arguments.length && (typeof arguments[0] === 'string' || arguments[0] instanceof Date)) {
                 date = arguments[0];
@@ -367,10 +354,8 @@
             }
 
             this.date = DPGlobal.parseDate(date, this.format, this.language);
-
             if (fromArgs)
                 this.setValue();
-
             if (this.date < this.startDate) {
                 this.viewDate = new Date(this.startDate);
             } else if (this.date > this.endDate) {
@@ -487,7 +472,6 @@
 // Calendar week: ms between thursdays, div ms per day, div 7 days
                                 calWeek = (th - yth) / 864e5 / 7 + 1;
                         html.push('<td class="cw">' + calWeek + '</td>');
-
                     }
                 }
                 clsName = this.getClassNames(prevMonth);
@@ -500,7 +484,6 @@
             }
             this.picker.find('.datepicker-days tbody').empty().append(html.join(''));
             var currentYear = this.date && this.date.getUTCFullYear();
-
             var months = this.picker.find('.datepicker-months')
                     .find('th:eq(1)')
                     .text(year)
@@ -536,7 +519,6 @@
         updateNavArrows: function() {
             if (!this._allow_update)
                 return;
-
             var d = new Date(this.viewDate),
                     year = d.getUTCFullYear(),
                     month = d.getUTCMonth();
@@ -595,7 +577,6 @@
                             case 'today':
                                 var date = new Date();
                                 date = UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
-
                                 this.showMode(-2);
                                 var which = this.todayBtn == 'linked' ? null : 'view';
                                 this._setDate(date, which);
@@ -844,18 +825,15 @@
             this.updateNavArrows();
         }
     };
-
     var DateRangePicker = function(element, options) {
         this.element = $(element);
         this.inputs = $.map(options.inputs, function(i) {
             return i.jquery ? i[0] : i;
         });
         delete options.inputs;
-
         $(this.inputs)
                 .datepicker(options)
                 .bind('changeDate', $.proxy(this.dateUpdated, this));
-
         this.pickers = $.map(this.inputs, function(i) {
             return $(i).data('datepicker');
         });
@@ -883,7 +861,6 @@
                     l = this.inputs.length;
             if (i == -1)
                 return;
-
             if (new_date < this.dates[i]) {
 // Date being moved earlier/left
                 while (i >= 0 && new_date < this.dates[i]) {
@@ -905,7 +882,6 @@
             delete this.element.data().datepicker;
         }
     };
-
     var old = $.fn.datepicker;
     $.fn.datepicker = function(option) {
         var args = Array.apply(null, arguments);
@@ -930,7 +906,6 @@
             }
         });
     };
-
     $.fn.datepicker.defaults = {
     };
     $.fn.datepicker.Constructor = Datepicker;
@@ -942,9 +917,16 @@
             months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             today: "Today"
+        },
+        es: {
+            days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+            daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+            today: "Hoy"
         }
     };
-
     var DPGlobal = {
         modes: [
             {
@@ -1134,10 +1116,7 @@
             '</table>' +
             '</div>' +
             '</div>';
-
     $.fn.datepicker.DPGlobal = DPGlobal;
-
-
     /* DATEPICKER NO CONFLICT
      * =================== */
 
@@ -1145,8 +1124,6 @@
         $.fn.datepicker = old;
         return this;
     };
-
-
     /* DATEPICKER DATA-API
      * ================== */
 
@@ -1165,5 +1142,4 @@
     $(function() {
         $('[data-provide="datepicker-inline"]').datepicker();
     });
-
 }(window.jQuery);

@@ -99,7 +99,9 @@ and open the template in the editor.
                 <div class="col-md-2">
                     <div class="panel panel-info">
                         <div id="deliveryDateInEditLabel" class="panel-heading panel-title">Fecha entrega <span class="glyphicon glyphicon-calendar"></span></div>
-                        <div id="deliveryDateInEdit" class="panel-body">28-nov-2013 23:59</div>
+                        <div class="panel-body">
+                            <input type="text" id="deliveryDateInEdit" class="datepicker form-control">
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -175,9 +177,7 @@ and open the template in the editor.
         <script src="lib/js/main.js"></script>
 
         <script>
-            $(document).ready(function() {
-                $('.selectpicker').selectpicker();
-            });
+            
             $(function() {
                 $('#actCourseInEdit').tooltip({
                     title: 'Asignatura',
@@ -227,9 +227,19 @@ and open the template in the editor.
                 });
 
                 $('#initDateInEdit').datepicker({
-                    format: "dd/mm/yy",
+                    format: "dd-mm-yy",
                     weekStart: 1,
                     todayBtn: "linked",
+                    todayHighlight: "true",
+                    language: "es",
+                    autoclose: true
+                });
+                
+                $('#deliveryDateInEdit').datepicker({
+                    format: "dd-mm-yy",
+                    weekStart: 1,
+                    todayBtn: "linked",
+                    todayHighlight: "true",
                     language: "es",
                     autoclose: true
                 });
