@@ -25,22 +25,38 @@ app.utils = {
         }
         else{
            return oDate.toString(format); 
-        }        
-                
-    },
-            
-            /* This function combines 2 json, having the second object preference over the first one*/
-    combineJson: function(/*Object*/obj1, /*Object...*/obj2) {
+       }        
 
-        for (var p in obj2) {
-            if (obj2.hasOwnProperty(p)) {
-                obj1[p] = typeof obj2[p] === 'object' ? utils.combineJson(obj1[p], obj2[p]) : obj2[p];
-            }
+   },
+
+   /* This function combines 2 json, having the second object preference over the first one*/
+   combineJson: function(/*Object*/obj1, /*Object...*/obj2) {
+
+    for (var p in obj2) {
+        if (obj2.hasOwnProperty(p)) {
+            obj1[p] = typeof obj2[p] === 'object' ? utils.combineJson(obj1[p], obj2[p]) : obj2[p];
         }
-        return obj1;
     }
-}
+    return obj1;
+},
 
+isOnline: function(){
+    var isOnline;
+    if(typeof navigator.connection !== 'undefined'){
+        var networkState = navigator.connection.type;
+
+        isOnline = networkState !== Connection.NONE;
+
+    }
+    else{
+        isOnline = window.navigator.onLine;
+    }
+
+    return isOnline;
+
+
+}
+};
 
 window.utils = {
 

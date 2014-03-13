@@ -1,0 +1,244 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"for",
+				"for	for (…) {…} (Improved Native For-Loop)"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/JSLint/JSLint.sublime-build",
+	"command_palette":
+	{
+		"height": 347.0,
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Disable Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package control",
+				"Package Control: List Packages"
+			],
+			[
+				"Snippet: tes",
+				"Snippet: test"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Wrap in try { … } catch (…) { … }"
+			],
+			[
+				"pa",
+				"Package Control: Discover Packages"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"insta	",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Code Folding: Fold Tag Attributes"
+			]
+		],
+		"width": 521.0
+	},
+	"console":
+	{
+		"height": 285.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/xurde/GoogleDrive/Appio-Xurde/Proyectos/VinsaGestor/sftp-config.json",
+		"/Users/xurde/GoogleDrive/PFC - Aplicación Eductiva/PROYECTO/EducappMobile/sftp-config.json",
+		"/Applications/MAMP/htdocs/educapp/js/views/activity.js",
+		"/Applications/MAMP/htdocs/educapp/sftp-config.json",
+		"/Users/xurde/GoogleDrive/PFC - Aplicación Eductiva/PROYECTO/Educapp Mobile Backbone/Educapp Mobile Backbone.sublime-project",
+		"/Users/xurde/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Applications/MAMP/htdocs/educapp/ftpsync.settings",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/Resources/components/test2.php",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/Resources/components/config.js",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/Resources/components/media.js",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/Resources/components/facebook.js",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/Resources/components/test.php",
+		"/Users/xurde/Library/Application Support/Sublime Text 2/Packages/User/prueba",
+		"/Users/xurde/Library/Application Support/Sublime Text 2/Packages/User/test.sublime-snippet",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/Resources/test.js",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/Resources/app.js",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/build/android/bin/assets/Resources/components/test.js",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/Resources/components/hola.html",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/build/android/bin/assets/Resources/components/actions.js",
+		"/Users/xurde/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+		"/Users/xurde/GoogleDrive/TitaniumStudio/Memetrix/build/iphone/build/Memetrix.build/Debug-iphonesimulator/Memetrix.build/Objects-normal/i386/KrollBridge.dia",
+		"/Users/xurde/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"formatDate",
+			".formatDate",
+			"_args",
+			"el",
+			"casa",
+			"casas",
+			"highli",
+			"_args",
+			"e",
+			"E",
+			"e",
+			"dev.inf"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"coche"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 242.0
+	},
+	"output.sftp":
+	{
+		"height": 137.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"prueba",
+				"/Users/xurde/Library/Application Support/Sublime Text 2/Packages/User/prueba"
+			],
+			[
+				"medi",
+				"Resources/components/media.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 267.0,
+	"status_bar_visible": true
+}

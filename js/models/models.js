@@ -151,6 +151,7 @@ var ActivityCollection = Backbone.Collection.extend({
     initialize: function() {
         this.url = urlRoot + "get-activities/userId/" + app.dataModel.currentUser.get("__userId");
     },
+    localStorage: new Backbone.LocalStorage("activity"),
     url: ""
 });
 
