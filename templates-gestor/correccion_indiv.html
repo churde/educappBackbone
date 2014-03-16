@@ -119,7 +119,9 @@ and open the template in the editor.
                     </div>
 
                     <div id="panelTask1" class="panel-body panel-collapse collapse">
+
                         <p>El bosque templado de frondosas o de hojas anchas es un bioma de bosque de clima templado dominado por las angiospermas y que posee gran variabilidad de temperatura y precipitaciones.</p>
+
                         <div class="panel panel-info questionGroup">
                             <div class="panel-heading panel-title">
                                 <a data-toggle="collapse" href="#panelTask1_1">PREGUNTA 1</a>
@@ -168,11 +170,36 @@ and open the template in the editor.
 
                 <div class="panel panel-noRevised">
                     <div class="panel-heading panel-title">
-                        <a data-toggle="collapse" href="#panelTask2">Tarea 2</a>
+                        <a data-toggle="collapse" href="#panelTask2"><strong>Tarea 2.</strong> Hoja perenne y hoja caduca</a>
+                        <div style="float: right;">
+                            Núm. preguntas: <span class="numQuestions">2</span>
+                            Nota tarea: <span class="taskGrade">-</span>
+                        </div>
                     </div>
                     <div id="panelTask2" class="panel-collapse collapse">
                         <div class="panel-body">
-                            Contents panel 2
+
+                            <p>En esta tarea, apreciarás las diferencias entre los bosques de hoja perenne y los de hoja caduca.</p>
+
+                            <div class="panel panel-noRevised questionGroup">
+                                <div class="panel-heading panel-title">
+                                    <a data-toggle="collapse" href="#panelTask2_1">PREGUNTA 1</a>
+                                    <div style="float: right;"><small>Nota:</small><div class="questionGradeInHeading">-</div></div>
+                                </div>
+                                <div id="panelTask2_1" class="panel-body panel-collapse collapse">
+                                    <div class="questionWording">¿Qué son las hojas perennes?</div>
+                                    <div class="questionAnswerGroup">
+                                        <div class="col-md-5 questionUserAnswerGroup userAnswerBG"><div class="answerGroupHelp">Respuesta usuario/a</div><span class="questionUserAnswer">Las que no se caen en todo el año</span></div>
+                                        <div class="col-md-5 questionCorrectAnswerGroup correctAnswerBG"><div class="answerGroupHelp">Respuesta correcta</div><span class="questionCorrectAnswer">Son aquellas que se mantienen durante todas las estaciones del año</span></div>
+                                        <div class="col-md-1 questionRevisedAnswerGroup revisedAnswerBG"><div class="answerGroupHelp">Nota</div>
+                                            <select class="selectpicker questionGrade">
+                                                <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>                                            
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -226,11 +253,11 @@ and open the template in the editor.
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="lib/js/bootstrap.js"></script>        
         <script src="lib/js/main.js"></script>
-        
+
         <script>
             $(function() {
                 app.correccionIndividual.init();
-             });
+            });
 
         </script>
 
