@@ -56,7 +56,11 @@ and open the template in the editor.
 
             <div class="row" id="actBriefInEdit">
 
-                <div class="col-md-3" id="actImgInEdit"><img class="img-responsive img-rounded" title="Botánico" src="../img/botanicoGijon.jpg" alt="Botánico"></div>
+                <div class="col-md-3" id="actImgInEdit"><img class="img-responsive img-rounded" title="Botánico" src="../img/botanicoGijon.jpg" alt="Botánico">
+                    <span class="btn btn-default btn-file">
+                        <span class="glyphicon glyphicon-picture"></span> Modificar imagen<input type="file">
+                    </span>
+                </div>
 
                 <div class="col-md-7" >
                     <div class="row input-group" id="actNameInEdit">
@@ -177,7 +181,7 @@ and open the template in the editor.
         <script src="lib/js/main.js"></script>
 
         <script>
-            
+
             $(function() {
                 app.edit.init();
             });

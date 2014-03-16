@@ -88,7 +88,7 @@ and open the template in the editor.
 
                         <div class="row deviceLabel">
                             Los campos con este símbolo <span class="glyphicon glyphicon-phone"></span> serán vistos por todos los dispositivos,
-                            y los campos con <span class="glyphicon glyphicon-globe"></span> sólo por los dispositivos con geolocalización GPS
+                            y los campos con este otro <span class="glyphicon glyphicon-globe"></span> sólo por los dispositivos con geolocalización GPS
                         </div>
 
                         <div class="row">
@@ -101,37 +101,44 @@ and open the template in the editor.
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-12 input-group taskCoordinates">
-                                        <span class="input-group-addon">Coord. <span class="glyphicon glyphicon-globe"></span></span>
-                                        <input type="text" class="form-control" placeholder="Coord. geolocalización" value="">
+                                    <div class="col-md-12 input-group taskLongitude">
+                                        <span class="input-group-addon">Longitud <span class="glyphicon glyphicon-globe"></span></span>
+                                        <input type="text" class="form-control" placeholder="Coord. longitud" value="">
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-12 input-group taskActiveRadius">
-                                        <span class="input-group-addon">Radio activación (m) <span class="glyphicon glyphicon-globe"></span></span>
-                                        <input type="number" class="form-control" value="15">
+                                    <div class="col-md-12 input-group taskLatitude">
+                                        <span class="input-group-addon">Latitud <span class="glyphicon glyphicon-globe"></span></span>
+                                        <input type="text" class="form-control" placeholder="Coord. latitud" value="">
                                     </div>
                                 </div>
 
                             </div>
 
                             <div class="col-md-5 locationMap">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1446.5547387435277!2d-5.615177829691637!3d43.52090972264023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2s!4v1394189021494" width=100% height=auto frameborder="0" style="border:0"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.068581347997!2d-5.616752288568104!3d43.52176256597215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb65e4d6b892d8c2b!2sJardin+Botanico+Atlantico!5e0!3m2!1ses!2ses!4v1394993617834" width=100% height="200" frameborder="0" style="border:0"></iframe>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="row">
                                     <div class="col-md-12 input-group proxText1">
-                                        <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(100m)</small></span>
-                                        <textarea class="form-control" rows="1" placeholder="Texto"></textarea>
+                                        <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(200m)</small></span>
+                                        <textarea id="proxClue200" class="form-control" rows="1" placeholder="Indicaciones o pistas"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-12 input-group proxText2">
+                                        <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(100m)</small></span>
+                                        <textarea id="proxClue100" class="form-control" rows="1" placeholder="Indicaciones o pistas"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-12 input-group proxText2">
                                         <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(50m)</small></span>
-                                        <textarea class="form-control" rows="1" placeholder="Texto"></textarea>
+                                        <textarea id="proxClue50" class="form-control" rows="1" placeholder="Indicaciones o pistas"></textarea>
                                     </div>
                                 </div>
 

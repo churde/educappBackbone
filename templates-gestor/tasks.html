@@ -95,16 +95,16 @@ and open the template in the editor.
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-12 input-group taskCoordinates">
-                                        <span class="input-group-addon">Coord. <span class="glyphicon glyphicon-globe"></span></span>
-                                        <input type="text" class="form-control" placeholder="Coord. geolocalización" value="43.520799, -5.614875" disabled>
+                                    <div class="col-md-12 input-group taskLongitude">
+                                        <span class="input-group-addon">Longitud <span class="glyphicon glyphicon-globe"></span></span>
+                                        <input type="text" class="form-control" placeholder="Coord. longitud" value="43.520799" disabled>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-12 input-group taskActiveRadius">
-                                        <span class="input-group-addon">Radio activación (m) <span class="glyphicon glyphicon-globe"></span></span>
-                                        <input type="number" class="form-control" value="15" disabled>
+                                    <div class="col-md-12 input-group taskLatitude">
+                                        <span class="input-group-addon">Latitud <span class="glyphicon glyphicon-globe"></span></span>
+                                        <input type="text" class="form-control" placeholder="Coord. latitud" value="-5.614875" disabled>
                                     </div>
                                 </div>
 
@@ -117,15 +117,22 @@ and open the template in the editor.
                             <div class="col-md-4">
                                 <div class="row">
                                     <div class="col-md-12 input-group proxText1">
-                                        <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(100m)</small></span>
-                                        <textarea class="form-control" rows="1" placeholder="Texto" disabled>Vas por buen camino, a la derecha de la cafetería</textarea>
+                                        <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(200m)</small></span>
+                                        <textarea id="proxClue200" class="form-control" rows="1" placeholder="Indicaciones o pistas" disabled>Vas por buen camino, a la derecha de la cafetería</textarea>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-12 input-group proxText2">
+                                        <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(100m)</small></span>
+                                        <textarea id="proxClue100" class="form-control" rows="1" placeholder="Indicaciones o pistas" disabled>Ahora debes de haber dejado atrás la cafetería</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-12 input-group proxText2">
                                         <span class="input-group-addon">Proximidad <span class="glyphicon glyphicon-globe"></span><br><small>(50m)</small></span>
-                                        <textarea class="form-control" rows="1" placeholder="Texto" disabled>Estás muy cerca, casi has llegado</textarea>
+                                        <textarea id="proxClue50" class="form-control" rows="1" placeholder="Indicaciones o pistas" disabled>Estás muy cerca, casi has llegado</textarea>
                                     </div>
                                 </div>
 
