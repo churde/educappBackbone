@@ -1,4 +1,4 @@
-var isDev = false;
+var isDev = true;
 var urlRoot = isDev ? "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/api/" : "http://www.appio.es/xurde/Zend/projects/educapp/pre/public/api/";
 
 var urlRest = isDev ? "http://www.appio.es/xurde/Zend/projects/educapp/dev/public/rest" : "http://www.appio.es/xurde/Zend/projects/educapp/pre/public/rest";
@@ -121,7 +121,7 @@ app.dataModel = {
             return answeredTasksLength === app.router.activityModel.get('tasks').length;
         }
     }
-}
+};
 
 
 

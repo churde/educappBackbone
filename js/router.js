@@ -112,7 +112,7 @@ var AppRouter = Backbone.Router.extend({
                 /* Save data to localStorage*/
                 for (var i = app.router.activityListCollection.models.length - 1; i >= 0; i--) {
                     app.router.activityListCollection.models[i].save();
-                };
+                }
 
                 // Add globalStatus to the models in the collection
                 app.dataModel.activity.addStatusGlobalToModels();
@@ -121,6 +121,7 @@ var AppRouter = Backbone.Router.extend({
             },
             error: function(e) {
                 alert("error fetching activityList " + e);
+                con(e);
             }
         }); 
         }
